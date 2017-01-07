@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* first page {{{ */
+
+#cover-page {
+  overflow: hidden;
+  position: relative;
+}
+
+#box {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+/* borders {{{ */
+
+#border-bottom {
+  position: absolute;
+  bottom: 10vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 0vh;
+  width: 0%;
+  border-bottom: 1vh black solid;
+}
+
+#border-right {
+  border-right: 1vh black solid;
+  position: absolute;
+  right: 10vw;
+  bottom: 10vh;
+  margin: auto;
+  height: 0vh;
+  width: 0%;
+}
+
+#border-left {
+  border-left: 1vh black solid;
+  position: absolute;
+  left: 10vw;
+  bottom: 10vh;
+  margin: auto;
+  height: 0vh;
+  width: 0%;
+}
+
+#border-top-white {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 0vh;
+  width: 80vw;
+  border-bottom: 1vh white solid;
+}
+
+#border-top-black {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 0vh;
+  width: 80vw;
+  border-bottom: 1vh black solid;
+}
+
+/* borders }}} */
+
+#title {
+  position: absolute;
+  top: 10vh;
+  right: 0;
+  left: 0;
+  text-align: center;
+  width: 45vw;
+  margin: auto;
+  margin-top: -6vh; /* magic number */
+  font-family: 'Arvo', serif;
+  font-size: 5vw;
+  background-color: white;
+  z-index: 1;
+  height: 10vh;
+}
+
+#title-words {
+  display: none;
+}
+
+#picture {
+  background-image: url("../res/profile.jpg");
+  border-radius: 50%;
+  height: 50vh;
+  width: 50vh;
+  background-position: 50% 30%;
+  background-size: 50vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: none;
+}
+
+/* first page }}} */
