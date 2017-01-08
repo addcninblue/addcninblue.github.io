@@ -13,3 +13,5 @@ $ ->
 		1000
 	$("#title-words").delay(3000).fadeIn(500)
 	$("#picture").delay(3000).fadeIn(500)
+
+	$("#skills").delay(3000).fadeIn(500)

@@ -1,0 +1,170 @@
+$isDebugMode : false;
+
+// Colors
+$solarizedBase03  : #002b36;
+$solarizedBase02  : #073642;
+$solarizedBase01  : #586e75;
+$solarizedBase00  : #657b83;
+$solarizedBase0   : #839496;
+$solarizedBase1   : #93a1a1;
+$solarizedBase2   : #eee8d5;
+$solarizedBase3   : #fdf6e3;
+$solarizedYellow  : #b58900;
+$solarizedOrange  : #cb4b16;
+$solarizedRed     : #dc322f;
+$solarizedMagenta : #d33682;
+$solarizedViolet  : #6c71c4;
+$solarizedBlue    : #268bd2;
+$solarizedCyan    : #2aa198;
+$solarizedGreen   : #859900;
+
+body {
+  margin: 0;
+}
+
+p, h1 {
+  margin: 0;
+}
+
+// first page {{{
+
+#cover-page {
+  overflow: hidden;
+  position: relative;
+}
+
+#box {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+// borders {{{
+
+#border-bottom {
+  position: absolute;
+  bottom: 10vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 0vh;
+  @if $isDebugMode {
+    width: 80vw;
+  } @else {
+    width: 0;
+  }
+  border-bottom: 1vh black solid;
+}
+
+#border-right {
+  border-right: 1vh black solid;
+  position: absolute;
+  right: 10vw;
+  bottom: 10vh;
+  margin: auto;
+  @if $isDebugMode {
+    height: 80vh;
+  } @else {
+    height: 0vh;
+  }
+  width: 0;
+}
+
+#border-left {
+  border-left: 1vh black solid;
+  position: absolute;
+  left: 10vw;
+  bottom: 10vh;
+  margin: auto;
+  @if $isDebugMode {
+    height: 80vh;
+  } @else {
+    height: 0vh;
+  }
+  width: 0%;
+}
+
+#border-top-white {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 0vh;
+  @if $isDebugMode {
+    width: 0vw;
+  } @else {
+    width: 80vw;
+  }
+  border-bottom: 1vh white solid;
+}
+
+#border-top-black {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 0vh;
+  width: 80vw;
+  border-bottom: 1vh black solid;
+}
+
+// borders }}}
+
+#title {
+  position: absolute;
+  top: 10vh;
+  right: 0;
+  left: 0;
+  text-align: center;
+  width: 45vw;
+  margin: auto;
+  margin-top: -6vh; // magic number
+  background-color: white;
+  z-index: 1;
+  height: 10vh;
+}
+
+#title-words {
+  @if not $isDebugMode {
+    display: none;
+  }
+  font-family: 'Arvo', serif;
+  font-size: 5vw;
+  font-weight: normal;
+  // margin: 0;
+}
+
+#picture {
+  background-image: url("../res/profile.jpg");
+  border-radius: 50%;
+  height: 50vh;
+  width: 50vh;
+  background-position: 50% 30%;
+  background-size: 50vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  @if not $isDebugMode {
+    display: none;
+  }
+}
+
+// first page }}}
+
+// second page {{{
+
+#skills {
+  min-height: 100vh;
+  background-color: $solarizedBase03;
+  overflow: none;
+  @if not $isDebugMode {
+    display: none;
+  }
+}
+
+// second page }}}

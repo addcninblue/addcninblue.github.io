@@ -14,7 +14,8 @@
       width: "0vw"
     }, 1000);
     $("#title-words").delay(3000).fadeIn(500);
-    return $("#picture").delay(3000).fadeIn(500);
+    $("#picture").delay(3000).fadeIn(500);
+    return $("#skills").delay(3000).fadeIn(500);
   });
 
 }).call(this);

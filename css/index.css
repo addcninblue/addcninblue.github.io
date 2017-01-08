@@ -1,25 +1,17 @@
 body {
-  margin: 0;
-}
+  margin: 0; }
 
-p {
-  margin: 0;
-}
-
-/* first page {{{ */
+p, h1 {
+  margin: 0; }
 
 #cover-page {
   overflow: hidden;
-  position: relative;
-}
+  position: relative; }
 
 #box {
   height: 100vh;
   width: 100vw;
-  position: relative;
-}
-
-/* borders {{{ */
+  position: relative; }
 
 #border-bottom {
   position: absolute;
@@ -28,9 +20,8 @@ p {
   right: 0;
   margin: auto;
   height: 0vh;
-  width: 0%;
-  border-bottom: 1vh black solid;
-}
+  width: 0;
+  border-bottom: 1vh black solid; }
 
 #border-right {
   border-right: 1vh black solid;
@@ -39,8 +30,7 @@ p {
   bottom: 10vh;
   margin: auto;
   height: 0vh;
-  width: 0%;
-}
+  width: 0; }
 
 #border-left {
   border-left: 1vh black solid;
@@ -49,8 +39,7 @@ p {
   bottom: 10vh;
   margin: auto;
   height: 0vh;
-  width: 0%;
-}
+  width: 0%; }
 
 #border-top-white {
   position: absolute;
@@ -60,8 +49,7 @@ p {
   margin: auto;
   height: 0vh;
   width: 80vw;
-  border-bottom: 1vh white solid;
-}
+  border-bottom: 1vh white solid; }
 
 #border-top-black {
   position: absolute;
@@ -71,10 +59,7 @@ p {
   margin: auto;
   height: 0vh;
   width: 80vw;
-  border-bottom: 1vh black solid;
-}
-
-/* borders }}} */
+  border-bottom: 1vh black solid; }
 
 #title {
   position: absolute;
@@ -84,17 +69,16 @@ p {
   text-align: center;
   width: 45vw;
   margin: auto;
-  margin-top: -6vh; /* magic number */
-  font-family: 'Arvo', serif;
-  font-size: 5vw;
+  margin-top: -6vh;
   background-color: white;
   z-index: 1;
-  height: 10vh;
-}
+  height: 10vh; }
 
 #title-words {
   display: none;
-}
+  font-family: 'Arvo', serif;
+  font-size: 5vw;
+  font-weight: normal; }
 
 #picture {
   background-image: url("../res/profile.jpg");
@@ -109,7 +93,12 @@ p {
   left: 0;
   right: 0;
   margin: auto;
-  display: none;
-}
+  display: none; }
 
-/* first page }}} */
+#skills {
+  min-height: 100vh;
+  background-color: #002b36;
+  overflow: none;
+  display: none; }
+
+/*# sourceMappingURL=index.css.map */
