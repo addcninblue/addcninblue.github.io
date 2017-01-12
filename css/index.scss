@@ -18,12 +18,33 @@ $solarizedBlue    : #268bd2;
 $solarizedCyan    : #2aa198;
 $solarizedGreen   : #859900;
 
-body {
+body, p, h1, h2, h3 {
   margin: 0;
 }
 
-p, h1 {
-  margin: 0;
+h1 {
+  font-family: 'Arvo', serif;
+  font-size: 5vw;
+}
+
+h2 {
+  font-family: 'Arvo', serif;
+  font-size: 4vw;
+}
+
+h3 {
+  font-family: 'Arvo', serif;
+  font-size: 3vw;
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2vw;
+}
+
+a, a:link, a:visited, a:hover, a:focus, a:active{
+  color:black;
+  text-decoration: none;
 }
 
 // first page {{{
@@ -130,8 +151,6 @@ p, h1 {
   @if not $isDebugMode {
     display: none;
   }
-  font-family: 'Arvo', serif;
-  font-size: 5vw;
   font-weight: normal;
   // margin: 0;
 }
@@ -148,7 +167,23 @@ p, h1 {
   bottom: 0;
   left: 0;
   right: 0;
+  // right: 40vw;
   margin: auto;
+  @if not $isDebugMode {
+    display: none;
+  }
+}
+
+#introduction {
+  height: 50vh;
+  width: 70vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 35vw;
+  right: 0;
+  margin: auto;
+  text-align: justify;
   @if not $isDebugMode {
     display: none;
   }
@@ -158,13 +193,394 @@ p, h1 {
 
 // second page {{{
 
-#skills {
-  min-height: 100vh;
+#portfolio {
   background-color: $solarizedBase03;
-  overflow: none;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
   @if not $isDebugMode {
     display: none;
   }
 }
 
+
+#portfolio-title {
+  padding-top: 8vh;
+  color: $solarizedBase2;
+  // padding-bottom: 4vh;
+}
+
+#projects {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.project {
+  width: 28vw;
+  height: 28vw;
+  background-color: $solarizedCyan;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 20vh;
+}
+
+.project-tag {
+  position: relative;
+  top: 5vh;
+}
+
+#project-1 {
+  left: 5vw;
+}
+
+#project-1-tag {
+  color: white;
+}
+
+#project-1-picture {
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  height: 70%;
+  width: 100%;
+  background-image: url("../res/a-to-z.png");
+  background-position: 50% 20%;
+  background-size: 100vh;
+}
+
+#project-2 {
+  left: 36vw;
+}
+
+#project-2-tag {
+  color: white;
+}
+
+#project-2-picture {
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  height: 70%;
+  width: 100%;
+  background-image: url("../res/matrix-operations.png");
+  background-size: cover;
+  // background-position: 50% 20%;
+  // background-size: 100vh;
+}
+
+#project-3 {
+  left: 67vw;
+}
+
+#project-3-tag {
+  color: white;
+}
+
+#project-3-picture {
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  height: 70%;
+  width: 100%;
+  background-image: url("../res/a-to-z.png");
+  background-position: 50% 20%;
+  background-size: 100vh;
+}
+
 // second page }}}
+
+// third page {{{
+
+#skills {
+  min-height: 100vh;
+  background-color: $solarizedBase3;
+  overflow: hidden;
+  position: relative;
+  @if not $isDebugMode {
+    display: none;
+  }
+}
+
+#skills-title {
+  text-align: center;
+  top: 5vh;
+  position: relative;
+  height: 10vh;
+}
+
+#skills-showcase {
+  height: 80vh;
+  width: 100vw;
+  top: 20vh;
+  position: absolute;
+  background-color: $solarizedBase3;
+  // background-color: $solarizedBase03;
+}
+
+.block {
+  position: relative;
+  top: 0;
+  height: 70vh;
+}
+
+.title-row {
+  border-top: unset !important;
+}
+
+.row1 {
+  top: 13vh;
+}
+
+.row2 {
+  top: 13*2vh;
+}
+
+.row3 {
+  top: 13*3vh;
+}
+
+.row4 {
+  top: 13*4vh;
+}
+
+.row5 {
+  top: 13*5vh;
+}
+
+// html {{{
+
+#html {
+  left: 20vw;
+  position: absolute;
+}
+
+#css {
+  left: 35vw;
+  position: absolute;
+}
+
+#js {
+  left: 55vw;
+  position: absolute;
+}
+
+.row {
+  border-top: 1vh solid black;
+  vertical-align: middle;
+  line-height: 13vh;
+  width: 80vw;
+  left: 0; right: 0;
+  position: absolute;
+  margin: auto;
+  color: black;
+}
+
+#skill-html {
+  left: 9vw;
+  position: relative;
+}
+
+#skill-css {
+  left: 23vw;
+  position: relative;
+}
+
+#skill-js {
+  left: 44vw;
+  position: relative;
+}
+
+// web }}}
+
+// languages {{{
+
+#java {
+  left: 20vw;
+  position: absolute;
+}
+
+#skill-java {
+  left: 5vw;
+  position: relative;
+}
+
+#python3 {
+  left: 30vw;
+  position: absolute;
+}
+
+#skill-python3 {
+  left: 16vw;
+  position: relative;
+}
+
+#perl {
+  left: 45vw;
+  position: absolute;
+}
+
+#skill-perl {
+  left: 26vw;
+  position: relative;
+}
+
+#haskell {
+  left: 55vw;
+  position: absolute;
+}
+
+#skill-haskell {
+  left: 47vw;
+  position: relative;
+}
+
+#ruby {
+  left: 70vw;
+  position: absolute;
+}
+
+#skill-ruby {
+  left: 57vw;
+  position: relative;
+}
+
+// languages }}}
+
+// math {{{
+
+#algebra {
+  left: 20vw;
+  position: absolute;
+}
+
+#skill-algebra {
+  left: 14vw;
+  position: relative;
+}
+
+#calculus-ab {
+  left: 35vw;
+  position: absolute;
+}
+
+#skill-calculus-ab {
+  left: 30vw;
+  position: relative;
+}
+
+#calculus-bc {
+  left: 56vw;
+  position: absolute;
+}
+
+#skill-calculus-bc {
+  left: 48vw;
+  position: relative;
+}
+
+// math }}}
+
+#nav-circles {
+  display: inline-block;
+  position: absolute;
+  bottom: 5vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  color: black;
+}
+
+.fa-circle-o {
+  cursor: pointer;
+}
+
+#nav-circles .fa {
+  font-size: 1.5vw;
+  float: none;
+  vertical-align: middle;
+  line-height: 4vh;
+  margin-left: 1vw;
+}
+
+// third page }}}
+
+// email {{{
+
+#email {
+  // background-size: 100vh;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+  @if not $isDebugMode {
+    display: none;
+  }
+}
+
+#contact-text {
+  top: 10vh;
+  position: relative;
+}
+
+#email-form {
+  height: 50vh; // TODO
+  top: 0; right: 0; bottom: 0; left: 0;
+  margin: auto;
+  position: absolute;
+}
+
+#email-name, #email-replyto {
+  border: 0.5vw black solid;
+  clear: both;
+  position: relative;
+  float: left;
+  margin-top: 1vh;
+  height: 5vh;
+  left: 35vw; right: 35vw;
+  width: 30vw;
+  text-align: center;
+  // border: none;
+  // background-color: $solarizedBase0;
+}
+
+// email }}}
+
+// footer {{{
+footer {
+  height: 8vh;
+  position: relative;
+  @if not $isDebugMode {
+    display: none;
+  }
+  // background-color: $solarizedBase03;
+}
+
+#icons {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0vh;
+  height: 4vh;
+  margin: auto;
+}
+
+#icons .fa {
+  font-size: 6vh;
+  vertical-align: middle;
+  line-height: 4vh;
+  margin-left: 1vw;
+  float: left;
+}
+
+.icon {
+  font-size: 4vh;
+  vertical-align: middle;
+  line-height: 4vh;
+  margin-left: 1vw;
+  float: left;
+}
+// footer }}}
+
