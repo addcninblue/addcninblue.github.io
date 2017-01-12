@@ -114,12 +114,12 @@
     <h2 id="contact-text">Contact Me</h2>
     <form id="email-form" action="https://formspree.io/addison95132@gmail.com"
       method="POST">
-      <input id="email-name" type="text" name="name">
-      <input id="email-replyto" type="email" name="_replyto">
-      <input id="body" type="body" name="body">
+      <input id="email-replyto" placeholder="email" type="email" name="_replyto">
+      <!-- <input id="body" placeholder="message" type="body" name="body"> -->
+      <textarea id="body" placeholder="message" type="body" name="body"></textarea>
       <input id="email-button" type="hidden" name="_next" value="javascript:thanks()" /> <!-- TODO -->
       <input type="hidden" name="_subject" value="addcninblue.github.io email" />
-      <input type="submit" value="Send">
+      <input id="button" type="submit" value="Send">
     </form>
   </div>
 
@@ -128,7 +128,6 @@
       <p class="icon" id="footer-text">@addcninblue</p>
       <a href="https://github.com/addcninblue/"><i href="https://github.com/addcninblue/" class="fa fa-github" aria-hidden="true"></i></a>
       <a href="https://www.facebook.com/addcn"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-      <!-- <a class="icon" id="github" href="https://github.com/addcninblue"><img src="res/GitHub-Mark-32px.png" alt=""></a> -->
     </div>
   </footer>
 </body>

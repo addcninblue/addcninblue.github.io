@@ -576,18 +576,40 @@ a, a:link, a:visited, a:hover, a:focus, a:active{
   position: absolute;
 }
 
-#email-name, #email-replyto {
+#email-replyto {
+  // top: 12vh;
+}
+
+#body {
+  top: 12vh;
+  height: 30vh !important;
+  padding-top: 1vh;
+}
+
+#email-name, #email-replyto, #body {
   border: 0.5vw black solid;
   clear: both;
-  position: relative;
-  float: left;
-  margin-top: 1vh;
-  height: 5vh;
-  left: 35vw; right: 35vw;
-  width: 30vw;
+  position: absolute;
+  height: 8vh;
+  left: 0; right: 0;
+  width: 40vw;
+  margin: auto;
   text-align: center;
-  // border: none;
-  // background-color: $solarizedBase0;
+  font-size: 5vh;
+}
+
+#button {
+  border: 0.5vw black solid;
+  clear: both;
+  position: absolute;
+  height: 6vh;
+  top: 60vh; bottom: 0vh; left: 0; right: 0;
+  margin: auto;
+  width: 6vw;
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-size: 3vh;
 }
 
 // email }}}
@@ -596,6 +618,7 @@ a, a:link, a:visited, a:hover, a:focus, a:active{
 footer {
   height: 8vh;
   position: relative;
+  background-color: black;
   @if not $isDebugMode {
     display: none;
   }
@@ -609,6 +632,7 @@ footer {
   bottom: 0vh;
   height: 4vh;
   margin: auto;
+  color: white;
 }
 
 #icons .fa {
@@ -617,6 +641,7 @@ footer {
   line-height: 4vh;
   margin-left: 1vw;
   float: left;
+  color: white;
 }
 
 .icon {
