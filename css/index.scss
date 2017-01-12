@@ -483,6 +483,50 @@ a, a:link, a:visited, a:hover, a:focus, a:active{
 
 // math }}}
 
+// other {{{
+
+#linux {
+  left: 20vw;
+  position: absolute;
+}
+
+#skill-linux {
+  left: 13vw;
+  position: relative;
+}
+
+#git {
+  left: 42vw;
+  position: absolute;
+}
+
+#skill-git {
+  left: 25vw;
+  position: relative;
+}
+
+#vim {
+  left: 52vw;
+  position: absolute;
+}
+
+#skill-vim {
+  left: 44vw;
+  position: relative;
+}
+
+#hardware {
+  left: 64vw;
+  position: absolute;
+}
+
+#skill-hardware {
+  left: 50vw;
+  position: relative;
+}
+
+// other }}}
+
 #nav-circles {
   display: inline-block;
   position: absolute;
