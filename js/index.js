@@ -16,18 +16,18 @@
     var i, j;
     $("#border-bottom").animate({
       width: "80vw"
-    }, 1000);
-    $("#border-right, #border-left").delay(1000).animate({
+    }, 500);
+    $("#border-right, #border-left").delay(500).animate({
       height: "80vh"
-    }, 1000);
-    $("#border-top-white").delay(2000).animate({
+    }, 500);
+    $("#border-top-white").delay(1000).animate({
       width: "0vw"
-    }, 1000);
-    $("#title-words").delay(3000).fadeIn(500);
-    $("#picture").delay(3000).fadeIn(500).animate({
+    }, 500);
+    $("#title-words").delay(1500).fadeIn(500);
+    $("#picture").delay(1500).fadeIn(500).animate({
       right: "40vw"
-    }, 1000);
-    $("#introduction, #portfolio, #skills, #email, footer").delay(4500).fadeIn(500);
+    }, 500);
+    $("#introduction, #portfolio, #skills, #email, footer").delay(2000).fadeIn(500);
     setInterval(function() {
       cursorAnimation();
       return 1000;
