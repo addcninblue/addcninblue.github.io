@@ -276,6 +276,7 @@ a, a:link, a:visited, a:hover, a:focus, a:active{
 }
 
 #project-3-tag {
+  top: 1vh;
   color: white;
 }
 
@@ -285,9 +286,17 @@ a, a:link, a:visited, a:hover, a:focus, a:active{
   margin: auto;
   height: 70%;
   width: 100%;
-  background-image: url("../res/a-to-z.png");
-  background-position: 50% 20%;
-  background-size: 100vh;
+  background-color: white;
+  // background-image: url("../res/a-to-z.png");
+  // background-position: 50% 20%;
+  // background-size: 100vh;
+}
+
+#project-3-picture p {
+  top: 7vh;
+  position: relative;
+  font-size: 2vw;
+  margin: auto;
 }
 
 // second page }}}
