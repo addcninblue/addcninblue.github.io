@@ -122,6 +122,9 @@ a, a:link, a:visited, a:hover, a:focus, a:active {
   text-align: justify;
   display: none; }
 
+#resume {
+  color: #268bd2; }
+
 #portfolio {
   background-color: #002b36;
   height: 100vh;
