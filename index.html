@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title></title>
   <link href="https://fonts.googleapis.com/css?family=Arvo|Raleway" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/index.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="js/index.js"></script>
@@ -20,7 +20,12 @@
       <div id="border-right"></div>
       <div id="border-left"></div>
       <div id="picture"></div>
-      <p id="introduction">Hello! My name is Addison, and I'm currently a senior at Piedmont Hills High School. My interests include Linux and Vim, as well as drumming and music.<br><br> At Piedmont, I'm the President of California Scholarship Federation, Chapter 762, and the Captain of our Math Team.<br><br> My resume can be found <a href="res/resume.pdf" id="resume">here.</a></p>
+      <p id="introduction">
+        Hello! My name is Addison, and I'm currently pursuing a degree in Computer Science and Business Administration at UC Berkeley, '21. My interests include Linux and Vim, as well as drumming and music.
+        <br><br>
+        I'm currently a consultant at <a href="https://vcg.berkeley.edu/">Valley Consulting Group</a>.
+        <br><br>
+        My resume can be found <a href="res/resume.pdf" id="resume">here.</a></p>
       <!-- <p id="introduction">Hello! My name is Addison, or Add for short. I love programming and finding interesting and novel solutions to problems, and I'm always eager to find a new challenge to solve.<br><br>Right now, I'm currently a senior at Piedmont Hills High School of San Jose with a GPA of 4.83.</p> -->
     </div>
   </div>
@@ -113,24 +118,25 @@
     </div>
   </div>
 
-  <div id="email">
-    <h2 id="contact-text">Contact Me</h2>
-    <form id="email-form" action="https://formspree.io/addison95132@gmail.com"
-      method="POST">
-      <input id="email-replyto" placeholder="email" type="email" name="_replyto">
-      <!-- <input id="body" placeholder="message" type="body" name="body"> -->
-      <textarea id="body" placeholder="message" type="body" name="body"></textarea>
-      <input id="email-button" type="hidden" name="_next" value="javascript:thanks()" /> <!-- TODO -->
-      <input type="hidden" name="_subject" value="addcninblue.github.io email" />
-      <input id="button" type="submit" value="Send">
-    </form>
-  </div>
+  <!-- <div id="email"> -->
+  <!--   <h2 id="contact-text">Contact Me</h2> -->
+  <!--   <form id="email-form" action="https://formspree.io/addison95132@gmail.com" -->
+  <!--     method="POST"> -->
+  <!--     <input id="email-replyto" placeholder="email" type="email" name="_replyto"> -->
+  <!--     <1!-- <input id="body" placeholder="message" type="body" name="body"> --1> -->
+  <!--     <textarea id="body" placeholder="message" type="body" name="body"></textarea> -->
+  <!--     <input id="email-button" type="hidden" name="_next" value="javascript:thanks()" /> <1!-- TODO --1> -->
+  <!--     <input type="hidden" name="_subject" value="addcninblue.github.io email" /> -->
+  <!--     <input id="button" type="submit" value="Send"> -->
+  <!--   </form> -->
+  <!-- </div> -->
 
   <footer>
     <div id="icons">
       <p class="icon" id="footer-text">@addcninblue</p>
-      <a href="https://github.com/addcninblue/"><i href="https://github.com/addcninblue/" class="fa fa-github" aria-hidden="true"></i></a>
-      <a href="https://www.facebook.com/addcn"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+      <a href="https://github.com/addcninblue/"><i href="https://github.com/addcninblue/" class="fab fa-github"></i></a>
+      <a href="https://www.facebook.com/addcn"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>
+      <a href="mailto:addisonchan@berkeley.edu"><i class="far fa-envelope" aria-hidden=""></i></a>
     </div>
   </footer>
 </body>

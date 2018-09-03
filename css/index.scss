@@ -158,10 +158,10 @@ a, a:link, a:visited, a:hover, a:focus, a:active{
 #picture {
   background-image: url("../res/profile.jpg");
   border-radius: 50%;
-  height: 50vh;
-  width: 50vh;
+  height: 30vw;
+  width: 30vw;
   background-position: 50% 30%;
-  background-size: 50vh;
+  background-size: 30vw;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -175,8 +175,8 @@ a, a:link, a:visited, a:hover, a:focus, a:active{
 }
 
 #introduction {
-  height: 50vh;
-  width: 70vh;
+  height: 45vh;
+  width: 30vw;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -648,13 +648,15 @@ footer {
   color: white;
 }
 
-#icons .fa {
-  font-size: 6vh;
-  vertical-align: middle;
-  line-height: 4vh;
-  margin-left: 1vw;
-  float: left;
-  color: white;
+#icons {
+  .fa, .fab, .far, .fal, .fas {
+    font-size: 6vh;
+    vertical-align: middle;
+    line-height: 4vh;
+    margin-left: 1vw;
+    float: left;
+    color: white;
+  }
 }
 
 .icon {
