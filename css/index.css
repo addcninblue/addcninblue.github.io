@@ -139,6 +139,10 @@ a, a:link, a:visited, a:hover, a:focus, a:active {
   display: none;
 }
 
+#introduction a {
+  text-decoration: underline;
+}
+
 #resume {
   color: #268bd2;
 }
@@ -154,7 +158,7 @@ a, a:link, a:visited, a:hover, a:focus, a:active {
 
 #portfolio-title {
   padding-top: 8vh;
-  color: #eee8d5;
+  color: white;
 }
 
 #projects {
@@ -466,16 +470,13 @@ a, a:link, a:visited, a:hover, a:focus, a:active {
   color: black;
 }
 
-.fa-circle-o {
-  cursor: pointer;
-}
-
-#nav-circles .fa {
+#nav-circles .fas, #nav-circles .far {
   font-size: 1.5vw;
   float: none;
   vertical-align: middle;
   line-height: 4vh;
   margin-left: 1vw;
+  cursor: pointer;
 }
 
 #email {
@@ -537,13 +538,13 @@ a, a:link, a:visited, a:hover, a:focus, a:active {
 }
 
 footer {
-  height: 8vh;
+  height: 6vh;
   position: relative;
   background-color: black;
   display: none;
 }
 
-#icons {
+.icons {
   display: inline-block;
   position: absolute;
   top: 0;
@@ -553,13 +554,18 @@ footer {
   color: white;
 }
 
-#icons .fa, #icons .fab, #icons .far, #icons .fal, #icons .fas {
-  font-size: 6vh;
+.icons .fa, .icons .fab, .icons .far, .icons .fal, .icons .fas {
+  font-size: 4vh;
   vertical-align: middle;
   line-height: 4vh;
-  margin-left: 1vw;
+  margin-left: 1.5vw;
   float: left;
   color: white;
+}
+
+#icons-right {
+  left: auto;
+  right: 1.5vw;
 }
 
 .icon {

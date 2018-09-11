@@ -189,6 +189,10 @@ a, a:link, a:visited, a:hover, a:focus, a:active{
   }
 }
 
+#introduction a {
+    text-decoration: underline;
+}
+
 #resume {
   color: $solarizedBlue;
 }
@@ -211,7 +215,8 @@ a, a:link, a:visited, a:hover, a:focus, a:active{
 
 #portfolio-title {
   padding-top: 8vh;
-  color: $solarizedBase2;
+  color: white;
+  // color: $solarizedBase2;
   // padding-bottom: 4vh;
 }
 
@@ -551,16 +556,15 @@ a, a:link, a:visited, a:hover, a:focus, a:active{
   color: black;
 }
 
-.fa-circle-o {
-  cursor: pointer;
-}
-
-#nav-circles .fa {
-  font-size: 1.5vw;
-  float: none;
-  vertical-align: middle;
-  line-height: 4vh;
-  margin-left: 1vw;
+#nav-circles {
+  .fas, .far {
+    font-size: 1.5vw;
+    float: none;
+    vertical-align: middle;
+    line-height: 4vh;
+    margin-left: 1vw;
+    cursor: pointer;
+  }
 }
 
 // third page }}}
@@ -629,7 +633,7 @@ a, a:link, a:visited, a:hover, a:focus, a:active{
 
 // footer {{{
 footer {
-  height: 8vh;
+  height: 6vh;
   position: relative;
   background-color: black;
   @if not $isDebugMode {
@@ -638,7 +642,7 @@ footer {
   // background-color: $solarizedBase03;
 }
 
-#icons {
+.icons {
   display: inline-block;
   position: absolute;
   top: 0;
@@ -648,15 +652,20 @@ footer {
   color: white;
 }
 
-#icons {
+.icons {
   .fa, .fab, .far, .fal, .fas {
-    font-size: 6vh;
+    font-size: 4vh;
     vertical-align: middle;
     line-height: 4vh;
-    margin-left: 1vw;
+    margin-left: 1.5vw;
     float: left;
     color: white;
   }
+}
+
+#icons-right {
+  left: auto;
+  right: 1.5vw;
 }
 
 .icon {
