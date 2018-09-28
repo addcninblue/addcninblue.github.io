@@ -215,7 +215,7 @@ a, a:link, a:visited, a:hover, a:focus, a:active {
   margin: auto;
   height: 70%;
   width: 100%;
-  background-image: url("../res/matrix-operations.png");
+  background-color: white;
   background-size: cover;
 }
 

@@ -19,7 +19,7 @@ $ ->
 	$("#picture").delay(1500).fadeIn(500).animate
 		right: "40vw",
 		500
-	$("#introduction, #portfolio, #skills, #email, footer").delay(2000).fadeIn(500)
+	$("#introduction, #portfolio, #skills, #email, footer").delay(2200).fadeIn(300)
 
 	setInterval () ->
 		cursorAnimation()
