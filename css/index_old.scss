@@ -1,0 +1,680 @@
+$isDebugMode : false;
+
+// Colors
+$solarizedBase03  : #002b36;
+$solarizedBase02  : #073642;
+$solarizedBase01  : #586e75;
+$solarizedBase00  : #657b83;
+$solarizedBase0   : #839496;
+$solarizedBase1   : #93a1a1;
+$solarizedBase2   : #eee8d5;
+$solarizedBase3   : #fdf6e3;
+$solarizedYellow  : #b58900;
+$solarizedOrange  : #cb4b16;
+$solarizedRed     : #dc322f;
+$solarizedMagenta : #d33682;
+$solarizedViolet  : #6c71c4;
+$solarizedBlue    : #268bd2;
+$solarizedCyan    : #2aa198;
+$solarizedGreen   : #859900;
+
+body, p, h1, h2, h3 {
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Arvo', serif;
+  font-size: 5vw;
+}
+
+h2 {
+  font-family: 'Arvo', serif;
+  font-size: 4vw;
+}
+
+h3 {
+  font-family: 'Arvo', serif;
+  font-size: 3vw;
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2vw;
+}
+
+a, a:link, a:visited, a:hover, a:focus, a:active{
+  color:black;
+  text-decoration: none;
+}
+
+// first page {{{
+
+#cover-page {
+  overflow: hidden;
+  position: relative;
+}
+
+#box {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+// borders {{{
+
+#border-bottom {
+  position: absolute;
+  bottom: 10vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 0vh;
+  @if $isDebugMode {
+    width: 80vw;
+  } @else {
+    width: 0;
+  }
+  border-bottom: 1vh black solid;
+}
+
+#border-right {
+  border-right: 1vh black solid;
+  position: absolute;
+  right: 10vw;
+  bottom: 10vh;
+  margin: auto;
+  @if $isDebugMode {
+    height: 80vh;
+  } @else {
+    height: 0vh;
+  }
+  width: 0;
+}
+
+#border-left {
+  border-left: 1vh black solid;
+  position: absolute;
+  left: 10vw;
+  bottom: 10vh;
+  margin: auto;
+  @if $isDebugMode {
+    height: 80vh;
+  } @else {
+    height: 0vh;
+  }
+  width: 0%;
+}
+
+#border-top-white {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 0vh;
+  @if $isDebugMode {
+    width: 0vw;
+  } @else {
+    width: 80vw;
+  }
+  border-bottom: 1vh white solid;
+}
+
+#border-top-black {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 0vh;
+  width: 80vw;
+  border-bottom: 1vh black solid;
+}
+
+// borders }}}
+
+#title {
+  position: absolute;
+  top: 10vh;
+  right: 0;
+  left: 0;
+  text-align: center;
+  width: 45vw;
+  margin: auto;
+  margin-top: -6vh; // magic number
+  background-color: white;
+  z-index: 1;
+  height: 10vh;
+}
+
+#title-words {
+  @if not $isDebugMode {
+    display: none;
+  }
+  font-weight: normal;
+  // margin: 0;
+}
+
+#picture {
+  background-image: url("../res/profile.jpg");
+  border-radius: 50%;
+  height: 30vw;
+  width: 30vw;
+  background-position: 50% 30%;
+  background-size: 30vw;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  // right: 40vw;
+  margin: auto;
+  @if not $isDebugMode {
+    display: none;
+  }
+}
+
+#introduction {
+  height: 45vh;
+  width: 30vw;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 35vw;
+  right: 0;
+  margin: auto;
+  text-align: justify;
+  @if not $isDebugMode {
+    display: none;
+  }
+}
+
+#introduction a {
+    text-decoration: underline;
+}
+
+#resume {
+  color: $solarizedBlue;
+}
+
+// first page }}}
+
+// second page {{{
+
+#portfolio {
+  background-color: $solarizedBase03;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  @if not $isDebugMode {
+    display: none;
+  }
+}
+
+
+#portfolio-title {
+  padding-top: 8vh;
+  color: white;
+  // color: $solarizedBase2;
+  // padding-bottom: 4vh;
+}
+
+#projects {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.project {
+  width: 28vw;
+  height: 28vw;
+  background-color: $solarizedCyan;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 20vh;
+}
+
+.project-tag {
+  position: relative;
+  top: 5vh;
+}
+
+#project-1 {
+  left: 5vw;
+}
+
+#project-1-tag {
+  color: white;
+}
+
+#project-1-picture {
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  height: 70%;
+  width: 100%;
+  background-image: url("../res/a-to-z.png");
+  background-position: 50% 20%;
+  background-size: 100vh;
+}
+
+#project-2 {
+  left: 36vw;
+}
+
+#project-2-tag {
+  color: white;
+}
+
+#project-2-picture {
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  height: 70%;
+  width: 100%;
+  background-color: white;
+  // background-image: url("../res/matrix-operations.png");
+  background-size: cover;
+  // background-position: 50% 20%;
+  // background-size: 100vh;
+}
+
+#project-3 {
+  left: 67vw;
+}
+
+#project-3-tag {
+  top: 1vh;
+  color: white;
+}
+
+#project-3-picture {
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  height: 70%;
+  width: 100%;
+  background-color: white;
+  // background-image: url("../res/a-to-z.png");
+  // background-position: 50% 20%;
+  // background-size: 100vh;
+}
+
+#project-3-picture p {
+  top: 7vh;
+  position: relative;
+  font-size: 2vw;
+  margin: auto;
+}
+
+// second page }}}
+
+// third page {{{
+
+#skills {
+  min-height: 100vh;
+  background-color: $solarizedBase3;
+  overflow: hidden;
+  position: relative;
+  @if not $isDebugMode {
+    display: none;
+  }
+}
+
+#skills-title {
+  text-align: center;
+  top: 5vh;
+  position: relative;
+  height: 10vh;
+}
+
+#skills-showcase {
+  height: 80vh;
+  width: 100vw;
+  top: 20vh;
+  position: absolute;
+  background-color: $solarizedBase3;
+  // background-color: $solarizedBase03;
+}
+
+.block {
+  position: relative;
+  top: 0;
+  height: 70vh;
+}
+
+.title-row {
+  border-top: unset !important;
+}
+
+.row1 {
+  top: 13vh;
+}
+
+.row2 {
+  top: 13*2vh;
+}
+
+.row3 {
+  top: 13*3vh;
+}
+
+.row4 {
+  top: 13*4vh;
+}
+
+.row5 {
+  top: 13*5vh;
+}
+
+// html {{{
+
+#html {
+  left: 20vw;
+  position: absolute;
+}
+
+#css {
+  left: 35vw;
+  position: absolute;
+}
+
+#js {
+  left: 55vw;
+  position: absolute;
+}
+
+.row {
+  border-top: 1vh solid black;
+  vertical-align: middle;
+  line-height: 13vh;
+  width: 80vw;
+  left: 0; right: 0;
+  position: absolute;
+  margin: auto;
+  color: black;
+}
+
+#skill-html {
+  left: 9vw;
+  position: relative;
+}
+
+#skill-css {
+  left: 23vw;
+  position: relative;
+}
+
+#skill-js {
+  left: 44vw;
+  position: relative;
+}
+
+// web }}}
+
+// languages {{{
+
+#java {
+  left: 20vw;
+  position: absolute;
+}
+
+#skill-java {
+  left: 5vw;
+  position: relative;
+}
+
+#python3 {
+  left: 30vw;
+  position: absolute;
+}
+
+#skill-python3 {
+  left: 16vw;
+  position: relative;
+}
+
+#perl {
+  left: 45vw;
+  position: absolute;
+}
+
+#skill-perl {
+  left: 26vw;
+  position: relative;
+}
+
+#haskell {
+  left: 55vw;
+  position: absolute;
+}
+
+#skill-haskell {
+  left: 47vw;
+  position: relative;
+}
+
+#ruby {
+  left: 70vw;
+  position: absolute;
+}
+
+#skill-ruby {
+  left: 57vw;
+  position: relative;
+}
+
+// languages }}}
+
+// math {{{
+
+#algebra {
+  left: 20vw;
+  position: absolute;
+}
+
+#skill-algebra {
+  left: 14vw;
+  position: relative;
+}
+
+#calculus-ab {
+  left: 35vw;
+  position: absolute;
+}
+
+#skill-calculus-ab {
+  left: 30vw;
+  position: relative;
+}
+
+#calculus-bc {
+  left: 56vw;
+  position: absolute;
+}
+
+#skill-calculus-bc {
+  left: 48vw;
+  position: relative;
+}
+
+// math }}}
+
+// other {{{
+
+#linux {
+  left: 20vw;
+  position: absolute;
+}
+
+#skill-linux {
+  left: 13vw;
+  position: relative;
+}
+
+#git {
+  left: 42vw;
+  position: absolute;
+}
+
+#skill-git {
+  left: 25vw;
+  position: relative;
+}
+
+#vim {
+  left: 52vw;
+  position: absolute;
+}
+
+#skill-vim {
+  left: 44vw;
+  position: relative;
+}
+
+#hardware {
+  left: 64vw;
+  position: absolute;
+}
+
+#skill-hardware {
+  left: 50vw;
+  position: relative;
+}
+
+// other }}}
+
+#nav-circles {
+  display: inline-block;
+  position: absolute;
+  bottom: 5vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  color: black;
+}
+
+#nav-circles {
+  .fas, .far {
+    font-size: 1.5vw;
+    float: none;
+    vertical-align: middle;
+    line-height: 4vh;
+    margin-left: 1vw;
+    cursor: pointer;
+  }
+}
+
+// third page }}}
+
+// email {{{
+
+#email {
+  // background-size: 100vh;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+  @if not $isDebugMode {
+    display: none;
+  }
+}
+
+#contact-text {
+  top: 10vh;
+  position: relative;
+}
+
+#email-form {
+  height: 50vh; // TODO
+  top: 0; right: 0; bottom: 0; left: 0;
+  margin: auto;
+  position: absolute;
+}
+
+#email-replyto {
+  // top: 12vh;
+}
+
+#body {
+  top: 12vh;
+  height: 30vh !important;
+  padding-top: 1vh;
+}
+
+#email-name, #email-replyto, #body {
+  border: 0.5vw black solid;
+  clear: both;
+  position: absolute;
+  height: 8vh;
+  left: 0; right: 0;
+  width: 40vw;
+  margin: auto;
+  text-align: center;
+  font-size: 5vh;
+}
+
+#button {
+  border: 0.5vw black solid;
+  clear: both;
+  position: absolute;
+  height: 6vh;
+  top: 60vh; bottom: 0vh; left: 0; right: 0;
+  margin: auto;
+  width: 6vw;
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-size: 3vh;
+}
+
+// email }}}
+
+// footer {{{
+footer {
+  height: 6vh;
+  position: relative;
+  background-color: black;
+  @if not $isDebugMode {
+    display: none;
+  }
+  // background-color: $solarizedBase03;
+}
+
+.icons {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0vh;
+  height: 4vh;
+  margin: auto;
+  color: white;
+}
+
+.icons {
+  .fa, .fab, .far, .fal, .fas {
+    font-size: 4vh;
+    vertical-align: middle;
+    line-height: 4vh;
+    margin-left: 1.5vw;
+    float: left;
+    color: white;
+  }
+}
+
+#icons-right {
+  left: auto;
+  right: 1.5vw;
+}
+
+.icon {
+  font-size: 4vh;
+  vertical-align: middle;
+  line-height: 4vh;
+  margin-left: 1vw;
+  float: left;
+}
+// footer }}}
+

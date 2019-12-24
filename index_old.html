@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="js/index.js"></script>
+</head>
+<body>
+  <!-- Hey! I'm really glad someone looked at the source code! All of the code is accessible via my github. I used coffeescript to compile to javascript and sass to compile to css.-->
+  <div id="cover-page">
+    <div id="box">
+      <div id="title"><h1 id="title-words">Addison Chan</h1></div>
+      <div id="border-top-black"></div>
+      <div id="border-top-white"></div>
+      <div id="border-bottom"></div>
+      <div id="border-right"></div>
+      <div id="border-left"></div>
+      <div id="picture"></div>
+      <p id="introduction">
+        Hello! My name is Addison, and I'm currently pursuing a double major in Computer Science and Business Administration at UC Berkeley, '21. My interests include Linux and Vim, as well as drumming and music.
+        <br><br>
+        I'm currently a consultant at <a href="https://vcg.berkeley.edu/">Valley Consulting Group</a>.
+        <br><br>
+        My resume can be found <a href="https://drive.google.com/open?id=1_g9F-SqNE5UWOeQTlNMxaqeESxCAblQL" id="resume">here.</a></p>
+    </div>
+  </div>
+
+  <div id="portfolio">
+    <h2 id="portfolio-title">Latest Projects and Writeups</h2>
+    <div id="projects">
+      <a href="https://addcninblue.github.io/atoz/"><div class="project" id="project-1">
+        <h3 class="project-tag" id="project-1-tag">A To Z</h3>
+        <div id="project-1-picture"></div>
+      </div></a>
+      <a href="https://github.com/addcninblue/mancala-node"><div class="project" id="project-2">
+        <h3 class="project-tag" id="project-2-tag">Mancala</h3>
+        <div id="project-2-picture">
+          <p><br><br>An online multiplayer <br> board game written <br> using the MEAN stack <br> and websockets. </p>
+        </div>
+      </div></a>
+      <a href="https://gist.github.com/addcninblue/e28d55555146541a707759881056e3e8"><div class="project" id="project-3">
+        <h3 class="project-tag" id="project-3-tag"> Circumventing <br> An Autograder</h3>
+        <div id="project-3-picture">
+          <p> Reverse Engineering: <br> How I got around <br> Berkeley's Okpy <br> time constraint system </p>
+        </div>
+      </div></a>
+    </div>
+  </div>
+
+  <div id="skills">
+    <h2 id="skills-title">Skills: <span id="skill"></span><span id="cursor">|</span></h2>
+    <div id="skills-showcase">
+
+      <div class="active-block block" id="block-1">
+        <div id="title-row" class="row title-row">
+          <h3 id="html">HTML</h3>
+          <h3 id="css">CSS/SCSS</h3>
+          <h3 id="js">JS/CoffeeScript</h3>
+        </div>
+        <div id="row1" class="row row1"><h3>Expert</h3></div>
+        <div id="row2" class="row row2"><h3>Proficient<i class="fas fa-check" id="skill-html" aria-hidden="true"></i><i class="fas fa-check" id="skill-css"aria-hidden="true"></i><i class="fas fa-check" id="skill-js" aria-hidden="true"></i></h3></div>
+        <div id="row3" class="row row3"><h3>Familiar</h3></div>
+        <div id="row4" class="row row4"><h3>Beginner</h3></div>
+        <div id="row5" class="row row5"></div>
+      </div>
+
+      <div class="block" id="block-2">
+        <div id="title-row" class="row title-row">
+          <h3 id="java">Java</h3>
+          <h3 id="python3">Python</h3>
+          <h3 id="perl">Perl</h3>
+          <h3 id="haskell">Haskell</h3>
+          <h3 id="ruby">Ruby</h3>
+        </div>
+        <div id="row1" class="row row1"><h3>Expert</h3></div>
+        <div id="row2" class="row row2"><h3>Proficient<i class="fas fa-check" id="skill-java" aria-hidden="true"></i><i class="fas fa-check" id="skill-python3" aria-hidden="true"></i><i class="fas fa-check" id="skill-perl"aria-hidden="true"></i></h3></div>
+        <div id="row3" class="row row3"><h3>Familiar<i class="fas fa-check" id="skill-haskell" aria-hidden="true"></i><i class="fas fa-check" id="skill-ruby" aria-hidden="true"></i></h3></div>
+        <div id="row4" class="row row4"><h3>Beginner</h3></div>
+        <div id="row5" class="row row5"> </div>
+      </div>
+
+      <div class="block" id="block-3">
+       <div id="title-row" class="row title-row">
+          <h3 id="algebra">Algebra</h3>
+          <h3 id="calculus-ab">Calculus AB</h3>
+          <h3 id="calculus-bc">Calculus BC</h3>
+        </div>
+        <div id="row1" class="row row1"><h3>Expert<i class="fas fa-check" id="skill-algebra" aria-hidden="true"></i><i class="fas fa-check" id="skill-calculus-ab" aria-hidden="true"></i><i class="fas fa-check" id="skill-calculus-bc"aria-hidden="true"></i></h3></div>
+        <div id="row2" class="row row2"><h3>Proficient</h3></div>
+        <div id="row3" class="row row3"><h3>Familiar</div>
+        <div id="row4" class="row row4"><h3>Beginner</h3></div>
+        <div id="row5" class="row row5"> </div>
+      </div>
+
+      <div class="block" id="block-4">
+        <div id="title-row" class="row title-row">
+          <h3 id="linux">Linux/shell</h3>
+          <h3 id="git">Git</h3>
+          <h3 id="vim">Vim</h3>
+          <h3 id="hardware">Hardware</h3>
+        </div>
+        <div id="row1" class="row row1"><h3>Expert<i class="fas fa-check" id="skill-vim" aria-hidden="true"></i></h3></div>
+        <div id="row2" class="row row2"><h3>Proficient<i class="fas fa-check" id="skill-linux" aria-hidden="true"></i><i class="fas fa-check" id="skill-git" aria-hidden="true"></i><i class="fas fa-check" id="skill-hardware"aria-hidden="true"></i></h3></div>
+        <div id="row3" class="row row3"><h3>Familiar</h3></div>
+        <div id="row4" class="row row4"><h3>Beginner</h3></div>
+        <div id="row5" class="row row5"> </div>
+      </div>
+
+    </div>
+    <div id="nav-circles">
+      <i id="circle-1" class="fas fa-circle" aria-hidden="true"></i>
+      <i id="circle-2" class="far fa-circle" aria-hidden="true"></i>
+      <i id="circle-3" class="far fa-circle" aria-hidden="true"></i>
+      <i id="circle-4" class="far fa-circle" aria-hidden="true"></i>
+    </div>
+  </div>
+
+  <!-- <div id="email"> -->
+  <!--   <h2 id="contact-text">Contact Me</h2> -->
+  <!--   <form id="email-form" action="https://formspree.io/addison95132@gmail.com" -->
+  <!--     method="POST"> -->
+  <!--     <input id="email-replyto" placeholder="email" type="email" name="_replyto"> -->
+  <!--     <1!-- <input id="body" placeholder="message" type="body" name="body"> --1> -->
+  <!--     <textarea id="body" placeholder="message" type="body" name="body"></textarea> -->
+  <!--     <input id="email-button" type="hidden" name="_next" value="javascript:thanks()" /> <1!-- TODO --1> -->
+  <!--     <input type="hidden" name="_subject" value="addcninblue.github.io email" /> -->
+  <!--     <input id="button" type="submit" value="Send"> -->
+  <!--   </form> -->
+  <!-- </div> -->
+
+  <footer>
+    <div class="icons" id="icons-left">
+      <p class="icon" id="footer-text">@addcninblue</p>
+    </div>
+    <div class="icons" id="icons-right">
+      <a href="mailto:addisonchan@berkeley.edu"><i class="far fa-envelope" aria-hidden=""></i></a>
+      <a href="https://www.linkedin.com/in/addcninblue/"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/addcninblue/"><i class="fab fa-github"></i></a>
+      <!-- <a href="https://www.facebook.com/addcn"><i class="fab fa-facebook-square" aria-hidden="true"></i></a> -->
+      <a href="https://open.spotify.com/user/1248547687"><i class="fab fa-spotify" aria-hidden=""></i></a>
+    </div>
+  </footer>
+</body>
+</html>
