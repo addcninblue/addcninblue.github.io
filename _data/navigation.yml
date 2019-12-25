@@ -1,8 +1,10 @@
 # If you want to link only specific pages in your header, add the path to the
 # pages in order as they should show up.
 main:
-  - title: "Resume"
-    url: https://go.addcnin.blue/resume/
+  # - title: "Resume"
+  #   url: https://go.addcnin.blue/resume/
+  - title: "Notes"
+    url: /notes/
   - title: "Teaching"
     url: /teaching/
   - title: "Blog"

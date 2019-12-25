@@ -1,0 +1,40 @@
+---
+layout: default
+---
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Week {{page.week}} - {{ page.title | escape }}</h1>
+  </header>
+
+  <div class="post-content">
+
+
+    {% if page.toc %}
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      {% include toc.html html=content %}
+    </div>
+    {% endif %}
+
+    {% if page.collection == "cs61a" and site.announcements[page.week]%}
+      <div class="announcements-block">
+        <hr class="hr-subsection">
+        <h2 class="announcements">Announcements</h2>
+        {{ site.announcements[page.week] | markdownify }}
+      </div>
+    {% endif %}
+
+    <hr>
+
+    {{ content }}
+  </div>
+
+  {% if site.comments == true and page.comments != false %}
+    <div class="post-comments">
+      {% include custom_comments_provider.html %}
+    </div>
+  {% endif %}
+
+</article>

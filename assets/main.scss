@@ -3,11 +3,20 @@
 ---
 @import "whiteglass";
 
+/**
+ * Hide header, footer, and table of contents
+ * when printing
+ */
+
 @media print {
-  .site-header, .site-footer {
+  .site-header, .site-footer, .table-of-contents {
     display: none;
   }
 }
+
+/**
+ * Show website link when printing
+ */
 
 @media not print {
   .source {
@@ -17,4 +26,59 @@
 
 .source {
   text-align: center;
+}
+
+/**
+ * Create horizontal rule that is thinner and lighter for subsections
+ */
+
+.hr-subsection {
+  background-color: #f0f0f0;
+  height: 2px;
+}
+
+/**
+ * Underline referral links when clicking on footer
+ */
+
+li {
+  &:target {
+    text-decoration: underline;
+  }
+}
+
+summary {
+  display: flex;
+  align-items: center;
+
+  h1, h2, h3, h4 {
+    display: flex;
+    margin: 0;
+  }
+}
+
+/**
+ * Style me.jpg
+ */
+
+#me {
+  width: 48px;
+  height: 48px;
+  border-radius: 48px;
+}
+
+header {
+  padding-top: 5px;
+}
+
+/**
+ * Restyle element spacing on mobile
+ */
+
+@include media-query($on-palm) {
+  .site-nav {
+    .page-link {
+      margin-left: 10px;
+    }
+  }
 }

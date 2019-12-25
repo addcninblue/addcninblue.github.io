@@ -39,14 +39,20 @@ permalink: /:year/:month/:day/:title/
 paginate_path: /posts/:num/
 paginate: 5
 
+collections_dir: collections
 collections:
   projects:
     output: true
     permalink: /:collection/:name
-  notes:
+    sort_by: priority
+  cs61a:
     output: true
-    permalink: /:collection/:name
+    permalink: /notes/:collection/:name
     sort_by: week
+  # journal:
+  #   output: true
+  #   permalink: /:collection/:year-:month-:day
+  #   sort_by: date
 
 jekyll-archives:
   enabled:
@@ -57,7 +63,24 @@ jekyll-archives:
     category: /categories/:name/
     tag: /tags/:name/
 
+defaults:
+  - scope:
+      path: "_journal/*"
+    values:
+      sitemap: false
+
 google_analytics: UA-89539680-2
+
+markdown: kramdown
+kramdown:
+  footnote_backlink: "⤴"
+  parse_block_html: true
+
+announcements:
+  1: |
+    - Hello, and welcome to CS61A! If you're a new student and feel lost (or if you just want to talk!), feel free to [schedule an appointment with me](http://go.addcnin.blue/meeting)!
+  # 2: |
+  #   Test
 
 # Exclude from processing.
 # The following items will not be processed, by default.
