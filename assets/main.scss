@@ -82,3 +82,12 @@ header {
     }
   }
 }
+
+/**
+ * Fix table spacing
+ */
+
+table {
+  border-spacing: 0;
+  padding: 0;
+}

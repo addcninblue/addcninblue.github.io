@@ -48,11 +48,23 @@ collections:
   cs61a:
     output: true
     permalink: /notes/:collection/:name
-    sort_by: week
-  # journal:
-  #   output: true
-  #   permalink: /:collection/:year-:month-:day
-  #   sort_by: date
+    sort_by: note
+  math104:
+    output: true
+    permalink: /notes/:collection/:name
+    sort_by: note
+  ee375:
+    output: true
+    permalink: /notes/:collection/:name
+    sort_by: note
+  stat155:
+    output: true
+    permalink: /notes/:collection/:name
+    sort_by: note
+  cs189:
+    output: true
+    permalink: /notes/:collection/:name
+    sort_by: note
 
 jekyll-archives:
   enabled:

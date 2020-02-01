@@ -4,7 +4,7 @@ title: "Addison Chan"
 permalink: /
 ---
 
-[**Schedule a meeting.**](go.addcnin.blue/meeting)
+[**Schedule a meeting.**](https://go.addcnin.blue/meeting)
 
 **61A student**? Go to my [teaching](/teaching/) section.
 
