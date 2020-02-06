@@ -11,8 +11,6 @@ permalink: /teaching/
 |**Discussion**| Friday, 9:30 - 11:00 am (Soda 405) |
 |**OH**| Wednesday, 5:00 - 6:00 pm (Morgan 109) |
 
-**OH for this week: Thurs 1/30, 4:00 - 5:00 (Morgan 109)**
-
 ---
 {: .hr-subsection}
 
