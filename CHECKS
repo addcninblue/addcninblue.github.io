@@ -1,0 +1,4 @@
+/ Addison Chan
+WAIT=1
+TIMEOUT=1  # Timeout after a minute
+ATTEMPTS=2 # Attempt checks 10 times

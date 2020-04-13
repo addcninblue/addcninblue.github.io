@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Random Fact #3</title>
+  <meta name="description" content="Today’s Fact: Linear Discriminant Analysis Linear Discriminant Analysis, or LDA for short, is an ML model used in classification. Specifically, for a model of d features and n training points, it assumes that the d features are all distributed Normally (Gaussian), with the same variance. More formally, taken from my professor’s cs189 notes, we get:">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/2020/03/23/fact3/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+
+
+  
+  <meta property="og:title" content="Random Fact #3">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/2020/03/23/fact3/">
+  <meta property="og:description" content="Today’s Fact: Linear Discriminant Analysis Linear Discriminant Analysis, or LDA for short, is an ML model used in classification. Specifically, for a model of d features and n training points, it assumes that the d features are all distributed Normally (Gaussian), with the same variance. More formally, taken from my professor’s cs189 notes, we get:">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Random Fact #3">
+  <meta name="twitter:description" content="Today’s Fact: Linear Discriminant Analysis Linear Discriminant Analysis, or LDA for short, is an ML model used in classification. Specifically, for a model of d features and n training points, it a...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">Random Fact #3</h1>
+    
+    <p class="post-meta"><time datetime="2020-03-23T00:00:00-07:00" itemprop="datePublished">Mar 23, 2020</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="todays-fact-linear-discriminant-analysis">Today’s Fact: Linear Discriminant Analysis</h2>
+<p>Linear Discriminant Analysis, or LDA for short, is an ML model used in classification. Specifically, for a model of <code class="highlighter-rouge">d</code> features and <code class="highlighter-rouge">n</code> training points, it assumes that the <code class="highlighter-rouge">d</code> features are all distributed Normally (Gaussian), with the same variance. More formally, taken from my professor’s <a href="https://people.eecs.berkeley.edu/~jrs/189/lec/07.pdf">cs189 notes</a>, we get:</p>
+
+<p><img src="/assets/posts/facts/fact2_1.png" alt="Lecture Note 1" /></p>
+
+<p>This doesn’t help much for those who are unfamiliar with Machine Learning, so he also included helpful diagrams. Below is a two-class classification (imagine your input is either of class <code class="highlighter-rouge">A</code> or class <code class="highlighter-rouge">B</code>, and you’re deciding which class it’s supposed to be in). The decision function (breaking point between choosing <code class="highlighter-rouge">A</code> versus <code class="highlighter-rouge">B</code>) is the black line; less than 0.5 indicates a stronger guess towards the left side, and greater than 0.5 indicates a stronger guess towards the right class. Below that, we have a multi-class problem, where each class’s boundaries are broken up by black line:</p>
+
+<p><img src="/assets/posts/facts/fact2_2.png" alt="Lecture Note 2" /></p>
+
+<p>When Andi saw this, he immediately thought of <a href="https://en.wikipedia.org/wiki/K-means_clustering">k-means clustering</a>, which is a type of unsupervised learning meant to cluster similar data without knowing their actual labels. K-means often uses similar voronoi diagrams to represent its output, so he raised a question: How does K-means compare to LDA, even though they fundamentally were quite different (supervised vs unsupervised, classification vs grouping)? And so we simulated it.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="simulation">Simulation</h3>
+
+<p>First, we examined the case of Normally distributed data that is decently spread out from each other, like so:</p>
+
+<p><img src="/assets/posts/facts/fact2_1_data.png" alt="Simulation 1, Data" /></p>
+
+<p>Here, we see that LDA and KMeans actually (somewhat surprisingly!) performed about the same:</p>
+
+<p><img src="/assets/posts/facts/fact2_1_kmeans.png" alt="Simulation 1, KMeans" />
+<img src="/assets/posts/facts/fact2_1_lda.png" alt="Simulation 1, LDA" /></p>
+
+<p>Now, we looked at the case where data is overlapping, like so:
+<img src="/assets/posts/facts/fact2_2_data.png" alt="Simulation 2, Data" /></p>
+
+<p>We see that the results are different this time (!):</p>
+
+<p><img src="/assets/posts/facts/fact2_2_kmeans.png" alt="Simulation 2, KMeans" />
+<img src="/assets/posts/facts/fact2_2_lda.png" alt="Simulation 2, LDA" /></p>
+
+<p>Notice that in the second case, where there are overlapping data, <em>LDA still learns of a distinction between class <code class="highlighter-rouge">Yellow</code> and class <code class="highlighter-rouge">Purple</code></em>. K-means completely lost it there, since it has no idea <em>what the labels are supposed to be</em>. This is expected, since K-means is intended to group similar data, not learn things like this. We thought that it was quite interesting that K-means performed as well as it did in part 1.</p>
+
+<hr />
+
+<h2 id="addendum">Addendum</h2>
+<p><a href="/assets/posts/facts/fact2.ipynb">Jupyter Notebook</a></p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/2020/03/23/fact3/
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

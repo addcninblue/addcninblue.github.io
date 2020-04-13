@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Elixir Deployments and CPU Usage</title>
+  <meta name="description" content="Background For the past semester, I have deployed a custom shortlinker service and my personal website on a Google Cloud Compute Free Instance. The custom shortlinker is a rewrite of the CS61A Shortlinker in Elixir, which was a good way for me to learn the new language. Upon deploying the Elixir version, however, I noticed that CPU usage hovered around a constant 100%, even the system was idling. I left it alone for a while, noting that it was responding to requests fairly quickly, leaving me to think that it was likely the BEAM that was idling.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/2020/03/03/elixir-performance/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+
+
+  
+  <meta property="og:title" content="Elixir Deployments and CPU Usage">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/2020/03/03/elixir-performance/">
+  <meta property="og:description" content="Background For the past semester, I have deployed a custom shortlinker service and my personal website on a Google Cloud Compute Free Instance. The custom shortlinker is a rewrite of the CS61A Shortlinker in Elixir, which was a good way for me to learn the new language. Upon deploying the Elixir version, however, I noticed that CPU usage hovered around a constant 100%, even the system was idling. I left it alone for a while, noting that it was responding to requests fairly quickly, leaving me to think that it was likely the BEAM that was idling.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Elixir Deployments and CPU Usage">
+  <meta name="twitter:description" content="Background For the past semester, I have deployed a custom shortlinker service and my personal website on a Google Cloud Compute Free Instance. The custom shortlinker is a rewrite of the CS61A Shor...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">Elixir Deployments and CPU Usage</h1>
+    
+    <p class="post-meta"><time datetime="2020-03-03T00:00:00-08:00" itemprop="datePublished">Mar 3, 2020</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="background">Background</h2>
+<p>For the past semester, I have deployed <a href="go.addcnin.blue/about">a custom shortlinker service</a> and my <a href="addcnin.blue">personal website</a> on a <a href="cloud.google.com">Google Cloud Compute Free Instance</a>. The custom shortlinker is a rewrite of the <a href="https://github.com/Cal-CS-61A-Staff/links">CS61A Shortlinker</a> in Elixir, which was a good way for me to learn the new language. Upon deploying the Elixir version, however, I noticed that CPU usage hovered around a constant 100%, even the system was idling. I left it alone for a while, noting that it was responding to requests fairly quickly, leaving me to think that it was likely the BEAM that was idling.</p>
+
+<h2 id="more-research">More Research</h2>
+<p>Recently, I got back into Elixir, and curiosity (+ paying bills) prompted me to investigate into the issue more. I came across <a href="https://stressgrid.com/blog/beam_cpu_usage/">this blog</a>, which answered all of my problems.</p>
+
+<blockquote>
+  <p>… enabling busy waiting causes the CPU to be saturated above 95%. Disabling busy waiting causes CPU utilization to scale with the workload.</p>
+</blockquote>
+
+<p>That’s insane! Could it be possible that the BEAM was running empty cycles to claim the CPU, hence stealing cycles from other processes? There was only one way to tell.</p>
+
+<h2 id="my-own-change">My Own Change</h2>
+<p>I decided to make the changes the blog specified by adding these following lines to the BEAM arguments:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+sbwt none
++sbwtdcpu none
++sbwtdio none
+</code></pre></div></div>
+
+<p>In the blog, they used Distillery, but I use default Mix releases, so I will document the changes below:</p>
+<ol>
+  <li>Documentation:
+    <ul>
+      <li><a href="https://hexdocs.pm/mix/Mix.Tasks.Release.html">Mix Release VM Documentation</a></li>
+      <li><a href="https://github.com/addcninblue/links/commit/ddb45106492892c13834aeee20a83f47591bbf24#diff-f59a5941af2fadce5fbf5b04589acd10R12">Change Commit</a></li>
+    </ul>
+  </li>
+  <li>Add the required VM configuration files: <code class="highlighter-rouge">mix release.init</code>.</li>
+  <li>Modify the VM configuration file by adding
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> +sbwt none
+ +sbwtdcpu none
+ +sbwtdio none
+</code></pre></div>    </div>
+    <p>to <code class="highlighter-rouge">rel/vm.args.eex</code>.</p>
+  </li>
+  <li>Recompile and deploy!</li>
+</ol>
+
+<p>And with that, I noticed that there was a dramatic reduction in compute:</p>
+
+<p><img src="/assets/posts/beam-reduced-usage.png" alt="Beam Reduced Usage" /></p>
+
+<p>Note that CPU usage is <em>nearly zero</em>, where as before it was ~100%! This frees up the CPU cycles for redeployments to this server and for more concurrent apps running (Build times are cut by <strong>more than a half!</strong>). I will be monitoring this new deployment for any regressions, but it appears to be a very solid improvement.</p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/2020/03/03/elixir-performance/
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

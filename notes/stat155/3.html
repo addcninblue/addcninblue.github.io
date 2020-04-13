@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 3 - Subtraction Game</title>
+  <meta name="description" content="Recap Combinatorial Games: 2 players with turns, complete information. Each player has the same set of moves, and there is no randomness. There are no ties. is called terminal if . Normal Play: Player on whose turn is faced with a terminal position loses. Misère Play: Player on terminal position wins.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/stat155/3">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 3 - Subtraction Game">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/stat155/3">
+  <meta property="og:description" content="Recap Combinatorial Games: 2 players with turns, complete information. Each player has the same set of moves, and there is no randomness. There are no ties. is called terminal if . Normal Play: Player on whose turn is faced with a terminal position loses. Misère Play: Player on terminal position wins.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 3 - Subtraction Game">
+  <meta name="twitter:description" content="Recap Combinatorial Games: 2 players with turns, complete information. Each player has the same set of moves, and there is no randomness. There are no ties. is called terminal if . Normal Play: Pla...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 3 - Subtraction Game</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#recap">Recap</a></li>
+  <li><a href="#combinatorial-game-analysis">Combinatorial Game Analysis</a></li>
+  <li><a href="#subtraction-games">Subtraction Games</a>
+    <ul>
+      <li><a href="#example">Example</a></li>
+      <li><a href="#proof-by-induction-">Proof by induction <!--  TODO: FIX THIS SECTION  --></a></li>
+    </ul>
+  </li>
+  <li><a href="#graphs">Graphs</a>
+    <ul>
+      <li><a href="#a-recursive-algorithm-to-label-positions">A Recursive Algorithm to Label Positions</a></li>
+    </ul>
+  </li>
+  <li><a href="#homework">Homework</a></li>
+  <li><a href="#chomp">Chomp</a></li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="recap">Recap</h2>
+<ul>
+  <li>Combinatorial Games: 2 players with turns, complete information. Each player has the same set of moves, and there is no randomness. There are no ties.</li>
+  <li><script type="math/tex">x \in X</script> is called <strong>terminal</strong> if <script type="math/tex">F(x) = \emptyset</script>.</li>
+  <li>Normal Play: Player on whose turn is faced with a terminal position loses.</li>
+  <li>Misère Play: Player on terminal position wins.</li>
+</ul>
+
+<hr />
+
+<h2 id="combinatorial-game-analysis">Combinatorial Game Analysis</h2>
+<p>To analyze a game, we classify all positions as <script type="math/tex">P</script> or <script type="math/tex">N</script> as follows:</p>
+<ul>
+  <li><script type="math/tex">P</script>: one from where the <em>previous player</em> can guarantee a victory. Note that this means we assume optimal play from both players.</li>
+  <li><script type="math/tex">N</script>: one from where the <em>next player</em> can guarantee a victory.</li>
+</ul>
+
+<p>Under Normal Play, <em>all terminal positions are P positions</em>. Conversely, under Misère Play, <em>all terminal positions are N positions</em>.</p>
+
+<hr />
+
+<h2 id="subtraction-games">Subtraction Games</h2>
+<p>These are the simplest take-away games. The game begins with <script type="math/tex">n</script> chips. On your turn, you take away <script type="math/tex">k</script> chips from the pile, where <script type="math/tex">k \in \textrm{ subtraction set } S</script>.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="example">Example</h3>
+<p>Let us analyze the set <script type="math/tex">S = \{1, 2, 3\}</script>.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>x</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>F(x)</td>
+      <td><script type="math/tex">\emptyset</script></td>
+      <td><script type="math/tex">\{0\}</script></td>
+      <td><script type="math/tex">\{0, 1\}</script></td>
+      <td><script type="math/tex">\{0, 1, 2\}</script></td>
+      <td><script type="math/tex">\{1, 2, 3\}</script></td>
+      <td><script type="math/tex">\{2, 3, 4\}</script></td>
+      <td><script type="math/tex">\{3, 4, 5\}</script></td>
+      <td><script type="math/tex">\{4, 5, 6\}</script></td>
+      <td><script type="math/tex">\{5, 6, 7\}</script></td>
+      <td><script type="math/tex">\{6, 7, 8\}</script></td>
+      <td><script type="math/tex">\{7, 8, 9\}</script></td>
+    </tr>
+    <tr>
+      <td>P/N</td>
+      <td>P</td>
+      <td>N</td>
+      <td>N</td>
+      <td>N</td>
+      <td>P</td>
+      <td>N</td>
+      <td>N</td>
+      <td>N</td>
+      <td>P</td>
+      <td>N</td>
+      <td>N</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>An observation: A position <script type="math/tex">x</script> is a <script type="math/tex">P</script> position if <script type="math/tex">x</script> is divisible by <script type="math/tex">4</script>.<br />
+This leads us to formulate the following hypothesis:</p>
+
+<script type="math/tex; mode=display">x \textrm{ is a P-position } \iff x \equiv 0\ (\textrm{mod } 4)</script>
+
+<hr class="hr-subsection" />
+
+<h3 id="proof-by-induction-">Proof by induction <!--  TODO: FIX THIS SECTION  --></h3>
+
+<p>We first note that <script type="math/tex">\forall x \in \mathbb{Z}^+, x = 4k, 4k + 1, 4k + 2, 4k + 3</script>.<br />
+Assume that our inductive hypothesis is true <script type="math/tex">% <![CDATA[
+\forall k,\ 0 \leq k < n %]]></script> .<br />
+We show that it is true for <script type="math/tex">m=n+1</script>.<br />
+Recall that we defined the following sets:</p>
+
+<script type="math/tex; mode=display">P = \{x \in X \textrm{ s.t. x is a P-position}\}</script>
+
+<script type="math/tex; mode=display">N = \{x \in X \textrm{ s.t. x is a N-position}\}</script>
+
+<p>Claim: Every <script type="math/tex">x \in X</script> is in <script type="math/tex">P \cup N</script>, and <script type="math/tex">P \cap N = \emptyset</script>. Read the proof of this in Theorem 1.1.5 in KP.</p>
+
+<p>A winning strategy is a set of moves from <script type="math/tex">x</script> that can guarantee a win.</p>
+
+<hr />
+
+<h2 id="graphs">Graphs</h2>
+<p>A graph is defined as <script type="math/tex">G = (V,E)</script>, where <script type="math/tex">V</script> is a set of vertices and <script type="math/tex">E</script> is a set of edges connecting the vertices. We can define a graph on our state space, which (upon inspection) is a DAG since all states can only transition into smaller states.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="a-recursive-algorithm-to-label-positions">A Recursive Algorithm to Label Positions</h3>
+<p>(Ferguson) Recursive Algorithm to Label Positions:</p>
+<ol>
+  <li>Label all the terminal positions as <script type="math/tex">P</script>.</li>
+  <li>Label each position that has an edge to a <script type="math/tex">P</script>-position as <script type="math/tex">N</script>.</li>
+  <li>If a position is not labeled yet, then check the edges. If there exists at least one edge to a <script type="math/tex">P</script>-position, label this position <script type="math/tex">N</script>. Otherwise all edges lead to <script type="math/tex">N</script>-positions, so we label this position <script type="math/tex">P</script>.</li>
+</ol>
+
+<hr />
+
+<h2 id="homework">Homework</h2>
+<p>Analyze <script type="math/tex">S={1,3,4}</script>, and give a general rule.</p>
+
+<hr />
+
+<h2 id="chomp">Chomp</h2>
+<p>Invented by David Gale. Related to divisor game (Frederik Schuh). <a href="https://www.wikiwand.com/en/Chomp">Chomp</a>.</p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/stat155/3
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

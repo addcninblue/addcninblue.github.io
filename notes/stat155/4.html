@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 4 - A Look at Subtraction Games</title>
+  <meta name="description" content="Some More Notation Let be the set of positions from which the next player can force a win in at most moves.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/stat155/4">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 4 - A Look at Subtraction Games">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/stat155/4">
+  <meta property="og:description" content="Some More Notation Let be the set of positions from which the next player can force a win in at most moves.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 4 - A Look at Subtraction Games">
+  <meta name="twitter:description" content="Some More Notation Let be the set of positions from which the next player can force a win in at most moves.">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 4 - A Look at Subtraction Games</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#some-more-notation">Some More Notation</a>
+    <ul>
+      <li><a href="#subtraction-game">Subtraction game</a></li>
+      <li><a href="#subtraction-game-1">Subtraction Game</a></li>
+      <li><a href="#chomp">Chomp</a></li>
+    </ul>
+  </li>
+  <li><a href="#nim">Nim</a></li>
+  <li><a href="#1-pile-nim">1-Pile Nim</a></li>
+  <li><a href="#2-pile-nim">2-Pile Nim</a></li>
+  <li><a href="#3-pile">3-Pile?</a></li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="some-more-notation">Some More Notation</h2>
+<p>Let <script type="math/tex">N_i</script> be the set of positions from which the next player can force a win in at most <script type="math/tex">i</script> moves.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="subtraction-game">Subtraction game</h3>
+<p><script type="math/tex">S=\{1,2,3\}</script>. <script type="math/tex">P_0 = \{0\} = P_1</script>. <script type="math/tex">N_1 = \{1,2,3\} = N_2</script>.</p>
+
+<script type="math/tex; mode=display">N_{i+1} = \{x \in X \textrm{ s.t. } \exists \textrm{ a move from } x \textrm{ to } P_i\}</script>
+
+<script type="math/tex; mode=display">P_{i+1} = \{x \in X \textrm{ s.t. } \textrm{ all moves from } x \textrm{ are to } N_i\}</script>
+
+<script type="math/tex; mode=display">P_2 = \{0, 4\} = P_3</script>
+
+<script type="math/tex; mode=display">N_3 = \{1,2,3,5,6,7\} = N_4</script>
+
+<p>This gives us the following:</p>
+
+<script type="math/tex; mode=display">P := \bigcup_{i \geq 0} P_i</script>
+
+<script type="math/tex; mode=display">N := \bigcup_{i \geq 0} N_i</script>
+
+<p>and</p>
+
+<script type="math/tex; mode=display">X = P \cup N</script>
+
+<p>###</p>
+
+<p>Induction on <script type="math/tex">B(x)</script>: max number of moves to end of game from <script type="math/tex">x</script>.</p>
+
+<p>Base case: <script type="math/tex">B(X) = 0 \implies x \in P_0 \subseteq P</script></p>
+
+<p>Inductive Hypothesis: <script type="math/tex">\forall x \in X \textrm{ where } B(x) \leq n, x \in N_n \cup P_n</script>. Let <script type="math/tex">y</script> be such that <script type="math/tex">B(y) \leq n + 1</script>.</p>
+
+<p>Proof: Every move from <script type="math/tex">y</script> to <script type="math/tex">z \in X</script> will have <script type="math/tex">B(x) \leq n</script>. There are two cases:</p>
+<ul>
+  <li><script type="math/tex">y</script> goes to <script type="math/tex">z \in N_n \implies y \in P_{n+1}</script></li>
+  <li><script type="math/tex">y</script> goes to <script type="math/tex">z \in P_n \implies y \in N_{n+1}</script></li>
+</ul>
+
+<p>This shows that <script type="math/tex">y \in P_{n+1} \cup N_{n+1}</script></p>
+
+<hr />
+
+<h3 id="subtraction-game-1">Subtraction Game</h3>
+
+<script type="math/tex; mode=display">S=\{1,3,4\}</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>x</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td><script type="math/tex">F(x)</script></td>
+      <td><script type="math/tex">\emptyset</script></td>
+      <td><script type="math/tex">0</script></td>
+      <td><script type="math/tex">1</script></td>
+      <td><script type="math/tex">0, 2</script></td>
+      <td><script type="math/tex">0, 1, 3</script></td>
+      <td><script type="math/tex">1, 2, 4</script></td>
+      <td><script type="math/tex">2, 3, 5</script></td>
+      <td><script type="math/tex">3, 4, 6</script></td>
+      <td><script type="math/tex">4, 5, 7</script></td>
+      <td><script type="math/tex">5, 6, 8</script></td>
+      <td><script type="math/tex">6, 7, 9</script></td>
+      <td><script type="math/tex">7, 8, 10</script></td>
+    </tr>
+    <tr>
+      <td><script type="math/tex">P/N</script></td>
+      <td><script type="math/tex">P</script></td>
+      <td><script type="math/tex">N</script></td>
+      <td><script type="math/tex">P</script></td>
+      <td><script type="math/tex">N</script></td>
+      <td><script type="math/tex">N</script></td>
+      <td><script type="math/tex">N</script></td>
+      <td><script type="math/tex">N</script></td>
+      <td><script type="math/tex">P</script></td>
+      <td><script type="math/tex">N</script></td>
+      <td><script type="math/tex">P</script></td>
+      <td><script type="math/tex">N</script></td>
+      <td><script type="math/tex">N</script></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Exercise: Show that <script type="math/tex">x \in P \iff x \equiv 0, 2 \mod\ 7</script></p>
+
+<h3 id="chomp">Chomp</h3>
+<p>Exercise: Try to beat computer at Chomp. It’s hosted online by Ferguson.</p>
+
+<p>General Strategies (poison at bottom left):</p>
+<ul>
+  <li><script type="math/tex">n * n</script>: Remove the upper right square. By convention, it’s <script type="math/tex">(2,2)</script>.</li>
+  <li><script type="math/tex">2 * n</script>:</li>
+</ul>
+
+<p>See: <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.145.7362&amp;rep=rep1&amp;type=pdf">3-row chomp.</a></p>
+
+<hr />
+
+<h2 id="nim">Nim</h2>
+
+<h2 id="1-pile-nim">1-Pile Nim</h2>
+<p>Trivial – take all except 1.</p>
+
+<h2 id="2-pile-nim">2-Pile Nim</h2>
+<p>Take from larger pile to match other pile. This reduces to Tweedledum-Tweedledee.</p>
+
+<h2 id="3-pile">3-Pile?</h2>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/stat155/4
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

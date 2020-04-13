@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    <meta charset="utf-8">
+    <title>Week 6 - Nonlocal, Iterators, and Generators</title>
+    <link rel="stylesheet" href="https://use.typekit.net/wmw5tnd.css">
+    <style>
+      @import url(https://use.typekit.net/wmw5tnd.css);
+      .remark-inline-code, .remark-code {
+        font-family: "Ubuntu-Mono";
+      }
+      body {
+        font-family: soleil, sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        font-size: 28px;
+
+        color: white;
+        background-color: '#000d1bff';
+      }
+      h1, h2, h3 {
+        font-family: montserrat, sans-serif;
+        font-weight: 400;
+        font-weight: normal;
+        font-size: 48px;
+        color: #86ecff;
+      }
+      body.remark-container {
+        
+        background-color: white;
+      }
+      div.remark-slide-content {
+        background-color: #000d1bff;
+      }
+      div.remark-slide-content.title {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 100%;
+        
+        
+        flex-wrap: wrap;
+        flex-direction: column;
+      }
+      div.remark-slide-content p, td {
+        font-size: 28px;
+      }
+      div.remark-slide-content h1, h2, h3 {
+        font-size: 48px;
+      }
+      p {
+        margin-block-end: 0;
+      }
+      ul {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: list
+<style>code{color: #a7e7f2;}</style>
+
+# welcome to discussion 5!
+Announcements (check @1035 for participation):
+- Project 3 (Ants) due Thursday 3/12 @ 11:59pm.
+    - Submit the checkpoint (Phases 1 & 2) by Monday 3/9.
+    - +1 EC if submitted 3/11 or before.
+- Online section will be announced on Piazza.
+- Feedback: **links.cs61a.org/addison-feedback**
+
+Schedule:
+- Nonlocal
+    - Memory
+    - Nonlocalist
+- Iterators
+    - WWPD
+- Generators
+    - Merge / Generate Subsets
+    - Sum paths generator
+- Quiz (?)
+
+---
+class: list
+
+# nonlocal
+
+--
+
+- What does it do?
+    - It gives us mutable functions
+--
+    - ... which allows us to keep track of values across function calls
+--
+    - ... by modifying names in the parent frame!
+--
+- Rules
+    - A variable declared nonlocal must be defined in a parent frame which is not
+the global frame
+    - A variable declared nonlocal must not already defined in the current frame
+    - Any updates to a variable declared nonlocal will be made in the parent frame (you will not create a new binding in the parent frame)
+
+---
+class: title
+
+# stepper
+
+```python
+def stepper(num):
+    def step():
+        nonlocal num # declares num as a nonlocal name
+        num = num + 1 # modifies num in the stepper frame
+        return num
+    return step
+```
+
+---
+class: title
+
+# caveats
+
+- Global names cannot be modified using the nonlocal keyword.
+- Names in the current frame cannot be overridden using the nonlocal keyword. This means we cannot have both a local and nonlocal binding with the same name in a single frame
+
+---
+class: title
+
+# memory
+
+```python
+def memory(n):
+    def f(g):
+        nonlocal n
+        n = g(n)
+        return n
+    return f
+```
+
+---
+class: title
+
+# nonlocalist
+"putting the evil back in half-evil"
+
+(this is an exam-level problem)
+
+---
+class: list
+
+# breakdown of nonlocalist
+- We see that somehow, `prepend` is causing the inner state to change.
+    - sounds like `nonlocal`!
+- But if `prepend` uses `nonlocal`, it must mean we have some variable we're changing!
+    - what variable is that?
+
+--
+
+**solution**:
+
+```python
+def nonlocalist():
+    get = lambda x: "Index out of range!"
+    def prepend(value):
+        nonlocal get
+        f = get
+        def get(i):
+            if i == 0:
+                return value
+            return f(i - 1)
+    return prepend, lambda x: get(x)
+```
+
+---
+class: title
+
+# iterators
+
+---
+class: list
+# iterators
+
+- **iterable** - something that can be looped over (things you can put in a `for` loop)
+- **iterator** - something that allows you to retrieve a value at a certain location in an **iterable**.
+    - Calling `iter` on an **iterable** gives you an **iterator**.
+    - ... which lets you do fancy things like:
+    ```python
+    >>> counts = [1, 2, 3]
+    >>> my_iter = iter(counts)
+    >>> next(my_iter)
+    1
+    ```
+    - **iterator**s are themselves **iterable**s (which really just means you can loop through them):
+    ```python
+    >>> counts = [1, 2, 3]
+    >>> my_iter = iter(counts)
+    >>> for num in my_iter:
+            print(num)
+    1
+    2
+    3
+    ```
+
+---
+class: list
+# iterators, continued
+Functions related to **iterable**s:
+- Our good friend `for` loop actually takes in any **iterable**! (It's not just `list`s or `tuple`s -- those are simply _kinds of iterables_)
+- Remember `range(start, end, step)`? It's really an **iterable** that steps through each value!
+- `map(f, iterable)`: Returns an **iterator** that gives every value in `iterable` with `f` applied to it.
+- `filter(f, iterable)`: Returns an **iterator** that gives values `v` in `iterable` if `f(v)` is Truthy.
+- `list(iterable)`: Takes in `iterable` and gets all values from `iterable`; it then puts everything into a `list`.
+
+A note on **iterator** execution:
+- They are _lazy_. `range` doesn't create the whole list of values to loop through until the value is needed! In other words, when you make an **iterator**, _only when you call `next` is the value actually created_!
+
+---
+class: title
+# WWPD
+
+---
+class: list
+# generators
+- A special kind of function
+- Doesn't have a return value
+- Instead, it `yield`s values
+- When a _generator function_ is called, it returns a _generator_, which is itself an _iterator_.
+- Calling `next` on the generator gives the next value.
+- Using the `return` keyword now **stops execution of the generator**!
+
+&larr; Demo!
+
+---
+class: title
+# merge
+
+--
+```python
+def merge(a, b):
+    first_a, first_b = next(a), next(b)
+    while True:
+        if first_a == first_b:
+            yield first_a
+            first_a, first_b = next(a), next(b)
+        elif first_a < first_b:
+            yield first_a
+            first_a = next(a)
+        else:
+            yield first_b
+            first_b = next(b)
+```
+
+---
+class: title
+# generate_subsets
+
+--
+```python
+def generate_subsets():
+    subsets = [[]]
+    n = 1
+    while True:
+        yield subsets
+        subsets = subsets + [s + [n] for s in subsets]
+        n += 1
+```
+
+---
+class: title
+# sum_paths_gen
+
+--
+```python
+def sum_paths_gen(t):
+    if is_leaf(t):
+        yield label(t)
+    for b in branches(t):
+        for s in sum_paths_gen(b):
+            yield s + label(t)
+```
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

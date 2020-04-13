@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Elixir Shortlinker</title>
+  <meta name="description" content="Background CS61A uses an in-house link server for student links and staff links. It helps with sharing important documents (like sign-ins, etc). Recently, I learned Elixir, a functional programming language, and I wanted to write something interesting with this, particularly to see how well it handled scaling (which it’s known for). As a result, I wrote a drop-in replacement for this link server, hosted on my own go.addcnin.blue server.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/projects/elixir-shortlinker">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+
+
+  
+  <meta property="og:title" content="Elixir Shortlinker">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/projects/elixir-shortlinker">
+  <meta property="og:description" content="Background CS61A uses an in-house link server for student links and staff links. It helps with sharing important documents (like sign-ins, etc). Recently, I learned Elixir, a functional programming language, and I wanted to write something interesting with this, particularly to see how well it handled scaling (which it’s known for). As a result, I wrote a drop-in replacement for this link server, hosted on my own go.addcnin.blue server.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Elixir Shortlinker">
+  <meta name="twitter:description" content="Background CS61A uses an in-house link server for student links and staff links. It helps with sharing important documents (like sign-ins, etc). Recently, I learned Elixir, a functional programming...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Elixir Shortlinker</h1>
+  </header>
+
+  
+
+  <div class="post-content">
+    <h2 id="background">Background</h2>
+<p>CS61A uses an in-house <a href="https://github.com/Cal-CS-61A-Staff/links">link server</a> for student links and staff links. It helps with sharing important documents (like sign-ins, etc). Recently, I learned Elixir, a functional programming language, and I wanted to write something interesting with this, particularly to see how well it handled scaling (which it’s known for). As a result, I wrote a drop-in replacement for this link server, hosted on my own <code class="highlighter-rouge">go.addcnin.blue</code> server.</p>
+
+<h2 id="performance">Performance</h2>
+<p>Its performance is very good when the server load increases. Whereas in Python, the service is single-threaded because of Python’s built-in synchronization issues (GIL), Elixir has default concurrency because its model is built around spawning light green threads. As a result, the load spreads evenly across CPUs. The only complaint between this and the Python one is unloaded memory usage – this one uses much more memory (on the order of ~100 MB), probably to handle the overhead of the BEAM.</p>
+
+<h2 id="elixir">Elixir</h2>
+<p>Writing the project was very rewarding. Elixir is a fun language, and there are many smart features baked in – handling of concurrent processes, nonblocking calls to other processes, easy scheduling of threads without worrying about race conditions. I’ll definitely be writing another project that uses Elixir’s data handling prowess to concurrently process large amounts of data.</p>
+
+<p><a href="https://github.com/addcninblue/links">Github</a></p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/projects/elixir-shortlinker
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

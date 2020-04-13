@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 3 - Sequences</title>
+  <meta name="description" content="An Example">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/math104/3">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 3 - Sequences">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/math104/3">
+  <meta property="og:description" content="An Example">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 3 - Sequences">
+  <meta name="twitter:description" content="An Example">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 3 - Sequences</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#an-example">An Example</a></li>
+  <li><a href="#monotonicity">Monotonicity</a></li>
+  <li><a href="#some-limit-theorems">Some Limit Theorems</a>
+    <ul>
+      <li><a href="#example">Example</a></li>
+      <li><a href="#example-2">Example 2</a></li>
+    </ul>
+  </li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="an-example">An Example</h2>
+
+<h2 id="monotonicity">Monotonicity</h2>
+<p><strong>Monotone Sequence</strong>:</p>
+<ul>
+  <li>(<script type="math/tex">a_n</script>) is increasing if <script type="math/tex">a_n \leq a_{n+1} \forall n</script></li>
+  <li>(<script type="math/tex">a_n</script>) is decreasing if <script type="math/tex">a_n \geq a_{n+1} \forall n</script></li>
+</ul>
+
+<hr class="hr-subsection" />
+
+<p>Theorem: Any bounded monotone sequence converges.</p>
+
+<p>Proof: <script type="math/tex">(a_n)</script> bounded increasing.
+Let <script type="math/tex">A=\{a_n | n \in \mathbb{N}\}</script>. We note that <script type="math/tex">A</script> is bounded, so there exists <script type="math/tex">Z := \sup A</script>.</p>
+
+<p>Claim: <script type="math/tex">z = \lim_{n \to \infty} a_n</script>.</p>
+
+<p>Idea: We must find an <script type="math/tex">\epsilon</script> such that <script type="math/tex">(z - \epsilon, z + \epsilon)</script> contains <script type="math/tex">z</script>.</p>
+
+<ol>
+  <li>There is some <script type="math/tex">a_n</script> such that <script type="math/tex">a_n \in (z - \epsilon, z + \epsilon)</script>
+    <ul>
+      <li>This is true because if no such element exists, then <script type="math/tex">z - \epsilon</script> must be <script type="math/tex">\sup A</script>. This contradicts the claim that <script type="math/tex">z = \sup A</script>.</li>
+      <li>A consequence is that we know there exists at least one <script type="math/tex">a_n</script> within <script type="math/tex">(z - \epsilon, z)</script>.</li>
+    </ul>
+  </li>
+  <li>Then we will show <script type="math/tex">% <![CDATA[
+\forall \epsilon > 0, \exists N > 0 \textrm{ s.t. } n > N \implies \vert a_n - a \vert < \epsilon %]]></script>.</li>
+</ol>
+
+<p>Proof:
+<script type="math/tex">\forall \epsilon > 0</script>, we claim that <script type="math/tex">\exists n > 0 \textrm{ s.t. } a_N \in (z - \epsilon, z + \epsilon)</script>. Then, <script type="math/tex">\forall n > N</script>, we have <script type="math/tex">% <![CDATA[
+z - \epsilon < a_N \leq a_n \leq z %]]></script>. This implies that <script type="math/tex">% <![CDATA[
+\vert a_n - z \vert < \epsilon\ \forall n > N %]]></script>.</p>
+
+<hr class="hr-subsection" />
+
+<p>We note that sequences do not have to be monotone to converge.</p>
+
+<script type="math/tex; mode=display">(1, \frac{-1}{2}, \frac{1}{3}, \frac{-1}{4}, ...)</script>
+
+<p>converges to <script type="math/tex">0</script>.</p>
+
+<hr />
+
+<h2 id="some-limit-theorems">Some Limit Theorems</h2>
+<p>If <script type="math/tex">\lim_{n \to \infty} a_n = a, \lim{n \to \infty} b_n = b</script> thm.</p>
+<ol>
+  <li><script type="math/tex">r \neq 0, \lim_{n \to \infty} ra_n = ra</script></li>
+  <li><script type="math/tex">\lim_{n \to \infty}a_n + b_n = a+b</script></li>
+  <li><script type="math/tex">\lim_{n \to \infty} a_nb_n = ab</script></li>
+  <li>If <script type="math/tex">b_n \neq 0, \forall n, b\neq 0, then \lim_{n \to \infty} \frac{a_n}{b_n} = \frac{a}{b}</script>.</li>
+</ol>
+
+<hr class="hr-subsection" />
+
+<h3 id="example">Example</h3>
+<p>Let us take <script type="math/tex">a_n = \frac{4n^2 - 7n}{n^2 + 1}</script>. We can divide top and bottom by <script type="math/tex">n^2</script>. Then, the top and bottom are both sequences. We take of their limits.</p>
+
+<script type="math/tex; mode=display">\lim_{n \to \infty} a_n = \frac{\lim (4 - \frac{7}{n})}{\lim (1 - \frac{1}{n^2})} = 4</script>
+
+<h3 id="example-2">Example 2</h3>
+<p>Let us take:</p>
+
+<script type="math/tex; mode=display">a_1 = 1</script>
+
+<script type="math/tex; mode=display">a_2 = 1 + \frac{1}{1 + \frac{1}{1}}</script>
+
+<script type="math/tex; mode=display">a_{n+1} = 1 + \frac{1}{1 + \frac{1}{a_n}}</script>
+
+<script type="math/tex; mode=display">a_1 = 1</script>
+
+<script type="math/tex; mode=display">a_2 = \frac{3}{2}</script>
+
+<script type="math/tex; mode=display">a_3 = \frac{8}{5}</script>
+
+<script type="math/tex; mode=display">a_4 = \frac{21}{13}</script>
+
+<p><strong>Proof that <script type="math/tex">(a_n)</script> is bounded and increasing:</strong></p>
+<ul>
+  <li>Bounded: <script type="math/tex">% <![CDATA[
+1 < a_n < 2 %]]></script>.</li>
+  <li>Increasing: <script type="math/tex">a_n \leq 1 + \frac{1}{1 + \frac{1}{a_n}} = \frac{2a_n+1}{a_n+1}</script></li>
+</ul>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/math104/3
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

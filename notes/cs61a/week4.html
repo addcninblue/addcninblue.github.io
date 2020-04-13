@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Week 4 - Recursion and Tree Recursion</title>
+  <meta name="description" content="Recursion It’s kinda like magic, but once you get it, it’s pretty cool. – some 61a student, probably">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/cs61a/week4">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Week 4 - Recursion and Tree Recursion">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/cs61a/week4">
+  <meta property="og:description" content="Recursion It’s kinda like magic, but once you get it, it’s pretty cool. – some 61a student, probably">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Week 4 - Recursion and Tree Recursion">
+  <meta name="twitter:description" content="Recursion It’s kinda like magic, but once you get it, it’s pretty cool. – some 61a student, probably">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Week 4 - Recursion and Tree Recursion</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#recursion">Recursion</a>
+    <ul>
+      <li><a href="#factorial">Factorial</a></li>
+      <li><a href="#for-those-familiar-with-induction">For Those Familiar With Induction</a></li>
+    </ul>
+  </li>
+  <li><a href="#tree-recursion">Tree Recursion</a>
+    <ul>
+      <li><a href="#fibonacci">Fibonacci</a></li>
+    </ul>
+  </li>
+  <li><a href="#tips-for-thinking-recursively">Tips For Thinking Recursively</a></li>
+  <li><a href="#footnotes">Footnotes</a></li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="recursion">Recursion</h2>
+<blockquote>
+  <p>It’s kinda like magic, but once you get it, it’s pretty cool.<br />
+– some 61a student, probably</p>
+</blockquote>
+
+<p>In essence, a <em>recursive function</em> is a function that calls itself at some point. It’s not special syntax within Python. For those who have prior experience with <em>mathematical induction</em>, it has many similarities.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="factorial">Factorial</h3>
+<p>Let’s take the example of computing a factorial, the product of all positive integers less than or equal to n. <sup id="fnref:factorial"><a href="#fn:factorial" class="footnote">1</a></sup></p>
+
+<p>A simple way to think about <code class="highlighter-rouge">factorial(n)</code> is as follows:</p>
+<ul>
+  <li>If \( n \leq 1 \), then \( n! \rightarrow 1 \)</li>
+  <li>Otherwise, \( n! \rightarrow n * (n-1)! \)</li>
+</ul>
+
+<p>Let’s transform this into Python:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Let’s write this to be more Pythonic by dropping the <code class="highlighter-rouge">else</code> and deintenting the inner block:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This example is recursive! Our <em>base case</em> is the <em>simplest problem</em>, when <code class="highlighter-rouge">factorial(n)</code> is a known value. In this case, our base case is when <code class="highlighter-rouge">n &lt;= 1</code>. Our recursion is a known reduction of the problem, where <code class="highlighter-rouge">factorial(n)</code> is the same problem as the <em>easier problem</em> <code class="highlighter-rouge">n * factorial(n-1)</code>. This way, we are <em>reducing our problem into smaller and smaller problems until we get to a known state</em>.</p>
+
+<hr class="hr-subsection" />
+
+<details>
+  <summary>
+    <h3 id="for-those-familiar-with-induction">For Those Familiar With Induction</h3>
+  </summary>
+  <p>Proof by induction is logically very similar to recursion.</p>
+
+  <p>In induction, a typical proof for a mathematical formula goes like:</p>
+  <ol>
+    <li>Prove base case</li>
+    <li>Assume the formula holds for \( k \), and prove that the formula holds for \( k+1 \).</li>
+  </ol>
+
+  <p>The proof works because:</p>
+  <ol>
+    <li>For some base case, we know the formula to be true</li>
+    <li>For some unknown problem of size \( k \), we have shown the formula to be reduceable to \( k - 1 \).</li>
+  </ol>
+
+  <p>In recursion, the thinking maps to the above concepts:</p>
+  <ol>
+    <li>We want to find a base case that is a <em>known state</em> for some function.</li>
+    <li>For a problem \( k \) with no immediately known solution, we find a reduction to a size of \( k - 1 \).</li>
+  </ol>
+</details>
+
+<hr />
+
+<h2 id="tree-recursion">Tree Recursion</h2>
+<blockquote>
+  <p>Recursion on trees?<br />
+– the same 61a student, probably</p>
+</blockquote>
+
+<p>Contrary to its name, tree recursion isn’t recursion on trees. <sup id="fnref:tree-recursion"><a href="#fn:tree-recursion" class="footnote">2</a></sup> Instead, it refers to the recursion problems that require multiple calls to a function to break down the recurrence.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="fibonacci">Fibonacci</h3>
+<p>Let’s take a look at the fibonacci sequence, a sequence of numbers where each number in the sequence is the sum of the two prior to it. More formally,</p>
+
+<p>\[ 
+F_n =
+    \begin{cases}
+        1, &amp; n = 0, 1 \\[1ex]
+        F_{n-1} + F_{n-2},  &amp; \text{otherwise} \\[2ex]
+    \end{cases}
+\]</p>
+
+<p>We can transform this definition into code. We have the cases</p>
+<ol>
+  <li>If <code class="highlighter-rouge">n == 0 or n == 1</code>, then <code class="highlighter-rouge">fibonacci(n) -&gt; 1</code></li>
+  <li>Otherwise, we want <code class="highlighter-rouge">fibonacci(n-1) + fibonacci(n-2)</code></li>
+</ol>
+
+<p>In code:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Note that the major difference between this problem and the prior factorial problem is in the recurrence: Fibonacci requires <em>two</em> calls to fibonacci to solve, whereas factorial requires only 1. If we draw out the calls, it looks like a tree (hence the name <em>tree recursion</em>).</p>
+
+<hr />
+
+<h2 id="tips-for-thinking-recursively">Tips For Thinking Recursively</h2>
+<blockquote>
+  <p>Recursion finally makes sense!<br />
+– the same 61a student :’)</p>
+</blockquote>
+
+<ul>
+  <li>In some cases, finding the recurrence relation will be easier. In other cases, defining the base cases will be.</li>
+  <li>Recurrence relation:
+    <ul>
+      <li>Think about <em>what the problem is trying to calculate</em>, and how that can be broken down into smaller versions of the same problem. In other words, if we have some \( f(k) \), think about how that can be broken down to some other \( f(k’) \), where \( k’ &lt; k \)</li>
+    </ul>
+  </li>
+  <li>Base cases:
+    <ul>
+      <li>Think about <em>what the smallest version of the problem is</em>. In the examples above, it’s the smallest, <em>trivial</em> versions of the problem. This is usually some case like \( f(0) \), \( f(1) \), or something similar.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="footnotes">Footnotes</h2>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:factorial">
+      <p>https://en.wikipedia.org/wiki/Factorial <a href="#fnref:factorial" class="reversefootnote">⤴</a></p>
+    </li>
+    <li id="fn:tree-recursion">
+      <p>Recursion on trees (with tree recursion) <em>is</em> a thing, and we’ll be covering it later. <a href="#fnref:tree-recursion" class="reversefootnote">⤴</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/cs61a/week4
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

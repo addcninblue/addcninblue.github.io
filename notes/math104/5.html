@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 5 - Liminf and Limsup</title>
+  <meta name="description" content="Examining Properties of a Bounded Sequence">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/math104/5">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 5 - Liminf and Limsup">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/math104/5">
+  <meta property="og:description" content="Examining Properties of a Bounded Sequence">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 5 - Liminf and Limsup">
+  <meta name="twitter:description" content="Examining Properties of a Bounded Sequence">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 5 - Liminf and Limsup</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#examining-properties-of-a-bounded-sequence">Examining Properties of a Bounded Sequence</a>
+    <ul>
+      <li><a href="#example-1">Example 1</a></li>
+      <li><a href="#example-2">Example 2</a></li>
+    </ul>
+  </li>
+  <li><a href="#lemma-boundedness-and-infimums-and-supremums">Lemma: Boundedness and Infimums and Supremums</a></li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="examining-properties-of-a-bounded-sequence">Examining Properties of a Bounded Sequence</h2>
+
+<p>We first examine some examples regarding the liminf and limsup of a bounded sequence, and we will discover theorems regarding them after.</p>
+
+<p><strong>Def</strong>: A bounded sequence <script type="math/tex">(a_n)</script> has the property that for all <script type="math/tex">n</script>, we can define the following:</p>
+<blockquote class="proof">
+  <ul>
+    <li><script type="math/tex">I_N := \inf \{a_n, n > N \}</script></li>
+    <li><script type="math/tex">S_N := \sup \{a_n, n > N\}</script></li>
+  </ul>
+</blockquote>
+
+<hr class="hr-subsection" />
+
+<h3 id="example-1">Example 1</h3>
+<p>Take the example of <script type="math/tex">a_n = (1, -1, 1/2, -1/2, ...)</script></p>
+<blockquote class="proof">
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: center"><script type="math/tex">I_N</script></th>
+        <th style="text-align: center"><script type="math/tex">S_N</script></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center"><script type="math/tex">I_1 = \inf\{ a_n, n>1 \} = -1</script></td>
+        <td style="text-align: center"><script type="math/tex">S_1 = \sup\{ a_n, n>1 \} = 1/2</script></td>
+      </tr>
+      <tr>
+        <td style="text-align: center"><script type="math/tex">I_2 = \inf\{ a_n, n>2 \} = -1/2</script></td>
+        <td style="text-align: center"><script type="math/tex">S_2 = \sup\{ a_n, n>2 \} = 1/2</script></td>
+      </tr>
+      <tr>
+        <td style="text-align: center"><script type="math/tex">I_3 = \inf\{ a_n, n>3 \} = -1/2</script></td>
+        <td style="text-align: center"><script type="math/tex">S_3 = \sup\{ a_n, n>3 \} = 1/3</script></td>
+      </tr>
+      <tr>
+        <td style="text-align: center"><script type="math/tex">I_4 = \inf\{ a_n, n>4 \} = -1/3</script></td>
+        <td style="text-align: center"><script type="math/tex">S_4 = \sup\{ a_n, n>4 \} = 1/3</script></td>
+      </tr>
+      <tr>
+        <td style="text-align: center"><script type="math/tex">...</script></td>
+        <td style="text-align: center"><script type="math/tex">...</script></td>
+      </tr>
+      <tr>
+        <td style="text-align: center"><script type="math/tex">I_n = (-1, -1/2, -1/2, -1/3...)</script></td>
+        <td style="text-align: center"><script type="math/tex">S_n = (1/2, 1/2, 1/3, 1/3, ...)</script></td>
+      </tr>
+      <tr>
+        <td style="text-align: center"><script type="math/tex">lim_{n\to\infty} I_N = 0</script></td>
+        <td style="text-align: center"><script type="math/tex">lim_{n\to\infty} S_N = 0</script></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>In this case, we observe that <script type="math/tex">I_1 \leq I_2 \leq ... \leq \lim_{n\to\infty}I_n \leq \lim_{n\to\infty}a_n \leq \lim_{n\to\infty} S_n \leq ... \leq S_2 \leq S_1</script>, so we can see that <script type="math/tex">a_n</script> seems to converge.</p>
+</blockquote>
+
+<hr class="hr-subsection" />
+
+<h3 id="example-2">Example 2</h3>
+<p>Take the example of <script type="math/tex">a_n = (-1, 1, -1, 1, ...)</script></p>
+<blockquote class="proof">
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: center">Sequence</th>
+        <th style="text-align: center">Limit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center"><script type="math/tex">I_N = -1\ \forall N</script></td>
+        <td style="text-align: center"><script type="math/tex">\lim_{n\to\infty} I_N = -1</script></td>
+      </tr>
+      <tr>
+        <td style="text-align: center"><script type="math/tex">S_N = 1\ \forall N</script></td>
+        <td style="text-align: center"><script type="math/tex">\lim_{n\to\infty} S_N = 1</script></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>In this case, we can see that <script type="math/tex">a_n</script> seems to <em>diverge</em>.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="lemma-boundedness-and-infimums-and-supremums">Lemma: Boundedness and Infimums and Supremums</h2>
+<p>Based on our observations above,</p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/math104/5
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

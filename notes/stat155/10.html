@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 10 - Back to Zero Sum Games</title>
+  <meta name="description" content="Review: Proof of Arrow’s Impossibility Theorem Deferred to textbook, page 224.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/stat155/10">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 10 - Back to Zero Sum Games">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/stat155/10">
+  <meta property="og:description" content="Review: Proof of Arrow’s Impossibility Theorem Deferred to textbook, page 224.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 10 - Back to Zero Sum Games">
+  <meta name="twitter:description" content="Review: Proof of Arrow’s Impossibility Theorem Deferred to textbook, page 224.">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 10 - Back to Zero Sum Games</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#review-proof-of-arrows-impossibility-theorem">Review: Proof of Arrow’s Impossibility Theorem</a></li>
+  <li><a href="#zero-sum-games">Zero Sum Games</a>
+    <ul>
+      <li><a href="#matching-pennies">Matching Pennies</a></li>
+      <li><a href="#odd-even">Odd-Even</a></li>
+    </ul>
+  </li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="review-proof-of-arrows-impossibility-theorem">Review: Proof of Arrow’s Impossibility Theorem</h2>
+<p>Deferred to textbook, page 224.</p>
+
+<hr />
+
+<h2 id="zero-sum-games">Zero Sum Games</h2>
+<p>Recall the <strong>payoff diagram</strong> from the first few notes. This will be useful later on:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Player 1 \ Player 2</td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>-2</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A zero-sum game has the property that the sum of the outcomes will be 0.</p>
+
+<p>Looking at outcomes, we have a distribution of values for the game. If the expected value of the game is 0, it is called <strong>fair</strong>. If the value is positive, it <strong>favors Player 1</strong>. If the value is negative, it <strong>favors Player 2</strong>.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="matching-pennies">Matching Pennies</h3>
+<p>Player 1 and 2 choose heads or tails, independently. If choices match, Player 2 gets 1 cent from Player 1, otherwise Player 1 gets 1 cent from Player 2.</p>
+
+<p>Payoff diagram (aka <strong>strategic description</strong>):</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>P1 \ P2</td>
+      <td>H</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>H</td>
+      <td>-1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>1</td>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="hr-subsection" />
+
+<h3 id="odd-even">Odd-Even</h3>
+<p>Both players call out 1 or 2. If the sum is even, P2 wins. Otherwise, P1 wins.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>P1 \ P2</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>-3</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>-3</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If Player 2 calls 1, then on average, Player 1 wins 1/2. If Player 2 calls 2, then on average, Player 1 wins -1/2.</p>
+
+<p>Suppose instead Player 1 calls 1 3/5 of the time.</p>
+<ul>
+  <li>If P2 calls 1, the expected value is 0.</li>
+  <li>If P2 calls 2, the expected value is 0.2.</li>
+</ul>
+
+<p>Based on our payoff diagram,</p>
+<ul>
+  <li>Player 1 wants to maximize the minimum of <script type="math/tex">\{-2p -3 (1-p), -3 - 4(1-p)\}</script></li>
+  <li>Player 2 wants to minimize the maximum of <script type="math/tex">\{-2p -3 (1-p), -3 - 4(1-p)\}</script></li>
+</ul>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/stat155/10
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

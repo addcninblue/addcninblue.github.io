@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 2 - Combinatorial Games</title>
+  <meta name="description" content="Combinatorial Games First, let’s take a look at some combinatorial games.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/stat155/2">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 2 - Combinatorial Games">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/stat155/2">
+  <meta property="og:description" content="Combinatorial Games First, let’s take a look at some combinatorial games.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 2 - Combinatorial Games">
+  <meta name="twitter:description" content="Combinatorial Games First, let’s take a look at some combinatorial games.">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 2 - Combinatorial Games</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#combinatorial-games">Combinatorial Games</a>
+    <ul>
+      <li><a href="#penalty-kicks">Penalty Kicks</a></li>
+      <li><a href="#prisoners-dilemma">Prisoner’s Dilemma</a></li>
+    </ul>
+  </li>
+  <li><a href="#subtraction-game">Subtraction Game</a></li>
+  <li><a href="#homework">Homework</a></li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="combinatorial-games">Combinatorial Games</h2>
+<p>First, let’s take a look at some combinatorial games.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="penalty-kicks">Penalty Kicks</h3>
+<ul>
+  <li>Penalty Kicks is a Zero Sum Game</li>
+  <li>Payoff for this problem (numbers indicate probability of scoring):</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Player \ Keeper</td>
+      <td>L</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>L</td>
+      <td>0.5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>R</td>
+      <td>1</td>
+      <td>0.8</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="hr-subsection" />
+
+<h3 id="prisoners-dilemma">Prisoner’s Dilemma</h3>
+<ul>
+  <li>Prisoner’s Dilemma is a General Sum Game</li>
+  <li>Payoff for this problem (numbers indicate time in jail):</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Prisoner 1 \ Prisoner 2</td>
+      <td>Silent</td>
+      <td>Confess</td>
+    </tr>
+    <tr>
+      <td>Silent</td>
+      <td>(1, 1)</td>
+      <td>(-10, 0)</td>
+    </tr>
+    <tr>
+      <td>Confess</td>
+      <td>(0, -10)</td>
+      <td>(5, 5)</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>Nash equilibrium says they will (Confess, Confess)
+    <ul>
+      <li>Example of individual rationality.</li>
+    </ul>
+  </li>
+  <li>(Sidenote: Pareto optimality works for group)</li>
+</ul>
+
+<hr class="hr-subsection" />
+
+<p>Requirements to be a combinatorial game: <sup id="fnref:partisan-games"><a href="#fn:partisan-games" class="footnote">1</a></sup></p>
+<ul>
+  <li>2 players</li>
+  <li>No ties; there is a winner and game ends</li>
+  <li>Taking turns (no simultaneous play)</li>
+  <li>Impartial (no differences in moves available to players)</li>
+  <li>No randomness</li>
+  <li>No hidden information</li>
+  <li>Ending Conditions: The game will end in a position where one of the players cannot move. There are two types of endings:
+    <ul>
+      <li>The last player to move wins (<strong>Normal Play</strong>).</li>
+      <li>If last player to move loses (<strong>Misère Play</strong>)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The games we will study are called <strong>progressively bounded impartial combinatorial games</strong>, or <strong>PBICG</strong>. The games will have a fixed set of positions <script type="math/tex">X</script> and rules that dictate how to get from <script type="math/tex">x \in X</script> to <script type="math/tex">y \in X</script>. If you can go from <script type="math/tex">x</script> to <script type="math/tex">y</script>, then we say that <script type="math/tex">y</script> is a follower of <script type="math/tex">x</script>, and we write <script type="math/tex">y \in F(x) \subseteq X</script>. Terminal positions in a game are ones that have no followers. In other words, <script type="math/tex">f(x) = \emptyset</script>. The game ends when one of the players is at a terminal position on their turn.</p>
+
+<p><strong>Progressively Bounded</strong>: <script type="math/tex">% <![CDATA[
+\forall x \in X, \exists B(x) < \infty %]]></script> such that the game ends in at most <script type="math/tex">B(x)</script> moves. In other words, from any valid start position, there is a bounded set of possible moves that all terminate the game. This can be thought of as a directed graph.</p>
+<ul>
+  <li>Ferguson’s notation: We start with a graph <script type="math/tex">x</script> and a transition function <script type="math/tex">F</script>. As a directed graph, we have edges where source is <script type="math/tex">x</script> and destination is <script type="math/tex">y</script>, where <script type="math/tex">x</script> transitions to <script type="math/tex">y</script>. <script type="math/tex">X</script> represents all nodes (states) of a game, and <script type="math/tex">F(x)</script> represents all states that state <script type="math/tex">x</script> can transition to.</li>
+</ul>
+
+<h2 id="subtraction-game">Subtraction Game</h2>
+<p>A take-away game.</p>
+
+<p>This game is defined by <script type="math/tex">S=\{1,2,3\}</script>. Start with <script type="math/tex">n</script> chips. On your turn, you take away 1, 2, or 3 chips.</p>
+
+<p>Take the example of 3 chips. This is an example of an <strong>end position</strong> since the game can be ended in one move.</p>
+
+<p>Take the example of 4 chips. It doesn’t matter what the player does, since the game is unwinnable.<sup id="fnref:perfect-play"><a href="#fn:perfect-play" class="footnote">2</a></sup> In other words, the previous player can guarantee a win.</p>
+
+<h2 id="homework">Homework</h2>
+<ul>
+  <li>Write down what happens in the above subtraction game when <script type="math/tex">n=1, 2, ... ,10</script>. Try to find a pattern. Label every situation.</li>
+</ul>
+
+<hr class="hr-subsection" />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:partisan-games">
+      <p>We will not be studying partisan games. A good book to read about other kinds of games is <strong>Winning Ways for your Mathematical Plays</strong>, by Berlekamp. <a href="#fnref:partisan-games" class="reversefootnote">⤴</a></p>
+    </li>
+    <li id="fn:perfect-play">
+      <p>We assume no human error. <a href="#fnref:perfect-play" class="reversefootnote">⤴</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/stat155/2
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

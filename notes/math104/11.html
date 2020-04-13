@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 11 - Continuous Functions</title>
+  <meta name="description" content="Theorems For some function continuous, the Extreme Value Theorem and Intermediate Value Theorem apply. More generally, for continuous, we get is compact is compact. is connected is connected.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/math104/11">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 11 - Continuous Functions">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/math104/11">
+  <meta property="og:description" content="Theorems For some function continuous, the Extreme Value Theorem and Intermediate Value Theorem apply. More generally, for continuous, we get is compact is compact. is connected is connected.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 11 - Continuous Functions">
+  <meta name="twitter:description" content="Theorems For some function continuous, the Extreme Value Theorem and Intermediate Value Theorem apply. More generally, for continuous, we get is compact is compact. is connected is connected.">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 11 - Continuous Functions</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#theorems">Theorems</a></li>
+  <li><a href="#last-time">Last Time</a></li>
+  <li><a href="#continuity-for-functions">Continuity For Functions</a>
+    <ul>
+      <li><a href="#example-1">Example 1</a></li>
+      <li><a href="#example-2">Example 2</a></li>
+      <li><a href="#example-3">Example 3</a></li>
+      <li><a href="#remark">Remark</a></li>
+    </ul>
+  </li>
+  <li><a href="#continuity-for-general-spaces">Continuity For General Spaces</a></li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="theorems">Theorems</h2>
+<p>For some function <script type="math/tex">f: [a, b] \rightarrow \mathbb{R}</script> continuous, the Extreme Value Theorem and Intermediate Value Theorem apply. More generally, for <script type="math/tex">f: (X, d_x) \rightarrow (Y, d_y)</script> continuous, we get</p>
+<ul>
+  <li><script type="math/tex">k \subset X</script> is compact <script type="math/tex">\implies f(k) \subset Y</script> is compact.</li>
+  <li><script type="math/tex">E \subset X</script> is connected <script type="math/tex">\implies f(E)</script> is connected.</li>
+</ul>
+
+<p>Recall that the Heine-Borel Theorem gives us <script type="math/tex">k \subset \mathbb{R}^n \textrm{ compact } \iff K \textrm{ is closed and bounded}</script>.</p>
+
+<h2 id="last-time">Last Time</h2>
+<blockquote class="proof">
+  <p><strong>Def</strong>: <script type="math/tex">(X,d)</script> metric space:</p>
+
+  <p><script type="math/tex">(X_n) \in X</script> seq. Say <script type="math/tex">(X_n)</script> converges to <script type="math/tex">x_0 \in X</script>.If <script type="math/tex">\forall \epsilon > 0, \exists N > 0</script> such that <script type="math/tex">% <![CDATA[
+d(x_n, x_0) < \epsilon \forall n> N %]]></script>.</p>
+</blockquote>
+
+<blockquote class="proof">
+  <p><strong>Def</strong>: <script type="math/tex">f: (X, d_x) \rightarrow (Y, d_y)</script></p>
+
+  <p>We say <script type="math/tex">f</script> is continuous at <script type="math/tex">x_0 \in X</script> if <script type="math/tex">\forall</script> sequence <script type="math/tex">(x_n) \in X</script> that converges to <script type="math/tex">x_0</script>, we have <script type="math/tex">(f(x_n)) \in Y</script> converges to <script type="math/tex">f(x_0)</script>.</p>
+</blockquote>
+
+<h2 id="continuity-for-functions">Continuity For Functions</h2>
+<blockquote class="proof">
+  <p><strong>Theorem</strong>: <script type="math/tex">f: X \rightarrow Y</script> is continuous at <script type="math/tex">x_0</script> <script type="math/tex">\iff</script> <script type="math/tex">\forall \epsilon > 0, \exists \delta > 0</script> such that <script type="math/tex">% <![CDATA[
+d_x(x, x_0) < \delta \implies \delta_y(f(x), f(x_0)) < \epsilon %]]></script>.</p>
+</blockquote>
+
+<blockquote class="proof">
+  <p><strong>Proof</strong>:
+(←): Given the above premise, let <script type="math/tex">(x_n) \in X</script> be a sequence such that <script type="math/tex">\lim x_n = x_0</script>. We want to prove <script type="math/tex">\lim f(x_n) \leq f(x_0)</script>. In other words, <script type="math/tex">\forall \epsilon > 0, \exists N > 0</script> such that <script type="math/tex">% <![CDATA[
+d_y(f(x_n)-f(x_0)) < \epsilon\ \forall n > N %]]></script></p>
+
+  <p><script type="math/tex">\exists \delta > 0</script> such that <script type="math/tex">% <![CDATA[
+d_x(x, x_0) < \delta \implies d_y(f(x), f(x_0)) < \epsilon %]]></script> by the premise.<br />
+<script type="math/tex">\exists N > 0</script> such that <script type="math/tex">% <![CDATA[
+d_x(x, x_0) < \delta %]]></script> for any <script type="math/tex">n>N</script> since <script type="math/tex">\lim x_n = x_0</script></p>
+
+  <p>At this point, <script type="math/tex">N</script> depends on <script type="math/tex">\delta</script> and <script type="math/tex">\delta</script> depends on <script type="math/tex">\epsilon</script>.
+<script type="math/tex">\forall \epsilon > 0</script>, we found <script type="math/tex">N > 0</script> such that if <script type="math/tex">n>N</script>, then <script type="math/tex">% <![CDATA[
+d_x(x_n, x_0) < \delta %]]></script>, meaning <script type="math/tex">% <![CDATA[
+d_y(f(x_n), f(x_0)) < \epsilon %]]></script>.</p>
+
+  <p>(→): Proof by Contradiction.</p>
+
+  <p>The converse (ie. assuming the conclusion is false) is <script type="math/tex">\exists \epsilon > 0</script> such that <script type="math/tex">\forall \delta > 0</script> such that <script type="math/tex">\forall \delta > 0</script>, <script type="math/tex">\exists x \in X</script> such that <script type="math/tex">% <![CDATA[
+d(x, x_0) < \delta %]]></script> but <script type="math/tex">d(f(x), f(x_0)) \geq \epsilon</script></p>
+
+  <p>Let <script type="math/tex">\delta = 1</script>. <script type="math/tex">\exists x_n \in X</script> such that <script type="math/tex">% <![CDATA[
+d(x_1, x_0) < 1 %]]></script> but <script type="math/tex">d(f(x_1), f(x_0)) \geq \epsilon</script><br />
+Let <script type="math/tex">\delta = 1/n</script>. <script type="math/tex">\exists x_n \in X</script> such that <script type="math/tex">% <![CDATA[
+d(x_1, x_0) < 1/n %]]></script> but <script type="math/tex">d(f(x_1), f(x_0)) \geq \epsilon</script></p>
+
+  <p>Consider <script type="math/tex">(x_n)</script>. We have <script type="math/tex">\lim x_n = x_0</script> but <script type="math/tex">f(x_n)</script> doesn’t converge to <script type="math/tex">f(x_0)</script>.</p>
+</blockquote>
+
+<p>The converse: <script type="math/tex">f: S \rightarrow \mathbb{R}, S \in \mathbb{R}</script>. <script type="math/tex">f</script> is continuous at <script type="math/tex">x_0 \in S</script> if and only if <script type="math/tex">\forall \epsilon > 0, \exists \delta > 0</script> such that <script type="math/tex">% <![CDATA[
+\vert x - x_0 \vert < \delta %]]></script> implies that <script type="math/tex">% <![CDATA[
+\vert f(x) - f(x_0) \vert < \epsilon %]]></script>.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="example-1">Example 1</h3>
+<p>Prove that <script type="math/tex">f</script> is not continous at <script type="math/tex">x=2</script>.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+f(x) =
+  \begin{cases} 
+    x, & x \neq 2\\
+    3, & x=2\\
+  \end{cases} %]]></script>
+
+<blockquote class="proof">
+  <p><strong>Intuition</strong>: If we take an delta-neighborhood around <script type="math/tex">x=2</script>, we will see there exists no points around it in the image.</p>
+
+  <p><strong>Proof</strong>: Take <script type="math/tex">\epsilon = 1/2</script>. <script type="math/tex">\forall \delta > 0, \exists x \in \mathbb{R}</script> such that <script type="math/tex">% <![CDATA[
+\vert x - 2 \vert < \delta %]]></script>, but <script type="math/tex">\vert f(x) - 3 \vert > 1/2</script>.</p>
+</blockquote>
+
+<hr class="hr-subsection" />
+
+<h3 id="example-2">Example 2</h3>
+<p>Let <script type="math/tex">f(x) = x</script>. We want to show that it is continuous everywhere.</p>
+<blockquote class="proof">
+  <p><strong>Proof</strong>: <script type="math/tex">\forall x_0 \in \mathbb{R}</script>, <script type="math/tex">\forall \epsilon > 0</script>, take <script type="math/tex">\delta = \epsilon</script>. Then, <script type="math/tex">% <![CDATA[
+\vert x-x_0 \vert < \delta = \epsilon \implies \vert f(x) - f(x_0) \vert < \epsilon %]]></script></p>
+</blockquote>
+
+<hr class="hr-subsection" />
+
+<h3 id="example-3">Example 3</h3>
+<p>Let <script type="math/tex">f(x) = x^2</script>. We want to show that it is continuous everywhere.</p>
+<blockquote class="proof">
+  <p><strong>Proof</strong>: <script type="math/tex">\forall x_0 \in \mathbb{R}</script>, <script type="math/tex">\forall \epsilon > 0</script>, we want to find <script type="math/tex">\delta > 0</script> such that if <script type="math/tex">% <![CDATA[
+\vert x - x_0 \vert < \delta %]]></script>, then <script type="math/tex">% <![CDATA[
+\vert x^2 - x_0^2 \vert < \epsilon %]]></script>.<br />
+Notice that <script type="math/tex">\vert x^2 - x_0^2 \vert = \vert x - x_0 \vert \vert x + x_0 \vert</script>.</p>
+
+  <p>Take <script type="math/tex">\delta = \min(\frac{\epsilon}{y \vert x_0 \vert}, \vert x_0 \vert)</script>. We get <script type="math/tex">% <![CDATA[
+\vert x - x_0 \vert < \delta \leq \vert x_0 \vert %]]></script>, and <script type="math/tex">\vert x + x_0 \leq \vert x-x_0 \vert + 2 \vert x_0 \vert \leq 3\vert x_0 \vert</script>.<br />
+Then, <script type="math/tex">\vert x - x_0 \vert \vert x + x_0 \vert</script> <script type="math/tex">% <![CDATA[
+< \delta * 3 \vert x_0 \vert \leq \frac{\epsilon}{4 \vert x_0} * 3 \vert x_0 \vert %]]></script> <script type="math/tex">% <![CDATA[
+< \epsilon %]]></script>.</p>
+
+  <p>Alternatively, take <script type="math/tex">\delta = \min\{1, \frac{\epsilon}{1 + 2\vert x_0 \vert} \}</script>. We get <script type="math/tex">% <![CDATA[
+\vert x - x_0 \vert < \delta \leq 1 %]]></script>, and <script type="math/tex">% <![CDATA[
+\vert x + x_0 \vert \leq \vert x - x_0 \vert + 2 \vert x_0 \vert < 1 + 2 \vert x_0 \vert %]]></script>. This gives us <script type="math/tex">% <![CDATA[
+\vert x - x_0 \vert \vert x + x_0 \vert < \delta * (1 + 2\vert x_0 \vert)\leq \epsilon %]]></script>.</p>
+</blockquote>
+
+<hr class="hr-subsection" />
+
+<h3 id="remark">Remark</h3>
+<p><script type="math/tex">\delta > 0</script> typically depends on both <script type="math/tex">\epsilon > 0</script> and <script type="math/tex">x_0 \in X</script>.</p>
+
+<hr />
+
+<h2 id="continuity-for-general-spaces">Continuity For General Spaces</h2>
+<blockquote class="proof">
+  <p><strong>Theorem</strong>: <script type="math/tex">f: (X, d_x) \rightarrow (Y, d_y)</script> is continuous if and only if <script type="math/tex">\forall U \subset Y</script> open, <script type="math/tex">f^{-1} (U) \subset X</script> is open.
+Remark. <script type="math/tex">f^{-1}</script> is not a function; it is defined as <script type="math/tex">f^{-1} := {x \in X \vert f(x) \in U}</script>.</p>
+
+  <p><strong>Proof</strong>:</p>
+
+  <p>(→) <script type="math/tex">f</script> continuous, <script type="math/tex">U \subset Y</script> open. We want to show that <script type="math/tex">f^{-1}(U) \subset X</script> is open, ie. <script type="math/tex">\forall x \in f^{-1}(U), \exists r > 0</script> such that <script type="math/tex">B_r(x) \subset f^{-1}(U)</script>.<br />
+Since <script type="math/tex">U</script> is open, <script type="math/tex">\exists \epsilon > 0</script> such that <script type="math/tex">B_\epsilon(y) \subset U</script>.<br />
+Since <script type="math/tex">f</script> is continuous, we can find a <script type="math/tex">\delta</script> such that if <script type="math/tex">z \in B_\delta(x)</script>, then <script type="math/tex">f(z) \in B_\epsilon(y)</script>, which implies that <script type="math/tex">z \in f^{-1}(U)</script>, and therefore <script type="math/tex">B_\delta(x) \subset f^{-1}(U)</script>.</p>
+
+  <p>(←) Given that <script type="math/tex">\forall U \subset Y</script> open, <script type="math/tex">f^{-1} (U) \subset X</script> is open, <script type="math/tex">\forall x_0 \in X, \forall \epsilon > 0</script>, we want to show that <script type="math/tex">\exists \delta > 0</script> such that <script type="math/tex">% <![CDATA[
+d(x, x_0) < \delta \implies d(f(x), f(x_0)) < \epsilon %]]></script>.<br />
+<script type="math/tex">B_{\epsilon}(f(x_0)) \subset Y</script> is open. By our premise, <script type="math/tex">f^{-1}(B_{\epsilon}(f(x_0))) \subset  X</script> is open.<br />
+Therefore, <script type="math/tex">\exists \delta > 0</script> such that <script type="math/tex">B_\delta(x_0) \subset f^{-1} (B_\epsilon (f(x_0)))</script>, hence if <script type="math/tex">% <![CDATA[
+d(x, x_0)< \delta %]]></script>, then <script type="math/tex">% <![CDATA[
+d(f(x), f(x_0)) < \epsilon %]]></script>.</p>
+</blockquote>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/math104/11
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Homelab with NixOS, Jupyter, and More</title>
+  <meta name="description" content="For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found here. I chose to install NixOS, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/2020/04/13/homelab/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+
+
+  
+  <meta property="og:title" content="Homelab with NixOS, Jupyter, and More">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/2020/04/13/homelab/">
+  <meta property="og:description" content="For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found here. I chose to install NixOS, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Homelab with NixOS, Jupyter, and More">
+  <meta name="twitter:description" content="For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bul...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Homelab with NixOS, Jupyter, and More</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#rationale-for-parts">Rationale For Parts</a></li>
+  <li><a href="#nixos">NixOS</a></li>
+  <li><a href="#jupyterhub">JupyterHub</a>
+    <ul>
+      <li><a href="#gpu-passthrough">GPU Passthrough</a></li>
+      <li><a href="#bind-mounting-folders">Bind-Mounting Folders</a></li>
+    </ul>
+  </li>
+  <li><a href="#todo-raid-lvm-and-bcache">TODO: RAID, LVM, and Bcache</a></li>
+  <li><a href="#some-screenshots">Some Screenshots</a></li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <p>For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found <a href="https://pcpartpicker.com/user/addcn/saved/kfN2Vn">here</a>. I chose to install <a href="https://nixos.org/">NixOS</a>, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.</p>
+
+<h2 id="rationale-for-parts">Rationale For Parts</h2>
+<p>I chose a 3700X mainly for the insane number of cores, as hosting several concurrent applications would require a lot of multithreading. I considered the 3600, and I figured the increase in cores was worth the small bump in price. For the GPU, I debated between the 1080 Ti and a 2070 Super, and I eventually opted for the 1080 Ti for the increased memory, figuring that the FP16 performance wouldn’t be seen by me (at least not for a while). The main hard drive is an NVMe SSD. The hard drives are used Barracuda drives, and will be purchased off of Craigslist. Eventually, once the coronavirus wave passes and I purchase the hard drives, I will use <a href="https://www.kernel.org/doc/Documentation/bcache.txt">bcache</a> to turn the SSD into a caching layer, with the main memory on the hard drives. The configuration will use LVM on top of software RAID 6, so that storage is very easily configurable and reliable.</p>
+
+<h2 id="nixos">NixOS</h2>
+<p>NixOS installation is pretty straightforward. Their <a href="https://nixos.wiki/wiki/NixOS_Installation_Guide">guide</a> is very well written, so I defer to them for installation instructions. My dotfiles can be found <a href="https://github.com/addcninblue/dotfiles/tree/nixos">here</a>.</p>
+
+<h2 id="jupyterhub">JupyterHub</h2>
+<p>Since I would be doing a decent amount of computation, and since my main laptop is a Pixelbook, I wanted to be able to have access to a Python interpreter anywhere, particularly hosted on a website. As a result, I decided to use <a href="https://jupyterhub.readthedocs.io/en/stable/">Jupyterhub</a>, which is pretty stable and has really good documentation. I set up the installation in an LXC container running Ubuntu 18.04, following the instructions <a href="https://jupyterhub.readthedocs.io/en/stable/installation-guide-hard.html">here</a>. There were a few hurdles:</p>
+
+<p>An issue you might run into is installing additional packages in the default conda runtime. If you followed the installation guide all the way through <code class="highlighter-rouge">Install a default conda environment for all users</code>, then you should have <code class="highlighter-rouge">conda</code> installed at <code class="highlighter-rouge">/opt/conda/bin/conda</code>. I tried to install more packages into this environment by doing <code class="highlighter-rouge">sudo /opt/conda/bin/conda install --prefix /opt/conda/envs/python __packagename__</code>, but it didn’t work. Ultimately, the steps I took were probably more overkill than necessary, so I would love for anyone to tell me that my steps are unnecessary:</p>
+<ol>
+  <li>I created a new conda environment for each new package I wanted to install: <code class="highlighter-rouge">sudo /opt/conda/bin/conda create --prefix /opt/conda/envs/python python=3.7 ipykernel matplotlib tensorflow-gpu</code></li>
+  <li>Then, I followed the second step and installed it as a new kernel: <code class="highlighter-rouge">sudo /opt/conda/envs/python/bin/python -m ipykernel install --prefix=/opt/jupyterhub/ --name 'tf-gpu' --display-name "tf-gpu"
+</code></li>
+</ol>
+
+<h3 id="gpu-passthrough">GPU Passthrough</h3>
+<p>This was by far the most annoying part of this build. Stéphane Graber’s blog has a very very well written <a href="https://stgraber.org/2017/03/21/cuda-in-lxd/">post</a> about how to get GPU passthrough to work, but since I am using different operating systems, I will highlight some things that might trip others up:</p>
+<ul>
+  <li>The Nvidia driver version <em>must be exactly the same</em>. <strong>This includes the minor version!</strong> A driver mismatch will cause you endless pain and suffering. For those who are venturing down this path, I recommend to first install the host Nvidia driver and CUDA driver, and then download matching versions for the LXC client.</li>
+  <li>When you install the <code class="highlighter-rouge">.run</code> Nvidia driver on the LXC client, you might run into something along the lines of “xxx kernel module is already installed”. To fix this, append <code class="highlighter-rouge">--no-kernel-module</code> to the script (so it looks something like <code class="highlighter-rouge">sudo sh NVIDIA-Linux-x86_64-440.36.run --no-kernel-module</code>). I don’t fully understand this, but my understanding is that since LXC containers use the host kernel, the module is getting loaded by the host operating system, so the kernel module doesn’t need to be installed by the guest container. Here, that would mean that we would only need to install the driver for the tools, not for the kernel module).</li>
+</ul>
+
+<h3 id="bind-mounting-folders">Bind-Mounting Folders</h3>
+<p>The next thing I wanted to do was to bind-mount folders from my host operating system into the container to be accessible by JupyterHub. Since the installation of JupyterHub meant that each user would get their own home folder, I figured bind-mounting home from the host operating system to home on the container would be trivial. As all things go, it wasn’t.</p>
+
+<p>Again, Stéphane Graber’s blog has another <a href="https://stgraber.org/2017/06/15/custom-user-mappings-in-lxd-containers/">post</a> on getting user mappings working in containers. This time, I didn’t run into particular issues, and following his mappings worked very well.</p>
+
+<h2 id="todo-raid-lvm-and-bcache">TODO: RAID, LVM, and Bcache</h2>
+<p>Once the coronavirus situation dies down, I will be able to purchase the hard drives, and I will edit this part with the installation process.</p>
+
+<h2 id="some-screenshots">Some Screenshots</h2>
+<p>Jupyterhub up and running:</p>
+
+<p><img src="/assets/posts/homelab/jupyter.png" alt="jupyterhub" /></p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/2020/04/13/homelab/
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Week 5 - Abstractions</title>
+  <meta name="description" content="Container Types Remember back in week 1 when I said that there were “other container types that we will get into later”? Well, here they are: List type: A mutable container. Lists use square brackets. # notice that lists can hold all kinds of elements, including other containers &amp;gt;&amp;gt;&amp;gt; [&quot;Hello!&quot;, 2, True, [1], (0, 1)] [&quot;Hello!&quot;, 2, True, [1], (0, 1)] Tuple type: An immutable container. Tuples use round brackets. 1 # same with tuples! &amp;gt;&amp;gt;&amp;gt; (&quot;Hello!&quot;, 2, True, [1], (0)) (&quot;Hello!&quot;, 2, True, [1], (0)) Or parentheses, if you’re like that ⤴">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/cs61a/week5">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+
+
+  
+  <meta property="og:title" content="Week 5 - Abstractions">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/cs61a/week5">
+  <meta property="og:description" content="Container Types Remember back in week 1 when I said that there were “other container types that we will get into later”? Well, here they are: List type: A mutable container. Lists use square brackets. # notice that lists can hold all kinds of elements, including other containers &amp;gt;&amp;gt;&amp;gt; [&quot;Hello!&quot;, 2, True, [1], (0, 1)] [&quot;Hello!&quot;, 2, True, [1], (0, 1)] Tuple type: An immutable container. Tuples use round brackets. 1 # same with tuples! &amp;gt;&amp;gt;&amp;gt; (&quot;Hello!&quot;, 2, True, [1], (0)) (&quot;Hello!&quot;, 2, True, [1], (0)) Or parentheses, if you’re like that ⤴">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Week 5 - Abstractions">
+  <meta name="twitter:description" content="Container Types Remember back in week 1 when I said that there were “other container types that we will get into later”? Well, here they are: List type: A mutable container. Lists use square bracke...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Week 5 - Abstractions</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#container-types">Container Types</a>
+    <ul>
+      <li><a href="#list-operations">List Operations</a></li>
+    </ul>
+  </li>
+  <li><a href="#an-aside-on-mutability">An Aside on Mutability</a></li>
+  <li><a href="#abstractions-an-abstract">Abstractions: An Abstract</a></li>
+  <li><a href="#a-motivation-for-abstractions">A Motivation for Abstractions</a></li>
+  <li><a href="#a-functional-introduction-to-abstractions">A Functional Introduction to Abstractions</a>
+    <ul>
+      <li><a href="#implementation-1">Implementation 1</a></li>
+      <li><a href="#implementation-2">Implementation 2</a></li>
+    </ul>
+  </li>
+  <li><a href="#footnotes">Footnotes</a></li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="container-types">Container Types</h2>
+<p>Remember back in <a href="./week1#primitive-expressions">week 1</a> when I said that there were “other container types that we will get into later”? Well, here they are:</p>
+<ul>
+  <li>List type: A <em>mutable</em> container. Lists use <em>square brackets</em>.
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># notice that lists can hold all kinds of elements, including other containers
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s">"Hello!"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+  <span class="p">[</span><span class="s">"Hello!"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Tuple type: An <em>immutable</em> container. Tuples use <em>round brackets</em>. <sup id="fnref:parentheses"><a href="#fn:parentheses" class="footnote">1</a></sup>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># same with tuples!
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="s">"Hello!"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+  <span class="p">(</span><span class="s">"Hello!"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="list-operations">List Operations</h3>
+<p>Here are some of the most commonly-used list operations, assuming <code class="highlighter-rouge">lst</code> is a list:</p>
+<ul>
+  <li><code class="highlighter-rouge">lst[start:end:count]</code>: Creates <em>a copy</em> of the list from starting position <code class="highlighter-rouge">start</code> to ending position <code class="highlighter-rouge">end</code>, taking every <code class="highlighter-rouge">count</code>th element. <code class="highlighter-rouge">start</code> defaults to <code class="highlighter-rouge">0</code>, <code class="highlighter-rouge">end</code> defaults to <code class="highlighter-rouge">len(lst)</code>, and <code class="highlighter-rouge">count</code> defaults to <code class="highlighter-rouge">1</code> when each is not specified.</li>
+  <li><code class="highlighter-rouge">lst.append(x)</code>: Appends x to the end of the list.</li>
+  <li><code class="highlighter-rouge">lst.extend(x)</code>: Extends x, an iterable, to the end of <code class="highlighter-rouge">lst</code>.
+    <ul>
+      <li>This is equivalent to appending each item from x to <code class="highlighter-rouge">lst</code>.</li>
+      <li>Or roughly in code:
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+      <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">lst.insert(pos, x)</code>: Inserts <code class="highlighter-rouge">x</code> at <code class="highlighter-rouge">pos</code> position.</li>
+  <li><code class="highlighter-rouge">lst.remove(x)</code>: Removes first item whose value is equal to <code class="highlighter-rouge">x</code></li>
+  <li><code class="highlighter-rouge">lst.pop(index)</code>: Removes item whose index is <code class="highlighter-rouge">index</code> from <code class="highlighter-rouge">lst</code>.</li>
+</ul>
+
+<p>For a full list of list operations, check the <a href="https://docs.python.org/3/tutorial/datastructures.html">Python reference</a>.</p>
+
+<h2 id="an-aside-on-mutability">An Aside on Mutability</h2>
+<p>You may have noticed that there wasn’t a section on tuple methods. This is because tuples are <em>immutable</em>, resulting in them only having two methods: <code class="highlighter-rouge">index</code> and <code class="highlighter-rouge">count</code>. <sup id="fnref:tuples"><a href="#fn:tuples" class="footnote">2</a></sup></p>
+
+<p>Immutability is a feature of certain objects in Python where the value of the object cannot be changed after being declared. This means that in the case of tuples, no matter what you do, once the tuple is declared, its values are final and unchangeable.</p>
+
+<p>You might ask, isn’t the following mutating the variable?</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>It’s not. The tuple itself is not changed; instead, the name <code class="highlighter-rouge">a</code> is <em>rebound</em> to a different value.</p>
+
+<h2 id="abstractions-an-abstract">Abstractions: An Abstract</h2>
+<p>Programmers are, by nature, lazy people. We try to simplify things, to the point where we try to abstract away components. Much like how driving a car doesn’t require knowing how the car works under the hood, <em>abstractions</em> allow programmers to write code that uses parts of other code without knowing how it works.</p>
+
+<h2 id="a-motivation-for-abstractions">A Motivation for Abstractions</h2>
+<p>Let’s take the example of a coordinate pair. This can be represented by a two-element tuple, like this: <code class="highlighter-rouge">(x, y)</code>. Suppose we were given these two points, <code class="highlighter-rouge">home</code> and <code class="highlighter-rouge">school</code>, and were told to create a <code class="highlighter-rouge">distance</code> function to compute the distance between any two points. This might be a valid function:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">home</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># I'm the center of the world
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">school</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="c1"># Let's make a function to compute the distance betweeen two points:
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="n">x_distance</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">y_distance</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">pythagorean_distance</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x_distance</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y_distance</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pythagorean_distance</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">distance</span><span class="p">(</span><span class="n">home</span><span class="p">,</span> <span class="n">school</span><span class="p">)</span>
+<span class="mf">5.0</span>
+</code></pre></div></div>
+
+<p>So far, this seems great! It looks like we can perform all sorts of computations to these coordinate objects. However, one problem will quickly arise.</p>
+
+<p>Suppose the container type of these coordinates is changed. Instead of a tuple of <code class="highlighter-rouge">(x, y)</code>, we’re now given a tuple of <code class="highlighter-rouge">(location_name, x, y)</code> (making our locations <code class="highlighter-rouge">("home", 0, 0)</code> and <code class="highlighter-rouge">("school", 3, 4)</code>). Our implementation of distance is now suddenly broken! This gives a motivation for <em>abstractions</em></p>
+
+<h2 id="a-functional-introduction-to-abstractions">A Functional Introduction to Abstractions</h2>
+<p>Now, with the power of abstractions, let’s say we’re given this <em>functional interface</em>:</p>
+<ul>
+  <li><code class="highlighter-rouge">make_location(location_name, x, y) -&gt; location</code>: A function that takes in a location name, an x coordinate, and a y coordinate, and returns a <em>location object</em>.</li>
+  <li><code class="highlighter-rouge">x_location(location) -&gt; x</code>: A function that takes in a location object and returns its x location.</li>
+  <li><code class="highlighter-rouge">y_location(location) -&gt; y</code>: A function that takes in a location object and returns its y location.</li>
+  <li><code class="highlighter-rouge">location_name(location) -&gt; name</code>: A function that takes in a location object and returns its name.</li>
+</ul>
+
+<p>With this, let’s make the <code class="highlighter-rouge">distance</code> function again:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="n">x_distance</span> <span class="o">=</span> <span class="n">x_location</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="n">x_location</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">y_distance</span> <span class="o">=</span> <span class="n">y_location</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_location</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">pythagorean_distance</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x_distance</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y_distance</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pythagorean_distance</span>
+</code></pre></div></div>
+<p>And let’s try it on our <code class="highlighter-rouge">home</code> and <code class="highlighter-rouge">school</code>, also defined below:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">home</span> <span class="o">=</span> <span class="n">make_location</span><span class="p">(</span><span class="s">"home"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">school</span> <span class="o">=</span> <span class="n">make_location</span><span class="p">(</span><span class="s">"school"</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">distance</span><span class="p">(</span><span class="n">home</span><span class="p">,</span> <span class="n">school</span><span class="p">)</span>
+<span class="mf">5.0</span>
+</code></pre></div></div>
+
+<p>Note that this abstraction makes it so that <em>the distance function works regardless of the implementation of the abstraction itself</em> !</p>
+
+<p>Two valid implementations of the abstractions could be as follows; notice that although the implementations are different, <strong>the distance function still works!</strong>:</p>
+
+<details>
+  <summary>
+    <h3 id="implementation-1">Implementation 1</h3>
+  </summary>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">### Abstraction ###
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">make_location</span><span class="p">(</span><span class="n">location_name</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">location_name</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">x_location</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">location</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">y_location</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">location</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">location_name</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">location</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1">### End Abstraction ###
+</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="n">x_distance</span> <span class="o">=</span> <span class="n">x_location</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="n">x_location</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">y_distance</span> <span class="o">=</span> <span class="n">y_location</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_location</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">pythagorean_distance</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x_distance</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y_distance</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pythagorean_distance</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">home</span> <span class="o">=</span> <span class="n">make_location</span><span class="p">(</span><span class="s">"home"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">school</span> <span class="o">=</span> <span class="n">make_location</span><span class="p">(</span><span class="s">"school"</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">distance</span><span class="p">(</span><span class="n">home</span><span class="p">,</span> <span class="n">school</span><span class="p">)</span>
+<span class="mf">5.0</span>
+</code></pre></div>  </div>
+
+</details>
+
+<details>
+  <summary>
+    <h3 id="implementation-2">Implementation 2</h3>
+  </summary>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">### Abstraction ###
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">make_location</span><span class="p">(</span><span class="n">location_name</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">location_name</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">x_location</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">location</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">y_location</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">location</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">location_name</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">location</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1">### End Abstraction ###
+</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="n">x_distance</span> <span class="o">=</span> <span class="n">x_location</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="n">x_location</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">y_distance</span> <span class="o">=</span> <span class="n">y_location</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_location</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">pythagorean_distance</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x_distance</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y_distance</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pythagorean_distance</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">home</span> <span class="o">=</span> <span class="n">make_location</span><span class="p">(</span><span class="s">"home"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">school</span> <span class="o">=</span> <span class="n">make_location</span><span class="p">(</span><span class="s">"school"</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">distance</span><span class="p">(</span><span class="n">home</span><span class="p">,</span> <span class="n">school</span><span class="p">)</span>
+<span class="mf">5.0</span>
+</code></pre></div>  </div>
+
+</details>
+
+<hr />
+
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes">
+  <ol>
+    <li id="fn:parentheses">
+      <p>Or <em>parentheses</em>, if you’re like that <a href="#fnref:parentheses" class="reversefootnote">⤴</a></p>
+    </li>
+    <li id="fn:tuples">
+      <p>https://www.programiz.com/python-programming/methods/tuple <a href="#fnref:tuples" class="reversefootnote">⤴</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/cs61a/week5
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

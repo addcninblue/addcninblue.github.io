@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 5 - Every PBICG Is Really Just a Nim Game</title>
+  <meta name="description" content="A Look at Nim Recall that 1-pile Nim is an N position. Take all except the last coin. Recall also that in 2-pile Nim, it’s an N position if the two piles are not equal – use strategy stealing.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/stat155/5">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 5 - Every PBICG Is Really Just a Nim Game">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/stat155/5">
+  <meta property="og:description" content="A Look at Nim Recall that 1-pile Nim is an N position. Take all except the last coin. Recall also that in 2-pile Nim, it’s an N position if the two piles are not equal – use strategy stealing.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 5 - Every PBICG Is Really Just a Nim Game">
+  <meta name="twitter:description" content="A Look at Nim Recall that 1-pile Nim is an N position. Take all except the last coin. Recall also that in 2-pile Nim, it’s an N position if the two piles are not equal – use strategy stealing.">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 5 - Every PBICG Is Really Just a Nim Game</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#a-look-at-nim">A Look at Nim</a></li>
+  <li><a href="#boutons-method">Bouton’s Method</a>
+    <ul>
+      <li><a href="#an-example">An Example</a></li>
+      <li><a href="#another-example">Another Example</a></li>
+    </ul>
+  </li>
+  <li><a href="#footnotes">Footnotes</a></li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="a-look-at-nim">A Look at Nim</h2>
+<p>Recall that 1-pile Nim is an N position. Take all except the last coin. Recall also that in 2-pile Nim, it’s an N position if the two piles are not equal – use strategy stealing.</p>
+
+<p><script type="math/tex">(1, 2, 3)</script>:</p>
+<ul>
+  <li><script type="math/tex">(0, 2, 3) \in N</script></li>
+  <li><script type="math/tex">(1, 1, 3) \in N</script></li>
+  <li><script type="math/tex">(1, 2, 2) \in N</script></li>
+  <li><script type="math/tex">(1, 2, 1) \in N</script></li>
+  <li><script type="math/tex">(1, 2, 0) \in N</script></li>
+</ul>
+
+<p>so <script type="math/tex">(1, 2, 3)</script> is in <script type="math/tex">N</script></p>
+
+<p>What about <script type="math/tex">(25, 13, 39)</script>? It looks like we’re going to need a different method.</p>
+
+<hr />
+
+<h2 id="boutons-method">Bouton’s Method</h2>
+<p>Charles Bouton (1962) found a way to solve Nim games. Here’s his approach:</p>
+<ul>
+  <li>Split the piles into piles of powers of 2; ie. binary.<sup id="fnref:binary"><a href="#fn:binary" class="footnote">1</a></sup></li>
+  <li>Then, you XOR all the piles, which is called <em>finding the <strong>Nim-Sum</strong> of the numbers</em>.<sup id="fnref:xor"><a href="#fn:xor" class="footnote">2</a></sup> The intuition here is that for an <script type="math/tex">N</script> position, it is possible to reduce the current set into a strategy-stealing solution. In other words, we should take out the coins that differ from the two sets; ie. an XOR of the two sets.</li>
+  <li>We have 2 cases. Iff<sup id="fnref:iff"><a href="#fn:iff" class="footnote">3</a></sup> the xor (or Nim-Sum) is 0, then the position is a <script type="math/tex">P</script>-position. Otherwise, the position is a <script type="math/tex">N</script>-position.</li>
+  <li>To generate a valid number, take out coins from the largest pile until the xor of the piles is 0.</li>
+</ul>
+
+<p>Formally, a Nim position <script type="math/tex">x = (x_1, x_2, ..., x_k) \in P \iff x_1 \oplus x_2 \oplus ... \oplus x_n = 0</script>.</p>
+
+<p>Proof:<br />
+Let <script type="math/tex">Z \subseteq X</script> consist of all positions <script type="math/tex">x</script> such that the Nim Sum of pile sizes is 0. This gives us two sets, <script type="math/tex">Z, Z^\complement</script>. We must now check 3 conditions:</p>
+<ol>
+  <li>Terminal positions are in <script type="math/tex">Z</script>.</li>
+  <li>Let <script type="math/tex">x \in Z, x = (x_1, x_2, ... x_k)</script>, where not all <script type="math/tex">x_i = 0</script>. WLOG, suppose we move by reducing <script type="math/tex">x_1</script> to <script type="math/tex">y</script>, <script type="math/tex">% <![CDATA[
+y < x_1 %]]></script>. The new Nim Sum is <script type="math/tex">y \oplus x_2 \oplus ... \oplus x_k</script>. We know this is not 0, since if it were, <script type="math/tex">y = x_1</script> (which is a contradiction).</li>
+  <li>Let <script type="math/tex">z \in Z^\complement, z = (z_1, ... z_n)</script>. <script type="math/tex">z_1 \oplus z_2 \oplus ... \oplus z_k \neq 0</script>. In the Nim Sum, consider the leftmost column that has an odd number of ones. We pick the largest pile, flipping zeros into ones and ones to zeros to turn the column sum to 0. This gives a move to <script type="math/tex">Z</script>.</li>
+</ol>
+
+<p>This proves the theorem, as <script type="math/tex">\forall y \in Z, \exists \textrm{ move into } Z \implies Z = P, Z^\complement = N</script>.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="an-example">An Example</h3>
+<p>Let’s revisit <script type="math/tex">(25, 13, 39)</script>.</p>
+<ul>
+  <li>In binary, we have <script type="math/tex">(11001_2, 1101_2, 100111_2)</script>.</li>
+  <li>Next, we XOR all our numbers: <script type="math/tex">11001_2 \oplus 1101_2 \oplus 100111_2 = 110011_2</script></li>
+  <li>To generate our winning strategy, we want to take out enough coins from the largest pile until the xor of the piles is 0. In other words, we want the largest pile to become <script type="math/tex">010100_2</script>, or to take out 19 from that pile. (To verify, <script type="math/tex">25 \oplus 13 \oplus 20 = 0</script>)</li>
+</ul>
+
+<hr />
+
+<h3 id="another-example">Another Example</h3>
+<p>Is <script type="math/tex">(27, 23, 22, 15)</script> in <script type="math/tex">P</script> or <script type="math/tex">N</script>?</p>
+
+<p><script type="math/tex">(11011_2, 10111_2, 10110_2, 01111_2)</script> gives a Nim Sum of <script type="math/tex">10101</script>. We can move <script type="math/tex">27</script> to <script type="math/tex">14</script>. The remainder of the winning moves is left as an exercise for homework.</p>
+
+<hr />
+
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes">
+  <ol>
+    <li id="fn:binary">
+      <p><a href="https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/decimal-to-binary">A tutorial</a> <a href="#fnref:binary" class="reversefootnote">⤴</a></p>
+    </li>
+    <li id="fn:xor">
+      <p><a href="https://www.wikiwand.com/en/XOR_gate">Wikipedia on XOR</a> <a href="#fnref:xor" class="reversefootnote">⤴</a></p>
+    </li>
+    <li id="fn:iff">
+      <p>If and only if <a href="#fnref:iff" class="reversefootnote">⤴</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/stat155/5
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

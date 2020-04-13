@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>P/NP and Game Theory</title>
+  <meta name="description" content="In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format encourages cheating, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/2020/04/05/pnp-game-theory/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="P/NP and Game Theory">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/2020/04/05/pnp-game-theory/">
+  <meta property="og:description" content="In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format encourages cheating, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="P/NP and Game Theory">
+  <meta name="twitter:description" content="In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">P/NP and Game Theory</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+
+    
+
+    <hr>
+
+    <p>In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format <em>encourages cheating</em>, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.</p>
+
+<blockquote>
+  <p>N.B.: This post was originally the essay for one of my Stat 155 assignments. I thought it interesting enough to share on my blog – I hope you enjoy it!</p>
+</blockquote>
+
+<h2 id="uc-zoom">UC Zoom</h2>
+
+<p>On Friday, March 13th, classes were officially moved online by the UC Berkeley Administration. At this point, the change to the grading rubric had not been made yet. Let us model a typical Computer Science class, where grades are curved to a B+, as an n-player zero-sum game<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> (with zero being the mean, and each integer difference being one standard deviation). To simplify this, we examine the two-player zero-sum game, which is well-studied.</p>
+
+<p>The game is modeled as follows, with each student having two possibilities, <code class="highlighter-rouge">cheat</code> and <code class="highlighter-rouge">honest</code>. We assume that the students are of equal skill, and that cheating gives a <script type="math/tex">+1</script> standard deviation edge. Being caught in a class is <script type="math/tex">-0.12</script><sup id="fnref:cheating-payoff"><a href="#fn:cheating-payoff" class="footnote">2</a></sup>. Payoffs are written to row, who is <script type="math/tex">A</script> in this case:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+A \textrm{\\} B & \mathrm{cheat} & \mathrm{honest} \\
+\mathrm{cheat} & 0 & 0.88 \\
+\mathrm{honest} & -0.88 & 0 \\
+\end{bmatrix} %]]></script>
+
+<p>We see <script type="math/tex">\mathrm{(cheat, cheat)}</script> is the dominant strategy, meaning in the case of letter grading, our model tells us that students do in fact have an incentive to cheat.<sup id="fnref:2"><a href="#fn:2" class="footnote">3</a></sup></p>
+
+<h2 id="campuswide-pnp-policy">Campuswide P/NP Policy</h2>
+<p>With the campuswide P/NP policy in place, the incentive to cheat is suddenly changed. In the CS department, it is yet unclear how grades will be assigned, but taking that a C- minimum is required to get a passing grade, one can do several standard deviations below mean and still pass in the class. Looking at grade distributions of a large CS class (<script type="math/tex">N > 19000</script>), historic grades have told us that C- and up covers 95% of the population<sup id="fnref:berkeleytime"><a href="#fn:berkeleytime" class="footnote">4</a></sup>. Therefore, in a game where two students are both taking the course for P/NP credit, modeling the grade distributions off of a large CS class, there seems to be very low incentive for anyone to cheat. Regardless of whether or not they cheat, they will more than likely make the cutoff if they put enough effort into the class, and cheating only gives the extra possibility of getting caught. Therefore, with P/NP, it seems that <em>the incentive for cheating decreases</em>.</p>
+
+<p>This time, the game is modeled as a general-sum game, since one person doing well has a negligible impact on another. We only look at the payout of one person, since in the n-person general-sum game, everyone has a symmetric payout.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+\mathrm{cheat} & \mathrm{honest} \\
+0 + \epsilon & 0 \\
+\end{bmatrix} %]]></script>
+
+<h2 id="banning-proctoring-over-zoom">Banning Proctoring Over Zoom</h2>
+<p>With the ban of proctoring, the risk of getting caught for cheating is all but zeroed. Does this impact the risk of cheating?</p>
+
+<p>With the Zoom ban, many CS classes have shifted to an open-book policy. This means that, effectively, everything in the test can be looked up either way. As a result, while cheating is easily doable, with other mitigations such as test randomization, it seems that there is little impact on the rate of cheating. We get the same chart, after adding the ease of cheating and subtracting the hoops needed to hop through to cheat.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+\mathrm{cheat} & \mathrm{honest} \\
+0 + \epsilon & 0 \\
+\end{bmatrix} %]]></script>
+
+<h2 id="footnotes">Footnotes</h2>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>A brief note about the choice of zero-sum versus general-sum: Since classes in the CS department are all curved, this would mean that, if we took two students <script type="math/tex">A</script> and <script type="math/tex">B</script>, fixing <script type="math/tex">A</script>’s performance would mean that <script type="math/tex">B</script> doing better causes <script type="math/tex">A</script> to get a worse grade. We see that in the two-player scenario, since their grades must average to the same grade, <script type="math/tex">B</script> getting <script type="math/tex">+d</script> standard deviations would result in <script type="math/tex">A</script> getting <script type="math/tex">-d</script>. This is a zero-sum game. <a href="#fnref:1" class="reversefootnote">⤴</a></p>
+    </li>
+    <li id="fn:cheating-payoff">
+      <p>Suppose 1 in every 50 students are caught for cheating. (This amounts to 2%.) Empirically, we have no data for cheating, since it would require all students to admit their cheating, which is somewhat of a catch-22. Either way, suppose that getting caught for cheating results in <script type="math/tex">-5</script> on their grade, whereas not getting caught results in <script type="math/tex">+1</script>. This is a bernoulli random variable with <script type="math/tex">p=0.02</script>, and the expected value is <script type="math/tex">0.02 * -5 + 0.98 * 1 = 0.88</script>. <a href="#fnref:cheating-payoff" class="reversefootnote">⤴</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Note that these incentives are still in place even without online testing; it’s just that cheating with proctors in person is probably much harder. <a href="#fnref:2" class="reversefootnote">⤴</a></p>
+    </li>
+    <li id="fn:berkeleytime">
+      <p>Modelled off of Berkeleytime, <a href="#fnref:berkeleytime" class="reversefootnote">⤴</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/2020/04/05/pnp-game-theory/
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

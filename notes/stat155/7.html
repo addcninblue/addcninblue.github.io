@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 7 - Ranking Elections</title>
+  <meta name="description" content="In-Class Voting Here are the results of in-class voting:1 S/W/B - 22 S/B/W - 8 B/S/W - 10 B/W/S - 3 W/B/S - 2 W/S/B - 16 S: Sanders, W: Warren, B: Buttigieg ⤴">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/stat155/7">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 7 - Ranking Elections">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/stat155/7">
+  <meta property="og:description" content="In-Class Voting Here are the results of in-class voting:1 S/W/B - 22 S/B/W - 8 B/S/W - 10 B/W/S - 3 W/B/S - 2 W/S/B - 16 S: Sanders, W: Warren, B: Buttigieg ⤴">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 7 - Ranking Elections">
+  <meta name="twitter:description" content="In-Class Voting Here are the results of in-class voting:1 S/W/B - 22 S/B/W - 8 B/S/W - 10 B/W/S - 3 W/B/S - 2 W/S/B - 16 S: Sanders, W: Warren, B: Buttigieg ⤴">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 7 - Ranking Elections</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#in-class-voting">In-Class Voting</a>
+    <ul>
+      <li><a href="#preference-relations">Preference Relations</a></li>
+      <li><a href="#our-preferences">Our Preferences</a></li>
+    </ul>
+  </li>
+  <li><a href="#properties-of-a-fair-ranking-rule">Properties of a Fair Ranking Rule</a></li>
+  <li><a href="#plurality-voting-runoff">Plurality Voting, Runoff</a></li>
+  <li><a href="#condorcet-rule">Condorcet Rule</a>
+    <ul>
+      <li><a href="#example">Example</a></li>
+      <li><a href="#example-2">Example 2</a></li>
+      <li><a href="#example-3">Example 3</a></li>
+    </ul>
+  </li>
+  <li><a href="#footnotes">Footnotes</a></li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="in-class-voting">In-Class Voting</h2>
+<p>Here are the results of in-class voting:<sup id="fnref:legend"><a href="#fn:legend" class="footnote">1</a></sup></p>
+<ul>
+  <li>S/W/B - 22</li>
+  <li>S/B/W - 8</li>
+  <li>B/S/W - 10</li>
+  <li>B/W/S - 3</li>
+  <li>W/B/S - 2</li>
+  <li>W/S/B - 16</li>
+</ul>
+
+<p><strong>Problem</strong>: Idea of a “median” voter is good if the population is not polarized. If it is, a “middle-of-the-road” candidate satisfies no one!</p>
+
+<p><strong>Main Question</strong>: How do we aggregate the individuals to see who the aggregate best candidate should be?</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="preference-relations">Preference Relations</h3>
+<p>Recall <a href="./6#preference-relations">preference relations</a> from the previous lecture.</p>
+
+<p><strong>Question</strong>: Does there always exist a voting rule that will give rise to <em>any</em> ranking rule?</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="our-preferences">Our Preferences</h3>
+<p>Borda Count Ranking:</p>
+<ul>
+  <li>Sanders: 147</li>
+  <li>Warren: 120</li>
+  <li>Buttigieg: 97</li>
+</ul>
+
+<p>Borda Count outcome gives <script type="math/tex">S \triangleright W \triangleright B</script><br />
+Pairwise outcomes also gives <script type="math/tex">S \triangleright W \triangleright B</script></p>
+
+<p><strong>Exercise</strong>: Come up with a voting rule that comes up with a different ranking rule that gives a different outcome than Borda Count.</p>
+
+<hr />
+
+<h2 id="properties-of-a-fair-ranking-rule">Properties of a Fair Ranking Rule</h2>
+<ol>
+  <li><strong>Unanimity</strong>: If every voter prefers candiate <script type="math/tex">a</script> to <script type="math/tex">b</script>, then <script type="math/tex">R</script> should rank <script type="math/tex">a</script> higher than <script type="math/tex">b</script>.</li>
+  <li><strong>Independence of Irrelevant Alternatives</strong>: Candidate <script type="math/tex">c</script> should not affect the ordering on <script type="math/tex">a</script> and <script type="math/tex">b</script>.</li>
+</ol>
+
+<p>The idea is that manipulating the outcome of the election should not be possible.</p>
+
+<hr />
+
+<h2 id="plurality-voting-runoff">Plurality Voting, Runoff</h2>
+<ul>
+  <li>“First Past the Post”</li>
+  <li>Works if there are 2 candidates; the one with the most top ranks wins.</li>
+  <li>If more than 3 candidates, can lead to results like 1992 US elections: elected candidate was the <em>least</em> favorite of the majority of voters.</li>
+  <li>Encourages <em>insincere voting</em>.</li>
+  <li>Runoff: plurality with elimination. This is expensive!</li>
+  <li>Could use instant runoff: preference ballots used, and candidate with fewest first place is eliminated and the votes redistributed to second choice (used in Australia, Ireland).</li>
+</ul>
+
+<h2 id="condorcet-rule">Condorcet Rule</h2>
+<ul>
+  <li>Winner of pairwise elections should win. That is, whichever candidate would win in (most) head-to-head contests, with greatest difference.</li>
+  <li>Not easily manipulated, but vulnerable to paradox of a non-transitive result. (Can have <em>no winner</em>!)</li>
+</ul>
+
+<h3 id="example">Example</h3>
+<p>Instant Runoff</p>
+
+<ul>
+  <li>a/b/c: 45</li>
+  <li>b/c/a: 30</li>
+  <li>c/b/a: 25</li>
+</ul>
+
+<p>b wins 55 votes when it’s b vs a<br />
+Plurality goes to a.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="example-2">Example 2</h3>
+<p>Instant Runoff</p>
+
+<ul>
+  <li>c/a/b: 10</li>
+  <li>a/b/c: 35</li>
+  <li>b/c/a: 30</li>
+  <li>c/b/a: 25</li>
+</ul>
+
+<p>Now, c wins according to plurality</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="example-3">Example 3</h3>
+<p>n = 15
+b/a/c: 7
+a/c/b: 5
+c/a/b: 3</p>
+
+<p>Plurality: b wins.
+Runoff: a wins.</p>
+
+<hr />
+
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes">
+  <ol>
+    <li id="fn:legend">
+      <p>S: Sanders, W: Warren, B: Buttigieg <a href="#fnref:legend" class="reversefootnote">⤴</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/stat155/7
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

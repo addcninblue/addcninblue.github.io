@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 6 - Cauchy Sequences and Convergence</title>
+  <meta name="description" content="Cauchy Sequences and Convergence Recall: For a bounded sequence :">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/math104/6">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 6 - Cauchy Sequences and Convergence">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/math104/6">
+  <meta property="og:description" content="Cauchy Sequences and Convergence Recall: For a bounded sequence :">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 6 - Cauchy Sequences and Convergence">
+  <meta name="twitter:description" content="Cauchy Sequences and Convergence Recall: For a bounded sequence :">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 6 - Cauchy Sequences and Convergence</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#cauchy-sequences-and-convergence">Cauchy Sequences and Convergence</a></li>
+  <li><a href="#cauchy-implies-infimum--supremum">Cauchy Implies Infimum = Supremum</a>
+    <ul>
+      <li><a href="#subsequences-approach-sequence-limit">Subsequences Approach Sequence Limit</a></li>
+    </ul>
+  </li>
+  <li><a href="#bolzano-weierstrass">Bolzano Weierstrass</a></li>
+  <li><a href="#bounded-to-limsup-and-liminf">Bounded to Limsup and Liminf</a>
+    <ul>
+      <li><a href="#lemma-subsequence-iff-infinite-set-within-neighborhood">Lemma: Subsequence iff Infinite Set Within Neighborhood</a></li>
+    </ul>
+  </li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="cauchy-sequences-and-convergence">Cauchy Sequences and Convergence</h2>
+<p>Recall: For a bounded sequence <script type="math/tex">(a_n)</script>:</p>
+<blockquote class="proof">
+  <ul>
+    <li><script type="math/tex">I_N = \inf\{a_n, n>N\}</script></li>
+    <li><script type="math/tex">S_N = \sup\{a_n, n>N\}</script></li>
+    <li><script type="math/tex">I_1 \leq I_2 \leq ... \leq \liminf a_n \leq \limsup a_n \leq ... \leq S_2 \leq S_1</script></li>
+  </ul>
+</blockquote>
+
+<p><strong>Def</strong>: <script type="math/tex">(a_n)</script> is Cauchy if for all <script type="math/tex">\epsilon > 0</script> we can find an such that <script type="math/tex">% <![CDATA[
+\vert a_n - a_m \vert < \epsilon %]]></script>, for all <script type="math/tex">n,m > N</script></p>
+
+<p><strong>Thm</strong>: A convergent sequence <script type="math/tex">(a_n)</script> implies that <script type="math/tex">(a_n)</script> is Cauchy</p>
+
+<p><strong>Proof</strong>: <script type="math/tex">\forall \epsilon > 0</script> s.t. <script type="math/tex">% <![CDATA[
+\vert a_n - a_m \vert < \epsilon \forall n,m > N %]]></script>
+<script type="math/tex">% <![CDATA[
+\implies a_n < a_m + \epsilon \forall n,m > N %]]></script></p>
+
+<blockquote class="proof">
+  <p>For any <script type="math/tex">n>N</script>, we have</p>
+  <ul>
+    <li><script type="math/tex">% <![CDATA[
+a_n < a_m + \epsilon\ \forall m > N %]]></script></li>
+    <li><script type="math/tex">\implies a_n \leq \inf\{a_m: m > N\} + \epsilon</script></li>
+  </ul>
+
+  <p>So we have, for any <script type="math/tex">n > N</script>,</p>
+  <ul>
+    <li><script type="math/tex">a_n \leq I_N + \epsilon</script></li>
+    <li><script type="math/tex">\implies \sup\{a_n: n > N\} \leq I_N + \epsilon</script></li>
+    <li><script type="math/tex">\limsup_{n \to \infty} a_n \leq S_N \leq I_N + \epsilon \leq \liminf_{n \to \infty} a_n+ \epsilon</script></li>
+    <li><script type="math/tex">\implies \limsup a_n \leq \liminf a_n + \epsilon \forall \epsilon > 0</script></li>
+    <li><script type="math/tex">\implies \limsup a_n \leq \liminf a_n</script>, since we always have <script type="math/tex">% <![CDATA[
+\liminf a_n \leq \limsup a_n < n %]]></script></li>
+  </ul>
+</blockquote>
+
+<p class="proof">We proved that bounded and <script type="math/tex">\liminf = \limsup</script> implies convergence, and convergence implies Cauchy, so now we will prove Cauchy implies <script type="math/tex">\liminf = \limsup</script>.</p>
+
+<hr />
+
+<h2 id="cauchy-implies-infimum--supremum">Cauchy Implies Infimum = Supremum</h2>
+
+<p><strong>Def</strong>: A subsequence of a sequence <script type="math/tex">(a_n)</script> is a sequence <script type="math/tex">(a_{k_n}) = (a_{k_1}, a_{k_2}, ...)</script> where <script type="math/tex">% <![CDATA[
+1 \leq k_1 < k_2 < ... < a_m %]]></script> are positive integers, e.g.</p>
+<ul>
+  <li><script type="math/tex">(a_{2n}) = (a_2, a_4, a_6, ...)</script></li>
+  <li><script type="math/tex">(a_{2n-1}) = (a_1, a_3, a_5, ...)</script></li>
+</ul>
+
+<p>In homework, we proved that <script type="math/tex">\lim_{n \to \infty} a_n = 0 \implies \lim_{n \to \infty} a_{2n} = a = \lim_{n \to \infty} a_{2n-1}</script></p>
+
+<hr class="hr-subsection" />
+
+<h3 id="subsequences-approach-sequence-limit">Subsequences Approach Sequence Limit</h3>
+
+<p><strong>Question</strong>: Suppose <script type="math/tex">\lim_{n \to \infty} a_n = a</script>, is it true that <script type="math/tex">\lim_{n \to \infty} a_{k_n} = a</script> for any subsequence <script type="math/tex">(a_{k_n})</script>?</p>
+
+<blockquote class="proof">
+  <p>Yes: <script type="math/tex">\forall \epsilon > 0, \exists N > 0</script> s.t. <script type="math/tex">% <![CDATA[
+\vert a_n - a \vert < \epsilon \forall n > N %]]></script></p>
+
+  <p>The intuition is that there exists a <script type="math/tex">k_n</script> that is greater than <script type="math/tex">N</script>, at which point the bounds will hold true.</p>
+
+  <p>And our sequence is <script type="math/tex">a_{k_1}, ...</script>, which contains strictly increasing <script type="math/tex">k_n</script>, so <script type="math/tex">\exists M > 0</script> such that <script type="math/tex">k_M > N</script>. Then, for any <script type="math/tex">n > M</script>, we know <script type="math/tex">% <![CDATA[
+\vert a_{k_n} - a \vert < \epsilon %]]></script> since <script type="math/tex">k_n > k_M > N</script>.</p>
+
+  <p>The converse is not true. Consider <script type="math/tex">(0, 1, 0, 1, ...)</script>. The odd terms converge to <script type="math/tex">0</script>, but the even terms to <script type="math/tex">1</script>. Note that <script type="math/tex">\liminf a_n = 0</script> and <script type="math/tex">\limsup a_n = 1</script>. We will prove that for any bounded sequence, there exists a subsequence that converges to <script type="math/tex">\liminf</script> and one that converges to <script type="math/tex">\limsup</script>.</p>
+</blockquote>
+
+<p><strong>Another question</strong>: If <script type="math/tex">\lim a_{2n} = a = \lim a_{2n - 1}</script>, does this imply that <script type="math/tex">\lim a_n = a</script>? It turns out the answer is <em>yes</em>, and the proof is left as an exercise.</p>
+
+<hr />
+
+<h2 id="bolzano-weierstrass">Bolzano Weierstrass</h2>
+<p><strong>Definition</strong>: Any bounded sequence has a convergent subsequence</p>
+
+<blockquote class="proof">
+  <p>It suffices to prove any bounded sequence has a monotone subsequence. If we can bound this monotone subsequence, it will be <em>monotone and bounded</em>, hence convergent.</p>
+</blockquote>
+
+<p><strong>Lemma</strong>: Any bounded subsequence has a monotone subsequence.</p>
+
+<p><strong>Proof</strong>:</p>
+
+<blockquote class="proof">
+  <p>Definition: Given a bounded sequence <script type="math/tex">(a_n)</script>, we say <script type="math/tex">a_n</script> is <strong>big</strong> if it is bigger than all the terms after it, i.e. <script type="math/tex">% <![CDATA[
+a_n > a_m \forall n < m %]]></script>.</p>
+
+  <p>For any bounded sequence <script type="math/tex">(a_n)</script>,</p>
+  <ol>
+    <li>It has infinitely many big terms, or</li>
+    <li>It has finitely many big terms.</li>
+  </ol>
+
+  <p>In the first case, the sequence has infinitely many big terms, so we can just take all the big terms: <script type="math/tex">\{ a_{k_1}, a_{k_2}, ...\}</script>, the sequence of big terms from <script type="math/tex">(a_n)</script>. This gives a subsequence of <script type="math/tex">(a_n)</script>, a strictly decreasing subsequence (since each term is strictly greater than the term after).</p>
+
+  <p>In the second case, the sequence has finitely many big terms, so we take <script type="math/tex">N = \max\{k_1, ... k_n\}</script>. Consider only <script type="math/tex">a_n</script> for <script type="math/tex">n>N</script>. These <script type="math/tex">a_n</script> are not big for all of these <script type="math/tex">n</script>s.<br />
+Now we define <script type="math/tex">a_{k_1} = a_{N+1}</script>. Since <script type="math/tex">k_1 = N+1 > N</script>, <script type="math/tex">a_k</script> is not big. This implies that there exists <script type="math/tex">k_2 > k_1</script> such that <script type="math/tex">a_{k_2} \geq a_{k_1}</script>. Since <script type="math/tex">k_2 > k_1 > N</script>, <script type="math/tex">a_{k_2}</script> is not big. Using the same argument, we can construct <script type="math/tex">k_3</script>, and construct the remaining inductively. This creates a monotonically increasing subsequence.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="bounded-to-limsup-and-liminf">Bounded to Limsup and Liminf</h2>
+
+<p><strong>Theorem</strong>: For a bounded sequence, there exists two subsequences that converges to <script type="math/tex">\liminf</script> and <script type="math/tex">\limsup</script>, respectively.</p>
+
+<p>To prove this theorem, first we prove a lemma:</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="lemma-subsequence-iff-infinite-set-within-neighborhood">Lemma: Subsequence iff Infinite Set Within Neighborhood</h3>
+
+<p><strong>Lemma</strong>: Having a subsequence of a sequence converging to <script type="math/tex">a</script> is equivalent to <script type="math/tex">\forall \epsilon > 0</script>, the set <script type="math/tex">% <![CDATA[
+\{n \in N: \vert a_n - a \vert < \epsilon\} %]]></script> is infinite.</p>
+
+<p><strong>Proof</strong>:</p>
+<blockquote class="proof">
+  <p>(→): <script type="math/tex">(a_{k_n})</script> converges to <script type="math/tex">a</script>:</p>
+
+  <p><script type="math/tex">\forall \epsilon > 0, \exists N > 0</script> s.t. <script type="math/tex">% <![CDATA[
+\vert a_{k_n} - a \vert < \epsilon \forall n > N %]]></script></p>
+
+  <p>which implies that <script type="math/tex">% <![CDATA[
+\{k_{N+1}, k_{N+2}, ...\} \subset \{n \in N: \vert a_n - a \vert < \epsilon\} %]]></script></p>
+</blockquote>
+
+<blockquote class="proof">
+  <p>(←):<br />
+Idea: We’ll find a subsequence (<script type="math/tex">a_{k_1}, a_{k_2}, ...</script>) such that the differences are less than 1, <script type="math/tex">1/2</script>, … <script type="math/tex">1/n</script>.</p>
+  <ul>
+    <li>We know that <script type="math/tex">% <![CDATA[
+\{n \in N: \vert a_n - a \vert < 1\} %]]></script> is infinite.</li>
+    <li>We know that <script type="math/tex">% <![CDATA[
+\{n \in N: \vert a_n - a \vert < 1/2\} %]]></script> is infinite, so <script type="math/tex">\exists k_2 > k_1</script> s.t. <script type="math/tex">% <![CDATA[
+\vert a_{k_2} - a \vert < 1/2 %]]></script>.</li>
+    <li>We know that <script type="math/tex">% <![CDATA[
+\{n \in N: \vert a_n - a \vert < 1/3\} %]]></script> is infinite, so <script type="math/tex">\exists k_3 > k_1</script> s.t. <script type="math/tex">% <![CDATA[
+\vert a_{k_3} - a \vert < 1/3 %]]></script>.</li>
+    <li>etc.</li>
+  </ul>
+</blockquote>
+
+<hr class="hr-subsection" />
+
+<p>Now back to the original proof:</p>
+
+<p><strong>Proof</strong>:</p>
+<blockquote class="proof">
+  <p>Let <script type="math/tex">Z := \limsup_{n\to\infty} a_n = \lim_{N\to\infty} S_N = \limsup_{N\to\infty} \{a_n : n > N\}</script><br />
+<strong>Want to show</strong>: <script type="math/tex">\forall \epsilon > 0</script>, the set <script type="math/tex">% <![CDATA[
+\{n \in N: \vert a_n - z \vert < \epsilon\} %]]></script> is infinite.</p>
+</blockquote>
+
+<blockquote class="proof">
+  <p><strong>Proof by contradiction.</strong> Suppose that <script type="math/tex">% <![CDATA[
+\{n \in N: \vert a_n - z \vert < \epsilon\} %]]></script> is finite.</p>
+  <ol>
+    <li><script type="math/tex">\exists N_1 > 0</script> such that <script type="math/tex">% <![CDATA[
+z - \epsilon < \sup \{a_n: n>N\} = S_{N_1} < z-\epsilon %]]></script>. This implies that <script type="math/tex">% <![CDATA[
+a_n < z + \epsilon %]]></script> for all <script type="math/tex">n > N_1</script>.</li>
+    <li>Having a finite set means that <script type="math/tex">\exists N_2 > 0</script> such that <script type="math/tex">% <![CDATA[
+z - \epsilon < a_n < z + \epsilon %]]></script> is false <script type="math/tex">\forall n > N_2</script>.</li>
+  </ol>
+
+  <p>Now let <script type="math/tex">N := \max\{N_1, N_2\}</script>. For any <script type="math/tex">n > N</script>, we have</p>
+  <ol>
+    <li><script type="math/tex">% <![CDATA[
+a_n < z + \epsilon %]]></script></li>
+    <li><script type="math/tex">% <![CDATA[
+z - \epsilon < a_n < z + \epsilon %]]></script> is false.</li>
+  </ol>
+
+  <p>which implies that <script type="math/tex">\forall n > N, a_n \leq z - \epsilon</script>, which means <script type="math/tex">\sup\{a_n: n > N\} \leq z - \epsilon</script>. But recall that <script type="math/tex">\sup\{a_n: n > N\} = S_N = \limsup_{n\to\infty}a_n = z</script>, which is a contradiction.</p>
+</blockquote>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/math104/6
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

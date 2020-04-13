@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Week 2 - A Deeper Dive Into Python</title>
+  <meta name="description" content="Control So far, we’ve learned to execute statements sequentially:">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/cs61a/week2">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+
+
+  
+  <meta property="og:title" content="Week 2 - A Deeper Dive Into Python">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/cs61a/week2">
+  <meta property="og:description" content="Control So far, we’ve learned to execute statements sequentially:">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Week 2 - A Deeper Dive Into Python">
+  <meta name="twitter:description" content="Control So far, we’ve learned to execute statements sequentially:">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Week 2 - A Deeper Dive Into Python</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#control">Control</a>
+    <ul>
+      <li><a href="#example-1-fizzbuzz">Example #1: FizzBuzz</a>
+        <ul>
+          <li><a href="#a-common-but-slightly-wrong-solution">A common (but slightly wrong) solution</a></li>
+          <li><a href="#the-correct-approach">The correct approach</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#iteration">Iteration</a>
+    <ul>
+      <li><a href="#for-loops">For loops</a></li>
+      <li><a href="#while-loops">While loops</a></li>
+      <li><a href="#for-loops-while-loops-choosing-one-over-the-other">For loops? While loops? Choosing one over the other.</a></li>
+      <li><a href="#example-range-of-temperatures">Example: Range of Temperatures</a>
+        <ul>
+          <li><a href="#an-aside-why-does-range-use-begin-end">An aside: Why does <code class="highlighter-rouge">range</code> use <code class="highlighter-rouge">[begin, end)</code>?</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#defining-new-functions">Defining New Functions</a>
+    <ul>
+      <li><a href="#redefining-fahrenheit-to-celcius-as-a-function">Redefining Fahrenheit to Celcius as a Function</a></li>
+    </ul>
+  </li>
+  <li><a href="#higher-order-functions">Higher Order Functions</a></li>
+  <li><a href="#lambda-functions">Lambda Functions</a>
+    <ul>
+      <li><a href="#revisiting-fahrenheit-to-celcius">Revisiting Fahrenheit to Celcius</a></li>
+      <li><a href="#functions-lambdas-choosing-one-over-the-other">Functions? Lambdas? Choosing one over the other.</a></li>
+    </ul>
+  </li>
+  <li><a href="#the-environment">The Environment</a>
+    <ul>
+      <li><a href="#calling-user-defined-functions">Calling User-Defined Functions</a></li>
+      <li><a href="#a-note-on-lookup-order">A Note on Lookup Order</a></li>
+    </ul>
+  </li>
+  <li><a href="#footnotes">Footnotes</a></li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="control">Control</h2>
+<p>So far, we’ve learned to execute statements sequentially:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">fahrenheit</span> <span class="o">=</span> <span class="mi">65</span> <span class="c1"># Temperature outside
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">celcius</span> <span class="o">=</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">celcius</span>
+<span class="mf">18.333333333333332</span>
+</code></pre></div></div>
+
+<p>What happens when we want to execute a statement <em>conditionally</em>? For example, what if we only want to print the temperature when it’s hotter than 70 degrees outside?</p>
+
+<p>Luckily, Python has a feature for that:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">fahrenheit</span> <span class="o">=</span> <span class="mi">75</span> <span class="c1"># Temperature outside
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">if</span> <span class="n">fahrenheit</span> <span class="o">&gt;</span> <span class="mi">70</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">'HOT'</span><span class="p">)</span>
+<span class="n">HOT</span>
+</code></pre></div></div>
+
+<p>In general, this syntax looks like:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="n">some_code_here</span>
+<span class="k">elif</span> <span class="o">&lt;</span><span class="n">other</span> <span class="n">condition</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="n">some_other_code</span>
+<span class="k">elif</span> <span class="o">&lt;</span><span class="n">other</span> <span class="n">condition</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="n">some_other_code</span>
+<span class="o">...</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">some_other_code</span>
+</code></pre></div></div>
+
+<hr class="hr-subsection" />
+
+<h3 id="example-1-fizzbuzz">Example #1: FizzBuzz</h3>
+
+<p>Let’s try to work through a modified version of the common problem Fizzbuzz:</p>
+<ul>
+  <li>Given some number <code class="highlighter-rouge">n</code>,
+    <ul>
+      <li>If a number is divisible by 3, print <code class="highlighter-rouge">Fizz</code></li>
+      <li>If a number is divisible by 5, print <code class="highlighter-rouge">Buzz</code></li>
+      <li>If a number is divisible by both 3 and 5, print <code class="highlighter-rouge">FizzBuzz</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="a-common-but-slightly-wrong-solution">A common (but slightly wrong) solution</h4>
+<p>Translating the problem description directly into code, we get:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Fizz"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Buzz"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">15</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"FizzBuzz"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Can you spot the error above? Hint: Think about what happens when <code class="highlighter-rouge">n</code> is 15.</p>
+
+<details>
+  <summary>
+    <h4 id="the-correct-approach">The correct approach</h4>
+  </summary>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">15</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"FizzBuzz"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Fizz"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Buzz"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <p>We need to check 15 first before checking 3 or 5! To elucidate this, let’s consider the case of <code class="highlighter-rouge">n = 15</code>. In the original solution, we would hit the first case of <code class="highlighter-rouge">n % 3 == 0</code>, since <code class="highlighter-rouge">n</code> is divisible by 3. Because of this, we would never hit the <code class="highlighter-rouge">15</code> case. To fix this, we put <em>the most restrictive</em> case first. This ensures that we will always hit the 15 case before we hit any others.</p>
+</details>
+
+<hr />
+
+<h2 id="iteration">Iteration</h2>
+<blockquote>
+  <p>Iteration is the repetition of a process in order to generate a sequence of outcomes<br />
+– Wikipedia</p>
+</blockquote>
+
+<p>Suppose we’re now tasked with computing the Celcius equivalents of a range of temperatures in Fahrenheit. Of course, we could just copy our code from earlier for each temperature. However, as CS majors, we’re lazy, so we go hunting for a better way.</p>
+
+<p>In Python, there are two keywords that help us with this: <code class="highlighter-rouge">while</code> and <code class="highlighter-rouge">for</code>. Specifically, these two keywords help with the task of <em>iteration</em>.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="for-loops">For loops</h3>
+<p>For loops take the following form:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">&lt;</span><span class="n">variable</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">iterable</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">suite</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Python will loop through all variables in an <em>iterable</em> (something we’ll get into much later in the course) until the values in the iterable are exhausted. Each time Python loops through, it will assign values sequentially to the variable from the iterable and execute the suite. For now, don’t worry about these technical terms.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="while-loops">While loops</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">suite</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Python will continue executing the suite until the expression is <code class="highlighter-rouge">False</code>.</p>
+
+<p>Here is a good way to visualize it:</p>
+<ol>
+  <li>What is the truthiness of <code class="highlighter-rouge">&lt;expression&gt;</code>?
+    <ul>
+      <li><code class="highlighter-rouge">True</code>: Execute <code class="highlighter-rouge">&lt;suite&gt;</code> and go back to (1.)</li>
+      <li><code class="highlighter-rouge">False</code>: Quit the loop.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr class="hr-subsection" />
+
+<h3 id="for-loops-while-loops-choosing-one-over-the-other">For loops? While loops? Choosing one over the other.</h3>
+<p>You’ll notice that <code class="highlighter-rouge">while</code> and <code class="highlighter-rouge">for</code> loops look very similar. How would we choose one over another, and what benefits do they give?</p>
+
+<p>The general explanation is that there is a very clear answer which is better. Generally speaking, <code class="highlighter-rouge">for</code> loops are used for a fixed-length sequence whose length is already known, whereas <code class="highlighter-rouge">while</code> loops are used for a sequence whose length we don’t know.</p>
+
+<p>For example:</p>
+<ul>
+  <li>Square all numbers from 1 to 10 → <code class="highlighter-rouge">for</code> loop, since we know the sequence.</li>
+  <li>Find the seventh prime number → <code class="highlighter-rouge">while</code> loop, since we don’t know how many integers we will need.</li>
+</ul>
+
+<details>
+  <summary>Is it necessary to have two kinds of loops?<sup id="fnref:out-of-scope"><a href="#fn:out-of-scope" class="footnote">1</a></sup></summary>
+  <p>Given that the two loops are so similar, a question might naturally arise: Are both kinds of loops necessary? Well, it turns out that some programming languages decided that, no, it’s definitely unnecessary. Google’s <a href="https://golang.org/">Go</a> is a good example of this.</p>
+</details>
+
+<hr class="hr-subsection" />
+
+<h3 id="example-range-of-temperatures">Example: Range of Temperatures</h3>
+
+<p>Let’s go back to the example and print a range of temperatures in Celcius from Fahrenheit.</p>
+
+<p>Hint: <code class="highlighter-rouge">range(begin, end)</code> is a Python built-in that returns an iterable that will give you all integers between <code class="highlighter-rouge">begin</code> and <code class="highlighter-rouge">end</code>, <em>including</em> begin and <em>excluding</em> end. It is the mathematical equivalent of <code class="highlighter-rouge">[begin, end)</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Let's find the celcius representations of fahrenheit 70~74
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">fahrenheit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">):</span>
+<span class="o">...</span>     <span class="n">celcius</span> <span class="o">=</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">celcius</span><span class="p">)</span>
+<span class="mf">21.11111111111111</span>
+<span class="mf">21.666666666666668</span>
+<span class="mf">22.22222222222222</span>
+<span class="mf">22.77777777777778</span>
+<span class="mf">23.333333333333332</span>
+</code></pre></div></div>
+
+<p>Of course, this can be done with a <code class="highlighter-rouge">while</code> loop as well:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Let's find the celcius representations of fahrenheit 70~74
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">fahrenheit</span> <span class="o">=</span> <span class="mi">70</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">fahrenheit</span> <span class="o">&lt;</span> <span class="mi">75</span><span class="p">:</span>
+<span class="o">...</span>     <span class="n">celcius</span> <span class="o">=</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">celcius</span><span class="p">)</span>
+<span class="o">...</span>     <span class="n">fahrenheit</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="mf">21.11111111111111</span>
+<span class="mf">21.666666666666668</span>
+<span class="mf">22.22222222222222</span>
+<span class="mf">22.77777777777778</span>
+<span class="mf">23.333333333333332</span>
+</code></pre></div></div>
+
+<details>
+  <summary>
+    <h4 id="an-aside-why-does-range-use-begin-end">An aside: Why does <code class="highlighter-rouge">range</code> use <code class="highlighter-rouge">[begin, end)</code>?</h4>
+  </summary>
+  <p>Doesn’t this default sound insane? <sup id="fnref:out-of-scope:1"><a href="#fn:out-of-scope" class="footnote">1</a></sup></p>
+
+  <p>It turns out, it’s not as insane as it sounds. A handy outcome is that you can easily compute the number of elements by simply doing <code class="highlighter-rouge">end - begin</code>. Furthermore, <code class="highlighter-rouge">range</code> provides defaults as a one-argument function, where calling it with one argument would set the end, implicitly setting <code class="highlighter-rouge">begin</code> to 0. For example, <code class="highlighter-rouge">range(10)</code> would give all elements <code class="highlighter-rouge">[0, 10)</code>.</p>
+
+  <p>For those of you coming in with prior programming experience, this is equivalent to C-like languages’ for loop:</p>
+  <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">begin</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>  </div>
+</details>
+
+<hr />
+
+<h2 id="defining-new-functions">Defining New Functions</h2>
+<p>Let’s put everything we’ve learned all together with a more motivating example. In the previous code we wrote for computing Fahrenheit from Celcius. Suppose instead we now want to compute this temperature from anywhere, without needing to copy over all our code again. This motivates the need for a <code class="highlighter-rouge">function</code>.</p>
+
+<p>A function can be thought of as a reusable piece of code with a certain number of inputs and an output (return value). We’ve seen examples of functions already (<code class="highlighter-rouge">min</code>, <code class="highlighter-rouge">max</code>, <code class="highlighter-rouge">abs</code>, to name a few). Now, we will be learning to define our own.</p>
+
+<p>The syntax is as follows:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def &lt;name&gt;(&lt;formal parameters&gt;):
+    &lt;function body&gt;
+    return &lt;return expression&gt;
+</code></pre></div></div>
+
+<p>Note: In Python, the <code class="highlighter-rouge">return</code> statement is optional. If it is omitted, the return value will be set to <code class="highlighter-rouge">None</code> (which is Python’s null type).</p>
+
+<p>Here is an example of a custom definition of <code class="highlighter-rouge">min</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">y</span>
+</code></pre></div></div>
+
+<hr class="hr-subsection" />
+
+<h3 id="redefining-fahrenheit-to-celcius-as-a-function">Redefining Fahrenheit to Celcius as a Function</h3>
+<p>With this, we can now redefine our Fahrenheit to Celcius function.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">f_to_c</span><span class="p">(</span><span class="n">fahrenheit</span><span class="p">):</span>
+    <span class="n">celcius</span> <span class="o">=</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span>
+    <span class="k">return</span> <span class="n">celcius</span>
+</code></pre></div></div>
+
+<p>and we can simplify our earlier approach to printing all Celcius temperatures in a loop:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">fahrenheit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">f_to_c</span><span class="p">(</span><span class="n">fahrenheit</span><span class="p">))</span>
+<span class="mf">21.11111111111111</span>
+<span class="mf">21.666666666666668</span>
+<span class="mf">22.22222222222222</span>
+<span class="mf">22.77777777777778</span>
+<span class="mf">23.333333333333332</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="higher-order-functions">Higher Order Functions</h2>
+<p>Now that we’re familiar with the idea of a function that returns a value, we can extend this to functions returning <em>other functions</em>.</p>
+
+<p>A motivating example: Suppose we want to create a function that returns an <em>incrementer</em>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add_by</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="s">"""
+    Returns a one-argument function that returns `number + argument`
+    """</span>
+    <span class="k">def</span> <span class="nf">new_incrementer</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">number</span> <span class="o">+</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">new_incrementer</span>
+</code></pre></div></div>
+
+<p>This allows us to do this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">add_by_one</span> <span class="o">=</span> <span class="n">add_by</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add_by_one</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add_by_ten</span> <span class="o">=</span> <span class="n">add_by</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add_by_ten</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="mi">15</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="lambda-functions">Lambda Functions</h2>
+<p>Lambda functions, or <em>anonymous functions</em>, are one-liner functions that are defined without a name. This syntax looks like:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">lambda</span> <span class="o">&lt;</span><span class="n">formal</span> <span class="n">parameters</span><span class="o">&gt;</span><span class="p">:</span> <span class="o">&lt;</span><span class="k">lambda</span> <span class="n">body</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>In normal functions, note that we use <code class="highlighter-rouge">return</code> to indicate a value to be returned. Since lambda functions are written in one line, the last value evaluated is implicitly returned. An example is given below.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="revisiting-fahrenheit-to-celcius">Revisiting Fahrenheit to Celcius</h3>
+<p>Let’s make a lambda function called <code class="highlighter-rouge">f_to_c_lambda</code> that returns the Celcius temperature of some temperature in Fahrenheit:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">f_to_c_lambda</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">fahrenheit</span><span class="p">:</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span>
+</code></pre></div></div>
+
+<p>This allows to use the same loop from before:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">fahrenheit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">f_to_c_lambda</span><span class="p">(</span><span class="n">fahrenheit</span><span class="p">))</span>
+<span class="mf">21.11111111111111</span>
+<span class="mf">21.666666666666668</span>
+<span class="mf">22.22222222222222</span>
+<span class="mf">22.77777777777778</span>
+<span class="mf">23.333333333333332</span>
+</code></pre></div></div>
+
+<hr class="hr-subsection" />
+
+<h3 id="functions-lambdas-choosing-one-over-the-other">Functions? Lambdas? Choosing one over the other.</h3>
+<p>In general, lambdas are used when a simple calculation is needed (ie. a one-liner). This will arise in places such as <code class="highlighter-rouge">min</code>, which accepts a list and an optional <code class="highlighter-rouge">key</code> value:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">"apple"</span><span class="p">,</span> <span class="s">"bear"</span><span class="p">,</span> <span class="s">"carrot"</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span> <span class="c1"># default is alphabetical
+</span><span class="s">'apple'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">length</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">length</span><span class="p">)</span> <span class="c1"># now we use the lambda function we just defined
+</span><span class="s">'bear'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="c1"># we can also write this in one line
+</span><span class="s">'bear'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># Of course, we don't need a lambda function for this:
+</span><span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="c1"># len works as well
+</span><span class="s">'bear'</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="the-environment">The Environment</h2>
+<blockquote>
+  <p>Our subset of Python is now complex enough that the meaning of programs is non-obvious. What if a formal parameter has the same name as a built-in function? Can two functions share names without confusion? To resolve such questions, we must describe environments in more detail.<br />
+– Composing Programs</p>
+</blockquote>
+
+<p>We briefly introduced the topic of <em>environments</em> in Week 1. They’re a good way of showing the execution of a Python program, and it makes execution mechanical by assigning rules. Before we jump into execution, let’s define a few terms. Composing Programs has a concise explanation of these terms:</p>
+<blockquote>
+  <p>An environment in which an expression is evaluated consists of a sequence of <strong>frames</strong>, depicted as boxes. Each frame contains <strong>bindings</strong>, each of which associates a name with its corresponding value. There is a single <strong>global</strong> frame. Assignment and import statements add entries to the first frame of the current environment.</p>
+</blockquote>
+
+<p>Now, we can look at execution:</p>
+<ol>
+  <li>When a Python program is started, a global frame is created.</li>
+  <li>When there is an assignment statement, a <em>name</em> is bound to a <em>value</em>.</li>
+  <li>
+    <p>When there is a function definition, the name of the function is bound to the same name in the frame.</p>
+
+    <p>Putting this all together, we get something like this:</p>
+    <iframe width="800" height="270" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=fahrenheit%20%3D%2080%0Af_to_c_lambda%20%3D%20lambda%20fahrenheit%3A%20%28fahrenheit%20-%2032%29%20*%205%20/%209&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=true&amp;curInstr=0&amp;origin=composingprograms.js&amp;py=3&amp;rawInputLstJSON=%5B%5D"></iframe>
+  </li>
+</ol>
+
+<hr class="hr-subsection" />
+
+<h3 id="calling-user-defined-functions">Calling User-Defined Functions</h3>
+
+<p>Calling functions take on the form of:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">name</span> <span class="n">of</span> <span class="n">function</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">arguments</span> <span class="n">of</span> <span class="n">function</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>In Python, this is the way this is evaluated (as explored in <a href="./week1">note 1</a>)</p>
+<ol>
+  <li>First, we evaluate the operator in the current frame.</li>
+  <li>Then, we evaluate each individual operand in the current frame.</li>
+  <li>Once we have both the operator and the operands, we <strong>open a new frame</strong>, and we apply the operator the operands in the new frame. The frame opened will have the <em>parent</em> of the <em>frame it was defined in</em>.
+    <ul>
+      <li>With lambda functions, the <em>name</em> of the frame is <em>lambda</em>, whereas with defined functions, the name of the frame is the intrinsic name of the function (the name it was defined with).</li>
+    </ul>
+  </li>
+  <li>The value given by the <code class="highlighter-rouge">return</code> statement is called the <em>return value</em>, and becomes of the value of the entire call expression. In the example below, we see that the first function call opens a frame titled <em>lambda</em>, whereas the second function call opens a frame titled <em>f_to_c</em>. Note that both functions are defined in <code class="highlighter-rouge">global</code>, so both of their parents are the global frame. The return values of both are also bound in the global frame (where the function was called).
+    <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=fahrenheit%20%3D%2080%0Af_to_c_lambda%20%3D%20lambda%20fahrenheit%3A%20%28fahrenheit%20-%2032%29%20*%205%20/%209%0Adef%20f_to_c%28fahrenheit%29%3A%0A%20%20%20%20celcius%20%3D%20%28fahrenheit%20-%2032%29%20*%205%20/%209%0A%20%20%20%20return%20celcius%0A%0Acelcius_from_lambda%20%3D%20f_to_c_lambda%28fahrenheit%29%0Acelcius%20%3D%20f_to_c%28fahrenheit%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=true&amp;curInstr=12&amp;origin=composingprograms.js&amp;py=3&amp;rawInputLstJSON=%5B%5D"></iframe>
+  </li>
+</ol>
+
+<hr class="hr-subsection" />
+
+<h3 id="a-note-on-lookup-order">A Note on Lookup Order</h3>
+
+<p>When lookup happens in a frame, this is the order:</p>
+<ol>
+  <li>Lookup name in current frame. Return value if found.</li>
+  <li>Lookup name in parent frame. Return value if found.</li>
+  <li>Continuously recurse to parent frames until we hit global frame.</li>
+  <li>At global, lookup name in global frame. Return value if found.</li>
+  <li>Error out if not found.</li>
+</ol>
+
+<p>Example of erroring:</p>
+<iframe width="800" height="370" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20a%28%29%3A%0A%20%20%20%20def%20b%28%29%3A%0A%20%20%20%20%20%20%20%20return%20c%0A%20%20%20%20return%20b%28%29%0Aa%28%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=true&amp;curInstr=7&amp;origin=composingprograms.js&amp;py=3&amp;rawInputLstJSON=%5B%5D"></iframe>
+<p>Above, we open up frames <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code>, and we try to look up <code class="highlighter-rouge">c</code>. Since <code class="highlighter-rouge">c</code> doesn’t exist in frame <code class="highlighter-rouge">b</code> or <code class="highlighter-rouge">a</code> or <code class="highlighter-rouge">global</code>, we error out.</p>
+
+<p>Example of valid lookup:</p>
+<iframe width="800" height="390" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=c%20%3D%2010%0Adef%20a%28%29%3A%0A%20%20%20%20c%20%3D%2020%0A%20%20%20%20def%20b%28%29%3A%0A%20%20%20%20%20%20%20%20return%20c%0A%20%20%20%20return%20b%28%29%0Aa%28%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=true&amp;curInstr=9&amp;origin=composingprograms.js&amp;py=3&amp;rawInputLstJSON=%5B%5D"></iframe>
+<p>Above, we open up frames <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code> the same way. This time, when we try to look up <code class="highlighter-rouge">c</code>, it once again does not exist in frame <code class="highlighter-rouge">b</code>. We look in its parent (<code class="highlighter-rouge">a</code>), where it does exist. As a result, we return <code class="highlighter-rouge">20</code>.</p>
+
+<hr />
+
+<h2 id="footnotes">Footnotes</h2>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:out-of-scope">
+      <p>This is outside of the scope of this class <a href="#fnref:out-of-scope" class="reversefootnote">⤴</a> <a href="#fnref:out-of-scope:1" class="reversefootnote">⤴<sup>2</sup></a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/cs61a/week2
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

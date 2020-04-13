@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+cd ../ && bundle exec jekyll build && cd _deploy
+cp -r ../_site/* .
+git add .
+git commit -m 'deploy' && git push -f

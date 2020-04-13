@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Summer/Fall 2019: Netskope</title>
+  <meta name="description" content="Background From May 2019 to January 2020, I worked at Netskope on the Data/Infra team, both in Santa Clara and in San Francisco. I learned a lot – both academically and professionally. I redesigned and partially rewrote a core part of their infrastructure, which eventually broke out into its own component that would be scaled up over time. This infrastructure was written in Go to replace their aging infrastructure in Python.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/2019/12/23/netskope/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+
+
+  
+  <meta property="og:title" content="Summer/Fall 2019: Netskope">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/2019/12/23/netskope/">
+  <meta property="og:description" content="Background From May 2019 to January 2020, I worked at Netskope on the Data/Infra team, both in Santa Clara and in San Francisco. I learned a lot – both academically and professionally. I redesigned and partially rewrote a core part of their infrastructure, which eventually broke out into its own component that would be scaled up over time. This infrastructure was written in Go to replace their aging infrastructure in Python.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Summer/Fall 2019: Netskope">
+  <meta name="twitter:description" content="Background From May 2019 to January 2020, I worked at Netskope on the Data/Infra team, both in Santa Clara and in San Francisco. I learned a lot – both academically and professionally. I redesigned...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">Summer/Fall 2019: Netskope</h1>
+    
+    <p class="post-meta"><time datetime="2019-12-23T01:29:20-08:00" itemprop="datePublished">Dec 23, 2019</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="background">Background</h2>
+<p>From May 2019 to January 2020, I worked at Netskope on the Data/Infra team, both in Santa Clara and in San Francisco. I learned a lot – both academically and professionally. I redesigned and partially rewrote a core part of their infrastructure, which eventually broke out into its own component that would be scaled up over time. This infrastructure was written in Go to replace their aging infrastructure in Python.</p>
+
+<h2 id="internship">Internship</h2>
+<p>During the internship, I worked on the component called <em>QueryService</em> – a component that retrieves database data for UI components. In particular, I wrote out a crucial piece of infrastructure to support new databases (as we were migrating from the aging Mongo cluster we had) to support both Clickhouse and Google Cloud Platform (Bigquery). This piece of infrastructure was written in Go, which is a departure from the company’s main language of Python.</p>
+
+<p>When I started over the summer, I wrote the entire redesign of the service and checked in with several teams to find their pain points in using the in-house API. With the feedback, I generated pages of new API documentation. While this final API did not make it past the planning stage, the 19-page document serves as a great guide for future improvement to their current service.</p>
+
+<p>During the fall, the engineering team required better metrics, so we looked at Clickhouse and Bigquery as good aggregation tools. Using the code I wrote over the summer, we ported it over to be called as a separate service (from the current Python infrastructure), and we quickly scaled it up to support various existing queries (subgroupbys, aggregations, etc.). The main part I worked on during the Fall was dynamic database selection, where several preaggregated tables and collections would be available, and a request coming in would be matched to the table that would take the least computational time very quickly. This allowed us to not have to query the raw tables for all aggregations, which saved a tremendous amount of time.</p>
+
+<h2 id="takeaways">Takeaways</h2>
+<p>Food is great. I’ve never really realized, but it is pretty privileged to work in the Silicon Valley with perks that employees take for granted. People complain about the lunch selection, but it’s a great departure from worrying about the next meal in a college setting.</p>
+
+<p>Communication with teams halfway across the world is difficult. In the fall, my main team was located in India, so getting around a 8,000 mile barrier with a 12.5 hour time difference was pretty difficult. Calls were scheduled for any time between 8am and midnight. There were many times when I stepped in the office, pulled code from the repo, and found that something was broken. Since the team was asleep, I would have to work out the issue for a few hours before committing any useful work. Because of this, I came to appreciate working in an office and being able to call someone over at any time.</p>
+
+<p>Overall, the experience was really great – I learned a lot about industry technologies – Kubernetes, Docker, etc. – and worked with many different kinds of people from different backgrounds. Working in San Francisco was a great experience as well – while it was a lot to handle between a full load of classes and a 12 hour work week, it was definitely rewarding.</p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/2019/12/23/netskope/
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

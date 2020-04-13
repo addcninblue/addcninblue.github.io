@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 8 - More on Ranking Elections</title>
+  <meta name="description" content="Review – In-Class Voting Recall the results of the previous section’s in-class voting: S/W/B - 22 S/B/W - 8 B/S/W - 10 B/W/S - 3 W/B/S - 2 W/S/B - 16">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/stat155/8">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 8 - More on Ranking Elections">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/stat155/8">
+  <meta property="og:description" content="Review – In-Class Voting Recall the results of the previous section’s in-class voting: S/W/B - 22 S/B/W - 8 B/S/W - 10 B/W/S - 3 W/B/S - 2 W/S/B - 16">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 8 - More on Ranking Elections">
+  <meta name="twitter:description" content="Review – In-Class Voting Recall the results of the previous section’s in-class voting: S/W/B - 22 S/B/W - 8 B/S/W - 10 B/W/S - 3 W/B/S - 2 W/S/B - 16">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 8 - More on Ranking Elections</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#review--in-class-voting">Review – In-Class Voting</a></li>
+  <li><a href="#another-example">Another Example</a></li>
+  <li><a href="#ranking-methods">Ranking Methods</a></li>
+  <li><a href="#other-desirable-properties">Other Desirable Properties</a></li>
+  <li><a href="#footnotes">Footnotes</a></li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <h2 id="review--in-class-voting">Review – In-Class Voting</h2>
+<p>Recall the results of the previous section’s in-class voting:</p>
+<ul>
+  <li>S/W/B - 22</li>
+  <li>S/B/W - 8</li>
+  <li>B/S/W - 10</li>
+  <li>B/W/S - 3</li>
+  <li>W/B/S - 2</li>
+  <li>W/S/B - 16</li>
+</ul>
+
+<p>We get:</p>
+<ul>
+  <li>Plurality: <script type="math/tex">S \triangleright W \triangleright B</script></li>
+  <li>Broda: <script type="math/tex">S \triangleright W \triangleright B</script></li>
+  <li>Instant Runoff: <script type="math/tex">S \triangleright W \triangleright B</script></li>
+  <li>Approval Voting<sup id="fnref:approval-voting"><a href="#fn:approval-voting" class="footnote">1</a></sup>: Sanders</li>
+</ul>
+
+<p>It seems that Sanders (at least within our class) is the <strong>Condorcet Winner</strong>. In other words, he wins pairwise against any competitor. <em>There is no paradox.</em></p>
+
+<hr class="hr-subsection" />
+
+<h2 id="another-example">Another Example</h2>
+<p>100 voters with Plurality Voting:</p>
+<ul>
+  <li>Scenario <script type="math/tex">\pi_1</script> forces <script type="math/tex">A \triangleright B \triangleright C</script>:
+    <ul>
+      <li>A/B/C - 45</li>
+      <li>B/C/A - 30</li>
+      <li>C/B/A - 25</li>
+    </ul>
+  </li>
+  <li>Scenario <script type="math/tex">\pi_2</script> forces <script type="math/tex">B \triangleright A \triangleright C</script>:
+    <ul>
+      <li>A/B/C - 45</li>
+      <li>B/C/A - 30</li>
+      <li>B/C/A - 25</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Note that Independence of Irrelevant Alternatives was violated! Changing the positions of <script type="math/tex">B</script> and <script type="math/tex">C</script> for the third class of voters changed the outcome of the positions of <script type="math/tex">B</script> and <script type="math/tex">A</script>.</p>
+
+<hr />
+
+<h2 id="ranking-methods">Ranking Methods</h2>
+<ul>
+  <li>Positional Methods:
+    <ol>
+      <li>Plurality</li>
+      <li>Broda Count</li>
+      <li>Instant Runoff (a <em>mixed method</em>)</li>
+    </ol>
+  </li>
+  <li>Pairwise Ranking Methods:
+    <ol>
+      <li>Condorcet (repeated rounds of binary contests) – Number of pairwise wins</li>
+      <li>Copeland Index (kind of a modified Condorcet) – Number of pairwise wins - number of pairwise losses</li>
+    </ol>
+  </li>
+</ul>
+
+<p>Exercise: Think of situation where a <em>plurality winner is the Condorcet loser</em>.</p>
+
+<hr />
+
+<h2 id="other-desirable-properties">Other Desirable Properties</h2>
+<ol>
+  <li><strong>Symmetry</strong>/<strong>Anonymity</strong>: Who the voter is should not affect the result.
+    <ul>
+      <li>Mathematically, permuting the preference profile <script type="math/tex">\pi</script> should not change the outcome of the election.</li>
+    </ul>
+  </li>
+  <li><strong>Monotonicity</strong>: If a voter moves a particular candidate, say <script type="math/tex">A</script>, higher up within rankings, <script type="math/tex">A</script> should not drop in social ranking.</li>
+  <li><strong>Condorcet Winner Criterion</strong>/<strong>Condorcet Loser Criterion</strong>:</li>
+  <li><strong>IIA of Preference Strengths</strong>: Preference strength for a particular ranking, <script type="math/tex">A</script> vs <script type="math/tex">B</script>, is number of spots <script type="math/tex">A</script> is above <script type="math/tex">B</script>. If two spots have the same preference ranking for all voters, they should be the same in social ranking.</li>
+  <li><strong>Cancellation of Ranking Profiles</strong>: Suppose <script type="math/tex">A = {A, B, C}</script>. If we have the preference profiles <script type="math/tex">A/B/C</script>, <script type="math/tex">B/C/A</script>, <script type="math/tex">C/A/B</script>, then removing all three should not change the outcome.</li>
+</ol>
+
+<p><strong>Stretegically Vulnerable</strong>: A strategy is strategically vulnerable if it violates IIA and leaves itself open to manipulation.</p>
+
+<p><strong>Arrows Impossibility Theorem</strong>: Any transitive ranking rule on <script type="math/tex">\vert A \vert > 3</script> that satisfies IIA and unanimity <em>must be a dictatorship</em>. (Only one voter dictates social ranking.)</p>
+
+<p><strong>Gibbard Satterthwaite Theorem</strong>: A strategy-proof voting rule, where no voter can gain from misrepresenting their true preference, is impossible without</p>
+
+<p>If <script type="math/tex">F</script> is a strategy-proof voting rule on <script type="math/tex">A, \vert A \vert \geq 3</script>, it must be a dictatorship.</p>
+
+<hr />
+
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes">
+  <ol>
+    <li id="fn:approval-voting">
+      <p>Does not use the outcomes of the previous. We conduct another vote in class. Details can be found <a href="https://www.wikiwand.com/en/Approval_voting">here</a>. <a href="#fnref:approval-voting" class="reversefootnote">⤴</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <div class="source">
+      This page: https://addcnin.blue/notes/stat155/8
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

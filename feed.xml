@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2020-04-13T13:33:15-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Homelab with NixOS, Jupyter, and More</title><link href="https://addcnin.blue/2020/04/13/homelab/" rel="alternate" type="text/html" title="Homelab with NixOS, Jupyter, and More" /><published>2020-04-13T00:00:00-07:00</published><updated>2020-04-13T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/13/homelab</id><content type="html" xml:base="https://addcnin.blue/2020/04/13/homelab/">&lt;p&gt;For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found &lt;a href=&quot;https://pcpartpicker.com/user/addcn/saved/kfN2Vn&quot;&gt;here&lt;/a&gt;. I chose to install &lt;a href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt;, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.&lt;/p&gt;
+
+&lt;h2 id=&quot;rationale-for-parts&quot;&gt;Rationale For Parts&lt;/h2&gt;
+&lt;p&gt;I chose a 3700X mainly for the insane number of cores, as hosting several concurrent applications would require a lot of multithreading. I considered the 3600, and I figured the increase in cores was worth the small bump in price. For the GPU, I debated between the 1080 Ti and a 2070 Super, and I eventually opted for the 1080 Ti for the increased memory, figuring that the FP16 performance wouldn’t be seen by me (at least not for a while). The main hard drive is an NVMe SSD. The hard drives are used Barracuda drives, and will be purchased off of Craigslist. Eventually, once the coronavirus wave passes and I purchase the hard drives, I will use &lt;a href=&quot;https://www.kernel.org/doc/Documentation/bcache.txt&quot;&gt;bcache&lt;/a&gt; to turn the SSD into a caching layer, with the main memory on the hard drives. The configuration will use LVM on top of software RAID 6, so that storage is very easily configurable and reliable.&lt;/p&gt;
+
+&lt;h2 id=&quot;nixos&quot;&gt;NixOS&lt;/h2&gt;
+&lt;p&gt;NixOS installation is pretty straightforward. Their &lt;a href=&quot;https://nixos.wiki/wiki/NixOS_Installation_Guide&quot;&gt;guide&lt;/a&gt; is very well written, so I defer to them for installation instructions. My dotfiles can be found &lt;a href=&quot;https://github.com/addcninblue/dotfiles/tree/nixos&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;jupyterhub&quot;&gt;JupyterHub&lt;/h2&gt;
+&lt;p&gt;Since I would be doing a decent amount of computation, and since my main laptop is a Pixelbook, I wanted to be able to have access to a Python interpreter anywhere, particularly hosted on a website. As a result, I decided to use &lt;a href=&quot;https://jupyterhub.readthedocs.io/en/stable/&quot;&gt;Jupyterhub&lt;/a&gt;, which is pretty stable and has really good documentation. I set up the installation in an LXC container running Ubuntu 18.04, following the instructions &lt;a href=&quot;https://jupyterhub.readthedocs.io/en/stable/installation-guide-hard.html&quot;&gt;here&lt;/a&gt;. There were a few hurdles:&lt;/p&gt;
+
+&lt;p&gt;An issue you might run into is installing additional packages in the default conda runtime. If you followed the installation guide all the way through &lt;code class=&quot;highlighter-rouge&quot;&gt;Install a default conda environment for all users&lt;/code&gt;, then you should have &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; installed at &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/conda/bin/conda&lt;/code&gt;. I tried to install more packages into this environment by doing &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo /opt/conda/bin/conda install --prefix /opt/conda/envs/python __packagename__&lt;/code&gt;, but it didn’t work. Ultimately, the steps I took were probably more overkill than necessary, so I would love for anyone to tell me that my steps are unnecessary:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;I created a new conda environment for each new package I wanted to install: &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo /opt/conda/bin/conda create --prefix /opt/conda/envs/python python=3.7 ipykernel matplotlib tensorflow-gpu&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Then, I followed the second step and installed it as a new kernel: &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo /opt/conda/envs/python/bin/python -m ipykernel install --prefix=/opt/jupyterhub/ --name 'tf-gpu' --display-name &quot;tf-gpu&quot;
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;gpu-passthrough&quot;&gt;GPU Passthrough&lt;/h3&gt;
+&lt;p&gt;This was by far the most annoying part of this build. Stéphane Graber’s blog has a very very well written &lt;a href=&quot;https://stgraber.org/2017/03/21/cuda-in-lxd/&quot;&gt;post&lt;/a&gt; about how to get GPU passthrough to work, but since I am using different operating systems, I will highlight some things that might trip others up:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The Nvidia driver version &lt;em&gt;must be exactly the same&lt;/em&gt;. &lt;strong&gt;This includes the minor version!&lt;/strong&gt; A driver mismatch will cause you endless pain and suffering. For those who are venturing down this path, I recommend to first install the host Nvidia driver and CUDA driver, and then download matching versions for the LXC client.&lt;/li&gt;
+  &lt;li&gt;When you install the &lt;code class=&quot;highlighter-rouge&quot;&gt;.run&lt;/code&gt; Nvidia driver on the LXC client, you might run into something along the lines of “xxx kernel module is already installed”. To fix this, append &lt;code class=&quot;highlighter-rouge&quot;&gt;--no-kernel-module&lt;/code&gt; to the script (so it looks something like &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo sh NVIDIA-Linux-x86_64-440.36.run --no-kernel-module&lt;/code&gt;). I don’t fully understand this, but my understanding is that since LXC containers use the host kernel, the module is getting loaded by the host operating system, so the kernel module doesn’t need to be installed by the guest container. Here, that would mean that we would only need to install the driver for the tools, not for the kernel module).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;bind-mounting-folders&quot;&gt;Bind-Mounting Folders&lt;/h3&gt;
+&lt;p&gt;The next thing I wanted to do was to bind-mount folders from my host operating system into the container to be accessible by JupyterHub. Since the installation of JupyterHub meant that each user would get their own home folder, I figured bind-mounting home from the host operating system to home on the container would be trivial. As all things go, it wasn’t.&lt;/p&gt;
+
+&lt;p&gt;Again, Stéphane Graber’s blog has another &lt;a href=&quot;https://stgraber.org/2017/06/15/custom-user-mappings-in-lxd-containers/&quot;&gt;post&lt;/a&gt; on getting user mappings working in containers. This time, I didn’t run into particular issues, and following his mappings worked very well.&lt;/p&gt;
+
+&lt;h2 id=&quot;todo-raid-lvm-and-bcache&quot;&gt;TODO: RAID, LVM, and Bcache&lt;/h2&gt;
+&lt;p&gt;Once the coronavirus situation dies down, I will be able to purchase the hard drives, and I will edit this part with the installation process.&lt;/p&gt;
+
+&lt;h2 id=&quot;some-screenshots&quot;&gt;Some Screenshots&lt;/h2&gt;
+&lt;p&gt;Jupyterhub up and running:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/homelab/jupyter.png&quot; alt=&quot;jupyterhub&quot; /&gt;&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found here. I chose to install NixOS, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.</summary></entry><entry><title type="html">P/NP and Game Theory</title><link href="https://addcnin.blue/2020/04/05/pnp-game-theory/" rel="alternate" type="text/html" title="P/NP and Game Theory" /><published>2020-04-05T00:00:00-07:00</published><updated>2020-04-05T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/05/pnp-game-theory</id><content type="html" xml:base="https://addcnin.blue/2020/04/05/pnp-game-theory/">&lt;p&gt;In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format &lt;em&gt;encourages cheating&lt;/em&gt;, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;N.B.: This post was originally the essay for one of my Stat 155 assignments. I thought it interesting enough to share on my blog – I hope you enjoy it!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;uc-zoom&quot;&gt;UC Zoom&lt;/h2&gt;
+
+&lt;p&gt;On Friday, March 13th, classes were officially moved online by the UC Berkeley Administration. At this point, the change to the grading rubric had not been made yet. Let us model a typical Computer Science class, where grades are curved to a B+, as an n-player zero-sum game&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (with zero being the mean, and each integer difference being one standard deviation). To simplify this, we examine the two-player zero-sum game, which is well-studied.&lt;/p&gt;
+
+&lt;p&gt;The game is modeled as follows, with each student having two possibilities, &lt;code class=&quot;highlighter-rouge&quot;&gt;cheat&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;honest&lt;/code&gt;. We assume that the students are of equal skill, and that cheating gives a &lt;script type=&quot;math/tex&quot;&gt;+1&lt;/script&gt; standard deviation edge. Being caught in a class is &lt;script type=&quot;math/tex&quot;&gt;-0.12&lt;/script&gt;&lt;sup id=&quot;fnref:cheating-payoff&quot;&gt;&lt;a href=&quot;#fn:cheating-payoff&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. Payoffs are written to row, who is &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; in this case:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{bmatrix}
+A \textrm{\\} B &amp; \mathrm{cheat} &amp; \mathrm{honest} \\
+\mathrm{cheat} &amp; 0 &amp; 0.88 \\
+\mathrm{honest} &amp; -0.88 &amp; 0 \\
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;We see &lt;script type=&quot;math/tex&quot;&gt;\mathrm{(cheat, cheat)}&lt;/script&gt; is the dominant strategy, meaning in the case of letter grading, our model tells us that students do in fact have an incentive to cheat.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;campuswide-pnp-policy&quot;&gt;Campuswide P/NP Policy&lt;/h2&gt;
+&lt;p&gt;With the campuswide P/NP policy in place, the incentive to cheat is suddenly changed. In the CS department, it is yet unclear how grades will be assigned, but taking that a C- minimum is required to get a passing grade, one can do several standard deviations below mean and still pass in the class. Looking at grade distributions of a large CS class (&lt;script type=&quot;math/tex&quot;&gt;N &gt; 19000&lt;/script&gt;), historic grades have told us that C- and up covers 95% of the population&lt;sup id=&quot;fnref:berkeleytime&quot;&gt;&lt;a href=&quot;#fn:berkeleytime&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Therefore, in a game where two students are both taking the course for P/NP credit, modeling the grade distributions off of a large CS class, there seems to be very low incentive for anyone to cheat. Regardless of whether or not they cheat, they will more than likely make the cutoff if they put enough effort into the class, and cheating only gives the extra possibility of getting caught. Therefore, with P/NP, it seems that &lt;em&gt;the incentive for cheating decreases&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;This time, the game is modeled as a general-sum game, since one person doing well has a negligible impact on another. We only look at the payout of one person, since in the n-person general-sum game, everyone has a symmetric payout.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{bmatrix}
+\mathrm{cheat} &amp; \mathrm{honest} \\
+0 + \epsilon &amp; 0 \\
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;h2 id=&quot;banning-proctoring-over-zoom&quot;&gt;Banning Proctoring Over Zoom&lt;/h2&gt;
+&lt;p&gt;With the ban of proctoring, the risk of getting caught for cheating is all but zeroed. Does this impact the risk of cheating?&lt;/p&gt;
+
+&lt;p&gt;With the Zoom ban, many CS classes have shifted to an open-book policy. This means that, effectively, everything in the test can be looked up either way. As a result, while cheating is easily doable, with other mitigations such as test randomization, it seems that there is little impact on the rate of cheating. We get the same chart, after adding the ease of cheating and subtracting the hoops needed to hop through to cheat.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{bmatrix}
+\mathrm{cheat} &amp; \mathrm{honest} \\
+0 + \epsilon &amp; 0 \\
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;A brief note about the choice of zero-sum versus general-sum: Since classes in the CS department are all curved, this would mean that, if we took two students &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;, fixing &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;’s performance would mean that &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt; doing better causes &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; to get a worse grade. We see that in the two-player scenario, since their grades must average to the same grade, &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt; getting &lt;script type=&quot;math/tex&quot;&gt;+d&lt;/script&gt; standard deviations would result in &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; getting &lt;script type=&quot;math/tex&quot;&gt;-d&lt;/script&gt;. This is a zero-sum game. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:cheating-payoff&quot;&gt;
+      &lt;p&gt;Suppose 1 in every 50 students are caught for cheating. (This amounts to 2%.) Empirically, we have no data for cheating, since it would require all students to admit their cheating, which is somewhat of a catch-22. Either way, suppose that getting caught for cheating results in &lt;script type=&quot;math/tex&quot;&gt;-5&lt;/script&gt; on their grade, whereas not getting caught results in &lt;script type=&quot;math/tex&quot;&gt;+1&lt;/script&gt;. This is a bernoulli random variable with &lt;script type=&quot;math/tex&quot;&gt;p=0.02&lt;/script&gt;, and the expected value is &lt;script type=&quot;math/tex&quot;&gt;0.02 * -5 + 0.98 * 1 = 0.88&lt;/script&gt;. &lt;a href=&quot;#fnref:cheating-payoff&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;Note that these incentives are still in place even without online testing; it’s just that cheating with proctors in person is probably much harder. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:berkeleytime&quot;&gt;
+      &lt;p&gt;Modelled off of Berkeleytime, &lt;a href=&quot;#fnref:berkeleytime&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format encourages cheating, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.</summary></entry><entry><title type="html">Random Fact #4</title><link href="https://addcnin.blue/2020/03/24/fact3/" rel="alternate" type="text/html" title="Random Fact #4" /><published>2020-03-24T00:00:00-07:00</published><updated>2020-03-24T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/24/fact3</id><content type="html" xml:base="https://addcnin.blue/2020/03/24/fact3/">&lt;h2 id=&quot;todays-fact-foot-on-water&quot;&gt;Today’s Fact: Foot On Water&lt;/h2&gt;
+&lt;p&gt;Andi came up with an insane question: How wide does a human foot have to be for a human to stand on water? Of course, he came up with something insane, reproduced here.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;foot-on-water-andi-gu&quot;&gt;Foot On Water, Andi Gu&lt;/h2&gt;
+
+&lt;h3 id=&quot;relevant-parameters&quot;&gt;Relevant Parameters&lt;/h3&gt;
+
+&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; be the mass of some person, let &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt; be the radius of his foot (which we model as a circle), and let &lt;script type=&quot;math/tex&quot;&gt;\gamma&lt;/script&gt; be the surface energy of water (i.e. surface tension).&lt;/p&gt;
+
+&lt;p&gt;We make a simplistic model in which the water deforms in a circularly symmetric pattern around the foot, that when viewed at a cross-section appears as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact_4.png&quot; alt=&quot;watershape&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;derivation-of-foot-size&quot;&gt;Derivation of Foot Size&lt;/h3&gt;
+
+&lt;p&gt;The increase in the water surface area is&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+    \Delta A &amp;= \int_{R}^{R+\frac{h}{\tan \theta}} 2\pi r (\frac{1}{\cos \theta}-1) d{r} \\
+    &amp;= \pi (\frac{h^2}{\tan^2 \theta} + \frac{2Rh}{\tan \theta}) \frac{1-\cos \theta}{\cos \theta}
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Since &lt;script type=&quot;math/tex&quot;&gt;\Delta E=\gamma \Delta A&lt;/script&gt;, we have:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+    F_{up} &amp;= \frac{\partial E}{\partial h} \\
+    &amp;= \gamma \pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{2h}{\tan^2 \theta}+\frac{2R}{\tan \theta}) \\
+    &amp;= 2\gamma\pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{h+R \tan \theta}{\tan^2 \theta}) \\
+    &amp;\approx 2\gamma \pi R \frac{1-\cos \theta}{\sin \theta}
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;with the last step following since it is reasonable to assume &lt;script type=&quot;math/tex&quot;&gt;R \gg h&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;The only remaining variable is &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; – it is reasonable to assume a small angle &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; (i.e. &lt;script type=&quot;math/tex&quot;&gt;\theta \approx \frac{\pi}{10}&lt;/script&gt;, so that this adds a factor of approximately 0.1). With &lt;script type=&quot;math/tex&quot;&gt;\gamma=72.8&lt;/script&gt; dynes per centimeter and &lt;script type=&quot;math/tex&quot;&gt;m=80&lt;/script&gt; kilograms, &lt;script type=&quot;math/tex&quot;&gt;R \approx 13 \text{km}&lt;/script&gt;.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Foot On Water Andi came up with an insane question: How wide does a human foot have to be for a human to stand on water? Of course, he came up with something insane, reproduced here.</summary></entry><entry><title type="html">Random Fact #3</title><link href="https://addcnin.blue/2020/03/23/fact3/" rel="alternate" type="text/html" title="Random Fact #3" /><published>2020-03-23T00:00:00-07:00</published><updated>2020-03-23T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/23/fact3</id><content type="html" xml:base="https://addcnin.blue/2020/03/23/fact3/">&lt;h2 id=&quot;todays-fact-linear-discriminant-analysis&quot;&gt;Today’s Fact: Linear Discriminant Analysis&lt;/h2&gt;
+&lt;p&gt;Linear Discriminant Analysis, or LDA for short, is an ML model used in classification. Specifically, for a model of &lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; features and &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; training points, it assumes that the &lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; features are all distributed Normally (Gaussian), with the same variance. More formally, taken from my professor’s &lt;a href=&quot;https://people.eecs.berkeley.edu/~jrs/189/lec/07.pdf&quot;&gt;cs189 notes&lt;/a&gt;, we get:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact2_1.png&quot; alt=&quot;Lecture Note 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This doesn’t help much for those who are unfamiliar with Machine Learning, so he also included helpful diagrams. Below is a two-class classification (imagine your input is either of class &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; or class &lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt;, and you’re deciding which class it’s supposed to be in). The decision function (breaking point between choosing &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; versus &lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt;) is the black line; less than 0.5 indicates a stronger guess towards the left side, and greater than 0.5 indicates a stronger guess towards the right class. Below that, we have a multi-class problem, where each class’s boundaries are broken up by black line:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact2_2.png&quot; alt=&quot;Lecture Note 2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When Andi saw this, he immediately thought of &lt;a href=&quot;https://en.wikipedia.org/wiki/K-means_clustering&quot;&gt;k-means clustering&lt;/a&gt;, which is a type of unsupervised learning meant to cluster similar data without knowing their actual labels. K-means often uses similar voronoi diagrams to represent its output, so he raised a question: How does K-means compare to LDA, even though they fundamentally were quite different (supervised vs unsupervised, classification vs grouping)? And so we simulated it.&lt;/p&gt;
+
+&lt;hr class=&quot;hr-subsection&quot; /&gt;
+
+&lt;h3 id=&quot;simulation&quot;&gt;Simulation&lt;/h3&gt;
+
+&lt;p&gt;First, we examined the case of Normally distributed data that is decently spread out from each other, like so:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact2_1_data.png&quot; alt=&quot;Simulation 1, Data&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, we see that LDA and KMeans actually (somewhat surprisingly!) performed about the same:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact2_1_kmeans.png&quot; alt=&quot;Simulation 1, KMeans&quot; /&gt;
+&lt;img src=&quot;/assets/posts/facts/fact2_1_lda.png&quot; alt=&quot;Simulation 1, LDA&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, we looked at the case where data is overlapping, like so:
+&lt;img src=&quot;/assets/posts/facts/fact2_2_data.png&quot; alt=&quot;Simulation 2, Data&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We see that the results are different this time (!):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact2_2_kmeans.png&quot; alt=&quot;Simulation 2, KMeans&quot; /&gt;
+&lt;img src=&quot;/assets/posts/facts/fact2_2_lda.png&quot; alt=&quot;Simulation 2, LDA&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Notice that in the second case, where there are overlapping data, &lt;em&gt;LDA still learns of a distinction between class &lt;code class=&quot;highlighter-rouge&quot;&gt;Yellow&lt;/code&gt; and class &lt;code class=&quot;highlighter-rouge&quot;&gt;Purple&lt;/code&gt;&lt;/em&gt;. K-means completely lost it there, since it has no idea &lt;em&gt;what the labels are supposed to be&lt;/em&gt;. This is expected, since K-means is intended to group similar data, not learn things like this. We thought that it was quite interesting that K-means performed as well as it did in part 1.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;addendum&quot;&gt;Addendum&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/posts/facts/fact2.ipynb&quot;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Linear Discriminant Analysis Linear Discriminant Analysis, or LDA for short, is an ML model used in classification. Specifically, for a model of d features and n training points, it assumes that the d features are all distributed Normally (Gaussian), with the same variance. More formally, taken from my professor’s cs189 notes, we get:</summary></entry><entry><title type="html">Random Fact #2</title><link href="https://addcnin.blue/2020/03/22/fact2/" rel="alternate" type="text/html" title="Random Fact #2" /><published>2020-03-22T00:00:00-07:00</published><updated>2020-03-22T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/22/fact2</id><content type="html" xml:base="https://addcnin.blue/2020/03/22/fact2/">&lt;h2 id=&quot;todays-fact-temperature-defined-statistically&quot;&gt;Today’s Fact: Temperature, Defined Statistically&lt;/h2&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+
+&lt;p&gt;Note: This fact was actually discussed 3/23, but was moved to 3/22 for content’s sake.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Temperature, Defined Statistically TODO</summary></entry><entry><title type="html">Random Fact #1</title><link href="https://addcnin.blue/2020/03/20/fact1/" rel="alternate" type="text/html" title="Random Fact #1" /><published>2020-03-20T00:00:00-07:00</published><updated>2020-03-20T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/20/fact1</id><content type="html" xml:base="https://addcnin.blue/2020/03/20/fact1/">&lt;h2 id=&quot;todays-fact-market-for-lemons&quot;&gt;Today’s Fact: Market for Lemons&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact1.png&quot; alt=&quot;Fact 1&quot; /&gt;
+Source: Stat 155 Textbook, &lt;em&gt;Game Theory&lt;/em&gt; by Anna R. Karlin and Yuval Peres&lt;/p&gt;
+
+&lt;h2 id=&quot;a-bit-of-background&quot;&gt;A Bit Of Background&lt;/h2&gt;
+&lt;p&gt;The Coronavirus hit us all pretty hard. Now that school is moved online, and Berkeley classes have all been moved to P/NP, I’ve decided to take on the goal of finding one daily random fact with my friend &lt;a href=&quot;https://medium.com/@andi.gu.ca&quot;&gt;Andi Gu&lt;/a&gt;. Hopefully, whoever stumbles upon this blog will find them as interesting as we do!&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Market for Lemons Source: Stat 155 Textbook, Game Theory by Anna R. Karlin and Yuval Peres</summary></entry><entry><title type="html">Elixir Deployments and CPU Usage</title><link href="https://addcnin.blue/2020/03/03/elixir-performance/" rel="alternate" type="text/html" title="Elixir Deployments and CPU Usage" /><published>2020-03-03T00:00:00-08:00</published><updated>2020-03-03T00:00:00-08:00</updated><id>https://addcnin.blue/2020/03/03/elixir-performance</id><content type="html" xml:base="https://addcnin.blue/2020/03/03/elixir-performance/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt;For the past semester, I have deployed &lt;a href=&quot;go.addcnin.blue/about&quot;&gt;a custom shortlinker service&lt;/a&gt; and my &lt;a href=&quot;addcnin.blue&quot;&gt;personal website&lt;/a&gt; on a &lt;a href=&quot;cloud.google.com&quot;&gt;Google Cloud Compute Free Instance&lt;/a&gt;. The custom shortlinker is a rewrite of the &lt;a href=&quot;https://github.com/Cal-CS-61A-Staff/links&quot;&gt;CS61A Shortlinker&lt;/a&gt; in Elixir, which was a good way for me to learn the new language. Upon deploying the Elixir version, however, I noticed that CPU usage hovered around a constant 100%, even the system was idling. I left it alone for a while, noting that it was responding to requests fairly quickly, leaving me to think that it was likely the BEAM that was idling.&lt;/p&gt;
+
+&lt;h2 id=&quot;more-research&quot;&gt;More Research&lt;/h2&gt;
+&lt;p&gt;Recently, I got back into Elixir, and curiosity (+ paying bills) prompted me to investigate into the issue more. I came across &lt;a href=&quot;https://stressgrid.com/blog/beam_cpu_usage/&quot;&gt;this blog&lt;/a&gt;, which answered all of my problems.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;… enabling busy waiting causes the CPU to be saturated above 95%. Disabling busy waiting causes CPU utilization to scale with the workload.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That’s insane! Could it be possible that the BEAM was running empty cycles to claim the CPU, hence stealing cycles from other processes? There was only one way to tell.&lt;/p&gt;
+
+&lt;h2 id=&quot;my-own-change&quot;&gt;My Own Change&lt;/h2&gt;
+&lt;p&gt;I decided to make the changes the blog specified by adding these following lines to the BEAM arguments:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+sbwt none
++sbwtdcpu none
++sbwtdio none
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the blog, they used Distillery, but I use default Mix releases, so I will document the changes below:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Documentation:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://hexdocs.pm/mix/Mix.Tasks.Release.html&quot;&gt;Mix Release VM Documentation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/addcninblue/links/commit/ddb45106492892c13834aeee20a83f47591bbf24#diff-f59a5941af2fadce5fbf5b04589acd10R12&quot;&gt;Change Commit&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Add the required VM configuration files: &lt;code class=&quot;highlighter-rouge&quot;&gt;mix release.init&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Modify the VM configuration file by adding
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; +sbwt none
+ +sbwtdcpu none
+ +sbwtdio none
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;to &lt;code class=&quot;highlighter-rouge&quot;&gt;rel/vm.args.eex&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Recompile and deploy!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;And with that, I noticed that there was a dramatic reduction in compute:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/beam-reduced-usage.png&quot; alt=&quot;Beam Reduced Usage&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that CPU usage is &lt;em&gt;nearly zero&lt;/em&gt;, where as before it was ~100%! This frees up the CPU cycles for redeployments to this server and for more concurrent apps running (Build times are cut by &lt;strong&gt;more than a half!&lt;/strong&gt;). I will be monitoring this new deployment for any regressions, but it appears to be a very solid improvement.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background For the past semester, I have deployed a custom shortlinker service and my personal website on a Google Cloud Compute Free Instance. The custom shortlinker is a rewrite of the CS61A Shortlinker in Elixir, which was a good way for me to learn the new language. Upon deploying the Elixir version, however, I noticed that CPU usage hovered around a constant 100%, even the system was idling. I left it alone for a while, noting that it was responding to requests fairly quickly, leaving me to think that it was likely the BEAM that was idling.</summary></entry><entry><title type="html">EE375: A Coffee Chat</title><link href="https://addcnin.blue/2020/01/28/coffee/" rel="alternate" type="text/html" title="EE375: A Coffee Chat" /><published>2020-01-28T00:00:00-08:00</published><updated>2020-01-28T00:00:00-08:00</updated><id>https://addcnin.blue/2020/01/28/coffee</id><content type="html" xml:base="https://addcnin.blue/2020/01/28/coffee/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Hello! This is a talk I gave at EE375, an introduction to teaching techniques class required at UC Berkeley for first-time TAs. The content is largely based on James Hoffman’s techniques, with inspiration from other famous figures. Since the talk was limited to 3 minutes, I skipped a lot of (quite lengthy) discussions, including coffee grind sizes, water ratios, and water temperature. If you have any questions about the material, feel free to email me!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;main-lecture&quot;&gt;Main Lecture&lt;/h2&gt;
+
+&lt;h3 id=&quot;000--045&quot;&gt;0:00 ~ 0:45&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Brief discussion of water ratio: 16.66 grams of water per gram of coffee
+    &lt;ul&gt;
+      &lt;li&gt;Practical terms: 250g/15g for one person, 500g/30g for two people&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Brief discussion of grind size:
+    &lt;ul&gt;
+      &lt;li&gt;Medium Fine (example shown in class)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Brief discussion of pouring method, assuming 250g/15g:
+    &lt;ul&gt;
+      &lt;li&gt;0:00 ~ 0:40 (45g): Bloom phase. This phase allows us to release CO2 from the coffee to allow for better extraction.&lt;/li&gt;
+      &lt;li&gt;0:40 ~ 1:15 (150g): First pour. This phase is where we get most of our flavor from the coffee. We pour in a circular fashion to get the ground equally extracted.&lt;/li&gt;
+      &lt;li&gt;1:15 ~ 1:45 (250g): Second pour. This phase is to allow for final extraction of the flavor. We pour in a straight fashion to keep the bed of water at a constant temperature, for even extraction.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;045--300&quot;&gt;0:45 ~ 3:00&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Demonstration of V60 Technique&lt;/li&gt;
+  &lt;li&gt;Demonstrated technique: &lt;a href=&quot;https://www.youtube.com/watch?v=AI4ynXzkSQo&quot;&gt;James Hoffman’s Technique&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;additional-content&quot;&gt;Additional Content&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Coffee dialing chart&lt;sup id=&quot;fnref:copyright&quot;&gt;&lt;a href=&quot;#fn:copyright&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;
+&lt;img src=&quot;/assets/posts/coffee.jpg&quot; alt=&quot;Coffee&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:copyright&quot;&gt;
+      &lt;p&gt;I do not own this material. This is a common coffee chart used by many coffee drinkers. &lt;a href=&quot;#fnref:copyright&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">Introduction Hello! This is a talk I gave at EE375, an introduction to teaching techniques class required at UC Berkeley for first-time TAs. The content is largely based on James Hoffman’s techniques, with inspiration from other famous figures. Since the talk was limited to 3 minutes, I skipped a lot of (quite lengthy) discussions, including coffee grind sizes, water ratios, and water temperature. If you have any questions about the material, feel free to email me!</summary></entry><entry><title type="html">Summer/Fall 2019: Netskope</title><link href="https://addcnin.blue/2019/12/23/netskope/" rel="alternate" type="text/html" title="Summer/Fall 2019: Netskope" /><published>2019-12-23T01:29:20-08:00</published><updated>2019-12-23T01:29:20-08:00</updated><id>https://addcnin.blue/2019/12/23/netskope</id><content type="html" xml:base="https://addcnin.blue/2019/12/23/netskope/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt;From May 2019 to January 2020, I worked at Netskope on the Data/Infra team, both in Santa Clara and in San Francisco. I learned a lot – both academically and professionally. I redesigned and partially rewrote a core part of their infrastructure, which eventually broke out into its own component that would be scaled up over time. This infrastructure was written in Go to replace their aging infrastructure in Python.&lt;/p&gt;
+
+&lt;h2 id=&quot;internship&quot;&gt;Internship&lt;/h2&gt;
+&lt;p&gt;During the internship, I worked on the component called &lt;em&gt;QueryService&lt;/em&gt; – a component that retrieves database data for UI components. In particular, I wrote out a crucial piece of infrastructure to support new databases (as we were migrating from the aging Mongo cluster we had) to support both Clickhouse and Google Cloud Platform (Bigquery). This piece of infrastructure was written in Go, which is a departure from the company’s main language of Python.&lt;/p&gt;
+
+&lt;p&gt;When I started over the summer, I wrote the entire redesign of the service and checked in with several teams to find their pain points in using the in-house API. With the feedback, I generated pages of new API documentation. While this final API did not make it past the planning stage, the 19-page document serves as a great guide for future improvement to their current service.&lt;/p&gt;
+
+&lt;p&gt;During the fall, the engineering team required better metrics, so we looked at Clickhouse and Bigquery as good aggregation tools. Using the code I wrote over the summer, we ported it over to be called as a separate service (from the current Python infrastructure), and we quickly scaled it up to support various existing queries (subgroupbys, aggregations, etc.). The main part I worked on during the Fall was dynamic database selection, where several preaggregated tables and collections would be available, and a request coming in would be matched to the table that would take the least computational time very quickly. This allowed us to not have to query the raw tables for all aggregations, which saved a tremendous amount of time.&lt;/p&gt;
+
+&lt;h2 id=&quot;takeaways&quot;&gt;Takeaways&lt;/h2&gt;
+&lt;p&gt;Food is great. I’ve never really realized, but it is pretty privileged to work in the Silicon Valley with perks that employees take for granted. People complain about the lunch selection, but it’s a great departure from worrying about the next meal in a college setting.&lt;/p&gt;
+
+&lt;p&gt;Communication with teams halfway across the world is difficult. In the fall, my main team was located in India, so getting around a 8,000 mile barrier with a 12.5 hour time difference was pretty difficult. Calls were scheduled for any time between 8am and midnight. There were many times when I stepped in the office, pulled code from the repo, and found that something was broken. Since the team was asleep, I would have to work out the issue for a few hours before committing any useful work. Because of this, I came to appreciate working in an office and being able to call someone over at any time.&lt;/p&gt;
+
+&lt;p&gt;Overall, the experience was really great – I learned a lot about industry technologies – Kubernetes, Docker, etc. – and worked with many different kinds of people from different backgrounds. Working in San Francisco was a great experience as well – while it was a lot to handle between a full load of classes and a 12 hour work week, it was definitely rewarding.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background From May 2019 to January 2020, I worked at Netskope on the Data/Infra team, both in Santa Clara and in San Francisco. I learned a lot – both academically and professionally. I redesigned and partially rewrote a core part of their infrastructure, which eventually broke out into its own component that would be scaled up over time. This infrastructure was written in Go to replace their aging infrastructure in Python.</summary></entry></feed>

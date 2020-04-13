@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  <script>
+    MathJax = {
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    <meta charset="utf-8">
+    <title>Week 5 - Trees and Mutation</title>
+    <link rel="stylesheet" href="https://use.typekit.net/wmw5tnd.css">
+    <style>
+      @import url(https://use.typekit.net/wmw5tnd.css);
+      .remark-inline-code, .remark-code {
+        font-family: "Ubuntu-Mono";
+      }
+      body {
+        font-family: soleil, sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        font-size: 28px;
+
+        color: white;
+        background-color: '#000d1bff';
+      }
+      h1, h2, h3 {
+        font-family: montserrat, sans-serif;
+        font-weight: 400;
+        font-weight: normal;
+        font-size: 48px;
+        color: #86ecff;
+      }
+      body.remark-container {
+        
+        background-color: white;
+      }
+      div.remark-slide-content {
+        background-color: #000d1bff;
+      }
+      div.remark-slide-content.title {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 100%;
+        
+        
+        flex-wrap: wrap;
+        flex-direction: column;
+      }
+      div.remark-slide-content p, td {
+        font-size: 28px;
+      }
+      div.remark-slide-content h1, h2, h3 {
+        font-size: 48px;
+      }
+      p {
+        margin-block-end: 0;
+      }
+      ul {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: list
+<style>code{color: #a7e7f2;}</style>
+
+# welcome to discussion 5!
+Announcements:
+- Homework 4 (big!) is due Thursday 3/5 @ 11:59pm.
+- Revise Hog Composition by Tuesday 3/3.
+- Sign in: **links.cs61a.org/addison-attendance**
+- Feedback: **links.cs61a.org/addison-feedback**
+
+Schedule:
+- Trees (ADT)
+    - Height
+    - Square Tree or Find Path
+    - Abstraction
+- Mutation
+    - WWPD
+    - Add This Many
+    - (Group By)
+- Quiz
+
+---
+class: title
+
+# trees
+
+--
+
+![tree-adt](/assets/cs61a/tree-adt.png)
+
+--
+
+&larr; demo
+
+---
+class: list
+
+# tree summary
+- Parts of a tree:
+    - Root: the top-most element of a tree.
+    - Branches: the "children" of some node.
+- Functions for trees:
+    - `label(tree)`: returns the _value_ at the **root node** of a tree.
+    - `branches(tree)`: returns the _branches_ of the **root node** of a tree.
+    - `is_leaf(tree)`: returns whether a tree is a **leaf**, meaning it _has no children_.
+- Properties of a tree:
+    - Depth: how far away some particular node is from the root node. Note that depth of the root node is 0.
+    - Height: the _max depth_ of any subnode from the root node.
+
+Constructor:
+```python
+def tree(label, branches=[])
+```
+
+---
+class: title
+
+# practice: make this tree
+
+![make-this-tree](/assets/cs61a/create-tree.png)
+
+--
+
+```python
+t = tree(1,
+         [tree(3,
+               [tree(4),
+                tree(5),
+                tree(6)]),
+          tree(2)])
+```
+
+---
+class: title
+# height
+
+--
+
+```python
+def height(t):
+    if is_leaf(t):
+        return 0
+    return 1 + max([height(branch) for branch in branches(t)])
+```
+
+---
+class:title
+# height
+
+```python
+def height(t):
+    return 1 + max([height(branch) for branch in branches(t)])
+```
+
+---
+class: title
+# vote: medium or hard problem?
+
+---
+class: title
+# square tree
+
+--
+
+```python
+def square_tree(t):
+    sq_branches = [square_tree(branch) for branch in branches(t)]
+    return tree(label(t)**2, sq_branches)
+```
+
+---
+class: title
+# find path
+
+--
+
+```python
+def find_path(tree, x):
+    if label(tree) == x:
+        return [label(tree)]
+    for b in branches(tree):
+        path = find_path(b, x)
+        if path:
+            return [label(tree)] + path
+```
+
+---
+class: list
+
+# abstractions
+Main idea: Use **functions** (namely, **constructors** and **selectors**) to work with types that you didn't design.
+
+With abstractions, we assume the implementation is correct, so we don't have to worry about _how it works_, only about _how to use it_.
+
+---
+class: list
+# example
+
+```python
+def student(name, year):
+    return [name, year]
+
+def get_name(student):
+    return student[0]
+```
+
+--
+
+```python
+>>> addison = student("add", 2)
+>>> get_name(addison)
+"add"
+>>> addison[0]
+"add"
+```
+
+--
+
+```python
+def student(name, year):
+    return {"name": name, "year": year}
+
+def get_name(student):
+    return student["name"]
+```
+
+--
+
+```python
+>>> addison = student("add", 2)
+>>> get_name(addison)
+"add"
+>>> addison[0] # --> ?
+```
+
+---
+class: list
+# example
+
+```python
+def student(name, year):
+    return [name, year]
+
+def get_name(student):
+    return student[0]
+```
+
+```python
+>>> addison = student("add", 2)
+>>> get_name(addison)
+"add"
+>>> addison[0]
+"add"
+```
+
+```python
+def student(name, year):
+    return {"name": name, "year": year}
+
+def get_name(student):
+    return student["name"]
+```
+
+```python
+>>> addison = student("add", 2)
+>>> get_name(addison)
+"add"
+>>> addison[0]
+Error
+```
+
+---
+class: title
+
+# adt problems
+
+---
+class: list
+
+# mutation
+1. `my_list.append(elem)`: adds `elem` to the end of `my_list`. Returns `None`.
+1. `my_list.extend(lst)`: adds all elements from `lst` to the end of `my_list` (ie. _concatenates_ the two lists). Returns `None`.
+1. `my_list.insert(i, elem)`: adds `elem` to `my_list` at position `i`. (The items in the list get pushed down by 1 value.) Returns `None`.
+1. `my_list.remove(elem)`: removes first occurrence of `elem`.
+1. `my_list.pop(index)`: removes element at position `index` from `my_list`. Returns **the removed element**.
+
+Also, we can use assignment:
+```python
+>>> my_list = ['a', 'b', 'c']
+>>> my_list[0] = 'd'
+>>> my_list
+['d', 'b', 'c']
+```
+
+---
+class: list
+
+# == and is
+
+A quick note on `==` vs `is`:
+- `==`: compares whether two arguments are equal _in value_.
+- `is`: compares whether two arguments point to the same object.
+
+**This helps us understand how modifications to lists work! If two variables point to the same list, mutating one also mutates the other!**
+
+---
+class: title
+
+# wwpd
+
+---
+class: title
+
+# add this many
+
+--
+
+```python
+def add_this_many(x, el, lst):
+    count = 0
+    for element in lst:
+        if element == x:
+            count += 1
+    while count > 0:
+        lst.append(el)
+        count -= 1
+```
+
+--
+Can we use these instead of `lst.append(el)`?
+- `lst.extend([el])`
+- `lst += [el]`
+- `lst = lst + [el]`
+
+---
+class: title
+
+# (group by)
+
+--
+```python
+def group_by(s, fn):
+    grouped = {}
+    for x in s:
+        key = fn(x)
+        if key in grouped:
+            grouped[key].append(x)
+        else:
+            grouped[key] = [x]
+    return grouped
+```
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
