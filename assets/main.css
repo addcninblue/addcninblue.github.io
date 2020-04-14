@@ -272,6 +272,9 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 
 .highlight .w { color: #727272; }
 
+/* Make sure overflow doesn't mess with width */
+html { margin-left: calc(100vw - 100%); }
+
 /** Hide header, footer, and table of contents when printing */
 @media print { .site-header, .site-footer, .table-of-contents { display: none; } }
 
