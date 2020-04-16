@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2020-04-15T17:49:36-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Homelab with NixOS, Jupyter, and More</title><link href="https://addcnin.blue/2020/04/13/homelab/" rel="alternate" type="text/html" title="Homelab with NixOS, Jupyter, and More" /><published>2020-04-13T00:00:00-07:00</published><updated>2020-04-13T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/13/homelab</id><content type="html" xml:base="https://addcnin.blue/2020/04/13/homelab/">&lt;p&gt;For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found &lt;a href=&quot;https://pcpartpicker.com/user/addcn/saved/kfN2Vn&quot;&gt;here&lt;/a&gt;. I chose to install &lt;a href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt;, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2020-04-16T12:35:49-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Covid-19 and Game Theory</title><link href="https://addcnin.blue/2020/04/16/game-theory-covid-19/" rel="alternate" type="text/html" title="Covid-19 and Game Theory" /><published>2020-04-16T00:00:00-07:00</published><updated>2020-04-16T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/16/game-theory-covid-19</id><content type="html" xml:base="https://addcnin.blue/2020/04/16/game-theory-covid-19/">&lt;p&gt;In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format &lt;em&gt;encourages cheating&lt;/em&gt;, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;N.B.: This post was originally the essay for one of my Stat 155 assignments. I thought it interesting enough to share on my blog – I hope you enjoy it!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;uc-zoom&quot;&gt;UC Zoom&lt;/h2&gt;
+
+&lt;p&gt;On Friday, March 13th, classes were officially moved online by the UC Berkeley Administration. At this point, the change to the grading rubric had not been made yet. Let us model a typical Computer Science class, where grades are curved to a B+, as an n-player zero-sum game&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (with zero being the mean, and each integer difference being one standard deviation). To simplify this, we examine the two-player zero-sum game, which is well-studied.&lt;/p&gt;
+
+&lt;p&gt;The game is modeled as follows, with each student having two possibilities, &lt;code class=&quot;highlighter-rouge&quot;&gt;cheat&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;honest&lt;/code&gt;. We assume that the students are of equal skill, and that cheating gives a &lt;script type=&quot;math/tex&quot;&gt;+1&lt;/script&gt; standard deviation edge. Being caught in a class is &lt;script type=&quot;math/tex&quot;&gt;-0.12&lt;/script&gt;&lt;sup id=&quot;fnref:cheating-payoff&quot;&gt;&lt;a href=&quot;#fn:cheating-payoff&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. Payoffs are written to row, who is &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; in this case:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{bmatrix}
+A \textrm{\\} B &amp; \mathrm{cheat} &amp; \mathrm{honest} \\
+\mathrm{cheat} &amp; 0 &amp; 0.88 \\
+\mathrm{honest} &amp; -0.88 &amp; 0 \\
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;We see &lt;script type=&quot;math/tex&quot;&gt;\mathrm{(cheat, cheat)}&lt;/script&gt; is the dominant strategy, meaning in the case of letter grading, our model tells us that students do in fact have an incentive to cheat.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;campuswide-pnp-policy&quot;&gt;Campuswide P/NP Policy&lt;/h2&gt;
+&lt;p&gt;With the campuswide P/NP policy in place, the incentive to cheat is suddenly changed. In the CS department, it is yet unclear how grades will be assigned, but taking that a C- minimum is required to get a passing grade, one can do several standard deviations below mean and still pass in the class. Looking at grade distributions of a large CS class (&lt;script type=&quot;math/tex&quot;&gt;N &gt; 19000&lt;/script&gt;), historic grades have told us that C- and up covers 95% of the population&lt;sup id=&quot;fnref:berkeleytime&quot;&gt;&lt;a href=&quot;#fn:berkeleytime&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Therefore, in a game where two students are both taking the course for P/NP credit, modeling the grade distributions off of a large CS class, there seems to be very low incentive for anyone to cheat. Regardless of whether or not they cheat, they will more than likely make the cutoff if they put enough effort into the class, and cheating only gives the extra possibility of getting caught. Therefore, with P/NP, it seems that &lt;em&gt;the incentive for cheating decreases&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;This time, the game is modeled as a general-sum game, since one person doing well has a negligible impact on another. We only look at the payout of one person, since in the n-person general-sum game, everyone has a symmetric payout.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{bmatrix}
+\mathrm{cheat} &amp; \mathrm{honest} \\
+0 + \epsilon &amp; 0 \\
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;h2 id=&quot;banning-proctoring-over-zoom&quot;&gt;Banning Proctoring Over Zoom&lt;/h2&gt;
+&lt;p&gt;With the ban of proctoring, the risk of getting caught for cheating is all but zeroed. Does this impact the risk of cheating?&lt;/p&gt;
+
+&lt;p&gt;With the Zoom ban, many CS classes have shifted to an open-book policy. This means that, effectively, everything in the test can be looked up either way. As a result, while cheating is easily doable, with other mitigations such as test randomization, it seems that there is little impact on the rate of cheating. We get the same chart, after adding the ease of cheating and subtracting the hoops needed to hop through to cheat.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{bmatrix}
+\mathrm{cheat} &amp; \mathrm{honest} \\
+0 + \epsilon &amp; 0 \\
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;A brief note about the choice of zero-sum versus general-sum: Since classes in the CS department are all curved, this would mean that, if we took two students &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;, fixing &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;’s performance would mean that &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt; doing better causes &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; to get a worse grade. We see that in the two-player scenario, since their grades must average to the same grade, &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt; getting &lt;script type=&quot;math/tex&quot;&gt;+d&lt;/script&gt; standard deviations would result in &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; getting &lt;script type=&quot;math/tex&quot;&gt;-d&lt;/script&gt;. This is a zero-sum game. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:cheating-payoff&quot;&gt;
+      &lt;p&gt;Suppose 1 in every 50 students are caught for cheating. (This amounts to 2%.) Empirically, we have no data for cheating, since it would require all students to admit their cheating, which is somewhat of a catch-22. Either way, suppose that getting caught for cheating results in &lt;script type=&quot;math/tex&quot;&gt;-5&lt;/script&gt; on their grade, whereas not getting caught results in &lt;script type=&quot;math/tex&quot;&gt;+1&lt;/script&gt;. This is a bernoulli random variable with &lt;script type=&quot;math/tex&quot;&gt;p=0.02&lt;/script&gt;, and the expected value is &lt;script type=&quot;math/tex&quot;&gt;0.02 * -5 + 0.98 * 1 = 0.88&lt;/script&gt;. &lt;a href=&quot;#fnref:cheating-payoff&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;Note that these incentives are still in place even without online testing; it’s just that cheating with proctors in person is probably much harder. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:berkeleytime&quot;&gt;
+      &lt;p&gt;Modelled off of Berkeleytime, &lt;a href=&quot;#fnref:berkeleytime&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format encourages cheating, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.</summary></entry><entry><title type="html">Homelab with NixOS, Jupyter, and More</title><link href="https://addcnin.blue/2020/04/13/homelab/" rel="alternate" type="text/html" title="Homelab with NixOS, Jupyter, and More" /><published>2020-04-13T00:00:00-07:00</published><updated>2020-04-13T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/13/homelab</id><content type="html" xml:base="https://addcnin.blue/2020/04/13/homelab/">&lt;p&gt;For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found &lt;a href=&quot;https://pcpartpicker.com/user/addcn/saved/kfN2Vn&quot;&gt;here&lt;/a&gt;. I chose to install &lt;a href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt;, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.&lt;/p&gt;
 
 &lt;h2 id=&quot;rationale-for-parts&quot;&gt;Rationale For Parts&lt;/h2&gt;
 &lt;p&gt;I chose a 3700X mainly for the insane number of cores, as hosting several concurrent applications would require a lot of multithreading. I considered the 3600, and I figured the increase in cores was worth the small bump in price. For the GPU, I debated between the 1080 Ti and a 2070 Super, and I eventually opted for the 1080 Ti for the increased memory, figuring that the FP16 performance wouldn’t be seen by me (at least not for a while). (Later on in the month, my neighbor gave me an old computer, and I found a 1080 inside. I’m extremely lucky and grateful for him :’).) The main hard drive is an NVMe SSD. The hard drives are used Barracuda drives, and will be purchased off of Craigslist. Eventually, once the coronavirus wave passes and I purchase the hard drives, I will use &lt;a href=&quot;https://www.kernel.org/doc/Documentation/bcache.txt&quot;&gt;bcache&lt;/a&gt; to turn the SSD into a caching layer, with the main memory on the hard drives. The configuration will use LVM on top of software RAID 6, so that storage is very easily configurable and reliable.&lt;/p&gt;
@@ -7,14 +67,36 @@
 &lt;p&gt;NixOS installation is pretty straightforward. Their &lt;a href=&quot;https://nixos.wiki/wiki/NixOS_Installation_Guide&quot;&gt;guide&lt;/a&gt; is very well written, so I defer to them for installation instructions. My dotfiles can be found &lt;a href=&quot;https://github.com/addcninblue/dotfiles/tree/nixos&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;jupyterhub&quot;&gt;JupyterHub&lt;/h2&gt;
-&lt;p&gt;Since I would be doing a decent amount of computation, and since my main laptop is a Pixelbook, I wanted to be able to have access to a Python interpreter anywhere, particularly hosted on a website. As a result, I decided to use &lt;a href=&quot;https://jupyterhub.readthedocs.io/en/stable/&quot;&gt;Jupyterhub&lt;/a&gt;, which is pretty stable and has really good documentation. I set up the installation in an LXC container running Ubuntu 18.04, following the instructions &lt;a href=&quot;https://jupyterhub.readthedocs.io/en/stable/installation-guide-hard.html&quot;&gt;here&lt;/a&gt;. There were a few hurdles:&lt;/p&gt;
+&lt;p&gt;Since I would be doing a decent amount of computation, and since my main laptop is a Pixelbook, I wanted to be able to have access to a Python interpreter anywhere, particularly hosted on a website. As a result, I decided to use &lt;a href=&quot;https://jupyterhub.readthedocs.io/en/stable/&quot;&gt;Jupyterhub&lt;/a&gt;, which is pretty stable and has really good documentation. I set up the installation in an LXC container running Ubuntu 18.04, following the instructions &lt;a href=&quot;https://jupyterhub.readthedocs.io/en/stable/installation-guide-hard.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;An issue you might run into is installing additional packages in the default conda runtime. If you followed the installation guide all the way through &lt;code class=&quot;highlighter-rouge&quot;&gt;Install a default conda environment for all users&lt;/code&gt;, then you should have &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; installed at &lt;code class=&quot;highlighter-rouge&quot;&gt;/opt/conda/bin/conda&lt;/code&gt;. I tried to install more packages into this environment by doing &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo /opt/conda/bin/conda install --prefix /opt/conda/envs/python __packagename__&lt;/code&gt;, but it didn’t work. Ultimately, the steps I took were probably more overkill than necessary, so I would love for anyone to tell me that my steps are unnecessary:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;I created a new conda environment for each new package I wanted to install: &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo /opt/conda/bin/conda create --prefix /opt/conda/envs/python python=3.7 ipykernel matplotlib tensorflow-gpu&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Then, I followed the second step and installed it as a new kernel: &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo /opt/conda/envs/python/bin/python -m ipykernel install --prefix=/opt/jupyterhub/ --name 'tf-gpu' --display-name &quot;tf-gpu&quot;
-&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;Installing new kernels for JupyterHub was a huge headache, however. There are a lot of package managers for Python, including &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualenv&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;venv&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt;, and often their usages overlap with one another. Maintaining them is quite the headache! For JupyterHub, &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; is used to make environments, and &lt;em&gt;kernels&lt;/em&gt; are used when executing code inside JupyterHub. Below is a detailed rundown of creation of a new conda environment for a particular user:&lt;/p&gt;
+
+&lt;h3 id=&quot;creating-a-new-environment&quot;&gt;Creating a New Environment&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;First, we create the &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; environment. Here, our conda environment is called &lt;code class=&quot;highlighter-rouge&quot;&gt;conda_env&lt;/code&gt; and we install the &lt;code class=&quot;highlighter-rouge&quot;&gt;ipykernel&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;matplotlib&lt;/code&gt; packages. You can choose your packages, but note that &lt;code class=&quot;highlighter-rouge&quot;&gt;ipykernel&lt;/code&gt; &lt;em&gt;must&lt;/em&gt; be installed: &lt;code class=&quot;highlighter-rouge&quot;&gt;conda create --name &quot;conda_env&quot; python=3.7 ipykernel matplotlib&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Next, we activate the conda environment: &lt;code class=&quot;highlighter-rouge&quot;&gt;conda activate conda_env&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Now, since we have our conda environment activated, the &lt;code class=&quot;highlighter-rouge&quot;&gt;python&lt;/code&gt; binary will be bound to the &lt;code class=&quot;highlighter-rouge&quot;&gt;python&lt;/code&gt; package that the &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; environment created. (You can use &lt;code class=&quot;highlighter-rouge&quot;&gt;which python&lt;/code&gt; to see that in action!) Now, we can use &lt;code class=&quot;highlighter-rouge&quot;&gt;python -m ipykernel install --user --name &quot;kernel_name&quot;&lt;/code&gt; to install a new kernel with the name &lt;code class=&quot;highlighter-rouge&quot;&gt;kernel_name&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;listing-environments&quot;&gt;Listing Environments&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Listing &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; environments: &lt;code class=&quot;highlighter-rouge&quot;&gt;conda info --envs&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Listing JupyterHub kernels: &lt;code class=&quot;highlighter-rouge&quot;&gt;jupyter kernelspec list&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;deleting-kernels-and-conda-environments&quot;&gt;Deleting Kernels and Conda Environments&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;First, we remove the jupyter kernel: &lt;code class=&quot;highlighter-rouge&quot;&gt;jupyter kernelspec remove &quot;kernel_name&quot;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Next, we remove the conda environment that created the kernel: &lt;code class=&quot;highlighter-rouge&quot;&gt;conda remove --name &quot;conda_env&quot; --all&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;bonus-installing-packages-from-requirementstxt&quot;&gt;Bonus: Installing Packages From requirements.txt&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Follow steps from &lt;a href=&quot;#creating-a-new-environment&quot;&gt;&lt;strong&gt;Creating a New Environment&lt;/strong&gt;&lt;/a&gt;, but before installing the kernel, run &lt;code class=&quot;highlighter-rouge&quot;&gt;conda install --file requirements.txt&lt;/code&gt; to install the packages to the &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; environment. Then, proceed as usual.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;making-lxc-play-nice&quot;&gt;Making LXC Play Nice&lt;/h2&gt;
+&lt;p&gt;The last thing I needed to do to make the container GPU-accelerated was to pass the GPU through as a device from the host OS to the container. It was definitely not trivial.&lt;/p&gt;
 
 &lt;h3 id=&quot;gpu-passthrough&quot;&gt;GPU Passthrough&lt;/h3&gt;
 &lt;p&gt;This was by far the most annoying part of this build. Stéphane Graber’s blog has a very very well written &lt;a href=&quot;https://stgraber.org/2017/03/21/cuda-in-lxd/&quot;&gt;post&lt;/a&gt; about how to get GPU passthrough to work, but since I am using different operating systems, I will highlight some things that might trip others up:&lt;/p&gt;
