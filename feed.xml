@@ -1,64 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2020-04-16T12:35:49-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Covid-19 and Game Theory</title><link href="https://addcnin.blue/2020/04/16/game-theory-covid-19/" rel="alternate" type="text/html" title="Covid-19 and Game Theory" /><published>2020-04-16T00:00:00-07:00</published><updated>2020-04-16T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/16/game-theory-covid-19</id><content type="html" xml:base="https://addcnin.blue/2020/04/16/game-theory-covid-19/">&lt;p&gt;In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format &lt;em&gt;encourages cheating&lt;/em&gt;, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2020-04-16T16:31:49-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Covid-19 and Game Theory</title><link href="https://addcnin.blue/2020/04/16/game-theory-covid-19/" rel="alternate" type="text/html" title="Covid-19 and Game Theory" /><published>2020-04-16T00:00:00-07:00</published><updated>2020-04-16T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/16/game-theory-covid-19</id><content type="html" xml:base="https://addcnin.blue/2020/04/16/game-theory-covid-19/">&lt;h2 id=&quot;articles-referenced-and-their-claims&quot;&gt;Articles Referenced and Their Claims&lt;/h2&gt;
+&lt;p&gt;In &lt;a href=&quot;https://www.heraldscotland.com/news/18314703.helen-mcardle-game-theory-tells-us-britains-reaction-coronavirus/&quot;&gt;The Herald&lt;/a&gt;, &lt;a href=&quot;https://www.adamsmith.org/blog/covid-19-and-game-theory&quot;&gt;the Adam Smith Institute&lt;/a&gt;, &lt;a href=&quot;https://asiatimes.com/2020/03/covid-19-and-the-prisoners-dilemma/&quot;&gt;Asia Times&lt;/a&gt;, the authors argue that the situation is well-explained by Prisoners’ Dilemma. In The Herald, McArdle makes the additional claim that Western countries have a lack of trust that Eastern countries do not have, exacerbating the Prisoners’ Dilemma problem. Macdonald of the Adam Smith Institute makes a particularly astute economic observation that “raising prices in our current context is not a cynical cash grab, but an effective means of restoring consumer confidence and ensuring we can all access the goods we need during these strange and difficult times”.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;N.B.: This post was originally the essay for one of my Stat 155 assignments. I thought it interesting enough to share on my blog – I hope you enjoy it!&lt;/p&gt;
+  &lt;p&gt;A minor charge can be compared to temporary economic and material disruption. That would have been the sole significant setback had corporations cooperated. In this case the entire economic machinery would have toned down and shrunk, and thus everyone would have been affected more or less the same.&lt;/p&gt;
+
+  &lt;p&gt;The problem, however, arises when some parties betray the faith. From a single corporation’s or businessman’s point of view, if they stay faithful, and other parties do not adhere to the bargain, they fall back in the competition. The disadvantage sustained could very plausibly be insurmountable, akin to one prisoner walking off free while the other suffers a massive loss.&lt;/p&gt;
+
+  &lt;p&gt;– Kaushik, Asia Times&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;uc-zoom&quot;&gt;UC Zoom&lt;/h2&gt;
+&lt;p&gt;In &lt;a href=&quot;https://medium.com/@vivfang/coronavirus-game-6fdf4d4d4007&quot;&gt;an article published on Medium&lt;/a&gt;, Fang tackles a popular post floating on Facebook claiming to explain the Coronavirus in terms of Game Theory by arguing that the explanation was flawed due to a wrong application of said theory. Fang then reproduces the game, this time with her own chart. Noticeably, the chart, reproduced below, has a Nash Equilibrium that is Pareto Efficient!
+&lt;img src=&quot;/assets/posts/2020-04-16-game-theory-covid-19/medium-article-chart.png&quot; alt=&quot;Medium Article Chart&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;On Friday, March 13th, classes were officially moved online by the UC Berkeley Administration. At this point, the change to the grading rubric had not been made yet. Let us model a typical Computer Science class, where grades are curved to a B+, as an n-player zero-sum game&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (with zero being the mean, and each integer difference being one standard deviation). To simplify this, we examine the two-player zero-sum game, which is well-studied.&lt;/p&gt;
+&lt;h2 id=&quot;prisoners-dilemma&quot;&gt;Prisoners’ Dilemma&lt;/h2&gt;
+&lt;p&gt;But are we as humans really stuck in a game of Prisoners’ Dilemma? Seeing that several Asian countries, and Taiwan in particular, have no issues with hoarding, we must either settle for the conclusion that humans are fundamentally different across the East and the West, as McArdle claims, or that there is some other factor at play &lt;em&gt;impacting the setup of the game itself&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;The game is modeled as follows, with each student having two possibilities, &lt;code class=&quot;highlighter-rouge&quot;&gt;cheat&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;honest&lt;/code&gt;. We assume that the students are of equal skill, and that cheating gives a &lt;script type=&quot;math/tex&quot;&gt;+1&lt;/script&gt; standard deviation edge. Being caught in a class is &lt;script type=&quot;math/tex&quot;&gt;-0.12&lt;/script&gt;&lt;sup id=&quot;fnref:cheating-payoff&quot;&gt;&lt;a href=&quot;#fn:cheating-payoff&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. Payoffs are written to row, who is &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; in this case:&lt;/p&gt;
+&lt;p&gt;In the situation where the setup of the games are the same, where both the East and West are facing Prisoners’ Dilemmas, the lack of shortages in the East would mean that the people are cooperating. While plausible, these differences must necessarily be attributed to a difference in culture, meaning that scarcity would manifest differently across the United States. Seeing that communities everywhere see shortages, there must be some other explanation.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-A \textrm{\\} B &amp; \mathrm{cheat} &amp; \mathrm{honest} \\
-\mathrm{cheat} &amp; 0 &amp; 0.88 \\
-\mathrm{honest} &amp; -0.88 &amp; 0 \\
-\end{bmatrix} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;We see &lt;script type=&quot;math/tex&quot;&gt;\mathrm{(cheat, cheat)}&lt;/script&gt; is the dominant strategy, meaning in the case of letter grading, our model tells us that students do in fact have an incentive to cheat.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;campuswide-pnp-policy&quot;&gt;Campuswide P/NP Policy&lt;/h2&gt;
-&lt;p&gt;With the campuswide P/NP policy in place, the incentive to cheat is suddenly changed. In the CS department, it is yet unclear how grades will be assigned, but taking that a C- minimum is required to get a passing grade, one can do several standard deviations below mean and still pass in the class. Looking at grade distributions of a large CS class (&lt;script type=&quot;math/tex&quot;&gt;N &gt; 19000&lt;/script&gt;), historic grades have told us that C- and up covers 95% of the population&lt;sup id=&quot;fnref:berkeleytime&quot;&gt;&lt;a href=&quot;#fn:berkeleytime&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Therefore, in a game where two students are both taking the course for P/NP credit, modeling the grade distributions off of a large CS class, there seems to be very low incentive for anyone to cheat. Regardless of whether or not they cheat, they will more than likely make the cutoff if they put enough effort into the class, and cheating only gives the extra possibility of getting caught. Therefore, with P/NP, it seems that &lt;em&gt;the incentive for cheating decreases&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;This time, the game is modeled as a general-sum game, since one person doing well has a negligible impact on another. We only look at the payout of one person, since in the n-person general-sum game, everyone has a symmetric payout.&lt;/p&gt;
+&lt;p&gt;Suppose for a moment that supplies are not scarce; ie. no matter how much toilet paper one buys, another will not be impacted. Denote the payoff of hoarding to be &lt;script type=&quot;math/tex&quot;&gt;-5&lt;/script&gt; due to diminishing returns, and the payoff of not hoarding to be &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;.&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{bmatrix}
-\mathrm{cheat} &amp; \mathrm{honest} \\
-0 + \epsilon &amp; 0 \\
+P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
+\textrm{hoard}       &amp; (-5, -5) &amp; (-5, 0) \\
+\textrm{don't hoard} &amp; (0, -5)  &amp; (0, 0) \\
 \end{bmatrix} %]]&gt;&lt;/script&gt;
 
-&lt;h2 id=&quot;banning-proctoring-over-zoom&quot;&gt;Banning Proctoring Over Zoom&lt;/h2&gt;
-&lt;p&gt;With the ban of proctoring, the risk of getting caught for cheating is all but zeroed. Does this impact the risk of cheating?&lt;/p&gt;
+&lt;p&gt;In this setup, we immediately see that the Prisoners’ Dilemma problem has disappeared – &lt;script type=&quot;math/tex&quot;&gt;\textrm{(don't hoard, don't hoard)}&lt;/script&gt; is the Nash Equilibrium &lt;em&gt;and the Pareto Optimum&lt;/em&gt;, meaning that with a lack of resources, there is no incentive for anyone to hoard resources! This makes sense – why hoard knowing that resources will always be available when you need it?&lt;/p&gt;
 
-&lt;p&gt;With the Zoom ban, many CS classes have shifted to an open-book policy. This means that, effectively, everything in the test can be looked up either way. As a result, while cheating is easily doable, with other mitigations such as test randomization, it seems that there is little impact on the rate of cheating. We get the same chart, after adding the ease of cheating and subtracting the hoops needed to hop through to cheat.&lt;/p&gt;
+&lt;h2 id=&quot;response-to-the-coronavirus&quot;&gt;Response to the Coronavirus&lt;/h2&gt;
+&lt;p&gt;Let us take a step back and view responses to the coronavirus; in particular, we compare Taiwan’s&lt;sup id=&quot;fnref:wikipedia-taiwan&quot;&gt;&lt;a href=&quot;#fn:wikipedia-taiwan&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; approach to the United States’&lt;sup id=&quot;fnref:wikipedia-usa&quot;&gt;&lt;a href=&quot;#fn:wikipedia-usa&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;On December 31st, 2019, both the United States and Taiwan learned about the cases in China. On that same day, Taiwan started inspecting inbound flights from Wuhan, while the United States waited until much much later. Mask rationing was implemented on February 6th, with the Taiwanese Armed Forces deployed to aid the scaling of mask production in factories. In the United States, people were recommended to not wear masks, claiming that their efficacy was unproven and limited. In the third week of February, medical experts “concluded that the United States had already lost the fight to contain the virus”.[^nytimes-red-dawn] Contrasting this is the efforts of Taiwan, who as of today only have a mere 395 cases (fewer than my county!) and are exporting face masks!&lt;/p&gt;
+
+&lt;p&gt;Arguments as to why Taiwan and other countries’ responses have been so quick are varied, including the fact that they have seen SARS, a similar virus and situation, but one thing is clear: their people have much less to fear when they know that containment is quite evident and adequate. This effectively reduces their situation to the lack of shortage situation discussed earlier, since they can depend on supply chains not shutting down because of adequate preparation.&lt;/p&gt;
+
+&lt;h2 id=&quot;facing-the-shortages&quot;&gt;Facing the Shortages&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;But are people acting irrationally? At a collective level, it is leading to shortages of goods. But in a direct sense, people are acting rationally. It becomes optimal rather than suboptimal to start stockpiling if everyone else does because their stockpiling creates the very supply problem they are trying to avoid in the first place.&lt;/p&gt;
+
+  &lt;p&gt;– Macdonald, Adam Smith Institute&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I was an intended Economics major prior to switching to Statistics. Macdonald’s claim piqued my interest, so let’s examine them through a statistical lens.&lt;/p&gt;
+
+&lt;p&gt;In the situation where market values are not restricted, we have the following payoff diagram: In the case where people both do not hoard, there is no change from the status quo, so the payoff to both is 0. In the case where one hoards and the other doesn’t, one gains and the other loses. In the case where both hoard, there is a small loss to both (since there is a loss of accessible resources in the case either need them). This is classical Prisoners’ Dilemma:&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{bmatrix}
-\mathrm{cheat} &amp; \mathrm{honest} \\
-0 + \epsilon &amp; 0 \\
+P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
+\textrm{hoard}       &amp; (-2, -2) &amp; (3, -3) \\
+\textrm{don't hoard} &amp; (-3, 3)  &amp; (0, 0) \\
 \end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Now, suppose there is a price floor imposed on the market, equivalent to the total marginal utility gained through hoarding beyond the original market equilibrium. The scenario is the same, with one changed parameter: hoarding is more expensive now, incurring a loss of &lt;script type=&quot;math/tex&quot;&gt;-3&lt;/script&gt;. We define a new field, &lt;script type=&quot;math/tex&quot;&gt;\textrm{hoard less}&lt;/script&gt;, describing a situation where hoarding is in effect, but with less quantity. Assuming that both people have a price-elastic response&lt;sup id=&quot;fnref:price-elasticity&quot;&gt;&lt;a href=&quot;#fn:price-elasticity&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{bmatrix}
+P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
+\textrm{hoard}       &amp; (-5, -5) &amp; (0, -3) \\
+\textrm{don't hoard} &amp; (-3, 0)  &amp; (0, 0) \\
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Immediately, we see that we have recovered a situation with the Nash Equilibrium equal to the Pareto Equilibrium equal to not hoarding for both. In other words, the market price floor has a positive effect in this scenario.&lt;/p&gt;
 
 &lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
 
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;A brief note about the choice of zero-sum versus general-sum: Since classes in the CS department are all curved, this would mean that, if we took two students &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;, fixing &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;’s performance would mean that &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt; doing better causes &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; to get a worse grade. We see that in the two-player scenario, since their grades must average to the same grade, &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt; getting &lt;script type=&quot;math/tex&quot;&gt;+d&lt;/script&gt; standard deviations would result in &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; getting &lt;script type=&quot;math/tex&quot;&gt;-d&lt;/script&gt;. This is a zero-sum game. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:wikipedia-taiwan&quot;&gt;
+      &lt;p&gt;https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Taiwan &lt;a href=&quot;#fnref:wikipedia-taiwan&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:cheating-payoff&quot;&gt;
-      &lt;p&gt;Suppose 1 in every 50 students are caught for cheating. (This amounts to 2%.) Empirically, we have no data for cheating, since it would require all students to admit their cheating, which is somewhat of a catch-22. Either way, suppose that getting caught for cheating results in &lt;script type=&quot;math/tex&quot;&gt;-5&lt;/script&gt; on their grade, whereas not getting caught results in &lt;script type=&quot;math/tex&quot;&gt;+1&lt;/script&gt;. This is a bernoulli random variable with &lt;script type=&quot;math/tex&quot;&gt;p=0.02&lt;/script&gt;, and the expected value is &lt;script type=&quot;math/tex&quot;&gt;0.02 * -5 + 0.98 * 1 = 0.88&lt;/script&gt;. &lt;a href=&quot;#fnref:cheating-payoff&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:wikipedia-usa&quot;&gt;
+      &lt;p&gt;https://en.wikipedia.org/wiki/Timeline_of_the_2020_coronavirus_pandemic_in_the_United_States &lt;a href=&quot;#fnref:wikipedia-usa&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:2&quot;&gt;
-      &lt;p&gt;Note that these incentives are still in place even without online testing; it’s just that cheating with proctors in person is probably much harder. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:berkeleytime&quot;&gt;
-      &lt;p&gt;Modelled off of Berkeleytime, &lt;a href=&quot;#fnref:berkeleytime&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:price-elasticity&quot;&gt;
+      &lt;p&gt;Here, I make a key assumption that price elasticity of hoarded goods are elastic beyond their basic consumption. The author of the Adam Smith Institute article, Macdonald, has observed anecdotally that his experience supports this conclusion. &lt;a href=&quot;#fnref:price-elasticity&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format encourages cheating, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.</summary></entry><entry><title type="html">Homelab with NixOS, Jupyter, and More</title><link href="https://addcnin.blue/2020/04/13/homelab/" rel="alternate" type="text/html" title="Homelab with NixOS, Jupyter, and More" /><published>2020-04-13T00:00:00-07:00</published><updated>2020-04-13T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/13/homelab</id><content type="html" xml:base="https://addcnin.blue/2020/04/13/homelab/">&lt;p&gt;For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found &lt;a href=&quot;https://pcpartpicker.com/user/addcn/saved/kfN2Vn&quot;&gt;here&lt;/a&gt;. I chose to install &lt;a href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt;, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.&lt;/p&gt;
+&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html"></summary></entry><entry><title type="html">Homelab with NixOS, Jupyter, and More</title><link href="https://addcnin.blue/2020/04/13/homelab/" rel="alternate" type="text/html" title="Homelab with NixOS, Jupyter, and More" /><published>2020-04-13T00:00:00-07:00</published><updated>2020-04-13T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/13/homelab</id><content type="html" xml:base="https://addcnin.blue/2020/04/13/homelab/">&lt;p&gt;For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found &lt;a href=&quot;https://pcpartpicker.com/user/addcn/saved/kfN2Vn&quot;&gt;here&lt;/a&gt;. I chose to install &lt;a href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt;, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.&lt;/p&gt;
 
 &lt;h2 id=&quot;rationale-for-parts&quot;&gt;Rationale For Parts&lt;/h2&gt;
 &lt;p&gt;I chose a 3700X mainly for the insane number of cores, as hosting several concurrent applications would require a lot of multithreading. I considered the 3600, and I figured the increase in cores was worth the small bump in price. For the GPU, I debated between the 1080 Ti and a 2070 Super, and I eventually opted for the 1080 Ti for the increased memory, figuring that the FP16 performance wouldn’t be seen by me (at least not for a while). (Later on in the month, my neighbor gave me an old computer, and I found a 1080 inside. I’m extremely lucky and grateful for him :’).) The main hard drive is an NVMe SSD. The hard drives are used Barracuda drives, and will be purchased off of Craigslist. Eventually, once the coronavirus wave passes and I purchase the hard drives, I will use &lt;a href=&quot;https://www.kernel.org/doc/Documentation/bcache.txt&quot;&gt;bcache&lt;/a&gt; to turn the SSD into a caching layer, with the main memory on the hard drives. The configuration will use LVM on top of software RAID 6, so that storage is very easily configurable and reliable.&lt;/p&gt;

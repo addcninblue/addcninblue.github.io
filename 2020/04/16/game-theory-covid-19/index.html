@@ -10,7 +10,7 @@
   
   
   <title>Covid-19 and Game Theory</title>
-  <meta name="description" content="In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format encourages cheating, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.">
+  <meta name="description" content="">
   
 
   <link rel="stylesheet" href="/assets/main.css">
@@ -49,13 +49,13 @@
   <meta property="og:title" content="Covid-19 and Game Theory">
   <meta property="og:site_name" content="Addison Chan">
   <meta property="og:url" content="https://addcnin.blue/2020/04/16/game-theory-covid-19/">
-  <meta property="og:description" content="In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format encourages cheating, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.">
+  <meta property="og:description" content="">
   
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="addcninblue">
   <meta name="twitter:title" content="Covid-19 and Game Theory">
-  <meta name="twitter:description" content="In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed...">
+  <meta name="twitter:description" content="">
   
     <meta name="twitter:creator" content="addcninblue">
   
@@ -127,64 +127,85 @@
 
     <hr>
 
-    <p>In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format <em>encourages cheating</em>, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.</p>
+    
+<h2 id="articles-referenced-and-their-claims">Articles Referenced and Their Claims</h2>
+<p>In <a href="https://www.heraldscotland.com/news/18314703.helen-mcardle-game-theory-tells-us-britains-reaction-coronavirus/">The Herald</a>, <a href="https://www.adamsmith.org/blog/covid-19-and-game-theory">the Adam Smith Institute</a>, <a href="https://asiatimes.com/2020/03/covid-19-and-the-prisoners-dilemma/">Asia Times</a>, the authors argue that the situation is well-explained by Prisoners’ Dilemma. In The Herald, McArdle makes the additional claim that Western countries have a lack of trust that Eastern countries do not have, exacerbating the Prisoners’ Dilemma problem. Macdonald of the Adam Smith Institute makes a particularly astute economic observation that “raising prices in our current context is not a cynical cash grab, but an effective means of restoring consumer confidence and ensuring we can all access the goods we need during these strange and difficult times”.</p>
 
 <blockquote>
-  <p>N.B.: This post was originally the essay for one of my Stat 155 assignments. I thought it interesting enough to share on my blog – I hope you enjoy it!</p>
+  <p>A minor charge can be compared to temporary economic and material disruption. That would have been the sole significant setback had corporations cooperated. In this case the entire economic machinery would have toned down and shrunk, and thus everyone would have been affected more or less the same.</p>
+
+  <p>The problem, however, arises when some parties betray the faith. From a single corporation’s or businessman’s point of view, if they stay faithful, and other parties do not adhere to the bargain, they fall back in the competition. The disadvantage sustained could very plausibly be insurmountable, akin to one prisoner walking off free while the other suffers a massive loss.</p>
+
+  <p>– Kaushik, Asia Times</p>
 </blockquote>
 
-<h2 id="uc-zoom">UC Zoom</h2>
+<p>In <a href="https://medium.com/@vivfang/coronavirus-game-6fdf4d4d4007">an article published on Medium</a>, Fang tackles a popular post floating on Facebook claiming to explain the Coronavirus in terms of Game Theory by arguing that the explanation was flawed due to a wrong application of said theory. Fang then reproduces the game, this time with her own chart. Noticeably, the chart, reproduced below, has a Nash Equilibrium that is Pareto Efficient!
+<img src="/assets/posts/2020-04-16-game-theory-covid-19/medium-article-chart.png" alt="Medium Article Chart" /></p>
 
-<p>On Friday, March 13th, classes were officially moved online by the UC Berkeley Administration. At this point, the change to the grading rubric had not been made yet. Let us model a typical Computer Science class, where grades are curved to a B+, as an n-player zero-sum game<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> (with zero being the mean, and each integer difference being one standard deviation). To simplify this, we examine the two-player zero-sum game, which is well-studied.</p>
+<h2 id="prisoners-dilemma">Prisoners’ Dilemma</h2>
+<p>But are we as humans really stuck in a game of Prisoners’ Dilemma? Seeing that several Asian countries, and Taiwan in particular, have no issues with hoarding, we must either settle for the conclusion that humans are fundamentally different across the East and the West, as McArdle claims, or that there is some other factor at play <em>impacting the setup of the game itself</em>.</p>
 
-<p>The game is modeled as follows, with each student having two possibilities, <code class="highlighter-rouge">cheat</code> and <code class="highlighter-rouge">honest</code>. We assume that the students are of equal skill, and that cheating gives a <script type="math/tex">+1</script> standard deviation edge. Being caught in a class is <script type="math/tex">-0.12</script><sup id="fnref:cheating-payoff"><a href="#fn:cheating-payoff" class="footnote">2</a></sup>. Payoffs are written to row, who is <script type="math/tex">A</script> in this case:</p>
+<p>In the situation where the setup of the games are the same, where both the East and West are facing Prisoners’ Dilemmas, the lack of shortages in the East would mean that the people are cooperating. While plausible, these differences must necessarily be attributed to a difference in culture, meaning that scarcity would manifest differently across the United States. Seeing that communities everywhere see shortages, there must be some other explanation.</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{bmatrix}
-A \textrm{\\} B & \mathrm{cheat} & \mathrm{honest} \\
-\mathrm{cheat} & 0 & 0.88 \\
-\mathrm{honest} & -0.88 & 0 \\
-\end{bmatrix} %]]></script>
-
-<p>We see <script type="math/tex">\mathrm{(cheat, cheat)}</script> is the dominant strategy, meaning in the case of letter grading, our model tells us that students do in fact have an incentive to cheat.<sup id="fnref:2"><a href="#fn:2" class="footnote">3</a></sup></p>
-
-<h2 id="campuswide-pnp-policy">Campuswide P/NP Policy</h2>
-<p>With the campuswide P/NP policy in place, the incentive to cheat is suddenly changed. In the CS department, it is yet unclear how grades will be assigned, but taking that a C- minimum is required to get a passing grade, one can do several standard deviations below mean and still pass in the class. Looking at grade distributions of a large CS class (<script type="math/tex">N > 19000</script>), historic grades have told us that C- and up covers 95% of the population<sup id="fnref:berkeleytime"><a href="#fn:berkeleytime" class="footnote">4</a></sup>. Therefore, in a game where two students are both taking the course for P/NP credit, modeling the grade distributions off of a large CS class, there seems to be very low incentive for anyone to cheat. Regardless of whether or not they cheat, they will more than likely make the cutoff if they put enough effort into the class, and cheating only gives the extra possibility of getting caught. Therefore, with P/NP, it seems that <em>the incentive for cheating decreases</em>.</p>
-
-<p>This time, the game is modeled as a general-sum game, since one person doing well has a negligible impact on another. We only look at the payout of one person, since in the n-person general-sum game, everyone has a symmetric payout.</p>
+<p>Suppose for a moment that supplies are not scarce; ie. no matter how much toilet paper one buys, another will not be impacted. Denote the payoff of hoarding to be <script type="math/tex">-5</script> due to diminishing returns, and the payoff of not hoarding to be <script type="math/tex">0</script>.</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{bmatrix}
-\mathrm{cheat} & \mathrm{honest} \\
-0 + \epsilon & 0 \\
+P1 \textrm{\\} P2& \textrm{hoard} & \textrm{don't hoard} \\
+\textrm{hoard}       & (-5, -5) & (-5, 0) \\
+\textrm{don't hoard} & (0, -5)  & (0, 0) \\
 \end{bmatrix} %]]></script>
 
-<h2 id="banning-proctoring-over-zoom">Banning Proctoring Over Zoom</h2>
-<p>With the ban of proctoring, the risk of getting caught for cheating is all but zeroed. Does this impact the risk of cheating?</p>
+<p>In this setup, we immediately see that the Prisoners’ Dilemma problem has disappeared – <script type="math/tex">\textrm{(don't hoard, don't hoard)}</script> is the Nash Equilibrium <em>and the Pareto Optimum</em>, meaning that with a lack of resources, there is no incentive for anyone to hoard resources! This makes sense – why hoard knowing that resources will always be available when you need it?</p>
 
-<p>With the Zoom ban, many CS classes have shifted to an open-book policy. This means that, effectively, everything in the test can be looked up either way. As a result, while cheating is easily doable, with other mitigations such as test randomization, it seems that there is little impact on the rate of cheating. We get the same chart, after adding the ease of cheating and subtracting the hoops needed to hop through to cheat.</p>
+<h2 id="response-to-the-coronavirus">Response to the Coronavirus</h2>
+<p>Let us take a step back and view responses to the coronavirus; in particular, we compare Taiwan’s<sup id="fnref:wikipedia-taiwan"><a href="#fn:wikipedia-taiwan" class="footnote">1</a></sup> approach to the United States’<sup id="fnref:wikipedia-usa"><a href="#fn:wikipedia-usa" class="footnote">2</a></sup>.</p>
+
+<p>On December 31st, 2019, both the United States and Taiwan learned about the cases in China. On that same day, Taiwan started inspecting inbound flights from Wuhan, while the United States waited until much much later. Mask rationing was implemented on February 6th, with the Taiwanese Armed Forces deployed to aid the scaling of mask production in factories. In the United States, people were recommended to not wear masks, claiming that their efficacy was unproven and limited. In the third week of February, medical experts “concluded that the United States had already lost the fight to contain the virus”.[^nytimes-red-dawn] Contrasting this is the efforts of Taiwan, who as of today only have a mere 395 cases (fewer than my county!) and are exporting face masks!</p>
+
+<p>Arguments as to why Taiwan and other countries’ responses have been so quick are varied, including the fact that they have seen SARS, a similar virus and situation, but one thing is clear: their people have much less to fear when they know that containment is quite evident and adequate. This effectively reduces their situation to the lack of shortage situation discussed earlier, since they can depend on supply chains not shutting down because of adequate preparation.</p>
+
+<h2 id="facing-the-shortages">Facing the Shortages</h2>
+<blockquote>
+  <p>But are people acting irrationally? At a collective level, it is leading to shortages of goods. But in a direct sense, people are acting rationally. It becomes optimal rather than suboptimal to start stockpiling if everyone else does because their stockpiling creates the very supply problem they are trying to avoid in the first place.</p>
+
+  <p>– Macdonald, Adam Smith Institute</p>
+</blockquote>
+
+<p>I was an intended Economics major prior to switching to Statistics. Macdonald’s claim piqued my interest, so let’s examine them through a statistical lens.</p>
+
+<p>In the situation where market values are not restricted, we have the following payoff diagram: In the case where people both do not hoard, there is no change from the status quo, so the payoff to both is 0. In the case where one hoards and the other doesn’t, one gains and the other loses. In the case where both hoard, there is a small loss to both (since there is a loss of accessible resources in the case either need them). This is classical Prisoners’ Dilemma:</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{bmatrix}
-\mathrm{cheat} & \mathrm{honest} \\
-0 + \epsilon & 0 \\
+P1 \textrm{\\} P2& \textrm{hoard} & \textrm{don't hoard} \\
+\textrm{hoard}       & (-2, -2) & (3, -3) \\
+\textrm{don't hoard} & (-3, 3)  & (0, 0) \\
 \end{bmatrix} %]]></script>
+
+<p>Now, suppose there is a price floor imposed on the market, equivalent to the total marginal utility gained through hoarding beyond the original market equilibrium. The scenario is the same, with one changed parameter: hoarding is more expensive now, incurring a loss of <script type="math/tex">-3</script>. We define a new field, <script type="math/tex">\textrm{hoard less}</script>, describing a situation where hoarding is in effect, but with less quantity. Assuming that both people have a price-elastic response<sup id="fnref:price-elasticity"><a href="#fn:price-elasticity" class="footnote">3</a></sup>:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+P1 \textrm{\\} P2& \textrm{hoard} & \textrm{don't hoard} \\
+\textrm{hoard}       & (-5, -5) & (0, -3) \\
+\textrm{don't hoard} & (-3, 0)  & (0, 0) \\
+\end{bmatrix} %]]></script>
+
+<p>Immediately, we see that we have recovered a situation with the Nash Equilibrium equal to the Pareto Equilibrium equal to not hoarding for both. In other words, the market price floor has a positive effect in this scenario.</p>
 
 <h2 id="footnotes">Footnotes</h2>
 
 <div class="footnotes">
   <ol>
-    <li id="fn:1">
-      <p>A brief note about the choice of zero-sum versus general-sum: Since classes in the CS department are all curved, this would mean that, if we took two students <script type="math/tex">A</script> and <script type="math/tex">B</script>, fixing <script type="math/tex">A</script>’s performance would mean that <script type="math/tex">B</script> doing better causes <script type="math/tex">A</script> to get a worse grade. We see that in the two-player scenario, since their grades must average to the same grade, <script type="math/tex">B</script> getting <script type="math/tex">+d</script> standard deviations would result in <script type="math/tex">A</script> getting <script type="math/tex">-d</script>. This is a zero-sum game. <a href="#fnref:1" class="reversefootnote">⤴</a></p>
+    <li id="fn:wikipedia-taiwan">
+      <p>https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Taiwan <a href="#fnref:wikipedia-taiwan" class="reversefootnote">⤴</a></p>
     </li>
-    <li id="fn:cheating-payoff">
-      <p>Suppose 1 in every 50 students are caught for cheating. (This amounts to 2%.) Empirically, we have no data for cheating, since it would require all students to admit their cheating, which is somewhat of a catch-22. Either way, suppose that getting caught for cheating results in <script type="math/tex">-5</script> on their grade, whereas not getting caught results in <script type="math/tex">+1</script>. This is a bernoulli random variable with <script type="math/tex">p=0.02</script>, and the expected value is <script type="math/tex">0.02 * -5 + 0.98 * 1 = 0.88</script>. <a href="#fnref:cheating-payoff" class="reversefootnote">⤴</a></p>
+    <li id="fn:wikipedia-usa">
+      <p>https://en.wikipedia.org/wiki/Timeline_of_the_2020_coronavirus_pandemic_in_the_United_States <a href="#fnref:wikipedia-usa" class="reversefootnote">⤴</a></p>
     </li>
-    <li id="fn:2">
-      <p>Note that these incentives are still in place even without online testing; it’s just that cheating with proctors in person is probably much harder. <a href="#fnref:2" class="reversefootnote">⤴</a></p>
-    </li>
-    <li id="fn:berkeleytime">
-      <p>Modelled off of Berkeleytime, <a href="#fnref:berkeleytime" class="reversefootnote">⤴</a></p>
+    <li id="fn:price-elasticity">
+      <p>Here, I make a key assumption that price elasticity of hoarded goods are elastic beyond their basic consumption. The author of the Adam Smith Institute article, Macdonald, has observed anecdotally that his experience supports this conclusion. <a href="#fnref:price-elasticity" class="reversefootnote">⤴</a></p>
     </li>
   </ol>
 </div>
