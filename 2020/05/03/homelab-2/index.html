@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Homelab: Part 2</title>
+  <meta name="description" content="The hard drives finally came, so in this post, I’ll be documenting RAID (mdadm) and LVM (with lvmcache). I have a Samsung 970 EVO NVMe SSD which already has 3 partitions in this order: boot, root, swap (without LVM). In this post, we will be adding 4x 3TB Seagate Barracuda drives in RAID10 with mdadm, and with LVM top. We will then move the root partition to the RAID10 array.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/2020/05/03/homelab-2/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+
+
+  
+  <meta property="og:title" content="Homelab: Part 2">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/2020/05/03/homelab-2/">
+  <meta property="og:description" content="The hard drives finally came, so in this post, I’ll be documenting RAID (mdadm) and LVM (with lvmcache). I have a Samsung 970 EVO NVMe SSD which already has 3 partitions in this order: boot, root, swap (without LVM). In this post, we will be adding 4x 3TB Seagate Barracuda drives in RAID10 with mdadm, and with LVM top. We will then move the root partition to the RAID10 array.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Homelab: Part 2">
+  <meta name="twitter:description" content="The hard drives finally came, so in this post, I’ll be documenting RAID (mdadm) and LVM (with lvmcache). I have a Samsung 970 EVO NVMe SSD which already has 3 partitions in this order: boot, root, ...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Homelab: Part 2</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#architectural-concerns">Architectural Concerns</a></li>
+  <li><a href="#mdadm-first">MDADM First</a></li>
+  <li><a href="#lvm">LVM</a></li>
+  <li><a href="#screenshots">Screenshots</a></li>
+</ul>
+
+    </div>
+    
+
+    
+
+    <hr>
+
+    <p>The hard drives finally came, so in this post, I’ll be documenting RAID (mdadm) and LVM (with lvmcache). I have a Samsung 970 EVO NVMe SSD which already has 3 partitions in this order: boot, root, swap (without LVM). In this post, we will be adding 4x 3TB Seagate Barracuda drives in RAID10 with mdadm, and with LVM top. We will then move the root partition to the RAID10 array.</p>
+
+<p>For the reader:</p>
+<ul>
+  <li>The SSD is at <code class="highlighter-rouge">/dev/nvme0n1</code>. Partitions are like this: <code class="highlighter-rouge">/dev/nvme0n1p1</code>.</li>
+  <li>The hard drives are at <code class="highlighter-rouge">/dev/sd{a,b,c,d}</code>.</li>
+</ul>
+
+<p>See my <a href="/2020/04/13/homelab/">previous post</a> for more background information.</p>
+
+<h2 id="architectural-concerns">Architectural Concerns</h2>
+<p>Here, we build a RAID array, then build LVM on top. While LVM itself implements RAID, it seems that there is not as much documentation as compared to mdadm’s, so I went with this approach. For the caching layer, I originally considered <a href="https://bcache.evilpiepirate.org/">bcache</a>. However, it is recommended to put LVM on top of bcache, and since I ended up moving the data to the RAID array first, it was very annoying to have to move data again, so I chose to go with lvmcache.</p>
+
+<h2 id="mdadm-first">MDADM First</h2>
+<p>Creating a RAID array was straightforward. I followed the instructions over at <a href="https://www.digitalocean.com/community/tutorials/how-to-create-raid-arrays-with-mdadm-on-ubuntu-16-04#creating-a-raid-0-array">DigitalOcean</a>, substituting in <code class="highlighter-rouge">10</code> for <code class="highlighter-rouge">0</code>: <code class="highlighter-rouge">mdadm --create --verbose /dev/md0 --level=10 --raid-devices=4 /dev/sda /dev/sdb /dev/sdc /dev/sdd</code>. It should be noted that once the RAID array is created, the <em>entire array</em> is exposed to the operating system as <em>one drive</em>. Here, we created it as <code class="highlighter-rouge">/dev/md0</code>, so we will be using that drive.</p>
+
+<h2 id="lvm">LVM</h2>
+<p>References: <a href="https://wiki.archlinux.org/index.php/Install_Arch_Linux_on_LVM">Install Arch Linux on LVM</a>, <a href="https://wiki.archlinux.org/index.php/LVM">Arch Linux LVM Wiki</a>. I would recommend reading through “Install Arch Linux on LVM”, as it goes through the steps of setting up a drive on LVM. Read up to the parts where they actually install the OS.</p>
+
+<p>Now, we set up the array for LVM:</p>
+<ol>
+  <li>Create the physical volume: <code class="highlighter-rouge">pvcreate /dev/md0</code></li>
+  <li>Create the volume group: <code class="highlighter-rouge">vgcreate VolGroup00 /dev/md0</code></li>
+  <li>Create logical volume. Here we make a volume that fills up the entire disk, as is my usecase: <code class="highlighter-rouge">lvcreate -l 100%FREE VolGroup00 -n lvolroot</code></li>
+</ol>
+
+<p>Then, we copy over the data from the SSD:</p>
+<ol>
+  <li><code class="highlighter-rouge">bs</code> represents block copy size; 300M is a good number for my usecase. <code class="highlighter-rouge">status=progress</code> shows our copy progress: <code class="highlighter-rouge">dd if=/dev/nvme0n1p2 of=/dev/VolGroup00/lvolroot bs=300M status=progress</code></li>
+</ol>
+
+<p>At this point, modify <code class="highlighter-rouge">/etc/fstab</code> to mount <code class="highlighter-rouge">/dev/VolGroup00/lvolroot</code> as the root partition. You may need to enable extra kernel modules for LVM. Try to boot from this partition to ensure that everything is fine, since we will be deleting the original root partition. When booting with the new partition, use <code class="highlighter-rouge">lsblk</code> and <code class="highlighter-rouge">df -h</code> to ensure that the root drive is mounted at the new location, and that the old partition is no longer used. After this point, there <em>will</em> be data loss if the copy failed.</p>
+
+<p>After we verify that the partition has been correctly copied over, we convert the original SSD to be a cache. There is a very good article <a href="https://storageapis.wordpress.com/2015/03/20/bcache-and-vs-lvm-cache/">here</a> about bcache and lvmcache. The instructions for lvmcache are good, but the final few steps didn’t work for me. A brief read-through is recommended to understand how lvmcache works. Arch wiki also has a <a href="https://wiki.archlinux.org/index.php/LVM#LVM_cache">concise article</a>. (In this step, if there are issues with lvm commands, it is likely that kernel modules need to be loaded. I used <a href="https://github.com/NixOS/nixpkgs/issues/15516#issuecomment-388575593">this patch</a>, double checking existing <code class="highlighter-rouge">boot.initrd.availableKernelModulesboot.initrd.availableKernelModules</code> to make sure they weren’t overriden by using <code class="highlighter-rouge">nixos-option boot.initrd.availableKernelModules</code>)</p>
+<ol>
+  <li>Extend our current volume group to take up the space of the old SSD root partition: <code class="highlighter-rouge">vgextend VolGroup00 /dev/nvme0n1p2</code></li>
+  <li>Now, we create a cache pool and use it as the caching layer of our new root partition, all in one step. I chose to use a writeback cache since I can sustain small write losses in the case the SSD fails, and given that it’s so new, I don’t expect it to fail anytime soon (knocking on wood): <code class="highlighter-rouge">lvcreate --type cache --cachemode writeback -l 100%FREE -n cache /dev/VolGroup00/lvolroot /dev/nvme0n1p2</code></li>
+</ol>
+
+<p>Reboot, and we’re done!</p>
+
+<h2 id="screenshots">Screenshots</h2>
+<p>Look at the space!
+<img src="/assets/posts/homelab/lsblk.png" alt="lsblk" /></p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    
+    
+    
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
