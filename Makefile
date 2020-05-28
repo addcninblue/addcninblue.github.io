@@ -1,6 +1,6 @@
 .PHONY: serve
 serve:
-	bundle exec jekyll serve --port 8000 --livereload --config _config.yml,_config_dev.yml
+	bundle exec jekyll serve --port 8000 --livereload --livereload_port 8001 --config _config.yml,_config_dev.yml
 
 .PHONY: deploy
 deploy:

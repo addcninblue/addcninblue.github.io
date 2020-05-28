@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 cd ../ && bundle exec jekyll build && cd _deploy
 cp -r ../_site/* .
 git add .
