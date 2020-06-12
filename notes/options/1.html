@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 1 - Intro to Options</title>
+  <meta name="description" content="Why Do Options Exist? Options (and futures) have had a well-established history outside of the financial markets. They originated with commodities for people to guarantee a consistent and predictable profit from their crops (which could be subject to weather conditions), and for people on the other side of the trade to make outsized bets on stock they did not own. Eventually, they made their way to the stock market as a method for hedging and speculation, and have since continued to dominate a considerable part of the new Robinhood crowd’s trades.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/options/1">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+loader: {load: ['[tex]/physics']},
+  tex: {packages: {'[+]': ['physics']}},
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 1 - Intro to Options">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/options/1">
+  <meta property="og:description" content="Why Do Options Exist? Options (and futures) have had a well-established history outside of the financial markets. They originated with commodities for people to guarantee a consistent and predictable profit from their crops (which could be subject to weather conditions), and for people on the other side of the trade to make outsized bets on stock they did not own. Eventually, they made their way to the stock market as a method for hedging and speculation, and have since continued to dominate a considerable part of the new Robinhood crowd’s trades.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 1 - Intro to Options">
+  <meta name="twitter:description" content="Why Do Options Exist? Options (and futures) have had a well-established history outside of the financial markets. They originated with commodities for people to guarantee a consistent and predictab...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 1 - Intro to Options</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#why-do-options-exist">Why Do Options Exist?</a></li>
+  <li><a href="#the-house">The House</a></li>
+</ul>
+
+    </div>
+    
+
+    <hr>
+
+    <h2 id="why-do-options-exist">Why Do Options Exist?</h2>
+<p>Options (and futures) have had a well-established history outside of the financial markets. They originated with commodities for people to guarantee a consistent and predictable profit from their crops (which could be subject to weather conditions), and for people on the other side of the trade to make outsized bets on stock they did not own. Eventually, they made their way to the stock market as a method for hedging and speculation, and have since continued to dominate a considerable part of the new Robinhood crowd’s trades.</p>
+
+<p>In the financial markets, options are a class of <em>financial derivatives</em>, meaning that their value is based on the value coming from another asset. In this case, the “other asset” we will describe in this guide is stocks, but do note that options exist for many other assets, including futures, interest rates, and <em>even options</em>.</p>
+
+<p>This guide will aim to take a conversational tone, assuming knowledge in Calculus and basic probability, and it will be more math-heavy and concrete than other introductions. First, I will explain the options’ original uses to hedge, then followed by more and more complicated methods to use this asset class.</p>
+
+<h2 id="the-house">The House</h2>
+<p>Let’s start with a simple, real-life example (with non-real-life numbers):</p>
+
+<blockquote class="proof">
+  <p>Suppose I own a house. I’m scared that one day, a flood will hit my house of $1000, and its value will fall to 0. As a result, I go out and buy flood insurance costing me $100 that protects me against the flood for a year, promising to pay me back all capital lost under $800. Our resulting assets looks something like this (ignoring all other property damage, etc.):</p>
+
+  <script type="math/tex; mode=display">% <![CDATA[
+V' =
+\begin{cases}
+V-$100 & \text{,no flood}\\
+V-$100 - $1000 + $800 = V-$300 & \text{,flood}\\
+\end{cases} %]]></script>
+
+  <p>Note that in the second case, we pay $100 for the insurance and lose $1000 because of the flood, but gain $800 because of the insurance payout.</p>
+
+  <p>As easily seen from this scenario, we are capped at a max loss of $100, no matter what happens to our house. We pay a specified amount, the <em>premium</em> (in this case, $100), as protection that expires on a particular date, the <em>expiration date</em> (in this case, one year). Note also that there is a price, the <em>strike price</em> at which the insurance has value (in this case, $800).</p>
+
+  <p>Whew. That was a lot! Let’s quickly recap, to make sure we’re on the same page. We have a house, valued at $1000. We buy insurance on the house for $100 (the premium), having effect for one year (so the expiration date is one year), promising to pay us all losses over $800 (the strike price).</p>
+</blockquote>
+
+<p>Ok! So why does this all matter? Well, let’s take a look. We changed our initial investment in this house from a maximum loss of $1000 to a fixed payout of $100 per year, and a maximum loss of $300 when an event does happen. In effect, we’ve <em>traded our risk for a fixed amount of capital</em>. That is the basis for options.</p>
+
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    
+    
+    
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
