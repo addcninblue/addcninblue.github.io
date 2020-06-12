@@ -5,3 +5,7 @@ serve:
 .PHONY: deploy
 deploy:
 	cd _deploy && ./deploy
+
+.PHONY: build
+build:
+	bundle exec jekyll build
