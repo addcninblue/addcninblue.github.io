@@ -9,7 +9,7 @@
   
   
   
-  <title>Note 1 - Intro to Options</title>
+  <title>Note 2 - Calls and Puts</title>
   <meta name="description" content="Addison Chan | CS &amp; Stats @ UC Berkeley.">
   
 
@@ -48,7 +48,7 @@ loader: {load: ['[tex]/physics']},
 
 
   
-  <meta property="og:title" content="Note 1 - Intro to Options">
+  <meta property="og:title" content="Note 2 - Calls and Puts">
   <meta property="og:site_name" content="Addison Chan">
   <meta property="og:url" content="https://addcnin.blue/'">
   <meta property="og:description" content="Addison Chan | CS &amp; Stats @ UC Berkeley.">
@@ -56,7 +56,7 @@ loader: {load: ['[tex]/physics']},
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="addcninblue">
-  <meta name="twitter:title" content="Note 1 - Intro to Options">
+  <meta name="twitter:title" content="Note 2 - Calls and Puts">
   <meta name="twitter:description" content="Addison Chan | CS &amp; Stats @ UC Berkeley.">
   
     <meta name="twitter:creator" content="addcninblue">
@@ -118,7 +118,7 @@ loader: {load: ['[tex]/physics']},
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Note 1 - Intro to Options</h1>
+    <h1 class="post-title">Note 2 - Calls and Puts</h1>
   </header>
 
   <div class="post-content">
@@ -134,40 +134,40 @@ loader: {load: ['[tex]/physics']},
 
     <hr>
 
-    ## Why Do Options Exist?
-Options (and futures) have had a well-established history outside of the financial markets. They originated with commodities for people to guarantee a consistent and predictable profit from their crops (which could be subject to weather conditions), and for people on the other side of the trade to make outsized bets on stock they did not own. Eventually, they made their way to the stock market as a method for hedging and speculation, and have since continued to dominate a considerable part of the new Robinhood crowd's trades.
-
-In the financial markets, options are a class of *financial derivatives*, meaning that their value is based on the value coming from another asset. In this case, the "other asset" we will describe in this guide is stocks, but do note that options exist for many other assets, including futures, interest rates, and *even options*.
-
-This guide will aim to take a conversational tone, assuming knowledge in Calculus and basic probability, and it will be more math-heavy and concrete than other introductions. First, I will explain the options' original uses to hedge, then followed by more and more complicated methods to use this asset class.
+    ## A Brief Recap
+In the last note, we learned how put options can be used to hedge long positions, and how call options can be used to hedge short positions. In this note, we will examine *raw options*, or their intrinsic values without being used as a hedge. After that, we will take a brief overview of some factors impacting their valuation.
 
 ---
 
-## The Types of Options
-Today, we will cover a brief overview of options. The two types of options are **call options** and **put options**.
+## Value of Options
+
+### Put Options
+Put options, as we originally learned, are used to hedge a long position. In other words, they only take on value when the underlying stock decreases in value past the strike price. To get an intuition for why this is true, think about it as an insurance. If the value of the underlying doesn't fall, this means that the insurance is as good as worthless -- it doesn't give you any value. However, once the value of the underlying falls, this means that the option is now giving us protection, or added value. Again, an example:
+
+> As a reminder, the example from the previous note was buying a $8 put option costing $1 premium. With that same example, we see that for every dollar the underlying stock falls under $8, the option's value gains $1. Otherwise, if the stock remains above $8, the option has no value at expiration, which would mean a loss on the premium, or $1. Here's the graph:
+>
+> ![put option](/assets/options/2-put.png)
+> 
+> $$ V' =
+> \begin{cases}
+> -$100 & ,V \geq $800\\
+> -$100 + ($800 - V)= $700 - V& ,V < $800\\
+> \end{cases}
+> $$
+{:.proof}
 
 ---
 {:.hr-subsection}
 
-### Put Options
-Put options give the buyer of the option the *right* to sell a stock at a fixed price, in effect giving an insurance on the stock. The best way to understand this is through an analogy to the insurance industry:
-
-> Suppose I own a house. I'm scared that one day, a flood will hit my house of $1000, and its value will fall to 0. As a result, I go out and buy flood insurance costing me $100 that protects me against the flood for a year, promising to pay me back all capital lost under $800. Our resulting assets looks something like this (ignoring all other property damage, etc.):
->
-> $$ V' =
-> \begin{cases}
-> V-$100 & \text{,no flood}\\
-> (V-$100) - $1000 + $1000 = V-$100 & \text{,flood}\\
-> \end{cases}
-> $$
->
-> Note that in the second case, we lose $1000 because of the flood, but gain $1000 because of the insurance.
->
-> As easily seen from this scenario, we are capped at a max loss of $100, no matter what happens to our house. We pay a specified amount, the *premium*, as protection for a specific amount of time (in this case, one year).
-{:.proof}
-
 ### Call Options
-In the simplest usecase, call options are used to 
+Call options are the opposite of put options, giving us defined risk on shorts instead of longs.
+
+---
+
+## Intrinsic and Extrinsic Value
+
+## Footnotes
+[^at-expiration]: Don't worry about what "at expiration" means at the moment. We'll learn later that time to expiration is part of the pricing model for options, but it's too complicated to talk about all at once.
 
   </div>
 
