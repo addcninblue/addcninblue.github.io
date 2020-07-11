@@ -1,4 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2020-06-13T15:51:40-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Homelab: Part 2</title><link href="https://addcnin.blue/2020/05/03/homelab-2/" rel="alternate" type="text/html" title="Homelab: Part 2" /><published>2020-05-03T00:00:00-07:00</published><updated>2020-05-03T00:00:00-07:00</updated><id>https://addcnin.blue/2020/05/03/homelab-2</id><content type="html" xml:base="https://addcnin.blue/2020/05/03/homelab-2/">&lt;p&gt;The hard drives finally came, so in this post, I’ll be documenting RAID (mdadm) and LVM (with lvmcache). I have a Samsung 970 EVO NVMe SSD which already has 3 partitions in this order: boot, root, swap (without LVM). In this post, we will be adding 4x 3TB Seagate Barracuda drives in RAID10 with mdadm, and with LVM top. We will then move the root partition to the RAID10 array.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2020-07-11T02:13:57-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Installing Windows Alongside Existing NixOS</title><link href="https://addcnin.blue/2020/07/11/dual-boot/" rel="alternate" type="text/html" title="Installing Windows Alongside Existing NixOS" /><published>2020-07-11T00:00:00-07:00</published><updated>2020-07-11T00:00:00-07:00</updated><id>https://addcnin.blue/2020/07/11/dual-boot</id><content type="html" xml:base="https://addcnin.blue/2020/07/11/dual-boot/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt;I use NixOS as my main OS in everything (from personal laptop to my server), but I was beginning to miss Windows for gaming. (WINE won’t cut it here.) As a result, I went searching for installing Windows alongside an existing NixOS installation, but I couldn’t find one anywhere. I decided to just dive in, and it worked! Here is a high-level list of the steps I took. For reference, I am installing this on an XPS 9550, with EFI.&lt;/p&gt;
+
+&lt;p&gt;Before continuing on, you will need a live USB stick that has the NixOS installation media.&lt;/p&gt;
+
+&lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Change the boot method from the default systemd-boot bootloader to GRUB. This will allow us to add Windows to the boot menu in the future. &lt;a href=&quot;https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows#Grub_2&quot;&gt;Here are the steps.&lt;/a&gt; For now, leave out the entire &lt;code class=&quot;highlighter-rouge&quot;&gt;extraEntries&lt;/code&gt; line – we’ll add that later.&lt;/li&gt;
+  &lt;li&gt;If you need to resize NixOS:
+    &lt;ol&gt;
+      &lt;li&gt;Boot into the live USB stick.&lt;/li&gt;
+      &lt;li&gt;Over-downsize your filesystem: &lt;code class=&quot;highlighter-rouge&quot;&gt;resize2fs /dev/sdXY $something_smaller_than_new_size&lt;/code&gt;, where the size we input is something smaller than the final size of our partition we want.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/Parted#Shrinking_partitions&quot;&gt;Shrink the actual partition:&lt;/a&gt;. Note that we first overshoot our shrink for the filesystem and then fit it back. This is to ensure that our partition doesn’t cut off our filesystem, which can lead to data loss.
+        &lt;ol&gt;
+          &lt;li&gt;Start parted: &lt;code class=&quot;highlighter-rouge&quot;&gt;parted --align optimal /dev/sdX&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;List out partitions: &lt;code class=&quot;highlighter-rouge&quot;&gt;(parted) print&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;Shrink the right partition: &lt;code class=&quot;highlighter-rouge&quot;&gt;(parted) resizepart number end&lt;/code&gt;&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Grow the filesystem to fill the entire space of the partition: &lt;code class=&quot;highlighter-rouge&quot;&gt;resize2fs /dev/sdXY&lt;/code&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Install Windows. This is actually pretty simple; in the installer, simply click on the unallocated space to install Windows, and it’ll just work. &lt;em&gt;magic!&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Now, your computer should be booting directly into Windows. We have to reinstall GRUB as the bootloader to fix that:
+    &lt;ol&gt;
+      &lt;li&gt;Boot into the live USB stick.&lt;/li&gt;
+      &lt;li&gt;Mount your NixOS system onto &lt;code class=&quot;highlighter-rouge&quot;&gt;/mnt&lt;/code&gt;. If you followed the &lt;a href=&quot;https://nixos.org/nixos/manual/index.html#sec-installation-installing&quot;&gt;instruction manual&lt;/a&gt;, then it would look like this:
+        &lt;ol&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mount /dev/disk/by-label/nixos /mnt/&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mount /dev/disk/by-label/boot /mnt/boot&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;swapon /dev/disk/by-label/swap&lt;/code&gt;&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Add all of your &lt;code class=&quot;highlighter-rouge&quot;&gt;nix-channel&lt;/code&gt;s that you currently use in your OS with &lt;code class=&quot;highlighter-rouge&quot;&gt;nix-channel --add ...&lt;/code&gt;. If you forgot, you can &lt;a href=&quot;https://nixos.wiki/wiki/Change_root&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;nixos-enter&lt;/code&gt;&lt;/a&gt; into your installation to check via &lt;code class=&quot;highlighter-rouge&quot;&gt;nix-channel --list&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;Grab the UUID of boot partition via &lt;code class=&quot;highlighter-rouge&quot;&gt;blkid&lt;/code&gt;, and &lt;a href=&quot;https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows#Grub_2&quot;&gt;add that in to the GRUB section of your &lt;code class=&quot;highlighter-rouge&quot;&gt;configuration.nix&lt;/code&gt;&lt;/a&gt;. It should be located at &lt;code class=&quot;highlighter-rouge&quot;&gt;/mnt/etc/nixos/configuration.nix&lt;/code&gt;. This is the part where we add Windows into GRUB.&lt;/li&gt;
+      &lt;li&gt;Rederive NixOS: &lt;code class=&quot;highlighter-rouge&quot;&gt;nixos-install&lt;/code&gt;.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;And then you should be done!&lt;/p&gt;
+
+&lt;h2 id=&quot;things-i-tried-that-failed&quot;&gt;Things I Tried That Failed&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Live booting the Nixos ISO, and trying to chroot into that environment to &lt;code class=&quot;highlighter-rouge&quot;&gt;nixos-rebuild switch&lt;/code&gt;. This failed due to some strange error about being unable to write to the filesystem.&lt;/li&gt;
+  &lt;li&gt;Live booting from Ubuntu to try to rebuild grub there. This failed because it requires either a chroot or directly specifying the EFI directory, and the chroot fails because Nixos doesn’t have a /bin/bash, and the EFI directory approach failed for some unknown reason.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background I use NixOS as my main OS in everything (from personal laptop to my server), but I was beginning to miss Windows for gaming. (WINE won’t cut it here.) As a result, I went searching for installing Windows alongside an existing NixOS installation, but I couldn’t find one anywhere. I decided to just dive in, and it worked! Here is a high-level list of the steps I took. For reference, I am installing this on an XPS 9550, with EFI.</summary></entry><entry><title type="html">Homelab: Part 2</title><link href="https://addcnin.blue/2020/05/03/homelab-2/" rel="alternate" type="text/html" title="Homelab: Part 2" /><published>2020-05-03T00:00:00-07:00</published><updated>2020-05-03T00:00:00-07:00</updated><id>https://addcnin.blue/2020/05/03/homelab-2</id><content type="html" xml:base="https://addcnin.blue/2020/05/03/homelab-2/">&lt;p&gt;The hard drives finally came, so in this post, I’ll be documenting RAID (mdadm) and LVM (with lvmcache). I have a Samsung 970 EVO NVMe SSD which already has 3 partitions in this order: boot, root, swap (without LVM). In this post, we will be adding 4x 3TB Seagate Barracuda drives in RAID10 with mdadm, and with LVM top. We will then move the root partition to the RAID10 array.&lt;/p&gt;
 
 &lt;p&gt;For the reader:&lt;/p&gt;
 &lt;ul&gt;
@@ -380,54 +426,4 @@ Source: Stat 155 Textbook, &lt;em&gt;Game Theory&lt;/em&gt; by Anna R. Karlin an
 
 &lt;p&gt;&lt;img src=&quot;/assets/posts/beam-reduced-usage.png&quot; alt=&quot;Beam Reduced Usage&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Note that CPU usage is &lt;em&gt;nearly zero&lt;/em&gt;, where as before it was ~100%! This frees up the CPU cycles for redeployments to this server and for more concurrent apps running (Build times are cut by &lt;strong&gt;more than a half!&lt;/strong&gt;). I will be monitoring this new deployment for any regressions, but it appears to be a very solid improvement.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background For the past semester, I have deployed a custom shortlinker service and my personal website on a Google Cloud Compute Free Instance. The custom shortlinker is a rewrite of the CS61A Shortlinker in Elixir, which was a good way for me to learn the new language. Upon deploying the Elixir version, however, I noticed that CPU usage hovered around a constant 100%, even the system was idling. I left it alone for a while, noting that it was responding to requests fairly quickly, leaving me to think that it was likely the BEAM that was idling.</summary></entry><entry><title type="html">EE375: A Coffee Chat</title><link href="https://addcnin.blue/2020/01/28/coffee/" rel="alternate" type="text/html" title="EE375: A Coffee Chat" /><published>2020-01-28T00:00:00-08:00</published><updated>2020-01-28T00:00:00-08:00</updated><id>https://addcnin.blue/2020/01/28/coffee</id><content type="html" xml:base="https://addcnin.blue/2020/01/28/coffee/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;Hello! This is a talk I gave at EE375, an introduction to teaching techniques class required at UC Berkeley for first-time TAs. The content is largely based on James Hoffman’s techniques, with inspiration from other famous figures. Since the talk was limited to 3 minutes, I skipped a lot of (quite lengthy) discussions, including coffee grind sizes, water ratios, and water temperature. If you have any questions about the material, feel free to email me!&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;main-lecture&quot;&gt;Main Lecture&lt;/h2&gt;
-
-&lt;h3 id=&quot;000--045&quot;&gt;0:00 ~ 0:45&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Brief discussion of water ratio: 16.66 grams of water per gram of coffee
-    &lt;ul&gt;
-      &lt;li&gt;Practical terms: 250g/15g for one person, 500g/30g for two people&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Brief discussion of grind size:
-    &lt;ul&gt;
-      &lt;li&gt;Medium Fine (example shown in class)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Brief discussion of pouring method, assuming 250g/15g:
-    &lt;ul&gt;
-      &lt;li&gt;0:00 ~ 0:40 (45g): Bloom phase. This phase allows us to release CO2 from the coffee to allow for better extraction.&lt;/li&gt;
-      &lt;li&gt;0:40 ~ 1:15 (150g): First pour. This phase is where we get most of our flavor from the coffee. We pour in a circular fashion to get the ground equally extracted.&lt;/li&gt;
-      &lt;li&gt;1:15 ~ 1:45 (250g): Second pour. This phase is to allow for final extraction of the flavor. We pour in a straight fashion to keep the bed of water at a constant temperature, for even extraction.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;045--300&quot;&gt;0:45 ~ 3:00&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Demonstration of V60 Technique&lt;/li&gt;
-  &lt;li&gt;Demonstrated technique: &lt;a href=&quot;https://www.youtube.com/watch?v=AI4ynXzkSQo&quot;&gt;James Hoffman’s Technique&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;additional-content&quot;&gt;Additional Content&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Coffee dialing chart&lt;sup id=&quot;fnref:copyright&quot;&gt;&lt;a href=&quot;#fn:copyright&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;
-&lt;img src=&quot;/assets/posts/coffee.jpg&quot; alt=&quot;Coffee&quot; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
-
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:copyright&quot;&gt;
-      &lt;p&gt;I do not own this material. This is a common coffee chart used by many coffee drinkers. &lt;a href=&quot;#fnref:copyright&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">Introduction Hello! This is a talk I gave at EE375, an introduction to teaching techniques class required at UC Berkeley for first-time TAs. The content is largely based on James Hoffman’s techniques, with inspiration from other famous figures. Since the talk was limited to 3 minutes, I skipped a lot of (quite lengthy) discussions, including coffee grind sizes, water ratios, and water temperature. If you have any questions about the material, feel free to email me!</summary></entry></feed>
+&lt;p&gt;Note that CPU usage is &lt;em&gt;nearly zero&lt;/em&gt;, where as before it was ~100%! This frees up the CPU cycles for redeployments to this server and for more concurrent apps running (Build times are cut by &lt;strong&gt;more than a half!&lt;/strong&gt;). I will be monitoring this new deployment for any regressions, but it appears to be a very solid improvement.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background For the past semester, I have deployed a custom shortlinker service and my personal website on a Google Cloud Compute Free Instance. The custom shortlinker is a rewrite of the CS61A Shortlinker in Elixir, which was a good way for me to learn the new language. Upon deploying the Elixir version, however, I noticed that CPU usage hovered around a constant 100%, even the system was idling. I left it alone for a while, noting that it was responding to requests fairly quickly, leaving me to think that it was likely the BEAM that was idling.</summary></entry></feed>
