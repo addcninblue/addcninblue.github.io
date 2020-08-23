@@ -157,16 +157,15 @@ loader: {load: ['[tex]/physics']},
 <p>Let’s start with a simple, real-life example (with non-real-life numbers):</p>
 
 <blockquote class="proof">
-  <p>Suppose I buy a house for $1000 as an investment. I’m scared that one day, a flood will hit my house, and its value will fall to 0. As a result, I go out and buy flood insurance costing me $100 that protects me against the flood for a year, promising to pay me back all losses incurred if the value of the house falls under $800. Our resulting investment looks something like this, with <script type="math/tex">V</script> being the value of the house:<sup id="fnref:second-case"><a href="#fn:second-case" class="footnote">1</a></sup></p>
+  <p>Suppose I buy a house for $1000 as an investment. I’m scared that one day, a flood will hit my house, and its value will fall to 0. As a result, I go out and buy flood insurance costing me $100 that protects me against the flood for a year, promising to pay me back all losses incurred if the value of the house falls under $800. Our resulting investment looks something like this, with \(V\) being the value of the house:<sup id="fnref:second-case" role="doc-noteref"><a href="#fn:second-case" class="footnote">1</a></sup></p>
 
   <p><img src="/assets/options/1-house.png" alt="chart" /></p>
 
-  <script type="math/tex; mode=display">% <![CDATA[
-V' =
+\[V' =
 \begin{cases}
-V-$100 & ,V \geq $800\\
-V-$100 - $1000 + ($800 - V)= $700 & ,V < $800\\
-\end{cases} %]]></script>
+V-$100 &amp; ,V \geq $800\\
+V-$100 - $1000 + ($800 - V)= $700 &amp; ,V &lt; $800\\
+\end{cases}\]
 
   <p>This chart illustrates the payout we would get with and without insurance. The x-axis represents the value of the house, and the y-axis represents the payout. The purple line is without insurance, and the blue line is with insurance.</p>
 </blockquote>
@@ -188,14 +187,13 @@ V-$100 - $1000 + ($800 - V)= $700 & ,V < $800\\
 <p>Put options give the buyer of the option the <em>right</em> to sell a stock at a fixed price, in effect giving an insurance on the stock. The best way to understand this is through an analogy to the house insurance from before:</p>
 
 <blockquote class="proof">
-  <p>Suppose we buy 100 shares of a stock at $10 each, totaling $1000. We’re scared that our investment might fall to 0, so we buy a <em>put option</em> with an expiration of 1 year for our 100 stocks at a strike price of $8, with each option costing us $1. This gives us the <em>right to sell this stock</em> at $8 at any time before the expiration date. Again, let us look at our payoff diagram. Here, <script type="math/tex">V</script> is the value of our holdings, and <script type="math/tex">S</script> is the value of the stock.</p>
+  <p>Suppose we buy 100 shares of a stock at $10 each, totaling $1000. We’re scared that our investment might fall to 0, so we buy a <em>put option</em> with an expiration of 1 year for our 100 stocks at a strike price of $8, with each option costing us $1. This gives us the <em>right to sell this stock</em> at $8 at any time before the expiration date. Again, let us look at our payoff diagram. Here, \(V\) is the value of our holdings, and \(S\) is the value of the stock.</p>
 
-  <script type="math/tex; mode=display">% <![CDATA[
-V =
+\[V =
 \begin{cases}
-S-$100 & ,S \geq $800\\
-S-$100 - $1000 + ($800 - S)= $700 & ,S < $800\\
-\end{cases} %]]></script>
+S-$100 &amp; ,S \geq $800\\
+S-$100 - $1000 + ($800 - S)= $700 &amp; ,S &lt; $800\\
+\end{cases}\]
 
   <p>Hmmm… that seems familiar! <em>It has the exact same payout as the insurance on the house!</em> Let’s elaborate.</p>
 
@@ -210,16 +208,15 @@ S-$100 - $1000 + ($800 - S)= $700 & ,S < $800\\
 <p>Now that we understand put options and its use – to hedge a long position, we turn to the other side: shorts. Call options are the analogue of put options, allowing us to <em>sell</em> a stock at any time for a fixed price, in effect giving an insurance on the stock in case it moves too high. And here’s a similar example:</p>
 
 <blockquote class="proof">
-  <p>Suppose today we short 100 stocks at $10 each, totaling $1000. We’re scared that the investment might shoot up to infinity (in effect giving us infinite losses), so we decide to buy a <em>call option</em> with an expiration of 1 year for our 100 stocks at a strike price of $12, with each option costing us $1. This gives us the right to <em>buy</em> the stock (and cover the short) at any time before the expiration date. Again, a payoff diagram. Note that here V stands for our total gains if we were to close out the short position. <sup id="fnref:short-coverage"><a href="#fn:short-coverage" class="footnote">2</a></sup></p>
+  <p>Suppose today we short 100 stocks at $10 each, totaling $1000. We’re scared that the investment might shoot up to infinity (in effect giving us infinite losses), so we decide to buy a <em>call option</em> with an expiration of 1 year for our 100 stocks at a strike price of $12, with each option costing us $1. This gives us the right to <em>buy</em> the stock (and cover the short) at any time before the expiration date. Again, a payoff diagram. Note that here V stands for our total gains if we were to close out the short position. <sup id="fnref:short-coverage" role="doc-noteref"><a href="#fn:short-coverage" class="footnote">2</a></sup></p>
 
   <p><img src="/assets/options/1-put.png" alt="put-chart" /></p>
 
-  <script type="math/tex; mode=display">% <![CDATA[
-V =
+\[V =
 \begin{cases}
-($1000 - S) - $100 = $900 - S & ,S \leq $1200\\
-($1000 - S) - $100 - ($1200 - S) = -$300 & ,S < $1200\\
-\end{cases} %]]></script>
+($1000 - S) - $100 = $900 - S &amp; ,S \leq $1200\\
+($1000 - S) - $100 - ($1200 - S) = -$300 &amp; ,S &lt; $1200\\
+\end{cases}\]
 </blockquote>
 
 <p>Again, we have capped our max losses at -$300, a huge reduction from possibly losing an infinite amount of money! On the downside, when we earn, a $100 chunk is taken out to serve as insurance. But that’s the intention – we’re <em>trading risk for a fixed payment</em>.</p>
@@ -229,13 +226,13 @@ V =
 <hr />
 
 <h2 id="footnotes">Footnotes</h2>
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes">
   <ol>
-    <li id="fn:second-case">
-      <p>Note that in the second case, we pay $100 for the insurance and lose $1000 because of the flood, but gain $800 because of the insurance payout. <a href="#fnref:second-case" class="reversefootnote">⤴</a></p>
+    <li id="fn:second-case" role="doc-endnote">
+      <p>Note that in the second case, we pay $100 for the insurance and lose $1000 because of the flood, but gain $800 because of the insurance payout. <a href="#fnref:second-case" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
-    <li id="fn:short-coverage">
-      <p>Here, note that the <script type="math/tex">1200-S</script> is money paid to cover the short. <a href="#fnref:short-coverage" class="reversefootnote">⤴</a></p>
+    <li id="fn:short-coverage" role="doc-endnote">
+      <p>Here, note that the \(1200-S\) is money paid to cover the short. <a href="#fnref:short-coverage" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
   </ol>
 </div>

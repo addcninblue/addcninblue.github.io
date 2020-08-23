@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2020-07-26T00:28:58-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Installing Windows Alongside Existing NixOS</title><link href="https://addcnin.blue/2020/07/11/dual-boot/" rel="alternate" type="text/html" title="Installing Windows Alongside Existing NixOS" /><published>2020-07-11T00:00:00-07:00</published><updated>2020-07-11T00:00:00-07:00</updated><id>https://addcnin.blue/2020/07/11/dual-boot</id><content type="html" xml:base="https://addcnin.blue/2020/07/11/dual-boot/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2020-08-23T11:56:42-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Installing Windows Alongside Existing NixOS</title><link href="https://addcnin.blue/2020/07/11/dual-boot/" rel="alternate" type="text/html" title="Installing Windows Alongside Existing NixOS" /><published>2020-07-11T00:00:00-07:00</published><updated>2020-07-11T00:00:00-07:00</updated><id>https://addcnin.blue/2020/07/11/dual-boot</id><content type="html" xml:base="https://addcnin.blue/2020/07/11/dual-boot/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
 &lt;p&gt;I use NixOS as my main OS in everything (from personal laptop to my server), but I was beginning to miss Windows for gaming. (WINE won’t cut it here.) As a result, I went searching for installing Windows alongside an existing NixOS installation, but I couldn’t find one anywhere. I decided to just dive in, and it worked! Here is a high-level list of the steps I took. For reference, I am installing this on an XPS 9550, with EFI.&lt;/p&gt;
 
 &lt;p&gt;Before continuing on, you will need a live USB stick that has the NixOS installation media.&lt;/p&gt;
@@ -94,7 +94,7 @@
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;articles-referenced-and-their-claims&quot;&gt;Articles Referenced and Their Claims&lt;/h2&gt;
-&lt;p&gt;In The Herald&lt;sup id=&quot;fnref:The-Herald&quot;&gt;&lt;a href=&quot;#fn:The-Herald&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, the Adam Smith Institute&lt;sup id=&quot;fnref:Adam-Smith-Institute&quot;&gt;&lt;a href=&quot;#fn:Adam-Smith-Institute&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, and Asia Times&lt;sup id=&quot;fnref:Asia-Times&quot;&gt;&lt;a href=&quot;#fn:Asia-Times&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, the authors argue that the situation is well-explained by Prisoners’ Dilemma. In The Herald, McArdle makes the additional claim that Western countries have a lack of trust that Eastern countries do not have, exacerbating the Prisoners’ Dilemma problem. Macdonald of the Adam Smith Institute makes a particularly astute economic observation that “raising prices in our current context is not a cynical cash grab, but an effective means of restoring consumer confidence and ensuring we can all access the goods we need during these strange and difficult times”.&lt;/p&gt;
+&lt;p&gt;In The Herald&lt;sup id=&quot;fnref:The-Herald&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:The-Herald&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, the Adam Smith Institute&lt;sup id=&quot;fnref:Adam-Smith-Institute&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:Adam-Smith-Institute&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, and Asia Times&lt;sup id=&quot;fnref:Asia-Times&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:Asia-Times&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, the authors argue that the situation is well-explained by Prisoners’ Dilemma. In The Herald, McArdle makes the additional claim that Western countries have a lack of trust that Eastern countries do not have, exacerbating the Prisoners’ Dilemma problem. Macdonald of the Adam Smith Institute makes a particularly astute economic observation that “raising prices in our current context is not a cynical cash grab, but an effective means of restoring consumer confidence and ensuring we can all access the goods we need during these strange and difficult times”.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;A minor charge can be compared to temporary economic and material disruption. That would have been the sole significant setback had corporations cooperated. In this case the entire economic machinery would have toned down and shrunk, and thus everyone would have been affected more or less the same.&lt;/p&gt;
@@ -112,19 +112,18 @@
 
 &lt;p&gt;In the situation where the setup of the games are the same, where both the East and West are facing Prisoners’ Dilemmas, the lack of shortages in the East would mean that the people are cooperating. While plausible, these differences must necessarily be attributed to a difference in culture, meaning that scarcity would manifest differently across the United States. Seeing that communities everywhere see shortages, there must be some other explanation.&lt;/p&gt;
 
-&lt;p&gt;Suppose for a moment that supplies are not scarce; ie. no matter how much toilet paper one buys, another will not be impacted. Denote the payoff of hoarding to be &lt;script type=&quot;math/tex&quot;&gt;-5&lt;/script&gt; due to diminishing returns, and the payoff of not hoarding to be &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;.&lt;/p&gt;
+&lt;p&gt;Suppose for a moment that supplies are not scarce; ie. no matter how much toilet paper one buys, another will not be impacted. Denote the payoff of hoarding to be \(-5\) due to diminishing returns, and the payoff of not hoarding to be \(0\).&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
-\textrm{hoard}       &amp; (-5, -5) &amp; (-5, 0) \\
-\textrm{don't hoard} &amp; (0, -5)  &amp; (0, 0) \\
-\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\begin{bmatrix}
+P1 \textrm{\\} P2&amp;amp; \textrm{hoard} &amp;amp; \textrm{don't hoard} \\
+\textrm{hoard}       &amp;amp; (-5, -5) &amp;amp; (-5, 0) \\
+\textrm{don't hoard} &amp;amp; (0, -5)  &amp;amp; (0, 0) \\
+\end{bmatrix}\]
 
-&lt;p&gt;In this setup, we immediately see that the Prisoners’ Dilemma problem has disappeared – &lt;script type=&quot;math/tex&quot;&gt;\textrm{(don't hoard, don't hoard)}&lt;/script&gt; is the Nash Equilibrium &lt;em&gt;and the Pareto Optimum&lt;/em&gt;, meaning that with a lack of resources, there is no incentive for anyone to hoard resources! This makes sense – why hoard knowing that resources will always be available when you need it?&lt;/p&gt;
+&lt;p&gt;In this setup, we immediately see that the Prisoners’ Dilemma problem has disappeared – \(\textrm{(don't hoard, don't hoard)}\) is the Nash Equilibrium &lt;em&gt;and the Pareto Optimum&lt;/em&gt;, meaning that with a lack of resources, there is no incentive for anyone to hoard resources! This makes sense – why hoard knowing that resources will always be available when you need it?&lt;/p&gt;
 
 &lt;h2 id=&quot;response-to-the-coronavirus&quot;&gt;Response to the Coronavirus&lt;/h2&gt;
-&lt;p&gt;Let us take a step back and view responses to the coronavirus; in particular, we compare Taiwan’s&lt;sup id=&quot;fnref:wikipedia-taiwan&quot;&gt;&lt;a href=&quot;#fn:wikipedia-taiwan&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; approach to the United States’&lt;sup id=&quot;fnref:wikipedia-usa&quot;&gt;&lt;a href=&quot;#fn:wikipedia-usa&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Let us take a step back and view responses to the coronavirus; in particular, we compare Taiwan’s&lt;sup id=&quot;fnref:wikipedia-taiwan&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:wikipedia-taiwan&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; approach to the United States’&lt;sup id=&quot;fnref:wikipedia-usa&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:wikipedia-usa&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 
 &lt;p&gt;On December 31st, 2019, both the United States and Taiwan learned about the cases in China. On that same day, Taiwan started inspecting inbound flights from Wuhan, while the United States waited until much much later. Mask rationing was implemented on February 6th, with the Taiwanese Armed Forces deployed to aid the scaling of mask production in factories. In the United States, people were recommended to not wear masks, claiming that their efficacy was unproven and limited. In the third week of February, medical experts “concluded that the United States had already lost the fight to contain the virus”.[^nytimes-red-dawn] Contrasting this is the efforts of Taiwan, who as of today only have a mere 395 cases (fewer than my county!) and are exporting face masks!&lt;/p&gt;
 
@@ -141,45 +140,43 @@ P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
 
 &lt;p&gt;In the situation where market values are not restricted, we have the following payoff diagram: In the case where people both do not hoard, there is no change from the status quo, so the payoff to both is 0. In the case where one hoards and the other doesn’t, one gains and the other loses. In the case where both hoard, there is a small loss to both (since there is a loss of accessible resources in the case either need them). This is classical Prisoners’ Dilemma:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
-\textrm{hoard}       &amp; (-2, -2) &amp; (3, -3) \\
-\textrm{don't hoard} &amp; (-3, 3)  &amp; (0, 0) \\
-\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\begin{bmatrix}
+P1 \textrm{\\} P2&amp;amp; \textrm{hoard} &amp;amp; \textrm{don't hoard} \\
+\textrm{hoard}       &amp;amp; (-2, -2) &amp;amp; (3, -3) \\
+\textrm{don't hoard} &amp;amp; (-3, 3)  &amp;amp; (0, 0) \\
+\end{bmatrix}\]
 
-&lt;p&gt;Now, suppose there is a price floor imposed on the market, equivalent to the total marginal utility gained through hoarding beyond the original market equilibrium. The scenario is the same, with one changed parameter: hoarding is more expensive now, incurring a loss of &lt;script type=&quot;math/tex&quot;&gt;-3&lt;/script&gt;. We define a new field, &lt;script type=&quot;math/tex&quot;&gt;\textrm{hoard less}&lt;/script&gt;, describing a situation where hoarding is in effect, but with less quantity. Assuming that both people have a price-elastic response&lt;sup id=&quot;fnref:price-elasticity&quot;&gt;&lt;a href=&quot;#fn:price-elasticity&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;p&gt;Now, suppose there is a price floor imposed on the market, equivalent to the total marginal utility gained through hoarding beyond the original market equilibrium. The scenario is the same, with one changed parameter: hoarding is more expensive now, incurring a loss of \(-3\). We define a new field, \(\textrm{hoard less}\), describing a situation where hoarding is in effect, but with less quantity. Assuming that both people have a price-elastic response&lt;sup id=&quot;fnref:price-elasticity&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:price-elasticity&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
-\textrm{hoard}       &amp; (-5, -5) &amp; (0, -3) \\
-\textrm{don't hoard} &amp; (-3, 0)  &amp; (0, 0) \\
-\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\begin{bmatrix}
+P1 \textrm{\\} P2&amp;amp; \textrm{hoard} &amp;amp; \textrm{don't hoard} \\
+\textrm{hoard}       &amp;amp; (-5, -5) &amp;amp; (0, -3) \\
+\textrm{don't hoard} &amp;amp; (-3, 0)  &amp;amp; (0, 0) \\
+\end{bmatrix}\]
 
 &lt;p&gt;Immediately, we see that we have recovered a situation with the Nash Equilibrium equal to the Pareto Equilibrium equal to not hoarding for both. In other words, the market price floor has a positive effect in this scenario.&lt;/p&gt;
 
 &lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
 
-&lt;div class=&quot;footnotes&quot;&gt;
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
   &lt;ol&gt;
-    &lt;li id=&quot;fn:The-Herald&quot;&gt;
-      &lt;p&gt;https://www.heraldscotland.com/news/18314703.helen-mcardle-game-theory-tells-us-britains-reaction-coronavirus/ &lt;a href=&quot;#fnref:The-Herald&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:The-Herald&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;https://www.heraldscotland.com/news/18314703.helen-mcardle-game-theory-tells-us-britains-reaction-coronavirus/ &lt;a href=&quot;#fnref:The-Herald&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:Adam-Smith-Institute&quot;&gt;
-      &lt;p&gt;https://www.adamsmith.org/blog/covid-19-and-game-theory &lt;a href=&quot;#fnref:Adam-Smith-Institute&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:Adam-Smith-Institute&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;https://www.adamsmith.org/blog/covid-19-and-game-theory &lt;a href=&quot;#fnref:Adam-Smith-Institute&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:Asia-Times&quot;&gt;
-      &lt;p&gt;https://asiatimes.com/2020/03/covid-19-and-the-prisoners-dilemma/ &lt;a href=&quot;#fnref:Asia-Times&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:Asia-Times&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;https://asiatimes.com/2020/03/covid-19-and-the-prisoners-dilemma/ &lt;a href=&quot;#fnref:Asia-Times&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:wikipedia-taiwan&quot;&gt;
-      &lt;p&gt;https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Taiwan &lt;a href=&quot;#fnref:wikipedia-taiwan&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:wikipedia-taiwan&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Taiwan &lt;a href=&quot;#fnref:wikipedia-taiwan&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:wikipedia-usa&quot;&gt;
-      &lt;p&gt;https://en.wikipedia.org/wiki/Timeline_of_the_2020_coronavirus_pandemic_in_the_United_States &lt;a href=&quot;#fnref:wikipedia-usa&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:wikipedia-usa&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;https://en.wikipedia.org/wiki/Timeline_of_the_2020_coronavirus_pandemic_in_the_United_States &lt;a href=&quot;#fnref:wikipedia-usa&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:price-elasticity&quot;&gt;
-      &lt;p&gt;Here, I make a key assumption that price elasticity of hoarded goods are elastic beyond their basic consumption. The author of the Adam Smith Institute article, Macdonald, has observed anecdotally that his experience supports this conclusion. &lt;a href=&quot;#fnref:price-elasticity&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:price-elasticity&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Here, I make a key assumption that price elasticity of hoarded goods are elastic beyond their basic consumption. The author of the Adam Smith Institute article, Macdonald, has observed anecdotally that his experience supports this conclusion. &lt;a href=&quot;#fnref:price-elasticity&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">With the Coronavirus, tissue paper and supplies are flying out of stores. Some argue that it’s a natural human reaction best explained by Game Theory. In this essay, I will explore these claims, as well as how several countries have responded differently, and how their policies can be explained by Game Theory.</summary></entry><entry><title type="html">Homelab with NixOS, Jupyter, and More</title><link href="https://addcnin.blue/2020/04/13/homelab/" rel="alternate" type="text/html" title="Homelab with NixOS, Jupyter, and More" /><published>2020-04-13T00:00:00-07:00</published><updated>2020-04-13T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/13/homelab</id><content type="html" xml:base="https://addcnin.blue/2020/04/13/homelab/">&lt;p&gt;For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found &lt;a href=&quot;https://pcpartpicker.com/user/addcn/saved/kfN2Vn&quot;&gt;here&lt;/a&gt;. I chose to install &lt;a href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt;, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.&lt;/p&gt;
@@ -250,56 +247,53 @@ P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
 
 &lt;h2 id=&quot;uc-zoom&quot;&gt;UC Zoom&lt;/h2&gt;
 
-&lt;p&gt;On Friday, March 13th, classes were officially moved online by the UC Berkeley Administration. At this point, the change to the grading rubric had not been made yet. Let us model a typical Computer Science class, where grades are curved to a B+, as an n-player zero-sum game&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (with zero being the mean, and each integer difference being one standard deviation). To simplify this, we examine the two-player zero-sum game, which is well-studied.&lt;/p&gt;
+&lt;p&gt;On Friday, March 13th, classes were officially moved online by the UC Berkeley Administration. At this point, the change to the grading rubric had not been made yet. Let us model a typical Computer Science class, where grades are curved to a B+, as an n-player zero-sum game&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (with zero being the mean, and each integer difference being one standard deviation). To simplify this, we examine the two-player zero-sum game, which is well-studied.&lt;/p&gt;
 
-&lt;p&gt;The game is modeled as follows, with each student having two possibilities, &lt;code class=&quot;highlighter-rouge&quot;&gt;cheat&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;honest&lt;/code&gt;. We assume that the students are of equal skill, and that cheating gives a &lt;script type=&quot;math/tex&quot;&gt;+1&lt;/script&gt; standard deviation edge. Being caught in a class is &lt;script type=&quot;math/tex&quot;&gt;-0.12&lt;/script&gt;&lt;sup id=&quot;fnref:cheating-payoff&quot;&gt;&lt;a href=&quot;#fn:cheating-payoff&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. Payoffs are written to row, who is &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; in this case:&lt;/p&gt;
+&lt;p&gt;The game is modeled as follows, with each student having two possibilities, &lt;code class=&quot;highlighter-rouge&quot;&gt;cheat&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;honest&lt;/code&gt;. We assume that the students are of equal skill, and that cheating gives a \(+1\) standard deviation edge. Being caught in a class is \(-0.12\)&lt;sup id=&quot;fnref:cheating-payoff&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:cheating-payoff&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. Payoffs are written to row, who is \(A\) in this case:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-A \textrm{\\} B &amp; \mathrm{cheat} &amp; \mathrm{honest} \\
-\mathrm{cheat} &amp; 0 &amp; 0.88 \\
-\mathrm{honest} &amp; -0.88 &amp; 0 \\
-\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\begin{bmatrix}
+A \textrm{\\} B &amp;amp; \mathrm{cheat} &amp;amp; \mathrm{honest} \\
+\mathrm{cheat} &amp;amp; 0 &amp;amp; 0.88 \\
+\mathrm{honest} &amp;amp; -0.88 &amp;amp; 0 \\
+\end{bmatrix}\]
 
-&lt;p&gt;We see &lt;script type=&quot;math/tex&quot;&gt;\mathrm{(cheat, cheat)}&lt;/script&gt; is the dominant strategy, meaning in the case of letter grading, our model tells us that students do in fact have an incentive to cheat.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;We see \(\mathrm{(cheat, cheat)}\) is the dominant strategy, meaning in the case of letter grading, our model tells us that students do in fact have an incentive to cheat.&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;campuswide-pnp-policy&quot;&gt;Campuswide P/NP Policy&lt;/h2&gt;
-&lt;p&gt;With the campuswide P/NP policy in place, the incentive to cheat is suddenly changed. In the CS department, it is yet unclear how grades will be assigned, but taking that a C- minimum is required to get a passing grade, one can do several standard deviations below mean and still pass in the class. Looking at grade distributions of a large CS class (&lt;script type=&quot;math/tex&quot;&gt;N &gt; 19000&lt;/script&gt;), historic grades have told us that C- and up covers 95% of the population&lt;sup id=&quot;fnref:berkeleytime&quot;&gt;&lt;a href=&quot;#fn:berkeleytime&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Therefore, in a game where two students are both taking the course for P/NP credit, modeling the grade distributions off of a large CS class, there seems to be very low incentive for anyone to cheat. Regardless of whether or not they cheat, they will more than likely make the cutoff if they put enough effort into the class, and cheating only gives the extra possibility of getting caught. Therefore, with P/NP, it seems that &lt;em&gt;the incentive for cheating decreases&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;With the campuswide P/NP policy in place, the incentive to cheat is suddenly changed. In the CS department, it is yet unclear how grades will be assigned, but taking that a C- minimum is required to get a passing grade, one can do several standard deviations below mean and still pass in the class. Looking at grade distributions of a large CS class (\(N &amp;gt; 19000\)), historic grades have told us that C- and up covers 95% of the population&lt;sup id=&quot;fnref:berkeleytime&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:berkeleytime&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Therefore, in a game where two students are both taking the course for P/NP credit, modeling the grade distributions off of a large CS class, there seems to be very low incentive for anyone to cheat. Regardless of whether or not they cheat, they will more than likely make the cutoff if they put enough effort into the class, and cheating only gives the extra possibility of getting caught. Therefore, with P/NP, it seems that &lt;em&gt;the incentive for cheating decreases&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;This time, the game is modeled as a general-sum game, since one person doing well has a negligible impact on another. We only look at the payout of one person, since in the n-person general-sum game, everyone has a symmetric payout.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-\mathrm{cheat} &amp; \mathrm{honest} \\
-0 + \epsilon &amp; 0 \\
-\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\begin{bmatrix}
+\mathrm{cheat} &amp;amp; \mathrm{honest} \\
+0 + \epsilon &amp;amp; 0 \\
+\end{bmatrix}\]
 
 &lt;h2 id=&quot;banning-proctoring-over-zoom&quot;&gt;Banning Proctoring Over Zoom&lt;/h2&gt;
 &lt;p&gt;With the ban of proctoring, the risk of getting caught for cheating is all but zeroed. Does this impact the risk of cheating?&lt;/p&gt;
 
 &lt;p&gt;With the Zoom ban, many CS classes have shifted to an open-book policy. This means that, effectively, everything in the test can be looked up either way. As a result, while cheating is easily doable, with other mitigations such as test randomization, it seems that there is little impact on the rate of cheating. We get the same chart, after adding the ease of cheating and subtracting the hoops needed to hop through to cheat.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-\mathrm{cheat} &amp; \mathrm{honest} \\
-0 + \epsilon &amp; 0 \\
-\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\begin{bmatrix}
+\mathrm{cheat} &amp;amp; \mathrm{honest} \\
+0 + \epsilon &amp;amp; 0 \\
+\end{bmatrix}\]
 
 &lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
 
-&lt;div class=&quot;footnotes&quot;&gt;
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
   &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;A brief note about the choice of zero-sum versus general-sum: Since classes in the CS department are all curved, this would mean that, if we took two students &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;, fixing &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;’s performance would mean that &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt; doing better causes &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; to get a worse grade. We see that in the two-player scenario, since their grades must average to the same grade, &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt; getting &lt;script type=&quot;math/tex&quot;&gt;+d&lt;/script&gt; standard deviations would result in &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; getting &lt;script type=&quot;math/tex&quot;&gt;-d&lt;/script&gt;. This is a zero-sum game. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;A brief note about the choice of zero-sum versus general-sum: Since classes in the CS department are all curved, this would mean that, if we took two students \(A\) and \(B\), fixing \(A\)’s performance would mean that \(B\) doing better causes \(A\) to get a worse grade. We see that in the two-player scenario, since their grades must average to the same grade, \(B\) getting \(+d\) standard deviations would result in \(A\) getting \(-d\). This is a zero-sum game. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:cheating-payoff&quot;&gt;
-      &lt;p&gt;Suppose 1 in every 50 students are caught for cheating. (This amounts to 2%.) Empirically, we have no data for cheating, since it would require all students to admit their cheating, which is somewhat of a catch-22. Either way, suppose that getting caught for cheating results in &lt;script type=&quot;math/tex&quot;&gt;-5&lt;/script&gt; on their grade, whereas not getting caught results in &lt;script type=&quot;math/tex&quot;&gt;+1&lt;/script&gt;. This is a bernoulli random variable with &lt;script type=&quot;math/tex&quot;&gt;p=0.02&lt;/script&gt;, and the expected value is &lt;script type=&quot;math/tex&quot;&gt;0.02 * -5 + 0.98 * 1 = 0.88&lt;/script&gt;. &lt;a href=&quot;#fnref:cheating-payoff&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:cheating-payoff&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Suppose 1 in every 50 students are caught for cheating. (This amounts to 2%.) Empirically, we have no data for cheating, since it would require all students to admit their cheating, which is somewhat of a catch-22. Either way, suppose that getting caught for cheating results in \(-5\) on their grade, whereas not getting caught results in \(+1\). This is a bernoulli random variable with \(p=0.02\), and the expected value is \(0.02 * -5 + 0.98 * 1 = 0.88\). &lt;a href=&quot;#fnref:cheating-payoff&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:2&quot;&gt;
-      &lt;p&gt;Note that these incentives are still in place even without online testing; it’s just that cheating with proctors in person is probably much harder. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Note that these incentives are still in place even without online testing; it’s just that cheating with proctors in person is probably much harder. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:berkeleytime&quot;&gt;
-      &lt;p&gt;Modelled off of Berkeleytime, &lt;a href=&quot;#fnref:berkeleytime&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:berkeleytime&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Modelled off of Berkeleytime, &lt;a href=&quot;#fnref:berkeleytime&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format encourages cheating, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.</summary></entry><entry><title type="html">Random Fact #4</title><link href="https://addcnin.blue/2020/03/24/fact3/" rel="alternate" type="text/html" title="Random Fact #4" /><published>2020-03-24T00:00:00-07:00</published><updated>2020-03-24T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/24/fact3</id><content type="html" xml:base="https://addcnin.blue/2020/03/24/fact3/">&lt;h2 id=&quot;todays-fact-foot-on-water&quot;&gt;Today’s Fact: Foot On Water&lt;/h2&gt;
@@ -311,7 +305,7 @@ A \textrm{\\} B &amp; \mathrm{cheat} &amp; \mathrm{honest} \\
 
 &lt;h3 id=&quot;relevant-parameters&quot;&gt;Relevant Parameters&lt;/h3&gt;
 
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; be the mass of some person, let &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt; be the radius of his foot (which we model as a circle), and let &lt;script type=&quot;math/tex&quot;&gt;\gamma&lt;/script&gt; be the surface energy of water (i.e. surface tension).&lt;/p&gt;
+&lt;p&gt;Let \(m\) be the mass of some person, let \(R\) be the radius of his foot (which we model as a circle), and let \(\gamma\) be the surface energy of water (i.e. surface tension).&lt;/p&gt;
 
 &lt;p&gt;We make a simplistic model in which the water deforms in a circularly symmetric pattern around the foot, that when viewed at a cross-section appears as follows:&lt;/p&gt;
 
@@ -321,25 +315,23 @@ A \textrm{\\} B &amp; \mathrm{cheat} &amp; \mathrm{honest} \\
 
 &lt;p&gt;The increase in the water surface area is&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-    \Delta A &amp;= \int_{R}^{R+\frac{h}{\tan \theta}} 2\pi r (\frac{1}{\cos \theta}-1) d{r} \\
-    &amp;= \pi (\frac{h^2}{\tan^2 \theta} + \frac{2Rh}{\tan \theta}) \frac{1-\cos \theta}{\cos \theta}
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+    \Delta A &amp;amp;= \int_{R}^{R+\frac{h}{\tan \theta}} 2\pi r (\frac{1}{\cos \theta}-1) d{r} \\
+    &amp;amp;= \pi (\frac{h^2}{\tan^2 \theta} + \frac{2Rh}{\tan \theta}) \frac{1-\cos \theta}{\cos \theta}
+\end{align*}\]
 
-&lt;p&gt;Since &lt;script type=&quot;math/tex&quot;&gt;\Delta E=\gamma \Delta A&lt;/script&gt;, we have:&lt;/p&gt;
+&lt;p&gt;Since \(\Delta E=\gamma \Delta A\), we have:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-    F_{up} &amp;= \frac{\partial E}{\partial h} \\
-    &amp;= \gamma \pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{2h}{\tan^2 \theta}+\frac{2R}{\tan \theta}) \\
-    &amp;= 2\gamma\pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{h+R \tan \theta}{\tan^2 \theta}) \\
-    &amp;\approx 2\gamma \pi R \frac{1-\cos \theta}{\sin \theta}
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+    F_{up} &amp;amp;= \frac{\partial E}{\partial h} \\
+    &amp;amp;= \gamma \pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{2h}{\tan^2 \theta}+\frac{2R}{\tan \theta}) \\
+    &amp;amp;= 2\gamma\pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{h+R \tan \theta}{\tan^2 \theta}) \\
+    &amp;amp;\approx 2\gamma \pi R \frac{1-\cos \theta}{\sin \theta}
+\end{align*}\]
 
-&lt;p&gt;with the last step following since it is reasonable to assume &lt;script type=&quot;math/tex&quot;&gt;R \gg h&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;with the last step following since it is reasonable to assume \(R \gg h\)&lt;/p&gt;
 
-&lt;p&gt;The only remaining variable is &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; – it is reasonable to assume a small angle &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; (i.e. &lt;script type=&quot;math/tex&quot;&gt;\theta \approx \frac{\pi}{10}&lt;/script&gt;, so that this adds a factor of approximately 0.1). With &lt;script type=&quot;math/tex&quot;&gt;\gamma=72.8&lt;/script&gt; dynes per centimeter and &lt;script type=&quot;math/tex&quot;&gt;m=80&lt;/script&gt; kilograms, &lt;script type=&quot;math/tex&quot;&gt;R \approx 13 \text{km}&lt;/script&gt;.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Foot On Water Andi came up with an insane question: How wide does a human foot have to be for a human to stand on water? Of course, he came up with something insane, reproduced here.</summary></entry><entry><title type="html">Random Fact #3</title><link href="https://addcnin.blue/2020/03/23/fact3/" rel="alternate" type="text/html" title="Random Fact #3" /><published>2020-03-23T00:00:00-07:00</published><updated>2020-03-23T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/23/fact3</id><content type="html" xml:base="https://addcnin.blue/2020/03/23/fact3/">&lt;h2 id=&quot;todays-fact-linear-discriminant-analysis&quot;&gt;Today’s Fact: Linear Discriminant Analysis&lt;/h2&gt;
+&lt;p&gt;The only remaining variable is \(\theta\) – it is reasonable to assume a small angle \(\theta\) (i.e. \(\theta \approx \frac{\pi}{10}\), so that this adds a factor of approximately 0.1). With \(\gamma=72.8\) dynes per centimeter and \(m=80\) kilograms, \(R \approx 13 \text{km}\).&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Foot On Water Andi came up with an insane question: How wide does a human foot have to be for a human to stand on water? Of course, he came up with something insane, reproduced here.</summary></entry><entry><title type="html">Random Fact #3</title><link href="https://addcnin.blue/2020/03/23/fact3/" rel="alternate" type="text/html" title="Random Fact #3" /><published>2020-03-23T00:00:00-07:00</published><updated>2020-03-23T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/23/fact3</id><content type="html" xml:base="https://addcnin.blue/2020/03/23/fact3/">&lt;h2 id=&quot;todays-fact-linear-discriminant-analysis&quot;&gt;Today’s Fact: Linear Discriminant Analysis&lt;/h2&gt;
 &lt;p&gt;Linear Discriminant Analysis, or LDA for short, is an ML model used in classification. Specifically, for a model of &lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; features and &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; training points, it assumes that the &lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; features are all distributed Normally (Gaussian), with the same variance. More formally, taken from my professor’s &lt;a href=&quot;https://people.eecs.berkeley.edu/~jrs/189/lec/07.pdf&quot;&gt;cs189 notes&lt;/a&gt;, we get:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact2_1.png&quot; alt=&quot;Lecture Note 1&quot; /&gt;&lt;/p&gt;

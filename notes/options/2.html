@@ -159,16 +159,15 @@ loader: {load: ['[tex]/physics']},
 <p>Put options, as we originally learned, are used to hedge a long position. In other words, they only take on value when the underlying stock decreases in value past the strike price. To get an intuition for why this is true, think about it as an insurance. If the value of the underlying doesn’t fall, this means that the insurance is as good as worthless – it doesn’t give you any value. However, once the value of the underlying falls, this means that the option is now giving us protection, or added value. Again, an example:</p>
 
 <blockquote class="proof">
-  <p>As a reminder, the example from the previous note was buying a $8 put option costing $1 premium. With that same example, we see that for every dollar the underlying stock falls under $8, the option’s value gains $1. Otherwise, if the stock remains above $8, the option has no value at expiration<sup id="fnref:at-expiration"><a href="#fn:at-expiration" class="footnote">1</a></sup>, which would mean a loss on the premium, or $1. Here’s the graph:</p>
+  <p>As a reminder, the example from the previous note was buying a $8 put option costing $1 premium. With that same example, we see that for every dollar the underlying stock falls under $8, the option’s value gains $1. Otherwise, if the stock remains above $8, the option has no value at expiration<sup id="fnref:at-expiration" role="doc-noteref"><a href="#fn:at-expiration" class="footnote">1</a></sup>, which would mean a loss on the premium, or $1. Here’s the graph:</p>
 
   <p><img src="/assets/options/2-put.png" alt="put option" /></p>
 
-  <script type="math/tex; mode=display">% <![CDATA[
-V =
+\[V =
 \begin{cases}
--$100 & ,S \geq $800\\
--$100 + ($800 - S)= $700 - S& ,S < $800\\
-\end{cases} %]]></script>
+-$100 &amp; ,S \geq $800\\
+-$100 + ($800 - S)= $700 - S&amp; ,S &lt; $800\\
+\end{cases}\]
 </blockquote>
 
 <hr class="hr-subsection" />
@@ -181,12 +180,11 @@ V =
 
   <p><img src="/assets/options/2-call.png" alt="call option" /></p>
 
-  <script type="math/tex; mode=display">% <![CDATA[
-V =
+\[V =
 \begin{cases}
--$100 & ,S \leq $1200\\
--$100 + (S - $1200) = S - $1300 & ,S > $1200\\
-\end{cases} %]]></script>
+-$100 &amp; ,S \leq $1200\\
+-$100 + (S - $1200) = S - $1300 &amp; ,S &gt; $1200\\
+\end{cases}\]
 </blockquote>
 
 <hr />
@@ -204,10 +202,10 @@ V =
 <hr />
 
 <h2 id="footnotes">Footnotes</h2>
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes">
   <ol>
-    <li id="fn:at-expiration">
-      <p>Don’t worry about what “at expiration” means at the moment. We’ll learn later that time to expiration is part of the pricing model for options, but it’s too complicated to talk about all at once. <a href="#fnref:at-expiration" class="reversefootnote">⤴</a></p>
+    <li id="fn:at-expiration" role="doc-endnote">
+      <p>Don’t worry about what “at expiration” means at the moment. We’ll learn later that time to expiration is part of the pricing model for options, but it’s too complicated to talk about all at once. <a href="#fnref:at-expiration" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
   </ol>
 </div>
