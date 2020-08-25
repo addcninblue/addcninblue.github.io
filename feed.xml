@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2020-08-23T11:56:42-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Installing Windows Alongside Existing NixOS</title><link href="https://addcnin.blue/2020/07/11/dual-boot/" rel="alternate" type="text/html" title="Installing Windows Alongside Existing NixOS" /><published>2020-07-11T00:00:00-07:00</published><updated>2020-07-11T00:00:00-07:00</updated><id>https://addcnin.blue/2020/07/11/dual-boot</id><content type="html" xml:base="https://addcnin.blue/2020/07/11/dual-boot/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2020-08-25T00:15:21-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Controlling Desk Height via Elixir Nerves</title><link href="https://addcnin.blue/2020/08/24/nerves-table/" rel="alternate" type="text/html" title="Controlling Desk Height via Elixir Nerves" /><published>2020-08-24T00:00:00-07:00</published><updated>2020-08-24T00:00:00-07:00</updated><id>https://addcnin.blue/2020/08/24/nerves-table</id><content type="html" xml:base="https://addcnin.blue/2020/08/24/nerves-table/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt;In summer 2018, I learned of &lt;a href=&quot;https://elixir-lang.org/&quot;&gt;Elixir&lt;/a&gt; from one of the principal architects at Netskope, the company I interned at. He gave me a challenge: implement an Elixir application that reads in a CSV and ingests it into a database of my choice. It took a while, but I think the challenge took me no more than a few days. He then told me about &lt;a href=&quot;https://www.nerves-project.org/&quot;&gt;Elixir Nerves&lt;/a&gt;, a project that aims to leverage Elixir as the “Operating System” for IoT devices such as the Raspberry Pi. From that point on, I was tremendously excited about the language and what it had to offer.&lt;sup id=&quot;fnref:hypeadvisor&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:hypeadvisor&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Sometime later that Fall, I bought my own standing desk, having used one at Netskope and coming to love that one a lot. When installing the table, I noticed that the communication port between the remote and the controller was an RJ45 jack (same as the ones Ethernet uses), so it got me thinking: Is it possible to reverse engineer the protocol somehow to control the table? Of course, as with all things, &lt;a href=&quot;https://embedded-elixir.com/post/2019-01-18-nerves-at-home-desk-controller/&quot;&gt;someone’s done it before&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here’s my own attempt to control my table, largely influenced by the linked blog post.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-it-up&quot;&gt;Setting It Up&lt;/h2&gt;
+&lt;p&gt;This was my first attempt at messing with anything hardware. I owned a Raspberry Pi 2 as a birthday present from my friends, so I put that to work. To get started, I also bought a general “Electronics Fun Kit” from Amazon – it came with everything from GPIO cables, LEDs, diodes, capacitors, etc. etc. all for $10!&lt;sup id=&quot;fnref:nerd&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:nerd&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;The pinout linked blog post described in the blog post was pretty similar to the one on the table I owned. Here was the process I went through:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;My PCB didn’t have pinout labels. The pinout also happened to be in a different order.&lt;/li&gt;
+  &lt;li&gt;I then proceeded to connect pins in pairs, knowing that it’d probably be fine due to the low power. I also noticed that a pin was connected to large portions of the board, so I assumed it was the ground.&lt;/li&gt;
+  &lt;li&gt;First, I found the 5v pin since connecting it to the ground caused a soft reset on the board (probably due to shorting).&lt;/li&gt;
+  &lt;li&gt;Next, I found the up and down pins due to the table movement.&lt;/li&gt;
+  &lt;li&gt;With this, I copied the code and started a simple Elixir REPL to figure out the UART pins.&lt;/li&gt;
+  &lt;li&gt;For the REPL pins, I connected the RPi’s Rx (receiving) pin to random remaining pins to see what data came across. Note for those doing this in the future: You &lt;em&gt;must&lt;/em&gt; connect your ground pin from your RPi to the ground pin on the board! Not doing so will cause potentially noisy data.&lt;/li&gt;
+  &lt;li&gt;One of the pins gave data, and I marked that as the pin that transmitted data from the controller to the remote.&lt;/li&gt;
+  &lt;li&gt;I repeated this process for the remote -&amp;gt; controller pin, noting which pin gave data when I clicked buttons on the remote.&lt;/li&gt;
+  &lt;li&gt;I then noticed that there was an “M” pin that was labeled in the post, which was responsible for switching on and off the standby mode of the desk. For that, I connected the two pins to ground to see which would toggle the standby mode.&lt;/li&gt;
+  &lt;li&gt;This maps out 7 pins. I still don’t know how the last pin protocol works.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Here’s a picture!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/elixir_nerves_table.jpg&quot; alt=&quot;picture&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;reverse-engineering-the-uart-protocol&quot;&gt;Reverse Engineering the UART Protocol&lt;/h2&gt;
+&lt;p&gt;This is the biggest point of difference between the blog and my own desk. The blog notes that the desk sent messages in 4-byte packets, whereas my desk sent messages in pre-formed 3-byte packages. On inspection, the format was totally different. I recorded some events: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;2, 218, 220&amp;gt;&amp;gt;&lt;/code&gt; corresponded to 28.6 inches; &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;4, 0, 2&amp;gt;&amp;gt;&lt;/code&gt; corresponded to 40 inches. See if you can figure out the conversion! It’s an interesting puzzle that took me a few hours. (Next paragraph has spoilers.)&lt;/p&gt;
+
+&lt;p&gt;It turns out the format was quite pathological. Here’s the format: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;tens, lower_bound, upper_bound&amp;gt;&amp;gt;&lt;/code&gt;. The format sent has &lt;code class=&quot;highlighter-rouge&quot;&gt;tens&lt;/code&gt; corresponding to the height of the table in inches in the tens place. Then, &lt;code class=&quot;highlighter-rouge&quot;&gt;lower_bound&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;upper_bound&lt;/code&gt; correspond to the height of the table in &lt;em&gt;tenths of centimeters&lt;/em&gt;. Here’s a sample conversion:&lt;/p&gt;
+
+&lt;blockquote class=&quot;proof&quot;&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;2, 218, 220&amp;gt;&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+
+  &lt;p&gt;218 tenths of cms is 8.56 inches. 220 tenths of cms is 8.66. 20 + 8.6 = 28.6&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+&lt;p&gt;I adapted the code from the blog, adding onto it the ability to control the desk’s height via an Elixir RPC interface. Code is available &lt;a href=&quot;https://github.com/addcninblue/nerves_standing_desk&quot;&gt;here&lt;/a&gt;. You can see me handling this completely pathological format &lt;a href=&quot;https://github.com/addcninblue/nerves_standing_desk/blob/master/lib/nerves_standing_desk/reader.ex#L41&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;controlling-the-desk&quot;&gt;Controlling the Desk&lt;/h2&gt;
+&lt;p&gt;For my final wiring, I decided to make it a bit more legitimate than having wires hanging everywhere. I bought an RJ45 splitter from Amazon for ~$10, and split the connection from the controller, connecting one end to the current remote and the other to the RPi via a modified Ethernet cable.&lt;/p&gt;
+
+&lt;p&gt;I also wrote up a RESTful web server in &lt;a href=&quot;https://www.phoenixframework.org/&quot;&gt;Elixir Phoenix&lt;/a&gt; that directly calls functions on the Nerves device via &lt;a href=&quot;https://elixirschool.com/en/lessons/advanced/otp-distribution/&quot;&gt;Distributed Elixir&lt;/a&gt;. I then wrote a simple Android app that takes advantage of the &lt;a href=&quot;https://developer.android.com/preview/features/device-control&quot;&gt;Android Device Control [Beta] API&lt;/a&gt;.&lt;sup id=&quot;fnref:warning&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:warning&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:hypeadvisor&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;I use Elixir in everything now! If you’ve ever used my go links, or if you’re an investor at &lt;a href=&quot;https://thehypeadvisor.com/&quot;&gt;The Hype Advisor&lt;/a&gt;, you’ll have seen some of it in action! &lt;a href=&quot;#fnref:hypeadvisor&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:nerd&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;a nerd’s dream! &lt;a href=&quot;#fnref:nerd&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:warning&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;A word of warning on the API: You should read examples on Github; the documentation &lt;em&gt;sucks&lt;/em&gt;. &lt;a href=&quot;#fnref:warning&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background In summer 2018, I learned of Elixir from one of the principal architects at Netskope, the company I interned at. He gave me a challenge: implement an Elixir application that reads in a CSV and ingests it into a database of my choice. It took a while, but I think the challenge took me no more than a few days. He then told me about Elixir Nerves, a project that aims to leverage Elixir as the “Operating System” for IoT devices such as the Raspberry Pi. From that point on, I was tremendously excited about the language and what it had to offer.1 I use Elixir in everything now! If you’ve ever used my go links, or if you’re an investor at The Hype Advisor, you’ll have seen some of it in action! ⤴</summary></entry><entry><title type="html">Installing Windows Alongside Existing NixOS</title><link href="https://addcnin.blue/2020/07/11/dual-boot/" rel="alternate" type="text/html" title="Installing Windows Alongside Existing NixOS" /><published>2020-07-11T00:00:00-07:00</published><updated>2020-07-11T00:00:00-07:00</updated><id>https://addcnin.blue/2020/07/11/dual-boot</id><content type="html" xml:base="https://addcnin.blue/2020/07/11/dual-boot/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
 &lt;p&gt;I use NixOS as my main OS in everything (from personal laptop to my server), but I was beginning to miss Windows for gaming. (WINE won’t cut it here.) As a result, I went searching for installing Windows alongside an existing NixOS installation, but I couldn’t find one anywhere. I decided to just dive in, and it worked! Here is a high-level list of the steps I took. For reference, I am installing this on an XPS 9550, with EFI.&lt;/p&gt;
 
 &lt;p&gt;Before continuing on, you will need a live USB stick that has the NixOS installation media.&lt;/p&gt;
@@ -376,46 +436,4 @@ A \textrm{\\} B &amp;amp; \mathrm{cheat} &amp;amp; \mathrm{honest} \\
 Source: Stat 155 Textbook, &lt;em&gt;Game Theory&lt;/em&gt; by Anna R. Karlin and Yuval Peres&lt;/p&gt;
 
 &lt;h2 id=&quot;a-bit-of-background&quot;&gt;A Bit Of Background&lt;/h2&gt;
-&lt;p&gt;The Coronavirus hit us all pretty hard. Now that school is moved online, and Berkeley classes have all been moved to P/NP, I’ve decided to take on the goal of finding one daily random fact with my friend &lt;a href=&quot;https://medium.com/@andi.gu.ca&quot;&gt;Andi Gu&lt;/a&gt;. Hopefully, whoever stumbles upon this blog will find them as interesting as we do!&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Market for Lemons Source: Stat 155 Textbook, Game Theory by Anna R. Karlin and Yuval Peres</summary></entry><entry><title type="html">Elixir Deployments and CPU Usage</title><link href="https://addcnin.blue/2020/03/03/elixir-performance/" rel="alternate" type="text/html" title="Elixir Deployments and CPU Usage" /><published>2020-03-03T00:00:00-08:00</published><updated>2020-03-03T00:00:00-08:00</updated><id>https://addcnin.blue/2020/03/03/elixir-performance</id><content type="html" xml:base="https://addcnin.blue/2020/03/03/elixir-performance/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;p&gt;For the past semester, I have deployed &lt;a href=&quot;go.addcnin.blue/about&quot;&gt;a custom shortlinker service&lt;/a&gt; and my &lt;a href=&quot;addcnin.blue&quot;&gt;personal website&lt;/a&gt; on a &lt;a href=&quot;cloud.google.com&quot;&gt;Google Cloud Compute Free Instance&lt;/a&gt;. The custom shortlinker is a rewrite of the &lt;a href=&quot;https://github.com/Cal-CS-61A-Staff/links&quot;&gt;CS61A Shortlinker&lt;/a&gt; in Elixir, which was a good way for me to learn the new language. Upon deploying the Elixir version, however, I noticed that CPU usage hovered around a constant 100%, even the system was idling. I left it alone for a while, noting that it was responding to requests fairly quickly, leaving me to think that it was likely the BEAM that was idling.&lt;/p&gt;
-
-&lt;h2 id=&quot;more-research&quot;&gt;More Research&lt;/h2&gt;
-&lt;p&gt;Recently, I got back into Elixir, and curiosity (+ paying bills) prompted me to investigate into the issue more. I came across &lt;a href=&quot;https://stressgrid.com/blog/beam_cpu_usage/&quot;&gt;this blog&lt;/a&gt;, which answered all of my problems.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;… enabling busy waiting causes the CPU to be saturated above 95%. Disabling busy waiting causes CPU utilization to scale with the workload.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;That’s insane! Could it be possible that the BEAM was running empty cycles to claim the CPU, hence stealing cycles from other processes? There was only one way to tell.&lt;/p&gt;
-
-&lt;h2 id=&quot;my-own-change&quot;&gt;My Own Change&lt;/h2&gt;
-&lt;p&gt;I decided to make the changes the blog specified by adding these following lines to the BEAM arguments:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+sbwt none
-+sbwtdcpu none
-+sbwtdio none
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In the blog, they used Distillery, but I use default Mix releases, so I will document the changes below:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Documentation:
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://hexdocs.pm/mix/Mix.Tasks.Release.html&quot;&gt;Mix Release VM Documentation&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://github.com/addcninblue/links/commit/ddb45106492892c13834aeee20a83f47591bbf24#diff-f59a5941af2fadce5fbf5b04589acd10R12&quot;&gt;Change Commit&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Add the required VM configuration files: &lt;code class=&quot;highlighter-rouge&quot;&gt;mix release.init&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Modify the VM configuration file by adding
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; +sbwt none
- +sbwtdcpu none
- +sbwtdio none
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;to &lt;code class=&quot;highlighter-rouge&quot;&gt;rel/vm.args.eex&lt;/code&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Recompile and deploy!&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;And with that, I noticed that there was a dramatic reduction in compute:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/posts/beam-reduced-usage.png&quot; alt=&quot;Beam Reduced Usage&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Note that CPU usage is &lt;em&gt;nearly zero&lt;/em&gt;, where as before it was ~100%! This frees up the CPU cycles for redeployments to this server and for more concurrent apps running (Build times are cut by &lt;strong&gt;more than a half!&lt;/strong&gt;). I will be monitoring this new deployment for any regressions, but it appears to be a very solid improvement.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background For the past semester, I have deployed a custom shortlinker service and my personal website on a Google Cloud Compute Free Instance. The custom shortlinker is a rewrite of the CS61A Shortlinker in Elixir, which was a good way for me to learn the new language. Upon deploying the Elixir version, however, I noticed that CPU usage hovered around a constant 100%, even the system was idling. I left it alone for a while, noting that it was responding to requests fairly quickly, leaving me to think that it was likely the BEAM that was idling.</summary></entry></feed>
+&lt;p&gt;The Coronavirus hit us all pretty hard. Now that school is moved online, and Berkeley classes have all been moved to P/NP, I’ve decided to take on the goal of finding one daily random fact with my friend &lt;a href=&quot;https://medium.com/@andi.gu.ca&quot;&gt;Andi Gu&lt;/a&gt;. Hopefully, whoever stumbles upon this blog will find them as interesting as we do!&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Market for Lemons Source: Stat 155 Textbook, Game Theory by Anna R. Karlin and Yuval Peres</summary></entry></feed>

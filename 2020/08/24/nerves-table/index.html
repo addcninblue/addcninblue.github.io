@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Controlling Desk Height via Elixir Nerves</title>
+  <meta name="description" content="Background In summer 2018, I learned of Elixir from one of the principal architects at Netskope, the company I interned at. He gave me a challenge: implement an Elixir application that reads in a CSV and ingests it into a database of my choice. It took a while, but I think the challenge took me no more than a few days. He then told me about Elixir Nerves, a project that aims to leverage Elixir as the “Operating System” for IoT devices such as the Raspberry Pi. From that point on, I was tremendously excited about the language and what it had to offer.1 I use Elixir in everything now! If you’ve ever used my go links, or if you’re an investor at The Hype Advisor, you’ll have seen some of it in action! ⤴">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/2020/08/24/nerves-table/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+
+
+  
+  <meta property="og:title" content="Controlling Desk Height via Elixir Nerves">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/2020/08/24/nerves-table/">
+  <meta property="og:description" content="Background In summer 2018, I learned of Elixir from one of the principal architects at Netskope, the company I interned at. He gave me a challenge: implement an Elixir application that reads in a CSV and ingests it into a database of my choice. It took a while, but I think the challenge took me no more than a few days. He then told me about Elixir Nerves, a project that aims to leverage Elixir as the “Operating System” for IoT devices such as the Raspberry Pi. From that point on, I was tremendously excited about the language and what it had to offer.1 I use Elixir in everything now! If you’ve ever used my go links, or if you’re an investor at The Hype Advisor, you’ll have seen some of it in action! ⤴">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Controlling Desk Height via Elixir Nerves">
+  <meta name="twitter:description" content="Background In summer 2018, I learned of Elixir from one of the principal architects at Netskope, the company I interned at. He gave me a challenge: implement an Elixir application that reads in a C...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89539680-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Controlling Desk Height via Elixir Nerves</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#background">Background</a></li>
+  <li><a href="#setting-it-up">Setting It Up</a></li>
+  <li><a href="#reverse-engineering-the-uart-protocol">Reverse Engineering the UART Protocol</a></li>
+  <li><a href="#code">Code</a></li>
+  <li><a href="#controlling-the-desk">Controlling the Desk</a></li>
+  <li><a href="#footnotes">Footnotes</a></li>
+</ul>
+
+    </div>
+    
+
+    <hr>
+
+    <h2 id="background">Background</h2>
+<p>In summer 2018, I learned of <a href="https://elixir-lang.org/">Elixir</a> from one of the principal architects at Netskope, the company I interned at. He gave me a challenge: implement an Elixir application that reads in a CSV and ingests it into a database of my choice. It took a while, but I think the challenge took me no more than a few days. He then told me about <a href="https://www.nerves-project.org/">Elixir Nerves</a>, a project that aims to leverage Elixir as the “Operating System” for IoT devices such as the Raspberry Pi. From that point on, I was tremendously excited about the language and what it had to offer.<sup id="fnref:hypeadvisor" role="doc-noteref"><a href="#fn:hypeadvisor" class="footnote">1</a></sup></p>
+
+<p>Sometime later that Fall, I bought my own standing desk, having used one at Netskope and coming to love that one a lot. When installing the table, I noticed that the communication port between the remote and the controller was an RJ45 jack (same as the ones Ethernet uses), so it got me thinking: Is it possible to reverse engineer the protocol somehow to control the table? Of course, as with all things, <a href="https://embedded-elixir.com/post/2019-01-18-nerves-at-home-desk-controller/">someone’s done it before</a>.</p>
+
+<p>Here’s my own attempt to control my table, largely influenced by the linked blog post.</p>
+
+<h2 id="setting-it-up">Setting It Up</h2>
+<p>This was my first attempt at messing with anything hardware. I owned a Raspberry Pi 2 as a birthday present from my friends, so I put that to work. To get started, I also bought a general “Electronics Fun Kit” from Amazon – it came with everything from GPIO cables, LEDs, diodes, capacitors, etc. etc. all for $10!<sup id="fnref:nerd" role="doc-noteref"><a href="#fn:nerd" class="footnote">2</a></sup></p>
+
+<p>The pinout linked blog post described in the blog post was pretty similar to the one on the table I owned. Here was the process I went through:</p>
+<ol>
+  <li>My PCB didn’t have pinout labels. The pinout also happened to be in a different order.</li>
+  <li>I then proceeded to connect pins in pairs, knowing that it’d probably be fine due to the low power. I also noticed that a pin was connected to large portions of the board, so I assumed it was the ground.</li>
+  <li>First, I found the 5v pin since connecting it to the ground caused a soft reset on the board (probably due to shorting).</li>
+  <li>Next, I found the up and down pins due to the table movement.</li>
+  <li>With this, I copied the code and started a simple Elixir REPL to figure out the UART pins.</li>
+  <li>For the REPL pins, I connected the RPi’s Rx (receiving) pin to random remaining pins to see what data came across. Note for those doing this in the future: You <em>must</em> connect your ground pin from your RPi to the ground pin on the board! Not doing so will cause potentially noisy data.</li>
+  <li>One of the pins gave data, and I marked that as the pin that transmitted data from the controller to the remote.</li>
+  <li>I repeated this process for the remote -&gt; controller pin, noting which pin gave data when I clicked buttons on the remote.</li>
+  <li>I then noticed that there was an “M” pin that was labeled in the post, which was responsible for switching on and off the standby mode of the desk. For that, I connected the two pins to ground to see which would toggle the standby mode.</li>
+  <li>This maps out 7 pins. I still don’t know how the last pin protocol works.</li>
+</ol>
+
+<p>Here’s a picture!</p>
+
+<p><img src="/assets/posts/elixir_nerves_table.jpg" alt="picture" /></p>
+
+<h2 id="reverse-engineering-the-uart-protocol">Reverse Engineering the UART Protocol</h2>
+<p>This is the biggest point of difference between the blog and my own desk. The blog notes that the desk sent messages in 4-byte packets, whereas my desk sent messages in pre-formed 3-byte packages. On inspection, the format was totally different. I recorded some events: <code class="highlighter-rouge">&lt;&lt;2, 218, 220&gt;&gt;</code> corresponded to 28.6 inches; <code class="highlighter-rouge">&lt;&lt;4, 0, 2&gt;&gt;</code> corresponded to 40 inches. See if you can figure out the conversion! It’s an interesting puzzle that took me a few hours. (Next paragraph has spoilers.)</p>
+
+<p>It turns out the format was quite pathological. Here’s the format: <code class="highlighter-rouge">&lt;&lt;tens, lower_bound, upper_bound&gt;&gt;</code>. The format sent has <code class="highlighter-rouge">tens</code> corresponding to the height of the table in inches in the tens place. Then, <code class="highlighter-rouge">lower_bound</code> and <code class="highlighter-rouge">upper_bound</code> correspond to the height of the table in <em>tenths of centimeters</em>. Here’s a sample conversion:</p>
+
+<blockquote class="proof">
+  <p><code class="highlighter-rouge">&lt;&lt;2, 218, 220&gt;&gt;</code>:</p>
+
+  <p>218 tenths of cms is 8.56 inches. 220 tenths of cms is 8.66. 20 + 8.6 = 28.6</p>
+</blockquote>
+
+<h2 id="code">Code</h2>
+<p>I adapted the code from the blog, adding onto it the ability to control the desk’s height via an Elixir RPC interface. Code is available <a href="https://github.com/addcninblue/nerves_standing_desk">here</a>. You can see me handling this completely pathological format <a href="https://github.com/addcninblue/nerves_standing_desk/blob/master/lib/nerves_standing_desk/reader.ex#L41">here</a>.</p>
+
+<h2 id="controlling-the-desk">Controlling the Desk</h2>
+<p>For my final wiring, I decided to make it a bit more legitimate than having wires hanging everywhere. I bought an RJ45 splitter from Amazon for ~$10, and split the connection from the controller, connecting one end to the current remote and the other to the RPi via a modified Ethernet cable.</p>
+
+<p>I also wrote up a RESTful web server in <a href="https://www.phoenixframework.org/">Elixir Phoenix</a> that directly calls functions on the Nerves device via <a href="https://elixirschool.com/en/lessons/advanced/otp-distribution/">Distributed Elixir</a>. I then wrote a simple Android app that takes advantage of the <a href="https://developer.android.com/preview/features/device-control">Android Device Control [Beta] API</a>.<sup id="fnref:warning" role="doc-noteref"><a href="#fn:warning" class="footnote">3</a></sup></p>
+
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:hypeadvisor" role="doc-endnote">
+      <p>I use Elixir in everything now! If you’ve ever used my go links, or if you’re an investor at <a href="https://thehypeadvisor.com/">The Hype Advisor</a>, you’ll have seen some of it in action! <a href="#fnref:hypeadvisor" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+    <li id="fn:nerd" role="doc-endnote">
+      <p>a nerd’s dream! <a href="#fnref:nerd" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+    <li id="fn:warning" role="doc-endnote">
+      <p>A word of warning on the API: You should read examples on Github; the documentation <em>sucks</em>. <a href="#fnref:warning" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    
+    
+    
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
