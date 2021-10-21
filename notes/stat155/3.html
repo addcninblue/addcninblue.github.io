@@ -10,7 +10,7 @@
   
   
   <title>Note 3 - Subtraction Game</title>
-  <meta name="description" content="Recap Combinatorial Games: 2 players with turns, complete information. Each player has the same set of moves, and there is no randomness. There are no ties. is called terminal if . Normal Play: Player on whose turn is faced with a terminal position loses. Misère Play: Player on terminal position wins.">
+  <meta name="description" content="Recap Combinatorial Games: 2 players with turns, complete information. Each player has the same set of moves, and there is no randomness. There are no ties. \(x \in X\) is called terminal if \(F(x) = \emptyset\). Normal Play: Player on whose turn is faced with a terminal position loses. Misère Play: Player on terminal position wins.">
   
 
   <link rel="stylesheet" href="/assets/main.css">
@@ -51,13 +51,13 @@ loader: {load: ['[tex]/physics']},
   <meta property="og:title" content="Note 3 - Subtraction Game">
   <meta property="og:site_name" content="Addison Chan">
   <meta property="og:url" content="https://addcnin.blue/notes/stat155/3">
-  <meta property="og:description" content="Recap Combinatorial Games: 2 players with turns, complete information. Each player has the same set of moves, and there is no randomness. There are no ties. is called terminal if . Normal Play: Player on whose turn is faced with a terminal position loses. Misère Play: Player on terminal position wins.">
+  <meta property="og:description" content="Recap Combinatorial Games: 2 players with turns, complete information. Each player has the same set of moves, and there is no randomness. There are no ties. \(x \in X\) is called terminal if \(F(x) = \emptyset\). Normal Play: Player on whose turn is faced with a terminal position loses. Misère Play: Player on terminal position wins.">
   
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="addcninblue">
   <meta name="twitter:title" content="Note 3 - Subtraction Game">
-  <meta name="twitter:description" content="Recap Combinatorial Games: 2 players with turns, complete information. Each player has the same set of moves, and there is no randomness. There are no ties. is called terminal if . Normal Play: Pla...">
+  <meta name="twitter:description" content="Recap Combinatorial Games: 2 players with turns, complete information. Each player has the same set of moves, and there is no randomness. There are no ties. \(x \in X\) is called terminal if \(F(x)...">
   
     <meta name="twitter:creator" content="addcninblue">
   
@@ -65,20 +65,22 @@ loader: {load: ['[tex]/physics']},
 
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
 
   
-  <!-- Google Analytics -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-89539680-2', 'auto');
-    ga('send', 'pageview');
-
-  </script>
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
 
 
 </head>
@@ -148,14 +150,12 @@ loader: {load: ['[tex]/physics']},
     </div>
     
 
-    
-
     <hr>
 
     <h2 id="recap">Recap</h2>
 <ul>
   <li>Combinatorial Games: 2 players with turns, complete information. Each player has the same set of moves, and there is no randomness. There are no ties.</li>
-  <li><script type="math/tex">x \in X</script> is called <strong>terminal</strong> if <script type="math/tex">F(x) = \emptyset</script>.</li>
+  <li>\(x \in X\) is called <strong>terminal</strong> if \(F(x) = \emptyset\).</li>
   <li>Normal Play: Player on whose turn is faced with a terminal position loses.</li>
   <li>Misère Play: Player on terminal position wins.</li>
 </ul>
@@ -163,10 +163,10 @@ loader: {load: ['[tex]/physics']},
 <hr />
 
 <h2 id="combinatorial-game-analysis">Combinatorial Game Analysis</h2>
-<p>To analyze a game, we classify all positions as <script type="math/tex">P</script> or <script type="math/tex">N</script> as follows:</p>
+<p>To analyze a game, we classify all positions as \(P\) or \(N\) as follows:</p>
 <ul>
-  <li><script type="math/tex">P</script>: one from where the <em>previous player</em> can guarantee a victory. Note that this means we assume optimal play from both players.</li>
-  <li><script type="math/tex">N</script>: one from where the <em>next player</em> can guarantee a victory.</li>
+  <li>\(P\): one from where the <em>previous player</em> can guarantee a victory. Note that this means we assume optimal play from both players.</li>
+  <li>\(N\): one from where the <em>next player</em> can guarantee a victory.</li>
 </ul>
 
 <p>Under Normal Play, <em>all terminal positions are P positions</em>. Conversely, under Misère Play, <em>all terminal positions are N positions</em>.</p>
@@ -174,12 +174,12 @@ loader: {load: ['[tex]/physics']},
 <hr />
 
 <h2 id="subtraction-games">Subtraction Games</h2>
-<p>These are the simplest take-away games. The game begins with <script type="math/tex">n</script> chips. On your turn, you take away <script type="math/tex">k</script> chips from the pile, where <script type="math/tex">k \in \textrm{ subtraction set } S</script>.</p>
+<p>These are the simplest take-away games. The game begins with \(n\) chips. On your turn, you take away \(k\) chips from the pile, where \(k \in \textrm{ subtraction set } S\).</p>
 
 <hr class="hr-subsection" />
 
 <h3 id="example">Example</h3>
-<p>Let us analyze the set <script type="math/tex">S = \{1, 2, 3\}</script>.</p>
+<p>Let us analyze the set \(S = \{1, 2, 3\}\).</p>
 
 <table>
   <tbody>
@@ -199,17 +199,17 @@ loader: {load: ['[tex]/physics']},
     </tr>
     <tr>
       <td>F(x)</td>
-      <td><script type="math/tex">\emptyset</script></td>
-      <td><script type="math/tex">\{0\}</script></td>
-      <td><script type="math/tex">\{0, 1\}</script></td>
-      <td><script type="math/tex">\{0, 1, 2\}</script></td>
-      <td><script type="math/tex">\{1, 2, 3\}</script></td>
-      <td><script type="math/tex">\{2, 3, 4\}</script></td>
-      <td><script type="math/tex">\{3, 4, 5\}</script></td>
-      <td><script type="math/tex">\{4, 5, 6\}</script></td>
-      <td><script type="math/tex">\{5, 6, 7\}</script></td>
-      <td><script type="math/tex">\{6, 7, 8\}</script></td>
-      <td><script type="math/tex">\{7, 8, 9\}</script></td>
+      <td>\(\emptyset\)</td>
+      <td>\(\{0\}\)</td>
+      <td>\(\{0, 1\}\)</td>
+      <td>\(\{0, 1, 2\}\)</td>
+      <td>\(\{1, 2, 3\}\)</td>
+      <td>\(\{2, 3, 4\}\)</td>
+      <td>\(\{3, 4, 5\}\)</td>
+      <td>\(\{4, 5, 6\}\)</td>
+      <td>\(\{5, 6, 7\}\)</td>
+      <td>\(\{6, 7, 8\}\)</td>
+      <td>\(\{7, 8, 9\}\)</td>
     </tr>
     <tr>
       <td>P/N</td>
@@ -228,48 +228,47 @@ loader: {load: ['[tex]/physics']},
   </tbody>
 </table>
 
-<p>An observation: A position <script type="math/tex">x</script> is a <script type="math/tex">P</script> position if <script type="math/tex">x</script> is divisible by <script type="math/tex">4</script>.<br />
+<p>An observation: A position \(x\) is a \(P\) position if \(x\) is divisible by \(4\).<br />
 This leads us to formulate the following hypothesis:</p>
 
-<script type="math/tex; mode=display">x \textrm{ is a P-position } \iff x \equiv 0\ (\textrm{mod } 4)</script>
+\[x \textrm{ is a P-position } \iff x \equiv 0\ (\textrm{mod } 4)\]
 
 <hr class="hr-subsection" />
 
 <h3 id="proof-by-induction-">Proof by induction <!--  TODO: FIX THIS SECTION  --></h3>
 
-<p>We first note that <script type="math/tex">\forall x \in \mathbb{Z}^+, x = 4k, 4k + 1, 4k + 2, 4k + 3</script>.<br />
-Assume that our inductive hypothesis is true <script type="math/tex">% <![CDATA[
-\forall k,\ 0 \leq k < n %]]></script> .<br />
-We show that it is true for <script type="math/tex">m=n+1</script>.<br />
+<p>We first note that \(\forall x \in \mathbb{Z}^+, x = 4k, 4k + 1, 4k + 2, 4k + 3\).<br />
+Assume that our inductive hypothesis is true \(\forall k,\ 0 \leq k &lt; n\) .<br />
+We show that it is true for \(m=n+1\).<br />
 Recall that we defined the following sets:</p>
 
-<script type="math/tex; mode=display">P = \{x \in X \textrm{ s.t. x is a P-position}\}</script>
+\[P = \{x \in X \textrm{ s.t. x is a P-position}\}\]
 
-<script type="math/tex; mode=display">N = \{x \in X \textrm{ s.t. x is a N-position}\}</script>
+\[N = \{x \in X \textrm{ s.t. x is a N-position}\}\]
 
-<p>Claim: Every <script type="math/tex">x \in X</script> is in <script type="math/tex">P \cup N</script>, and <script type="math/tex">P \cap N = \emptyset</script>. Read the proof of this in Theorem 1.1.5 in KP.</p>
+<p>Claim: Every \(x \in X\) is in \(P \cup N\), and \(P \cap N = \emptyset\). Read the proof of this in Theorem 1.1.5 in KP.</p>
 
-<p>A winning strategy is a set of moves from <script type="math/tex">x</script> that can guarantee a win.</p>
+<p>A winning strategy is a set of moves from \(x\) that can guarantee a win.</p>
 
 <hr />
 
 <h2 id="graphs">Graphs</h2>
-<p>A graph is defined as <script type="math/tex">G = (V,E)</script>, where <script type="math/tex">V</script> is a set of vertices and <script type="math/tex">E</script> is a set of edges connecting the vertices. We can define a graph on our state space, which (upon inspection) is a DAG since all states can only transition into smaller states.</p>
+<p>A graph is defined as \(G = (V,E)\), where \(V\) is a set of vertices and \(E\) is a set of edges connecting the vertices. We can define a graph on our state space, which (upon inspection) is a DAG since all states can only transition into smaller states.</p>
 
 <hr class="hr-subsection" />
 
 <h3 id="a-recursive-algorithm-to-label-positions">A Recursive Algorithm to Label Positions</h3>
 <p>(Ferguson) Recursive Algorithm to Label Positions:</p>
 <ol>
-  <li>Label all the terminal positions as <script type="math/tex">P</script>.</li>
-  <li>Label each position that has an edge to a <script type="math/tex">P</script>-position as <script type="math/tex">N</script>.</li>
-  <li>If a position is not labeled yet, then check the edges. If there exists at least one edge to a <script type="math/tex">P</script>-position, label this position <script type="math/tex">N</script>. Otherwise all edges lead to <script type="math/tex">N</script>-positions, so we label this position <script type="math/tex">P</script>.</li>
+  <li>Label all the terminal positions as \(P\).</li>
+  <li>Label each position that has an edge to a \(P\)-position as \(N\).</li>
+  <li>If a position is not labeled yet, then check the edges. If there exists at least one edge to a \(P\)-position, label this position \(N\). Otherwise all edges lead to \(N\)-positions, so we label this position \(P\).</li>
 </ol>
 
 <hr />
 
 <h2 id="homework">Homework</h2>
-<p>Analyze <script type="math/tex">S={1,3,4}</script>, and give a general rule.</p>
+<p>Analyze \(S={1,3,4}\), and give a general rule.</p>
 
 <hr />
 

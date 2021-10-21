@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 2 - Calls and Puts</title>
+  <meta name="description" content="A Brief Recap In the last note, we learned how put options can be used to hedge long positions, and how call options can be used to hedge short positions. In this note, we will examine raw options, or their intrinsic values without being used as a hedge. After that, we will take a brief overview of some factors impacting their valuation.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/options/2">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+loader: {load: ['[tex]/physics']},
+  tex: {packages: {'[+]': ['physics']}},
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 2 - Calls and Puts">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/options/2">
+  <meta property="og:description" content="A Brief Recap In the last note, we learned how put options can be used to hedge long positions, and how call options can be used to hedge short positions. In this note, we will examine raw options, or their intrinsic values without being used as a hedge. After that, we will take a brief overview of some factors impacting their valuation.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 2 - Calls and Puts">
+  <meta name="twitter:description" content="A Brief Recap In the last note, we learned how put options can be used to hedge long positions, and how call options can be used to hedge short positions. In this note, we will examine raw options,...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+  
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 2 - Calls and Puts</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#a-brief-recap">A Brief Recap</a></li>
+  <li><a href="#value-of-options">Value of Options</a>
+    <ul>
+      <li><a href="#put-options">Put Options</a></li>
+      <li><a href="#call-options">Call Options</a></li>
+    </ul>
+  </li>
+  <li><a href="#intrinsic-and-extrinsic-value">Intrinsic and Extrinsic Value</a>
+    <ul>
+      <li><a href="#extrinsic-value">Extrinsic Value</a></li>
+    </ul>
+  </li>
+  <li><a href="#footnotes">Footnotes</a></li>
+</ul>
+
+    </div>
+    
+
+    <hr>
+
+    <h2 id="a-brief-recap">A Brief Recap</h2>
+<p>In the last note, we learned how put options can be used to hedge long positions, and how call options can be used to hedge short positions. In this note, we will examine <em>raw options</em>, or their intrinsic values without being used as a hedge. After that, we will take a brief overview of some factors impacting their valuation.</p>
+
+<hr />
+
+<h2 id="value-of-options">Value of Options</h2>
+
+<h3 id="put-options">Put Options</h3>
+<p>Put options, as we originally learned, are used to hedge a long position. In other words, they only take on value when the underlying stock decreases in value past the strike price. To get an intuition for why this is true, think about it as an insurance. If the value of the underlying doesn’t fall, this means that the insurance is as good as worthless – it doesn’t give you any value. However, once the value of the underlying falls, this means that the option is now giving us protection, or added value. Again, an example:</p>
+
+<blockquote class="proof">
+  <p>As a reminder, the example from the previous note was buying a $8 put option costing $1 premium. With that same example, we see that for every dollar the underlying stock falls under $8, the option’s value gains $1. Otherwise, if the stock remains above $8, the option has no value at expiration<sup id="fnref:at-expiration" role="doc-noteref"><a href="#fn:at-expiration" class="footnote" rel="footnote">1</a></sup>, which would mean a loss on the premium, or $1. Here’s the graph:</p>
+
+  <p><img src="/assets/options/2-put.png" alt="put option" /></p>
+
+\[V =
+\begin{cases}
+-$100 &amp; ,S \geq $800\\
+-$100 + ($800 - S)= $700 - S&amp; ,S &lt; $800\\
+\end{cases}\]
+</blockquote>
+
+<hr class="hr-subsection" />
+
+<h3 id="call-options">Call Options</h3>
+<p>Call options are the opposite of put options, giving us defined risk on shorts instead of longs. Therefore, let’s directly jump into an example:</p>
+
+<blockquote class="proof">
+  <p>As a reminder, the example from the previous note was buying a call option at the $12 strike for a $1 premium. We see that, at expiration, with every one dollar that the stock increases past $12, the option gains one dollar. If the stock remains below $12, the option has 0 value, so it would be a loss for the entirety of the premium.</p>
+
+  <p><img src="/assets/options/2-call.png" alt="call option" /></p>
+
+\[V =
+\begin{cases}
+-$100 &amp; ,S \leq $1200\\
+-$100 + (S - $1200) = S - $1300 &amp; ,S &gt; $1200\\
+\end{cases}\]
+</blockquote>
+
+<hr />
+
+<h2 id="intrinsic-and-extrinsic-value">Intrinsic and Extrinsic Value</h2>
+<p>You might have noticed that I said “at expiration” many times throughout this note, and you might be wondering why that was necessary. It turns out the value of an option has several factors, one of which is time to expiration, so it’s actually very necessary, when talking about the price of an option, to look at the exact time we’re referencing.</p>
+
+<p>The price of an option is composed of <em>extrinsic value</em> and <em>intrinsic value</em>. The intrinsic value of the option is the value we graphed above – it’s the value the option <em>inherently has</em> as a result of being an “insurance”. The extrinsic value is any additional value placed on top of the option. Let’s develop some intuition for why there even exists an extrinsic value in the remainder of this note, and in the next note, we will look more thoroughly at all the components making up extrinsic value.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="extrinsic-value">Extrinsic Value</h3>
+<p>Where does extrinsic value come from? Let’s go back to our simple house example, and think from the perspective of an insurance company. How do you imagine they price the insurance on the house? Why might a two-year insurance cost more than a one-year insurance, which in turn might cost more than a one-day insurance? These differences in pricing is all coming from the extrinsic value of the different insurances. In short, the more volatile the underlying is – in the case of insurance, the more your house is prone to flooding – and the more time there is, the more likely it is for some bad event to happen, causing the insurance to come into effect. As a result, the extrinsic value will be inflated, and the insurance will be priced higher. Think of the extrinsic value as a “buffer” that is, in essence, <em>a value placed on additional risk</em>.</p>
+
+<hr />
+
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:at-expiration" role="doc-endnote">
+      <p>Don’t worry about what “at expiration” means at the moment. We’ll learn later that time to expiration is part of the pricing model for options, but it’s too complicated to talk about all at once. <a href="#fnref:at-expiration" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    
+    
+    
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

@@ -65,20 +65,22 @@ loader: {load: ['[tex]/physics']},
 
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
 
   
-  <!-- Google Analytics -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-89539680-2', 'auto');
-    ga('send', 'pageview');
-
-  </script>
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
 
 
 </head>
@@ -135,45 +137,40 @@ loader: {load: ['[tex]/physics']},
     </div>
     
 
-    
-
     <hr>
 
     <h2 id="solving-zero-sum-games">Solving Zero-Sum Games</h2>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{bmatrix}
-4 & 2 & 5 & 2\\
-2 & 1 & -1 & -20\\
-3 & 2 & 4 & 2\\
--16 & 0 & 16 & 1\\
-\end{bmatrix} %]]></script>
+\[\begin{bmatrix}
+4 &amp; 2 &amp; 5 &amp; 2\\
+2 &amp; 1 &amp; -1 &amp; -20\\
+3 &amp; 2 &amp; 4 &amp; 2\\
+-16 &amp; 0 &amp; 16 &amp; 1\\
+\end{bmatrix}\]
 
 <p>Our row mins are</p>
 
-<script type="math/tex; mode=display">\begin{bmatrix}
+\[\begin{bmatrix}
 2\\
 -20\\
 2\\
 -16\\
-\end{bmatrix}</script>
+\end{bmatrix}\]
 
 <p>and our column maxes are</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{bmatrix}
-4 & 2 & 16 & 2\\
-\end{bmatrix} %]]></script>
+\[\begin{bmatrix}
+4 &amp; 2 &amp; 16 &amp; 2\\
+\end{bmatrix}\]
 
 <p>So our saddle points are</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{pmatrix}
-\begin{pmatrix} 1\\0\\0\\0 \end{pmatrix}&
+\[\begin{pmatrix}
+\begin{pmatrix} 1\\0\\0\\0 \end{pmatrix}&amp;
 \begin{pmatrix} 0\\1\\0\\0 \end{pmatrix}\\
-\end{pmatrix} %]]></script>
+\end{pmatrix}\]
 
-<p>which corresponds to <script type="math/tex">(e_1, e_2)</script>, and the others are <script type="math/tex">(e_3, e_4)</script>, <script type="math/tex">(e_3, e_2)</script>, and <script type="math/tex">(e_3, e_4)</script>.</p>
+<p>which corresponds to \((e_1, e_2)\), and the others are \((e_3, e_4)\), \((e_3, e_2)\), and \((e_3, e_4)\).</p>
 
 <p>Saddle points arise from optimal pure strategies, also called <strong>Pure Nash Equilibria</strong>.</p>
 
@@ -182,17 +179,16 @@ loader: {load: ['[tex]/physics']},
 <h2 id="example-2">Example 2</h2>
 <p>Now take the example of</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{bmatrix}
--2 & 5 & 1 & 0 & -4\\
-3 & -3 & -1 & 3 & 8\\
-\end{bmatrix} %]]></script>
+\[\begin{bmatrix}
+-2 &amp; 5 &amp; 1 &amp; 0 &amp; -4\\
+3 &amp; -3 &amp; -1 &amp; 3 &amp; 8\\
+\end{bmatrix}\]
 
-<p>Taking <script type="math/tex">\vec{p} = [p, 1-p]</script> and <script type="math/tex">A =</script> our matrix, we get</p>
+<p>Taking \(\vec{p} = [p, 1-p]\) and \(A =\) our matrix, we get</p>
 
-<script type="math/tex; mode=display">\vec{p}^\top A = [3-5p, 8p-3, 2p-1, 3-3p, 8-12p]</script>
+\[\vec{p}^\top A = [3-5p, 8p-3, 2p-1, 3-3p, 8-12p]\]
 
-<p>Drawing our diagram, we can see that only columns 1 and 3 matter, so we set them equal to each other: <script type="math/tex">3-5p = 2p-1</script>. Solving, we get <script type="math/tex">p = 4/7</script>.</p>
+<p>Drawing our diagram, we can see that only columns 1 and 3 matter, so we set them equal to each other: \(3-5p = 2p-1\). Solving, we get \(p = 4/7\).</p>
 
 <p>Similarly,</p>
 

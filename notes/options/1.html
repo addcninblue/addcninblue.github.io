@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 1 - Intro to Options</title>
+  <meta name="description" content="Why Do Options Exist? Options (and futures) have had a well-established history outside of the financial markets. They originated with commodities for people to guarantee a consistent and predictable profit from their crops (which could be subject to weather conditions), and for people on the other side of the trade to make outsized bets on stock they did not own. Eventually, they made their way to the stock market as a method for hedging and speculation, and have since continued to dominate a considerable part of the new Robinhood crowd’s trades.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/options/1">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+loader: {load: ['[tex]/physics']},
+  tex: {packages: {'[+]': ['physics']}},
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 1 - Intro to Options">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/options/1">
+  <meta property="og:description" content="Why Do Options Exist? Options (and futures) have had a well-established history outside of the financial markets. They originated with commodities for people to guarantee a consistent and predictable profit from their crops (which could be subject to weather conditions), and for people on the other side of the trade to make outsized bets on stock they did not own. Eventually, they made their way to the stock market as a method for hedging and speculation, and have since continued to dominate a considerable part of the new Robinhood crowd’s trades.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 1 - Intro to Options">
+  <meta name="twitter:description" content="Why Do Options Exist? Options (and futures) have had a well-established history outside of the financial markets. They originated with commodities for people to guarantee a consistent and predictab...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+  
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 1 - Intro to Options</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#why-do-options-exist">Why Do Options Exist?</a></li>
+  <li><a href="#the-house">The House</a></li>
+  <li><a href="#the-types-of-options">The Types of Options</a>
+    <ul>
+      <li><a href="#put-options">Put Options</a></li>
+      <li><a href="#call-options">Call Options</a></li>
+    </ul>
+  </li>
+  <li><a href="#footnotes">Footnotes</a></li>
+</ul>
+
+    </div>
+    
+
+    <hr>
+
+    <h2 id="why-do-options-exist">Why Do Options Exist?</h2>
+<p>Options (and futures) have had a well-established history outside of the financial markets. They originated with commodities for people to guarantee a consistent and predictable profit from their crops (which could be subject to weather conditions), and for people on the other side of the trade to make outsized bets on stock they did not own. Eventually, they made their way to the stock market as a method for hedging and speculation, and have since continued to dominate a considerable part of the new Robinhood crowd’s trades.</p>
+
+<p>In the financial markets, options are a class of <em>financial derivatives</em>, meaning that their value is based on the value coming from another asset. In this case, the “other asset” we will describe in this guide is stocks, but do note that options exist for many other assets, including futures, interest rates, and <em>even options</em>.</p>
+
+<p>This guide will aim to take a conversational tone, assuming knowledge in Calculus and basic probability, and it will be more math-heavy and concrete than other introductions. First, I will explain the options’ original uses to hedge, then followed by more and more complicated methods to use this asset class.</p>
+
+<hr />
+
+<h2 id="the-house">The House</h2>
+<p>Let’s start with a simple, real-life example (with non-real-life numbers):</p>
+
+<blockquote class="proof">
+  <p>Suppose I buy a house for $1000 as an investment. I’m scared that one day, a flood will hit my house, and its value will fall to 0. As a result, I go out and buy flood insurance costing me $100 that protects me against the flood for a year, promising to pay me back all losses incurred if the value of the house falls under $800. Our resulting investment looks something like this, with \(V\) being the value of the house:<sup id="fnref:second-case" role="doc-noteref"><a href="#fn:second-case" class="footnote" rel="footnote">1</a></sup></p>
+
+  <p><img src="/assets/options/1-house.png" alt="chart" /></p>
+
+\[V' =
+\begin{cases}
+V-$100 &amp; ,V \geq $800\\
+V-$100 - $1000 + ($800 - V)= $700 &amp; ,V &lt; $800\\
+\end{cases}\]
+
+  <p>This chart illustrates the payout we would get with and without insurance. The x-axis represents the value of the house, and the y-axis represents the payout. The purple line is without insurance, and the blue line is with insurance.</p>
+</blockquote>
+
+<p>As easily seen from this scenario, we are capped at a max loss of $300, no matter what happens to our house. We pay a specified amount, the <em>premium</em> (in this case, $100), as protection that expires on a particular date, the <em>expiration date</em> (in this case, one year). Note also that there is a price, the <em>strike price</em> at which the insurance has value (in this case, $800).</p>
+
+<p>Whew. That was a lot! Let’s quickly recap, to make sure we’re on the same page. We have a house, valued at $1000. We buy insurance on the house for $100 (the premium), having effect for one year (so the expiration date is one year), promising to pay us any losses if the value of the house falls under $800 (the strike price).</p>
+
+<p>Ok! So why does this all matter? Well, let’s take a look. We changed our initial investment in this house from a maximum loss of $1000 to a fixed payout of $100 per year, and a maximum loss of $300 when an event does happen. In effect, we’ve <em>traded our risk for a fixed amount of capital</em>. That is the basis for options.</p>
+
+<hr />
+
+<h2 id="the-types-of-options">The Types of Options</h2>
+<p>Today, we will cover a brief overview of options. The two types of options are <strong>call options</strong> and <strong>put options</strong>.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="put-options">Put Options</h3>
+<p>Put options give the buyer of the option the <em>right</em> to sell a stock at a fixed price, in effect giving an insurance on the stock. The best way to understand this is through an analogy to the house insurance from before:</p>
+
+<blockquote class="proof">
+  <p>Suppose we buy 100 shares of a stock at $10 each, totaling $1000. We’re scared that our investment might fall to 0, so we buy a <em>put option</em> with an expiration of 1 year for our 100 stocks at a strike price of $8, with each option costing us $1. This gives us the <em>right to sell this stock</em> at $8 at any time before the expiration date. Again, let us look at our payoff diagram. Here, \(V\) is the value of our holdings, and \(S\) is the value of the stock.</p>
+
+\[V =
+\begin{cases}
+S-$100 &amp; ,S \geq $800\\
+S-$100 - $1000 + ($800 - S)= $700 &amp; ,S &lt; $800\\
+\end{cases}\]
+
+  <p>Hmmm… that seems familiar! <em>It has the exact same payout as the insurance on the house!</em> Let’s elaborate.</p>
+
+  <p>The premium of the house has translated directly to the cost of the put option contract. The “safety net” of the house insuring all losses incurred by the house’s value falling below $800 has been replaced by the <em>right to sell</em> the stock at any time at $8. Since the market buys puts in multiples of 100, this gives us the right to sell our $1000 total assets at $800 at any time. The expiration date concept has remained the same.</p>
+
+  <p>If you’re confused at this point, I recommend you to think through the parallels between the housing insurance and this example, and to ensure you understand this concept before you move on! All concepts from here on out will be building on this simple example.</p>
+</blockquote>
+
+<hr class="hr-subsection" />
+
+<h3 id="call-options">Call Options</h3>
+<p>Now that we understand put options and its use – to hedge a long position, we turn to the other side: shorts. Call options are the analogue of put options, allowing us to <em>sell</em> a stock at any time for a fixed price, in effect giving an insurance on the stock in case it moves too high. And here’s a similar example:</p>
+
+<blockquote class="proof">
+  <p>Suppose today we short 100 stocks at $10 each, totaling $1000. We’re scared that the investment might shoot up to infinity (in effect giving us infinite losses), so we decide to buy a <em>call option</em> with an expiration of 1 year for our 100 stocks at a strike price of $12, with each option costing us $1. This gives us the right to <em>buy</em> the stock (and cover the short) at any time before the expiration date. Again, a payoff diagram. Note that here V stands for our total gains if we were to close out the short position. <sup id="fnref:short-coverage" role="doc-noteref"><a href="#fn:short-coverage" class="footnote" rel="footnote">2</a></sup></p>
+
+  <p><img src="/assets/options/1-put.png" alt="put-chart" /></p>
+
+\[V =
+\begin{cases}
+($1000 - S) - $100 = $900 - S &amp; ,S \leq $1200\\
+($1000 - S) - $100 - ($1200 - S) = -$300 &amp; ,S &lt; $1200\\
+\end{cases}\]
+</blockquote>
+
+<p>Again, we have capped our max losses at -$300, a huge reduction from possibly losing an infinite amount of money! On the downside, when we earn, a $100 chunk is taken out to serve as insurance. But that’s the intention – we’re <em>trading risk for a fixed payment</em>.</p>
+
+<p>A short note: you may be wondering why the two graphs don’t really match up. For the house and the put options, the owned asset was not sold at the end of the simulation, but for the call option, the short position was closed. Therefore, to match up the two graphs, simply add 1000 to the call option graph, and the graphs will be comparable.</p>
+
+<hr />
+
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:second-case" role="doc-endnote">
+      <p>Note that in the second case, we pay $100 for the insurance and lose $1000 because of the flood, but gain $800 because of the insurance payout. <a href="#fnref:second-case" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+    <li id="fn:short-coverage" role="doc-endnote">
+      <p>Here, note that the \(1200-S\) is money paid to cover the short. <a href="#fnref:short-coverage" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    
+    
+    
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

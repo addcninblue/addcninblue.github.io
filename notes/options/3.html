@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Note 3 - The Greeks</title>
+  <meta name="description" content="A Brief Recap">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/options/3">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+loader: {load: ['[tex]/physics']},
+  tex: {packages: {'[+]': ['physics']}},
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Note 3 - The Greeks">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/options/3">
+  <meta property="og:description" content="A Brief Recap">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Note 3 - The Greeks">
+  <meta name="twitter:description" content="A Brief Recap">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+  
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Note 3 - The Greeks</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#a-brief-recap">A Brief Recap</a></li>
+  <li><a href="#some-terminology">Some Terminology</a></li>
+  <li><a href="#the-greeks">The Greeks</a></li>
+  <li><a href="#delta">Delta</a>
+    <ul>
+      <li><a href="#time">Time</a></li>
+      <li><a href="#itmotm">ITM/OTM</a></li>
+    </ul>
+  </li>
+  <li><a href="#theta">Theta</a>
+    <ul>
+      <li><a href="#time-1">Time</a></li>
+    </ul>
+  </li>
+</ul>
+
+    </div>
+    
+
+    <hr>
+
+    <h2 id="a-brief-recap">A Brief Recap</h2>
+
+<p>In the last note, we covered that call and put options have extrinsic value – value that is outside of the inherent value of an insurance. In this note, we will explore how the extrinsic value changes over time. Although not required, I highly recommend a decently strong background in derivatives (possibly with multivariable calculus exposure) for best understanding.</p>
+
+<hr />
+
+<h2 id="some-terminology">Some Terminology</h2>
+
+<p>An option is said to be <strong>in the money</strong>, or <strong>ITM</strong>, if it has &gt;0 intrinsic value. Likewise, an option is said to be <strong>out of the money</strong>, or <strong>OTM</strong>, if it has &lt;0 intrinsic value. Lastly, an option is said to be <strong>at the money</strong>, or <strong>ATM</strong>, if it is hovering between being ITM and OTM.</p>
+
+<p>At expiration, an ITM option will hae value, an OTM option will expire worthless, and an ATM option will expire roughly worthless. If this doesn’t immediately make sense, I’d recommend you to review the last section. Now, let’s get on to the Greeks!</p>
+
+<p>Buying an option “far out” means buying an option that still has quite some time left until expiration (can be a couple of weeks, a couple months, or even a few years!).</p>
+
+<hr />
+
+<h2 id="the-greeks">The Greeks</h2>
+
+<p>There are five greeks that are commonly used in understanding the change of a derivative’s price over time, so called because they are named after Greek letters. In the mathematical notation below, \(C\) represents the price of the contract and \(S\) represents the value of the stock.</p>
+<ul>
+  <li><strong>Delta</strong> - Measures the change of the price of the option over the change of the price of the stock. It is equivalent to \(\pdv{C}{S}\).</li>
+  <li><strong>Gamma</strong> - Measures the change of delta over the change of the price of the stock. It is equivalent to \(\pdv[2]{C}{S}\).</li>
+  <li><strong>Theta</strong> - Measures the change of the price of the option over time. It is equivalent to \(\pdv{C}{t}\), where \(t\) represents time.</li>
+  <li><strong>Vega</strong> - Measures the change of the price of the option over the change in the implied volatility of the stock. It is equivalent to \(\pdv{C}{\sigma}\), where \(\sigma\) represents the implied volatility of the stock.</li>
+  <li><strong>Rho</strong> - Measures the change of the price of the option over the change in the interest rate. It is equivalent to \(\pdv{C}{r}\), where \(r\) is the interest rate.</li>
+</ul>
+
+<p>Below, I detail the two most common ones that I consider when I buy options: Delta and Theta.</p>
+
+<hr />
+
+<h2 id="delta">Delta</h2>
+
+<p>Delta is the partial derivative of the option price with respect to the stock price. Call options have a positive delta, and put options have a negative delta (convince yourself this is true). The absolute values of the delta is always between 0 and 1, meaning that the option’s value will never move more than the stock’s value. Think about an option as an insurance to convince yourself this is true!</p>
+
+<p>Let’s think about various scenarios and their effects on the delta:</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="time">Time</h3>
+
+<p>Let’s compare two ITM options, with one being close to expiration and one being far from expiration. Generally speaking, the option that’s farther out will have a greater range of possible variation in the underlying as compared to the option that’s closer to expiration, forcing the premium on the farther out option to be greater. This means that the delta will equivalently be <em>lower</em> on the option that’s farther out, as it’s not as sensitive to the movement of the underlying.</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="itmotm">ITM/OTM</h3>
+
+<p>Comparing two options with the same expiration, it’s generally true that the more in the money option will have a higher delta. The intuition is as follows: Since an option is insurance, the farther in the money your insurance is, the less the premium matters on that contract, because volatility matters less and less (the extra premium is mainly protecting the insurer from the loss event happening in the first place). In other words, the farther in the money an option is, the higher the delta.</p>
+
+<hr />
+
+<h2 id="theta">Theta</h2>
+
+<p>Theta is the partial derivative of the option price with respect to the stock price. All options have a negative theta (as option values decrease over time), which means that holding a long options contract without movement in the underlying from day to day means that you will <em>lose money over time</em>.</p>
+
+<p>In contrast to delta, it makes more sense to think of theta in terms of its percentage against the underlying stock, as theta is not locked between 0 and 1. (Think of it instead as a ratio of the stock that <em>decays over time</em>.)</p>
+
+<hr class="hr-subsection" />
+
+<h3 id="time-1">Time</h3>
+
+<p>Theta in an option that’s farther out is often a very small percentage of the option’s cost. This makes sense, since one day passing with respect to a year’s worth of insurance isn’t a lot of time. Therefore, this means that taking a very directional bet on a stock’s movement with a short expiration can lead to quick losses if the movement doesn’t actually materialize.</p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    
+    
+    
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

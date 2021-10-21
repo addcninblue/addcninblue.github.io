@@ -65,20 +65,22 @@ loader: {load: ['[tex]/physics']},
 
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
 
   
-  <!-- Google Analytics -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-89539680-2', 'auto');
-    ga('send', 'pageview');
-
-  </script>
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
 
 
 </head>
@@ -134,7 +136,7 @@ loader: {load: ['[tex]/physics']},
 
 <h3 id="relevant-parameters">Relevant Parameters</h3>
 
-<p>Let <script type="math/tex">m</script> be the mass of some person, let <script type="math/tex">R</script> be the radius of his foot (which we model as a circle), and let <script type="math/tex">\gamma</script> be the surface energy of water (i.e. surface tension).</p>
+<p>Let \(m\) be the mass of some person, let \(R\) be the radius of his foot (which we model as a circle), and let \(\gamma\) be the surface energy of water (i.e. surface tension).</p>
 
 <p>We make a simplistic model in which the water deforms in a circularly symmetric pattern around the foot, that when viewed at a cross-section appears as follows:</p>
 
@@ -144,25 +146,23 @@ loader: {load: ['[tex]/physics']},
 
 <p>The increase in the water surface area is</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align*}
-    \Delta A &= \int_{R}^{R+\frac{h}{\tan \theta}} 2\pi r (\frac{1}{\cos \theta}-1) d{r} \\
-    &= \pi (\frac{h^2}{\tan^2 \theta} + \frac{2Rh}{\tan \theta}) \frac{1-\cos \theta}{\cos \theta}
-\end{align*} %]]></script>
+\[\begin{align*}
+    \Delta A &amp;= \int_{R}^{R+\frac{h}{\tan \theta}} 2\pi r (\frac{1}{\cos \theta}-1) d{r} \\
+    &amp;= \pi (\frac{h^2}{\tan^2 \theta} + \frac{2Rh}{\tan \theta}) \frac{1-\cos \theta}{\cos \theta}
+\end{align*}\]
 
-<p>Since <script type="math/tex">\Delta E=\gamma \Delta A</script>, we have:</p>
+<p>Since \(\Delta E=\gamma \Delta A\), we have:</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align*}
-    F_{up} &= \frac{\partial E}{\partial h} \\
-    &= \gamma \pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{2h}{\tan^2 \theta}+\frac{2R}{\tan \theta}) \\
-    &= 2\gamma\pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{h+R \tan \theta}{\tan^2 \theta}) \\
-    &\approx 2\gamma \pi R \frac{1-\cos \theta}{\sin \theta}
-\end{align*} %]]></script>
+\[\begin{align*}
+    F_{up} &amp;= \frac{\partial E}{\partial h} \\
+    &amp;= \gamma \pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{2h}{\tan^2 \theta}+\frac{2R}{\tan \theta}) \\
+    &amp;= 2\gamma\pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{h+R \tan \theta}{\tan^2 \theta}) \\
+    &amp;\approx 2\gamma \pi R \frac{1-\cos \theta}{\sin \theta}
+\end{align*}\]
 
-<p>with the last step following since it is reasonable to assume <script type="math/tex">R \gg h</script></p>
+<p>with the last step following since it is reasonable to assume \(R \gg h\)</p>
 
-<p>The only remaining variable is <script type="math/tex">\theta</script> – it is reasonable to assume a small angle <script type="math/tex">\theta</script> (i.e. <script type="math/tex">\theta \approx \frac{\pi}{10}</script>, so that this adds a factor of approximately 0.1). With <script type="math/tex">\gamma=72.8</script> dynes per centimeter and <script type="math/tex">m=80</script> kilograms, <script type="math/tex">R \approx 13 \text{km}</script>.</p>
+<p>The only remaining variable is \(\theta\) – it is reasonable to assume a small angle \(\theta\) (i.e. \(\theta \approx \frac{\pi}{10}\), so that this adds a factor of approximately 0.1). With \(\gamma=72.8\) dynes per centimeter and \(m=80\) kilograms, \(R \approx 13 \text{km}\).</p>
 
   </div>
 

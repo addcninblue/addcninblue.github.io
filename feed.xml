@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2020-05-03T00:50:38-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Homelab: Part 2</title><link href="https://addcnin.blue/2020/05/03/homelab-2/" rel="alternate" type="text/html" title="Homelab: Part 2" /><published>2020-05-03T00:00:00-07:00</published><updated>2020-05-03T00:00:00-07:00</updated><id>https://addcnin.blue/2020/05/03/homelab-2</id><content type="html" xml:base="https://addcnin.blue/2020/05/03/homelab-2/">&lt;p&gt;The hard drives finally came, so in this post, I’ll be documenting RAID (mdadm) and LVM (with lvmcache). I have a Samsung 970 EVO NVMe SSD which already has 3 partitions in this order: boot, root, swap (without LVM). In this post, we will be adding 4x 3TB Seagate Barracuda drives in RAID10 with mdadm, and with LVM top. We will then move the root partition to the RAID10 array.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2021-10-20T22:29:33-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Blogs I Read</title><link href="https://addcnin.blue/2021/10/20/blogs/" rel="alternate" type="text/html" title="Blogs I Read" /><published>2021-10-20T00:00:00-07:00</published><updated>2021-10-20T00:00:00-07:00</updated><id>https://addcnin.blue/2021/10/20/blogs</id><content type="html" xml:base="https://addcnin.blue/2021/10/20/blogs/">&lt;p&gt;(and podcasts I listen to)&lt;/p&gt;
+
+&lt;p&gt;I often find myself sharing this (very) short list of media I love, so here’s a compiled list. It’s ranked in rough order of how valuable I’ve found the content. Hopefully it helps someone!&lt;/p&gt;
+
+&lt;h2 id=&quot;on-software-and-adjacent-industries&quot;&gt;On Software And Adjacent Industries&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.paulgraham.com/articles.html&quot;&gt;Paul Graham&lt;/a&gt;: From the founder of YCombinator, a solid collection of essays on startups and life.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://danluu.com/&quot;&gt;Dan Luu&lt;/a&gt;: A very-well written set of essays on startups, curious explorations into the world of computers, and learning.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://thinkingelixir.com/the-podcast/&quot;&gt;Thinking Elixir&lt;/a&gt;: An Elixir podcast that talks about Elixir’s most recent developments.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;on-finance&quot;&gt;On Finance&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine&quot;&gt;Money Stuff&lt;/a&gt;: Written by a former financial engineer at Goldman, a daily blog on the latest in how “everything is securities fraud.”&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.wsj.com/podcasts/bad-bets&quot;&gt;Bad Bets&lt;/a&gt;: A new podcast by WSJ on “big-business dramas that have had a big impact on our world.” It seems particularly relevant especially considering the recent frothiness of the markets.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ft.com/ft-news-briefing&quot;&gt;FT News Briefing&lt;/a&gt;: A daily (~10 min) podcast by FT highlighting daily news.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.wsj.com/podcasts/the-journal&quot;&gt;The Journal&lt;/a&gt;: A daily podcast by WSJ diving into relevant recent news, mainly focused on “money, business and power.”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;one-off-blogs&quot;&gt;One-off Blogs&lt;/h2&gt;
+&lt;p&gt;(These are ordered arbitrarily.)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://waitbutwhy.com/2018/04/picking-career.html&quot;&gt;How to Pick a Career (That Actually Fits You)&lt;/a&gt;: Very long article that gets to who we are as people.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html&quot;&gt;Ten Lessons I wish I had been Taught&lt;/a&gt;: Short but hilarious blog, especially relevant for those pursuing an advanced degree.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>@addcninblue</name></author><summary type="html">(and podcasts I listen to)</summary></entry><entry><title type="html">Installing Windows Alongside Existing NixOS</title><link href="https://addcnin.blue/2020/07/11/dual-boot/" rel="alternate" type="text/html" title="Installing Windows Alongside Existing NixOS" /><published>2020-07-11T00:00:00-07:00</published><updated>2020-07-11T00:00:00-07:00</updated><id>https://addcnin.blue/2020/07/11/dual-boot</id><content type="html" xml:base="https://addcnin.blue/2020/07/11/dual-boot/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt;I use NixOS as my main OS in everything (from personal laptop to my server), but I was beginning to miss Windows for gaming. (WINE won’t cut it here.) As a result, I went searching for installing Windows alongside an existing NixOS installation, but I couldn’t find one anywhere. I decided to just dive in, and it worked! Here is a high-level list of the steps I took. For reference, I am installing this on an XPS 9550, with EFI.&lt;/p&gt;
+
+&lt;p&gt;Before continuing on, you will need a live USB stick that has the NixOS installation media.&lt;/p&gt;
+
+&lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Change the boot method from the default systemd-boot bootloader to GRUB. This will allow us to add Windows to the boot menu in the future. &lt;a href=&quot;https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows#Grub_2&quot;&gt;Here are the steps.&lt;/a&gt; For now, leave out the entire &lt;code class=&quot;highlighter-rouge&quot;&gt;extraEntries&lt;/code&gt; line – we’ll add that later.&lt;/li&gt;
+  &lt;li&gt;If you need to resize NixOS:
+    &lt;ol&gt;
+      &lt;li&gt;Boot into the live USB stick.&lt;/li&gt;
+      &lt;li&gt;Over-downsize your filesystem: &lt;code class=&quot;highlighter-rouge&quot;&gt;resize2fs /dev/sdXY $something_smaller_than_new_size&lt;/code&gt;, where the size we input is something smaller than the final size of our partition we want.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/Parted#Shrinking_partitions&quot;&gt;Shrink the actual partition:&lt;/a&gt;. Note that we first overshoot our shrink for the filesystem and then fit it back. This is to ensure that our partition doesn’t cut off our filesystem, which can lead to data loss.
+        &lt;ol&gt;
+          &lt;li&gt;Start parted: &lt;code class=&quot;highlighter-rouge&quot;&gt;parted --align optimal /dev/sdX&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;List out partitions: &lt;code class=&quot;highlighter-rouge&quot;&gt;(parted) print&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;Shrink the right partition: &lt;code class=&quot;highlighter-rouge&quot;&gt;(parted) resizepart number end&lt;/code&gt;&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Grow the filesystem to fill the entire space of the partition: &lt;code class=&quot;highlighter-rouge&quot;&gt;resize2fs /dev/sdXY&lt;/code&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Install Windows. This is actually pretty simple; in the installer, simply click on the unallocated space to install Windows, and it’ll just work. &lt;em&gt;magic!&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Now, your computer should be booting directly into Windows. We have to reinstall GRUB as the bootloader to fix that:
+    &lt;ol&gt;
+      &lt;li&gt;Boot into the live USB stick.&lt;/li&gt;
+      &lt;li&gt;Mount your NixOS system onto &lt;code class=&quot;highlighter-rouge&quot;&gt;/mnt&lt;/code&gt;. If you followed the &lt;a href=&quot;https://nixos.org/nixos/manual/index.html#sec-installation-installing&quot;&gt;instruction manual&lt;/a&gt;, then it would look like this:
+        &lt;ol&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mount /dev/disk/by-label/nixos /mnt/&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mount /dev/disk/by-label/boot /mnt/boot&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;swapon /dev/disk/by-label/swap&lt;/code&gt;&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Add all of your &lt;code class=&quot;highlighter-rouge&quot;&gt;nix-channel&lt;/code&gt;s that you currently use in your OS with &lt;code class=&quot;highlighter-rouge&quot;&gt;nix-channel --add ...&lt;/code&gt;. If you forgot, you can &lt;a href=&quot;https://nixos.wiki/wiki/Change_root&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;nixos-enter&lt;/code&gt;&lt;/a&gt; into your installation to check via &lt;code class=&quot;highlighter-rouge&quot;&gt;nix-channel --list&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;Grab the UUID of boot partition via &lt;code class=&quot;highlighter-rouge&quot;&gt;blkid&lt;/code&gt;, and &lt;a href=&quot;https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows#Grub_2&quot;&gt;add that in to the GRUB section of your &lt;code class=&quot;highlighter-rouge&quot;&gt;configuration.nix&lt;/code&gt;&lt;/a&gt;. It should be located at &lt;code class=&quot;highlighter-rouge&quot;&gt;/mnt/etc/nixos/configuration.nix&lt;/code&gt;. This is the part where we add Windows into GRUB.&lt;/li&gt;
+      &lt;li&gt;Rederive NixOS: &lt;code class=&quot;highlighter-rouge&quot;&gt;nixos-install&lt;/code&gt;.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;And then you should be done!&lt;/p&gt;
+
+&lt;h2 id=&quot;things-i-tried-that-failed&quot;&gt;Things I Tried That Failed&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Live booting the Nixos ISO, and trying to chroot into that environment to &lt;code class=&quot;highlighter-rouge&quot;&gt;nixos-rebuild switch&lt;/code&gt;. This failed due to some strange error about being unable to write to the filesystem.&lt;/li&gt;
+  &lt;li&gt;Live booting from Ubuntu to try to rebuild grub there. This failed because it requires either a chroot or directly specifying the EFI directory, and the chroot fails because Nixos doesn’t have a /bin/bash, and the EFI directory approach failed for some unknown reason.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background I use NixOS as my main OS in everything (from personal laptop to my server), but I was beginning to miss Windows for gaming. (WINE won’t cut it here.) As a result, I went searching for installing Windows alongside an existing NixOS installation, but I couldn’t find one anywhere. I decided to just dive in, and it worked! Here is a high-level list of the steps I took. For reference, I am installing this on an XPS 9550, with EFI.</summary></entry><entry><title type="html">Homelab: Part 2</title><link href="https://addcnin.blue/2020/05/03/homelab-2/" rel="alternate" type="text/html" title="Homelab: Part 2" /><published>2020-05-03T00:00:00-07:00</published><updated>2020-05-03T00:00:00-07:00</updated><id>https://addcnin.blue/2020/05/03/homelab-2</id><content type="html" xml:base="https://addcnin.blue/2020/05/03/homelab-2/">&lt;p&gt;The hard drives finally came, so in this post, I’ll be documenting RAID (mdadm) and LVM (with lvmcache). I have a Samsung 970 EVO NVMe SSD which already has 3 partitions in this order: boot, root, swap (without LVM). In this post, we will be adding 4x 3TB Seagate Barracuda drives in RAID10 with mdadm, and with LVM top. We will then move the root partition to the RAID10 array.&lt;/p&gt;
 
 &lt;p&gt;For the reader:&lt;/p&gt;
 &lt;ul&gt;
@@ -48,7 +118,7 @@
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;articles-referenced-and-their-claims&quot;&gt;Articles Referenced and Their Claims&lt;/h2&gt;
-&lt;p&gt;In The Herald&lt;sup id=&quot;fnref:The-Herald&quot;&gt;&lt;a href=&quot;#fn:The-Herald&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, the Adam Smith Institute&lt;sup id=&quot;fnref:Adam-Smith-Institute&quot;&gt;&lt;a href=&quot;#fn:Adam-Smith-Institute&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, and Asia Times&lt;sup id=&quot;fnref:Asia-Times&quot;&gt;&lt;a href=&quot;#fn:Asia-Times&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, the authors argue that the situation is well-explained by Prisoners’ Dilemma. In The Herald, McArdle makes the additional claim that Western countries have a lack of trust that Eastern countries do not have, exacerbating the Prisoners’ Dilemma problem. Macdonald of the Adam Smith Institute makes a particularly astute economic observation that “raising prices in our current context is not a cynical cash grab, but an effective means of restoring consumer confidence and ensuring we can all access the goods we need during these strange and difficult times”.&lt;/p&gt;
+&lt;p&gt;In The Herald&lt;sup id=&quot;fnref:The-Herald&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:The-Herald&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, the Adam Smith Institute&lt;sup id=&quot;fnref:Adam-Smith-Institute&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:Adam-Smith-Institute&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, and Asia Times&lt;sup id=&quot;fnref:Asia-Times&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:Asia-Times&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, the authors argue that the situation is well-explained by Prisoners’ Dilemma. In The Herald, McArdle makes the additional claim that Western countries have a lack of trust that Eastern countries do not have, exacerbating the Prisoners’ Dilemma problem. Macdonald of the Adam Smith Institute makes a particularly astute economic observation that “raising prices in our current context is not a cynical cash grab, but an effective means of restoring consumer confidence and ensuring we can all access the goods we need during these strange and difficult times”.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;A minor charge can be compared to temporary economic and material disruption. That would have been the sole significant setback had corporations cooperated. In this case the entire economic machinery would have toned down and shrunk, and thus everyone would have been affected more or less the same.&lt;/p&gt;
@@ -66,19 +136,18 @@
 
 &lt;p&gt;In the situation where the setup of the games are the same, where both the East and West are facing Prisoners’ Dilemmas, the lack of shortages in the East would mean that the people are cooperating. While plausible, these differences must necessarily be attributed to a difference in culture, meaning that scarcity would manifest differently across the United States. Seeing that communities everywhere see shortages, there must be some other explanation.&lt;/p&gt;
 
-&lt;p&gt;Suppose for a moment that supplies are not scarce; ie. no matter how much toilet paper one buys, another will not be impacted. Denote the payoff of hoarding to be &lt;script type=&quot;math/tex&quot;&gt;-5&lt;/script&gt; due to diminishing returns, and the payoff of not hoarding to be &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;.&lt;/p&gt;
+&lt;p&gt;Suppose for a moment that supplies are not scarce; ie. no matter how much toilet paper one buys, another will not be impacted. Denote the payoff of hoarding to be \(-5\) due to diminishing returns, and the payoff of not hoarding to be \(0\).&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
-\textrm{hoard}       &amp; (-5, -5) &amp; (-5, 0) \\
-\textrm{don't hoard} &amp; (0, -5)  &amp; (0, 0) \\
-\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\begin{bmatrix}
+P1 \textrm{\\} P2&amp;amp; \textrm{hoard} &amp;amp; \textrm{don't hoard} \\
+\textrm{hoard}       &amp;amp; (-5, -5) &amp;amp; (-5, 0) \\
+\textrm{don't hoard} &amp;amp; (0, -5)  &amp;amp; (0, 0) \\
+\end{bmatrix}\]
 
-&lt;p&gt;In this setup, we immediately see that the Prisoners’ Dilemma problem has disappeared – &lt;script type=&quot;math/tex&quot;&gt;\textrm{(don't hoard, don't hoard)}&lt;/script&gt; is the Nash Equilibrium &lt;em&gt;and the Pareto Optimum&lt;/em&gt;, meaning that with a lack of resources, there is no incentive for anyone to hoard resources! This makes sense – why hoard knowing that resources will always be available when you need it?&lt;/p&gt;
+&lt;p&gt;In this setup, we immediately see that the Prisoners’ Dilemma problem has disappeared – \(\textrm{(don't hoard, don't hoard)}\) is the Nash Equilibrium &lt;em&gt;and the Pareto Optimum&lt;/em&gt;, meaning that with a lack of resources, there is no incentive for anyone to hoard resources! This makes sense – why hoard knowing that resources will always be available when you need it?&lt;/p&gt;
 
 &lt;h2 id=&quot;response-to-the-coronavirus&quot;&gt;Response to the Coronavirus&lt;/h2&gt;
-&lt;p&gt;Let us take a step back and view responses to the coronavirus; in particular, we compare Taiwan’s&lt;sup id=&quot;fnref:wikipedia-taiwan&quot;&gt;&lt;a href=&quot;#fn:wikipedia-taiwan&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; approach to the United States’&lt;sup id=&quot;fnref:wikipedia-usa&quot;&gt;&lt;a href=&quot;#fn:wikipedia-usa&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Let us take a step back and view responses to the coronavirus; in particular, we compare Taiwan’s&lt;sup id=&quot;fnref:wikipedia-taiwan&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:wikipedia-taiwan&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; approach to the United States’&lt;sup id=&quot;fnref:wikipedia-usa&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:wikipedia-usa&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 
 &lt;p&gt;On December 31st, 2019, both the United States and Taiwan learned about the cases in China. On that same day, Taiwan started inspecting inbound flights from Wuhan, while the United States waited until much much later. Mask rationing was implemented on February 6th, with the Taiwanese Armed Forces deployed to aid the scaling of mask production in factories. In the United States, people were recommended to not wear masks, claiming that their efficacy was unproven and limited. In the third week of February, medical experts “concluded that the United States had already lost the fight to contain the virus”.[^nytimes-red-dawn] Contrasting this is the efforts of Taiwan, who as of today only have a mere 395 cases (fewer than my county!) and are exporting face masks!&lt;/p&gt;
 
@@ -95,45 +164,43 @@ P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
 
 &lt;p&gt;In the situation where market values are not restricted, we have the following payoff diagram: In the case where people both do not hoard, there is no change from the status quo, so the payoff to both is 0. In the case where one hoards and the other doesn’t, one gains and the other loses. In the case where both hoard, there is a small loss to both (since there is a loss of accessible resources in the case either need them). This is classical Prisoners’ Dilemma:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
-\textrm{hoard}       &amp; (-2, -2) &amp; (3, -3) \\
-\textrm{don't hoard} &amp; (-3, 3)  &amp; (0, 0) \\
-\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\begin{bmatrix}
+P1 \textrm{\\} P2&amp;amp; \textrm{hoard} &amp;amp; \textrm{don't hoard} \\
+\textrm{hoard}       &amp;amp; (-2, -2) &amp;amp; (3, -3) \\
+\textrm{don't hoard} &amp;amp; (-3, 3)  &amp;amp; (0, 0) \\
+\end{bmatrix}\]
 
-&lt;p&gt;Now, suppose there is a price floor imposed on the market, equivalent to the total marginal utility gained through hoarding beyond the original market equilibrium. The scenario is the same, with one changed parameter: hoarding is more expensive now, incurring a loss of &lt;script type=&quot;math/tex&quot;&gt;-3&lt;/script&gt;. We define a new field, &lt;script type=&quot;math/tex&quot;&gt;\textrm{hoard less}&lt;/script&gt;, describing a situation where hoarding is in effect, but with less quantity. Assuming that both people have a price-elastic response&lt;sup id=&quot;fnref:price-elasticity&quot;&gt;&lt;a href=&quot;#fn:price-elasticity&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;p&gt;Now, suppose there is a price floor imposed on the market, equivalent to the total marginal utility gained through hoarding beyond the original market equilibrium. The scenario is the same, with one changed parameter: hoarding is more expensive now, incurring a loss of \(-3\). We define a new field, \(\textrm{hoard less}\), describing a situation where hoarding is in effect, but with less quantity. Assuming that both people have a price-elastic response&lt;sup id=&quot;fnref:price-elasticity&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:price-elasticity&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
-\textrm{hoard}       &amp; (-5, -5) &amp; (0, -3) \\
-\textrm{don't hoard} &amp; (-3, 0)  &amp; (0, 0) \\
-\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\begin{bmatrix}
+P1 \textrm{\\} P2&amp;amp; \textrm{hoard} &amp;amp; \textrm{don't hoard} \\
+\textrm{hoard}       &amp;amp; (-5, -5) &amp;amp; (0, -3) \\
+\textrm{don't hoard} &amp;amp; (-3, 0)  &amp;amp; (0, 0) \\
+\end{bmatrix}\]
 
 &lt;p&gt;Immediately, we see that we have recovered a situation with the Nash Equilibrium equal to the Pareto Equilibrium equal to not hoarding for both. In other words, the market price floor has a positive effect in this scenario.&lt;/p&gt;
 
 &lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
 
-&lt;div class=&quot;footnotes&quot;&gt;
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
   &lt;ol&gt;
-    &lt;li id=&quot;fn:The-Herald&quot;&gt;
-      &lt;p&gt;https://www.heraldscotland.com/news/18314703.helen-mcardle-game-theory-tells-us-britains-reaction-coronavirus/ &lt;a href=&quot;#fnref:The-Herald&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:The-Herald&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;https://www.heraldscotland.com/news/18314703.helen-mcardle-game-theory-tells-us-britains-reaction-coronavirus/ &lt;a href=&quot;#fnref:The-Herald&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:Adam-Smith-Institute&quot;&gt;
-      &lt;p&gt;https://www.adamsmith.org/blog/covid-19-and-game-theory &lt;a href=&quot;#fnref:Adam-Smith-Institute&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:Adam-Smith-Institute&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;https://www.adamsmith.org/blog/covid-19-and-game-theory &lt;a href=&quot;#fnref:Adam-Smith-Institute&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:Asia-Times&quot;&gt;
-      &lt;p&gt;https://asiatimes.com/2020/03/covid-19-and-the-prisoners-dilemma/ &lt;a href=&quot;#fnref:Asia-Times&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:Asia-Times&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;https://asiatimes.com/2020/03/covid-19-and-the-prisoners-dilemma/ &lt;a href=&quot;#fnref:Asia-Times&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:wikipedia-taiwan&quot;&gt;
-      &lt;p&gt;https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Taiwan &lt;a href=&quot;#fnref:wikipedia-taiwan&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:wikipedia-taiwan&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Taiwan &lt;a href=&quot;#fnref:wikipedia-taiwan&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:wikipedia-usa&quot;&gt;
-      &lt;p&gt;https://en.wikipedia.org/wiki/Timeline_of_the_2020_coronavirus_pandemic_in_the_United_States &lt;a href=&quot;#fnref:wikipedia-usa&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:wikipedia-usa&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;https://en.wikipedia.org/wiki/Timeline_of_the_2020_coronavirus_pandemic_in_the_United_States &lt;a href=&quot;#fnref:wikipedia-usa&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:price-elasticity&quot;&gt;
-      &lt;p&gt;Here, I make a key assumption that price elasticity of hoarded goods are elastic beyond their basic consumption. The author of the Adam Smith Institute article, Macdonald, has observed anecdotally that his experience supports this conclusion. &lt;a href=&quot;#fnref:price-elasticity&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:price-elasticity&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Here, I make a key assumption that price elasticity of hoarded goods are elastic beyond their basic consumption. The author of the Adam Smith Institute article, Macdonald, has observed anecdotally that his experience supports this conclusion. &lt;a href=&quot;#fnref:price-elasticity&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">With the Coronavirus, tissue paper and supplies are flying out of stores. Some argue that it’s a natural human reaction best explained by Game Theory. In this essay, I will explore these claims, as well as how several countries have responded differently, and how their policies can be explained by Game Theory.</summary></entry><entry><title type="html">Homelab with NixOS, Jupyter, and More</title><link href="https://addcnin.blue/2020/04/13/homelab/" rel="alternate" type="text/html" title="Homelab with NixOS, Jupyter, and More" /><published>2020-04-13T00:00:00-07:00</published><updated>2020-04-13T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/13/homelab</id><content type="html" xml:base="https://addcnin.blue/2020/04/13/homelab/">&lt;p&gt;For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found &lt;a href=&quot;https://pcpartpicker.com/user/addcn/saved/kfN2Vn&quot;&gt;here&lt;/a&gt;. I chose to install &lt;a href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt;, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.&lt;/p&gt;
@@ -204,56 +271,53 @@ P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
 
 &lt;h2 id=&quot;uc-zoom&quot;&gt;UC Zoom&lt;/h2&gt;
 
-&lt;p&gt;On Friday, March 13th, classes were officially moved online by the UC Berkeley Administration. At this point, the change to the grading rubric had not been made yet. Let us model a typical Computer Science class, where grades are curved to a B+, as an n-player zero-sum game&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (with zero being the mean, and each integer difference being one standard deviation). To simplify this, we examine the two-player zero-sum game, which is well-studied.&lt;/p&gt;
+&lt;p&gt;On Friday, March 13th, classes were officially moved online by the UC Berkeley Administration. At this point, the change to the grading rubric had not been made yet. Let us model a typical Computer Science class, where grades are curved to a B+, as an n-player zero-sum game&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (with zero being the mean, and each integer difference being one standard deviation). To simplify this, we examine the two-player zero-sum game, which is well-studied.&lt;/p&gt;
 
-&lt;p&gt;The game is modeled as follows, with each student having two possibilities, &lt;code class=&quot;highlighter-rouge&quot;&gt;cheat&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;honest&lt;/code&gt;. We assume that the students are of equal skill, and that cheating gives a &lt;script type=&quot;math/tex&quot;&gt;+1&lt;/script&gt; standard deviation edge. Being caught in a class is &lt;script type=&quot;math/tex&quot;&gt;-0.12&lt;/script&gt;&lt;sup id=&quot;fnref:cheating-payoff&quot;&gt;&lt;a href=&quot;#fn:cheating-payoff&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. Payoffs are written to row, who is &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; in this case:&lt;/p&gt;
+&lt;p&gt;The game is modeled as follows, with each student having two possibilities, &lt;code class=&quot;highlighter-rouge&quot;&gt;cheat&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;honest&lt;/code&gt;. We assume that the students are of equal skill, and that cheating gives a \(+1\) standard deviation edge. Being caught in a class is \(-0.12\)&lt;sup id=&quot;fnref:cheating-payoff&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:cheating-payoff&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. Payoffs are written to row, who is \(A\) in this case:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-A \textrm{\\} B &amp; \mathrm{cheat} &amp; \mathrm{honest} \\
-\mathrm{cheat} &amp; 0 &amp; 0.88 \\
-\mathrm{honest} &amp; -0.88 &amp; 0 \\
-\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\begin{bmatrix}
+A \textrm{\\} B &amp;amp; \mathrm{cheat} &amp;amp; \mathrm{honest} \\
+\mathrm{cheat} &amp;amp; 0 &amp;amp; 0.88 \\
+\mathrm{honest} &amp;amp; -0.88 &amp;amp; 0 \\
+\end{bmatrix}\]
 
-&lt;p&gt;We see &lt;script type=&quot;math/tex&quot;&gt;\mathrm{(cheat, cheat)}&lt;/script&gt; is the dominant strategy, meaning in the case of letter grading, our model tells us that students do in fact have an incentive to cheat.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;We see \(\mathrm{(cheat, cheat)}\) is the dominant strategy, meaning in the case of letter grading, our model tells us that students do in fact have an incentive to cheat.&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;campuswide-pnp-policy&quot;&gt;Campuswide P/NP Policy&lt;/h2&gt;
-&lt;p&gt;With the campuswide P/NP policy in place, the incentive to cheat is suddenly changed. In the CS department, it is yet unclear how grades will be assigned, but taking that a C- minimum is required to get a passing grade, one can do several standard deviations below mean and still pass in the class. Looking at grade distributions of a large CS class (&lt;script type=&quot;math/tex&quot;&gt;N &gt; 19000&lt;/script&gt;), historic grades have told us that C- and up covers 95% of the population&lt;sup id=&quot;fnref:berkeleytime&quot;&gt;&lt;a href=&quot;#fn:berkeleytime&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Therefore, in a game where two students are both taking the course for P/NP credit, modeling the grade distributions off of a large CS class, there seems to be very low incentive for anyone to cheat. Regardless of whether or not they cheat, they will more than likely make the cutoff if they put enough effort into the class, and cheating only gives the extra possibility of getting caught. Therefore, with P/NP, it seems that &lt;em&gt;the incentive for cheating decreases&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;With the campuswide P/NP policy in place, the incentive to cheat is suddenly changed. In the CS department, it is yet unclear how grades will be assigned, but taking that a C- minimum is required to get a passing grade, one can do several standard deviations below mean and still pass in the class. Looking at grade distributions of a large CS class (\(N &amp;gt; 19000\)), historic grades have told us that C- and up covers 95% of the population&lt;sup id=&quot;fnref:berkeleytime&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:berkeleytime&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Therefore, in a game where two students are both taking the course for P/NP credit, modeling the grade distributions off of a large CS class, there seems to be very low incentive for anyone to cheat. Regardless of whether or not they cheat, they will more than likely make the cutoff if they put enough effort into the class, and cheating only gives the extra possibility of getting caught. Therefore, with P/NP, it seems that &lt;em&gt;the incentive for cheating decreases&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;This time, the game is modeled as a general-sum game, since one person doing well has a negligible impact on another. We only look at the payout of one person, since in the n-person general-sum game, everyone has a symmetric payout.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-\mathrm{cheat} &amp; \mathrm{honest} \\
-0 + \epsilon &amp; 0 \\
-\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\begin{bmatrix}
+\mathrm{cheat} &amp;amp; \mathrm{honest} \\
+0 + \epsilon &amp;amp; 0 \\
+\end{bmatrix}\]
 
 &lt;h2 id=&quot;banning-proctoring-over-zoom&quot;&gt;Banning Proctoring Over Zoom&lt;/h2&gt;
 &lt;p&gt;With the ban of proctoring, the risk of getting caught for cheating is all but zeroed. Does this impact the risk of cheating?&lt;/p&gt;
 
 &lt;p&gt;With the Zoom ban, many CS classes have shifted to an open-book policy. This means that, effectively, everything in the test can be looked up either way. As a result, while cheating is easily doable, with other mitigations such as test randomization, it seems that there is little impact on the rate of cheating. We get the same chart, after adding the ease of cheating and subtracting the hoops needed to hop through to cheat.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{bmatrix}
-\mathrm{cheat} &amp; \mathrm{honest} \\
-0 + \epsilon &amp; 0 \\
-\end{bmatrix} %]]&gt;&lt;/script&gt;
+\[\begin{bmatrix}
+\mathrm{cheat} &amp;amp; \mathrm{honest} \\
+0 + \epsilon &amp;amp; 0 \\
+\end{bmatrix}\]
 
 &lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
 
-&lt;div class=&quot;footnotes&quot;&gt;
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
   &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;A brief note about the choice of zero-sum versus general-sum: Since classes in the CS department are all curved, this would mean that, if we took two students &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;, fixing &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;’s performance would mean that &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt; doing better causes &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; to get a worse grade. We see that in the two-player scenario, since their grades must average to the same grade, &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt; getting &lt;script type=&quot;math/tex&quot;&gt;+d&lt;/script&gt; standard deviations would result in &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; getting &lt;script type=&quot;math/tex&quot;&gt;-d&lt;/script&gt;. This is a zero-sum game. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;A brief note about the choice of zero-sum versus general-sum: Since classes in the CS department are all curved, this would mean that, if we took two students \(A\) and \(B\), fixing \(A\)’s performance would mean that \(B\) doing better causes \(A\) to get a worse grade. We see that in the two-player scenario, since their grades must average to the same grade, \(B\) getting \(+d\) standard deviations would result in \(A\) getting \(-d\). This is a zero-sum game. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:cheating-payoff&quot;&gt;
-      &lt;p&gt;Suppose 1 in every 50 students are caught for cheating. (This amounts to 2%.) Empirically, we have no data for cheating, since it would require all students to admit their cheating, which is somewhat of a catch-22. Either way, suppose that getting caught for cheating results in &lt;script type=&quot;math/tex&quot;&gt;-5&lt;/script&gt; on their grade, whereas not getting caught results in &lt;script type=&quot;math/tex&quot;&gt;+1&lt;/script&gt;. This is a bernoulli random variable with &lt;script type=&quot;math/tex&quot;&gt;p=0.02&lt;/script&gt;, and the expected value is &lt;script type=&quot;math/tex&quot;&gt;0.02 * -5 + 0.98 * 1 = 0.88&lt;/script&gt;. &lt;a href=&quot;#fnref:cheating-payoff&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:cheating-payoff&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Suppose 1 in every 50 students are caught for cheating. (This amounts to 2%.) Empirically, we have no data for cheating, since it would require all students to admit their cheating, which is somewhat of a catch-22. Either way, suppose that getting caught for cheating results in \(-5\) on their grade, whereas not getting caught results in \(+1\). This is a bernoulli random variable with \(p=0.02\), and the expected value is \(0.02 * -5 + 0.98 * 1 = 0.88\). &lt;a href=&quot;#fnref:cheating-payoff&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:2&quot;&gt;
-      &lt;p&gt;Note that these incentives are still in place even without online testing; it’s just that cheating with proctors in person is probably much harder. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Note that these incentives are still in place even without online testing; it’s just that cheating with proctors in person is probably much harder. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
-    &lt;li id=&quot;fn:berkeleytime&quot;&gt;
-      &lt;p&gt;Modelled off of Berkeleytime, &lt;a href=&quot;#fnref:berkeleytime&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;li id=&quot;fn:berkeleytime&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Modelled off of Berkeleytime, &lt;a href=&quot;#fnref:berkeleytime&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format encourages cheating, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.</summary></entry><entry><title type="html">Random Fact #4</title><link href="https://addcnin.blue/2020/03/24/fact3/" rel="alternate" type="text/html" title="Random Fact #4" /><published>2020-03-24T00:00:00-07:00</published><updated>2020-03-24T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/24/fact3</id><content type="html" xml:base="https://addcnin.blue/2020/03/24/fact3/">&lt;h2 id=&quot;todays-fact-foot-on-water&quot;&gt;Today’s Fact: Foot On Water&lt;/h2&gt;
@@ -265,7 +329,7 @@ A \textrm{\\} B &amp; \mathrm{cheat} &amp; \mathrm{honest} \\
 
 &lt;h3 id=&quot;relevant-parameters&quot;&gt;Relevant Parameters&lt;/h3&gt;
 
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; be the mass of some person, let &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt; be the radius of his foot (which we model as a circle), and let &lt;script type=&quot;math/tex&quot;&gt;\gamma&lt;/script&gt; be the surface energy of water (i.e. surface tension).&lt;/p&gt;
+&lt;p&gt;Let \(m\) be the mass of some person, let \(R\) be the radius of his foot (which we model as a circle), and let \(\gamma\) be the surface energy of water (i.e. surface tension).&lt;/p&gt;
 
 &lt;p&gt;We make a simplistic model in which the water deforms in a circularly symmetric pattern around the foot, that when viewed at a cross-section appears as follows:&lt;/p&gt;
 
@@ -275,25 +339,23 @@ A \textrm{\\} B &amp; \mathrm{cheat} &amp; \mathrm{honest} \\
 
 &lt;p&gt;The increase in the water surface area is&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-    \Delta A &amp;= \int_{R}^{R+\frac{h}{\tan \theta}} 2\pi r (\frac{1}{\cos \theta}-1) d{r} \\
-    &amp;= \pi (\frac{h^2}{\tan^2 \theta} + \frac{2Rh}{\tan \theta}) \frac{1-\cos \theta}{\cos \theta}
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+    \Delta A &amp;amp;= \int_{R}^{R+\frac{h}{\tan \theta}} 2\pi r (\frac{1}{\cos \theta}-1) d{r} \\
+    &amp;amp;= \pi (\frac{h^2}{\tan^2 \theta} + \frac{2Rh}{\tan \theta}) \frac{1-\cos \theta}{\cos \theta}
+\end{align*}\]
 
-&lt;p&gt;Since &lt;script type=&quot;math/tex&quot;&gt;\Delta E=\gamma \Delta A&lt;/script&gt;, we have:&lt;/p&gt;
+&lt;p&gt;Since \(\Delta E=\gamma \Delta A\), we have:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align*}
-    F_{up} &amp;= \frac{\partial E}{\partial h} \\
-    &amp;= \gamma \pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{2h}{\tan^2 \theta}+\frac{2R}{\tan \theta}) \\
-    &amp;= 2\gamma\pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{h+R \tan \theta}{\tan^2 \theta}) \\
-    &amp;\approx 2\gamma \pi R \frac{1-\cos \theta}{\sin \theta}
-\end{align*} %]]&gt;&lt;/script&gt;
+\[\begin{align*}
+    F_{up} &amp;amp;= \frac{\partial E}{\partial h} \\
+    &amp;amp;= \gamma \pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{2h}{\tan^2 \theta}+\frac{2R}{\tan \theta}) \\
+    &amp;amp;= 2\gamma\pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{h+R \tan \theta}{\tan^2 \theta}) \\
+    &amp;amp;\approx 2\gamma \pi R \frac{1-\cos \theta}{\sin \theta}
+\end{align*}\]
 
-&lt;p&gt;with the last step following since it is reasonable to assume &lt;script type=&quot;math/tex&quot;&gt;R \gg h&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;with the last step following since it is reasonable to assume \(R \gg h\)&lt;/p&gt;
 
-&lt;p&gt;The only remaining variable is &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; – it is reasonable to assume a small angle &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; (i.e. &lt;script type=&quot;math/tex&quot;&gt;\theta \approx \frac{\pi}{10}&lt;/script&gt;, so that this adds a factor of approximately 0.1). With &lt;script type=&quot;math/tex&quot;&gt;\gamma=72.8&lt;/script&gt; dynes per centimeter and &lt;script type=&quot;math/tex&quot;&gt;m=80&lt;/script&gt; kilograms, &lt;script type=&quot;math/tex&quot;&gt;R \approx 13 \text{km}&lt;/script&gt;.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Foot On Water Andi came up with an insane question: How wide does a human foot have to be for a human to stand on water? Of course, he came up with something insane, reproduced here.</summary></entry><entry><title type="html">Random Fact #3</title><link href="https://addcnin.blue/2020/03/23/fact3/" rel="alternate" type="text/html" title="Random Fact #3" /><published>2020-03-23T00:00:00-07:00</published><updated>2020-03-23T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/23/fact3</id><content type="html" xml:base="https://addcnin.blue/2020/03/23/fact3/">&lt;h2 id=&quot;todays-fact-linear-discriminant-analysis&quot;&gt;Today’s Fact: Linear Discriminant Analysis&lt;/h2&gt;
+&lt;p&gt;The only remaining variable is \(\theta\) – it is reasonable to assume a small angle \(\theta\) (i.e. \(\theta \approx \frac{\pi}{10}\), so that this adds a factor of approximately 0.1). With \(\gamma=72.8\) dynes per centimeter and \(m=80\) kilograms, \(R \approx 13 \text{km}\).&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Foot On Water Andi came up with an insane question: How wide does a human foot have to be for a human to stand on water? Of course, he came up with something insane, reproduced here.</summary></entry><entry><title type="html">Random Fact #3</title><link href="https://addcnin.blue/2020/03/23/fact3/" rel="alternate" type="text/html" title="Random Fact #3" /><published>2020-03-23T00:00:00-07:00</published><updated>2020-03-23T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/23/fact3</id><content type="html" xml:base="https://addcnin.blue/2020/03/23/fact3/">&lt;h2 id=&quot;todays-fact-linear-discriminant-analysis&quot;&gt;Today’s Fact: Linear Discriminant Analysis&lt;/h2&gt;
 &lt;p&gt;Linear Discriminant Analysis, or LDA for short, is an ML model used in classification. Specifically, for a model of &lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; features and &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; training points, it assumes that the &lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; features are all distributed Normally (Gaussian), with the same variance. More formally, taken from my professor’s &lt;a href=&quot;https://people.eecs.berkeley.edu/~jrs/189/lec/07.pdf&quot;&gt;cs189 notes&lt;/a&gt;, we get:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact2_1.png&quot; alt=&quot;Lecture Note 1&quot; /&gt;&lt;/p&gt;
@@ -338,96 +400,4 @@ A \textrm{\\} B &amp; \mathrm{cheat} &amp; \mathrm{honest} \\
 Source: Stat 155 Textbook, &lt;em&gt;Game Theory&lt;/em&gt; by Anna R. Karlin and Yuval Peres&lt;/p&gt;
 
 &lt;h2 id=&quot;a-bit-of-background&quot;&gt;A Bit Of Background&lt;/h2&gt;
-&lt;p&gt;The Coronavirus hit us all pretty hard. Now that school is moved online, and Berkeley classes have all been moved to P/NP, I’ve decided to take on the goal of finding one daily random fact with my friend &lt;a href=&quot;https://medium.com/@andi.gu.ca&quot;&gt;Andi Gu&lt;/a&gt;. Hopefully, whoever stumbles upon this blog will find them as interesting as we do!&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Market for Lemons Source: Stat 155 Textbook, Game Theory by Anna R. Karlin and Yuval Peres</summary></entry><entry><title type="html">Elixir Deployments and CPU Usage</title><link href="https://addcnin.blue/2020/03/03/elixir-performance/" rel="alternate" type="text/html" title="Elixir Deployments and CPU Usage" /><published>2020-03-03T00:00:00-08:00</published><updated>2020-03-03T00:00:00-08:00</updated><id>https://addcnin.blue/2020/03/03/elixir-performance</id><content type="html" xml:base="https://addcnin.blue/2020/03/03/elixir-performance/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;p&gt;For the past semester, I have deployed &lt;a href=&quot;go.addcnin.blue/about&quot;&gt;a custom shortlinker service&lt;/a&gt; and my &lt;a href=&quot;addcnin.blue&quot;&gt;personal website&lt;/a&gt; on a &lt;a href=&quot;cloud.google.com&quot;&gt;Google Cloud Compute Free Instance&lt;/a&gt;. The custom shortlinker is a rewrite of the &lt;a href=&quot;https://github.com/Cal-CS-61A-Staff/links&quot;&gt;CS61A Shortlinker&lt;/a&gt; in Elixir, which was a good way for me to learn the new language. Upon deploying the Elixir version, however, I noticed that CPU usage hovered around a constant 100%, even the system was idling. I left it alone for a while, noting that it was responding to requests fairly quickly, leaving me to think that it was likely the BEAM that was idling.&lt;/p&gt;
-
-&lt;h2 id=&quot;more-research&quot;&gt;More Research&lt;/h2&gt;
-&lt;p&gt;Recently, I got back into Elixir, and curiosity (+ paying bills) prompted me to investigate into the issue more. I came across &lt;a href=&quot;https://stressgrid.com/blog/beam_cpu_usage/&quot;&gt;this blog&lt;/a&gt;, which answered all of my problems.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;… enabling busy waiting causes the CPU to be saturated above 95%. Disabling busy waiting causes CPU utilization to scale with the workload.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;That’s insane! Could it be possible that the BEAM was running empty cycles to claim the CPU, hence stealing cycles from other processes? There was only one way to tell.&lt;/p&gt;
-
-&lt;h2 id=&quot;my-own-change&quot;&gt;My Own Change&lt;/h2&gt;
-&lt;p&gt;I decided to make the changes the blog specified by adding these following lines to the BEAM arguments:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+sbwt none
-+sbwtdcpu none
-+sbwtdio none
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In the blog, they used Distillery, but I use default Mix releases, so I will document the changes below:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Documentation:
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://hexdocs.pm/mix/Mix.Tasks.Release.html&quot;&gt;Mix Release VM Documentation&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://github.com/addcninblue/links/commit/ddb45106492892c13834aeee20a83f47591bbf24#diff-f59a5941af2fadce5fbf5b04589acd10R12&quot;&gt;Change Commit&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Add the required VM configuration files: &lt;code class=&quot;highlighter-rouge&quot;&gt;mix release.init&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Modify the VM configuration file by adding
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; +sbwt none
- +sbwtdcpu none
- +sbwtdio none
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;to &lt;code class=&quot;highlighter-rouge&quot;&gt;rel/vm.args.eex&lt;/code&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Recompile and deploy!&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;And with that, I noticed that there was a dramatic reduction in compute:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/posts/beam-reduced-usage.png&quot; alt=&quot;Beam Reduced Usage&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Note that CPU usage is &lt;em&gt;nearly zero&lt;/em&gt;, where as before it was ~100%! This frees up the CPU cycles for redeployments to this server and for more concurrent apps running (Build times are cut by &lt;strong&gt;more than a half!&lt;/strong&gt;). I will be monitoring this new deployment for any regressions, but it appears to be a very solid improvement.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background For the past semester, I have deployed a custom shortlinker service and my personal website on a Google Cloud Compute Free Instance. The custom shortlinker is a rewrite of the CS61A Shortlinker in Elixir, which was a good way for me to learn the new language. Upon deploying the Elixir version, however, I noticed that CPU usage hovered around a constant 100%, even the system was idling. I left it alone for a while, noting that it was responding to requests fairly quickly, leaving me to think that it was likely the BEAM that was idling.</summary></entry><entry><title type="html">EE375: A Coffee Chat</title><link href="https://addcnin.blue/2020/01/28/coffee/" rel="alternate" type="text/html" title="EE375: A Coffee Chat" /><published>2020-01-28T00:00:00-08:00</published><updated>2020-01-28T00:00:00-08:00</updated><id>https://addcnin.blue/2020/01/28/coffee</id><content type="html" xml:base="https://addcnin.blue/2020/01/28/coffee/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;Hello! This is a talk I gave at EE375, an introduction to teaching techniques class required at UC Berkeley for first-time TAs. The content is largely based on James Hoffman’s techniques, with inspiration from other famous figures. Since the talk was limited to 3 minutes, I skipped a lot of (quite lengthy) discussions, including coffee grind sizes, water ratios, and water temperature. If you have any questions about the material, feel free to email me!&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;main-lecture&quot;&gt;Main Lecture&lt;/h2&gt;
-
-&lt;h3 id=&quot;000--045&quot;&gt;0:00 ~ 0:45&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Brief discussion of water ratio: 16.66 grams of water per gram of coffee
-    &lt;ul&gt;
-      &lt;li&gt;Practical terms: 250g/15g for one person, 500g/30g for two people&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Brief discussion of grind size:
-    &lt;ul&gt;
-      &lt;li&gt;Medium Fine (example shown in class)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Brief discussion of pouring method, assuming 250g/15g:
-    &lt;ul&gt;
-      &lt;li&gt;0:00 ~ 0:40 (45g): Bloom phase. This phase allows us to release CO2 from the coffee to allow for better extraction.&lt;/li&gt;
-      &lt;li&gt;0:40 ~ 1:15 (150g): First pour. This phase is where we get most of our flavor from the coffee. We pour in a circular fashion to get the ground equally extracted.&lt;/li&gt;
-      &lt;li&gt;1:15 ~ 1:45 (250g): Second pour. This phase is to allow for final extraction of the flavor. We pour in a straight fashion to keep the bed of water at a constant temperature, for even extraction.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;045--300&quot;&gt;0:45 ~ 3:00&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Demonstration of V60 Technique&lt;/li&gt;
-  &lt;li&gt;Demonstrated technique: &lt;a href=&quot;https://www.youtube.com/watch?v=AI4ynXzkSQo&quot;&gt;James Hoffman’s Technique&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;additional-content&quot;&gt;Additional Content&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Coffee dialing chart&lt;sup id=&quot;fnref:copyright&quot;&gt;&lt;a href=&quot;#fn:copyright&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;
-&lt;img src=&quot;/assets/posts/coffee.jpg&quot; alt=&quot;Coffee&quot; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
-
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:copyright&quot;&gt;
-      &lt;p&gt;I do not own this material. This is a common coffee chart used by many coffee drinkers. &lt;a href=&quot;#fnref:copyright&quot; class=&quot;reversefootnote&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">Introduction Hello! This is a talk I gave at EE375, an introduction to teaching techniques class required at UC Berkeley for first-time TAs. The content is largely based on James Hoffman’s techniques, with inspiration from other famous figures. Since the talk was limited to 3 minutes, I skipped a lot of (quite lengthy) discussions, including coffee grind sizes, water ratios, and water temperature. If you have any questions about the material, feel free to email me!</summary></entry></feed>
+&lt;p&gt;The Coronavirus hit us all pretty hard. Now that school is moved online, and Berkeley classes have all been moved to P/NP, I’ve decided to take on the goal of finding one daily random fact with my friend &lt;a href=&quot;https://medium.com/@andi.gu.ca&quot;&gt;Andi Gu&lt;/a&gt;. Hopefully, whoever stumbles upon this blog will find them as interesting as we do!&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Market for Lemons Source: Stat 155 Textbook, Game Theory by Anna R. Karlin and Yuval Peres</summary></entry></feed>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Mortgage Companies</title>
+  <meta name="description" content="Analysis of Mortgage Companies">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/trading/2020-05-22-mortgage-companies">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+loader: {load: ['[tex]/physics']},
+  tex: {packages: {'[+]': ['physics']}},
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Mortgage Companies">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/trading/2020-05-22-mortgage-companies">
+  <meta property="og:description" content="Analysis of Mortgage Companies">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Mortgage Companies">
+  <meta name="twitter:description" content="Analysis of Mortgage Companies">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+  
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#analysis-of-mortgage-companies">Analysis of Mortgage Companies</a>
+    <ul>
+      <li><a href="#background">Background</a></li>
+    </ul>
+  </li>
+  <li><a href="#wells-fargo-wfc"><a href="10q/WFC-2020Q1.pdf">Wells Fargo (WFC)</a></a></li>
+  <li><a href="#pennymac-pmc"><a href="https://www.sec.gov/Archives/edgar/data/1464423/000156459020023584/pmt-10q_20200331.htm">PennyMac (PMC)</a></a></li>
+</ul>
+
+    </div>
+    <hr>
+    
+
+
+    <h1 id="analysis-of-mortgage-companies">Analysis of Mortgage Companies</h1>
+
+<h2 id="background">Background</h2>
+<ul>
+  <li>Inspired by the Journal’s <a href="https://www.wsj.com/podcasts/the-journal/what-happens-when-millions-stop-paying-their-credit-cards/C10C69DB-7F48-4A42-A2D1-6573FA3A5AE3">podcast on public lending</a>
+    <ul>
+      <li>Big note: they like <em>revolvers</em>, a special kind of lender who has good credit but make only minimum payments</li>
+      <li>In America, the national percentage of population with 70+% revolving utilization is 16.7%. <a href="https://www.fico.com/blogs/deep-dive-distribution-fico-score-across-us">Source</a>.</li>
+    </ul>
+  </li>
+  <li>Reminiscent of 2008, when spending slowed</li>
+  <li><a href="https://www.nytimes.com/article/coronavirus-timeline.html">NYT Coronavirus Timeline Key Events:</a>
+    <ul>
+      <li>01/31: Trump restricted travel from China</li>
+      <li>02/02: First death outside China</li>
+      <li>02/29: US first death</li>
+      <li>03/03: US officials approved widespread testing</li>
+      <li>03/11: Trump blocked most visitors from Europe</li>
+      <li>03/13: Trump declared national emergency</li>
+      <li>03/15: CDC recommended no gatherings of 50+</li>
+      <li>03/16: US most confirmed cases</li>
+      <li>03/27: Trump signed stimulus bill</li>
+      <li>03/30: More states isued stay-at-home</li>
+      <li>04/02: Cases 1mil+, millions lost jobs</li>
+    </ul>
+  </li>
+  <li><a href="https://fred.stlouisfed.org/series/UNRATE">Unemployment Rate</a>
+    <ul>
+      <li>April: 14%; my estimate is ~20%</li>
+      <li>Soared from 3.5 prior; past stability ~5%</li>
+    </ul>
+  </li>
+  <li>My own predictions (and <strong>unsubstantiated</strong> claims that I’m hoping to find evidence for):
+    <ul>
+      <li>Delinquency at least 6x.</li>
+      <li>Unemployment will peak months after the coronavirus peaks (as it did with ‘08), causing money stagnation.</li>
+      <li>Since the market revolves around liquidity, a significant hit in delinquencies will shake the financial sector, causing benchmarks/bank prices to go down.</li>
+    </ul>
+  </li>
+  <li>Play:
+    <ul>
+      <li>Protective puts if bank stocks keep increasing. This will not only hedge against bank failures, but should also hedge against the S&amp;P falling as banks will be the first to fall.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="wells-fargo-wfc"><a href="10q/WFC-2020Q1.pdf">Wells Fargo (WFC)</a></h1>
+<ul>
+  <li>Motivation: One of the largest lenders of mortgages</li>
+  <li>Key Numbers ($ in millions):
+    <ul>
+      <li>Consumer Lending:
+        <ul>
+          <li>Consumer Revolving Credit: $34,057</li>
+        </ul>
+      </li>
+      <li>Projected Net Cash Outflows: $315,980</li>
+      <li>Primary Sources of Liquidity (unencumbered): $416,888
+        <ul>
+          <li>Interest-earning deposits with banks: $128,071</li>
+          <li>Debt securities of US Treasuries and federal agencies (should be pretty liquid): $57,942</li>
+          <li>Mortgage-backed securities of federal agencies (should be investment grade, but not necessarily liquid): $230,875</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Key words:
+    <ul>
+      <li>Primary Sources of Liquidity</li>
+      <li>Consolidated Balance Sheet</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="pennymac-pmc"><a href="https://www.sec.gov/Archives/edgar/data/1464423/000156459020023584/pmt-10q_20200331.htm">PennyMac (PMC)</a></h1>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    
+    
+    
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

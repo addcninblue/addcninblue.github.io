@@ -65,20 +65,22 @@ loader: {load: ['[tex]/physics']},
 
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
 
   
-  <!-- Google Analytics -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-89539680-2', 'auto');
-    ga('send', 'pageview');
-
-  </script>
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
 
 
 </head>
@@ -125,8 +127,6 @@ loader: {load: ['[tex]/physics']},
 
     
 
-    
-
     <hr>
 
     <p>With the Coronavirus, tissue paper and supplies are flying out of stores. Some argue that it’s a natural human reaction best explained by Game Theory. In this essay, I will explore these claims, as well as how several countries have responded differently, and how their policies can be explained by Game Theory.</p>
@@ -136,7 +136,7 @@ loader: {load: ['[tex]/physics']},
 </blockquote>
 
 <h2 id="articles-referenced-and-their-claims">Articles Referenced and Their Claims</h2>
-<p>In The Herald<sup id="fnref:The-Herald"><a href="#fn:The-Herald" class="footnote">1</a></sup>, the Adam Smith Institute<sup id="fnref:Adam-Smith-Institute"><a href="#fn:Adam-Smith-Institute" class="footnote">2</a></sup>, and Asia Times<sup id="fnref:Asia-Times"><a href="#fn:Asia-Times" class="footnote">3</a></sup>, the authors argue that the situation is well-explained by Prisoners’ Dilemma. In The Herald, McArdle makes the additional claim that Western countries have a lack of trust that Eastern countries do not have, exacerbating the Prisoners’ Dilemma problem. Macdonald of the Adam Smith Institute makes a particularly astute economic observation that “raising prices in our current context is not a cynical cash grab, but an effective means of restoring consumer confidence and ensuring we can all access the goods we need during these strange and difficult times”.</p>
+<p>In The Herald<sup id="fnref:The-Herald" role="doc-noteref"><a href="#fn:The-Herald" class="footnote" rel="footnote">1</a></sup>, the Adam Smith Institute<sup id="fnref:Adam-Smith-Institute" role="doc-noteref"><a href="#fn:Adam-Smith-Institute" class="footnote" rel="footnote">2</a></sup>, and Asia Times<sup id="fnref:Asia-Times" role="doc-noteref"><a href="#fn:Asia-Times" class="footnote" rel="footnote">3</a></sup>, the authors argue that the situation is well-explained by Prisoners’ Dilemma. In The Herald, McArdle makes the additional claim that Western countries have a lack of trust that Eastern countries do not have, exacerbating the Prisoners’ Dilemma problem. Macdonald of the Adam Smith Institute makes a particularly astute economic observation that “raising prices in our current context is not a cynical cash grab, but an effective means of restoring consumer confidence and ensuring we can all access the goods we need during these strange and difficult times”.</p>
 
 <blockquote>
   <p>A minor charge can be compared to temporary economic and material disruption. That would have been the sole significant setback had corporations cooperated. In this case the entire economic machinery would have toned down and shrunk, and thus everyone would have been affected more or less the same.</p>
@@ -154,19 +154,18 @@ loader: {load: ['[tex]/physics']},
 
 <p>In the situation where the setup of the games are the same, where both the East and West are facing Prisoners’ Dilemmas, the lack of shortages in the East would mean that the people are cooperating. While plausible, these differences must necessarily be attributed to a difference in culture, meaning that scarcity would manifest differently across the United States. Seeing that communities everywhere see shortages, there must be some other explanation.</p>
 
-<p>Suppose for a moment that supplies are not scarce; ie. no matter how much toilet paper one buys, another will not be impacted. Denote the payoff of hoarding to be <script type="math/tex">-5</script> due to diminishing returns, and the payoff of not hoarding to be <script type="math/tex">0</script>.</p>
+<p>Suppose for a moment that supplies are not scarce; ie. no matter how much toilet paper one buys, another will not be impacted. Denote the payoff of hoarding to be \(-5\) due to diminishing returns, and the payoff of not hoarding to be \(0\).</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{bmatrix}
-P1 \textrm{\\} P2& \textrm{hoard} & \textrm{don't hoard} \\
-\textrm{hoard}       & (-5, -5) & (-5, 0) \\
-\textrm{don't hoard} & (0, -5)  & (0, 0) \\
-\end{bmatrix} %]]></script>
+\[\begin{bmatrix}
+P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
+\textrm{hoard}       &amp; (-5, -5) &amp; (-5, 0) \\
+\textrm{don't hoard} &amp; (0, -5)  &amp; (0, 0) \\
+\end{bmatrix}\]
 
-<p>In this setup, we immediately see that the Prisoners’ Dilemma problem has disappeared – <script type="math/tex">\textrm{(don't hoard, don't hoard)}</script> is the Nash Equilibrium <em>and the Pareto Optimum</em>, meaning that with a lack of resources, there is no incentive for anyone to hoard resources! This makes sense – why hoard knowing that resources will always be available when you need it?</p>
+<p>In this setup, we immediately see that the Prisoners’ Dilemma problem has disappeared – \(\textrm{(don't hoard, don't hoard)}\) is the Nash Equilibrium <em>and the Pareto Optimum</em>, meaning that with a lack of resources, there is no incentive for anyone to hoard resources! This makes sense – why hoard knowing that resources will always be available when you need it?</p>
 
 <h2 id="response-to-the-coronavirus">Response to the Coronavirus</h2>
-<p>Let us take a step back and view responses to the coronavirus; in particular, we compare Taiwan’s<sup id="fnref:wikipedia-taiwan"><a href="#fn:wikipedia-taiwan" class="footnote">4</a></sup> approach to the United States’<sup id="fnref:wikipedia-usa"><a href="#fn:wikipedia-usa" class="footnote">5</a></sup>.</p>
+<p>Let us take a step back and view responses to the coronavirus; in particular, we compare Taiwan’s<sup id="fnref:wikipedia-taiwan" role="doc-noteref"><a href="#fn:wikipedia-taiwan" class="footnote" rel="footnote">4</a></sup> approach to the United States’<sup id="fnref:wikipedia-usa" role="doc-noteref"><a href="#fn:wikipedia-usa" class="footnote" rel="footnote">5</a></sup>.</p>
 
 <p>On December 31st, 2019, both the United States and Taiwan learned about the cases in China. On that same day, Taiwan started inspecting inbound flights from Wuhan, while the United States waited until much much later. Mask rationing was implemented on February 6th, with the Taiwanese Armed Forces deployed to aid the scaling of mask production in factories. In the United States, people were recommended to not wear masks, claiming that their efficacy was unproven and limited. In the third week of February, medical experts “concluded that the United States had already lost the fight to contain the virus”.[^nytimes-red-dawn] Contrasting this is the efforts of Taiwan, who as of today only have a mere 395 cases (fewer than my county!) and are exporting face masks!</p>
 
@@ -183,45 +182,43 @@ P1 \textrm{\\} P2& \textrm{hoard} & \textrm{don't hoard} \\
 
 <p>In the situation where market values are not restricted, we have the following payoff diagram: In the case where people both do not hoard, there is no change from the status quo, so the payoff to both is 0. In the case where one hoards and the other doesn’t, one gains and the other loses. In the case where both hoard, there is a small loss to both (since there is a loss of accessible resources in the case either need them). This is classical Prisoners’ Dilemma:</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{bmatrix}
-P1 \textrm{\\} P2& \textrm{hoard} & \textrm{don't hoard} \\
-\textrm{hoard}       & (-2, -2) & (3, -3) \\
-\textrm{don't hoard} & (-3, 3)  & (0, 0) \\
-\end{bmatrix} %]]></script>
+\[\begin{bmatrix}
+P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
+\textrm{hoard}       &amp; (-2, -2) &amp; (3, -3) \\
+\textrm{don't hoard} &amp; (-3, 3)  &amp; (0, 0) \\
+\end{bmatrix}\]
 
-<p>Now, suppose there is a price floor imposed on the market, equivalent to the total marginal utility gained through hoarding beyond the original market equilibrium. The scenario is the same, with one changed parameter: hoarding is more expensive now, incurring a loss of <script type="math/tex">-3</script>. We define a new field, <script type="math/tex">\textrm{hoard less}</script>, describing a situation where hoarding is in effect, but with less quantity. Assuming that both people have a price-elastic response<sup id="fnref:price-elasticity"><a href="#fn:price-elasticity" class="footnote">6</a></sup>:</p>
+<p>Now, suppose there is a price floor imposed on the market, equivalent to the total marginal utility gained through hoarding beyond the original market equilibrium. The scenario is the same, with one changed parameter: hoarding is more expensive now, incurring a loss of \(-3\). We define a new field, \(\textrm{hoard less}\), describing a situation where hoarding is in effect, but with less quantity. Assuming that both people have a price-elastic response<sup id="fnref:price-elasticity" role="doc-noteref"><a href="#fn:price-elasticity" class="footnote" rel="footnote">6</a></sup>:</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{bmatrix}
-P1 \textrm{\\} P2& \textrm{hoard} & \textrm{don't hoard} \\
-\textrm{hoard}       & (-5, -5) & (0, -3) \\
-\textrm{don't hoard} & (-3, 0)  & (0, 0) \\
-\end{bmatrix} %]]></script>
+\[\begin{bmatrix}
+P1 \textrm{\\} P2&amp; \textrm{hoard} &amp; \textrm{don't hoard} \\
+\textrm{hoard}       &amp; (-5, -5) &amp; (0, -3) \\
+\textrm{don't hoard} &amp; (-3, 0)  &amp; (0, 0) \\
+\end{bmatrix}\]
 
 <p>Immediately, we see that we have recovered a situation with the Nash Equilibrium equal to the Pareto Equilibrium equal to not hoarding for both. In other words, the market price floor has a positive effect in this scenario.</p>
 
 <h2 id="footnotes">Footnotes</h2>
 
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes">
   <ol>
-    <li id="fn:The-Herald">
-      <p>https://www.heraldscotland.com/news/18314703.helen-mcardle-game-theory-tells-us-britains-reaction-coronavirus/ <a href="#fnref:The-Herald" class="reversefootnote">⤴</a></p>
+    <li id="fn:The-Herald" role="doc-endnote">
+      <p>https://www.heraldscotland.com/news/18314703.helen-mcardle-game-theory-tells-us-britains-reaction-coronavirus/ <a href="#fnref:The-Herald" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
-    <li id="fn:Adam-Smith-Institute">
-      <p>https://www.adamsmith.org/blog/covid-19-and-game-theory <a href="#fnref:Adam-Smith-Institute" class="reversefootnote">⤴</a></p>
+    <li id="fn:Adam-Smith-Institute" role="doc-endnote">
+      <p>https://www.adamsmith.org/blog/covid-19-and-game-theory <a href="#fnref:Adam-Smith-Institute" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
-    <li id="fn:Asia-Times">
-      <p>https://asiatimes.com/2020/03/covid-19-and-the-prisoners-dilemma/ <a href="#fnref:Asia-Times" class="reversefootnote">⤴</a></p>
+    <li id="fn:Asia-Times" role="doc-endnote">
+      <p>https://asiatimes.com/2020/03/covid-19-and-the-prisoners-dilemma/ <a href="#fnref:Asia-Times" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
-    <li id="fn:wikipedia-taiwan">
-      <p>https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Taiwan <a href="#fnref:wikipedia-taiwan" class="reversefootnote">⤴</a></p>
+    <li id="fn:wikipedia-taiwan" role="doc-endnote">
+      <p>https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Taiwan <a href="#fnref:wikipedia-taiwan" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
-    <li id="fn:wikipedia-usa">
-      <p>https://en.wikipedia.org/wiki/Timeline_of_the_2020_coronavirus_pandemic_in_the_United_States <a href="#fnref:wikipedia-usa" class="reversefootnote">⤴</a></p>
+    <li id="fn:wikipedia-usa" role="doc-endnote">
+      <p>https://en.wikipedia.org/wiki/Timeline_of_the_2020_coronavirus_pandemic_in_the_United_States <a href="#fnref:wikipedia-usa" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
-    <li id="fn:price-elasticity">
-      <p>Here, I make a key assumption that price elasticity of hoarded goods are elastic beyond their basic consumption. The author of the Adam Smith Institute article, Macdonald, has observed anecdotally that his experience supports this conclusion. <a href="#fnref:price-elasticity" class="reversefootnote">⤴</a></p>
+    <li id="fn:price-elasticity" role="doc-endnote">
+      <p>Here, I make a key assumption that price elasticity of hoarded goods are elastic beyond their basic consumption. The author of the Adam Smith Institute article, Macdonald, has observed anecdotally that his experience supports this conclusion. <a href="#fnref:price-elasticity" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
   </ol>
 </div>

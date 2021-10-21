@@ -10,7 +10,7 @@
   
   
   <title>Note 7 - Metric Spaces</title>
-  <meta name="description" content="Metric Space Simplest mathematical structure. We need to talk about “distance,” which allows us to talk about “-neighborhoods” and “convergence”, etc.">
+  <meta name="description" content="Metric Space Simplest mathematical structure. We need to talk about “distance,” which allows us to talk about “\(\epsilon\)-neighborhoods” and “convergence”, etc.">
   
 
   <link rel="stylesheet" href="/assets/main.css">
@@ -51,13 +51,13 @@ loader: {load: ['[tex]/physics']},
   <meta property="og:title" content="Note 7 - Metric Spaces">
   <meta property="og:site_name" content="Addison Chan">
   <meta property="og:url" content="https://addcnin.blue/notes/math104/7">
-  <meta property="og:description" content="Metric Space Simplest mathematical structure. We need to talk about “distance,” which allows us to talk about “-neighborhoods” and “convergence”, etc.">
+  <meta property="og:description" content="Metric Space Simplest mathematical structure. We need to talk about “distance,” which allows us to talk about “\(\epsilon\)-neighborhoods” and “convergence”, etc.">
   
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="addcninblue">
   <meta name="twitter:title" content="Note 7 - Metric Spaces">
-  <meta name="twitter:description" content="Metric Space Simplest mathematical structure. We need to talk about “distance,” which allows us to talk about “-neighborhoods” and “convergence”, etc.">
+  <meta name="twitter:description" content="Metric Space Simplest mathematical structure. We need to talk about “distance,” which allows us to talk about “\(\epsilon\)-neighborhoods” and “convergence”, etc.">
   
     <meta name="twitter:creator" content="addcninblue">
   
@@ -65,20 +65,22 @@ loader: {load: ['[tex]/physics']},
 
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
 
   
-  <!-- Google Analytics -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-89539680-2', 'auto');
-    ga('send', 'pageview');
-
-  </script>
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
 
 
 </head>
@@ -159,99 +161,94 @@ loader: {load: ['[tex]/physics']},
     </div>
     
 
-    
-
     <hr>
 
     <h2 id="metric-space">Metric Space</h2>
 <ul>
-  <li>Simplest mathematical structure. We need to talk about “distance,” which allows us to talk about “<script type="math/tex">\epsilon</script>-neighborhoods” and “convergence”, etc.</li>
+  <li>Simplest mathematical structure. We need to talk about “distance,” which allows us to talk about “\(\epsilon\)-neighborhoods” and “convergence”, etc.</li>
 </ul>
 
-<p><strong>Definition</strong>: A <strong>metric space</strong> <script type="math/tex">(S, d)</script> is a set <script type="math/tex">S</script>, and a distance function <script type="math/tex">d: S \times S \rightarrow \mathbb{R}</script> that satisfies:</p>
+<p><strong>Definition</strong>: A <strong>metric space</strong> \((S, d)\) is a set \(S\), and a distance function \(d: S \times S \rightarrow \mathbb{R}\) that satisfies:</p>
 <ol>
-  <li><script type="math/tex">d(x,x) = 0\ \forall x \in S</script></li>
-  <li><script type="math/tex">d(x, y) > 0\ \forall x, y \in S \textrm{ and } x \neq y</script></li>
-  <li><script type="math/tex">d(x,y) + d(y,z) \geq d(x,z)\ \forall x,y,z \in S</script></li>
-  <li><script type="math/tex">d(x,y) = d(y,x)</script></li>
+  <li>\(d(x,x) = 0\ \forall x \in S\)</li>
+  <li>\(d(x, y) &gt; 0\ \forall x, y \in S \textrm{ and } x \neq y\)</li>
+  <li>\(d(x,y) + d(y,z) \geq d(x,z)\ \forall x,y,z \in S\)</li>
+  <li>\(d(x,y) = d(y,x)\)</li>
 </ol>
 
 <hr class="hr-subsection" />
 
 <h3 id="examples">Examples</h3>
 <ul>
-  <li><script type="math/tex">S = \mathbb{R}^2, \textrm{ and } d((x_1, y_1), (x_2, y_2)) = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}</script></li>
-  <li><script type="math/tex">S = \mathbb{R}^2, \textrm{ and } d((x_1, y_1), (x_2, y_2)) = 0 if (x_1, y_1) = (x_2, y_2), 1 if (x_1, y_1) \neq (x_2, y_2)</script></li>
-  <li><script type="math/tex">S = \mathbb{R}, d(x, y) = \vert x-y \vert</script></li>
+  <li>\(S = \mathbb{R}^2, \textrm{ and } d((x_1, y_1), (x_2, y_2)) = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}\)</li>
+  <li>\(S = \mathbb{R}^2, \textrm{ and } d((x_1, y_1), (x_2, y_2)) = 0 if (x_1, y_1) = (x_2, y_2), 1 if (x_1, y_1) \neq (x_2, y_2)\)</li>
+  <li>\(S = \mathbb{R}, d(x, y) = \vert x-y \vert\)</li>
 </ul>
 
 <hr />
 
 <h2 id="neighborhoods">Neighborhoods</h2>
-<p><strong>Definition</strong>: Let <script type="math/tex">(S, d)</script> be a metric space, <script type="math/tex">x \in S, r > 0</script>. We can create a <strong>Ball</strong> with radius <script type="math/tex">r</script> that contains all elements within that radius, denoted <script type="math/tex">% <![CDATA[
-B_r(x) := \{y \in S \vert d(x, y) < r\} %]]></script>.</p>
+<p><strong>Definition</strong>: Let \((S, d)\) be a metric space, \(x \in S, r &gt; 0\). We can create a <strong>Ball</strong> with radius \(r\) that contains all elements within that radius, denoted \(B_r(x) := \{y \in S \vert d(x, y) &lt; r\}\).</p>
 
 <hr class="hr-subsection" />
 
 <h3 id="examples-1">Examples</h3>
 <blockquote class="proof">
-  <p><script type="math/tex">S = \mathbb{R}^2, d((x_1, y_1), (x_2, y_2)) = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}</script>.<br />
-<script type="math/tex">B_1(0, 0) =</script> circle with radius 1, boundary excluded.</p>
+  <p>\(S = \mathbb{R}^2, d((x_1, y_1), (x_2, y_2)) = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}\).<br />
+\(B_1(0, 0) =\) circle with radius 1, boundary excluded.</p>
 </blockquote>
 
 <blockquote class="proof">
-  <p><script type="math/tex">S = \mathbb{R}, d(x, y) = \vert x-y \vert</script><br />
-<script type="math/tex">B_1(1) = (0, 2)</script></p>
+  <p>\(S = \mathbb{R}, d(x, y) = \vert x-y \vert\)<br />
+\(B_1(1) = (0, 2)\)</p>
 </blockquote>
 
 <hr />
 <h2 id="open-subsets">Open Subsets</h2>
-<p><strong>Definition</strong>: Let <script type="math/tex">(S, d)</script> be a metric space, and <script type="math/tex">E \subset S</script>. We say <script type="math/tex">E</script> is an <strong>open subset</strong> of <script type="math/tex">S</script> if <script type="math/tex">\forall x \in E, \exists r > 0</script> such that <script type="math/tex">B_r(x) \in E</script>.</p>
+<p><strong>Definition</strong>: Let \((S, d)\) be a metric space, and \(E \subset S\). We say \(E\) is an <strong>open subset</strong> of \(S\) if \(\forall x \in E, \exists r &gt; 0\) such that \(B_r(x) \in E\).</p>
 
 <hr class="hr-subsection" />
 
 <h3 id="examples-2">Examples</h3>
-<p><strong>Q:</strong> Let <script type="math/tex">(R, d)</script> be a metric space. Is <script type="math/tex">[0, 1] \subset \mathbb{R}</script> an open subset?</p>
+<p><strong>Q:</strong> Let \((R, d)\) be a metric space. Is \([0, 1] \subset \mathbb{R}\) an open subset?</p>
 <blockquote class="proof">
   <p>Answer: No.
 If we take a look at the “edge” (ie. point 0), we can see that the ball around this point is not in the set.
-Formally, <script type="math/tex">\forall r > 0, B_r(1) \not\subset [0, 1]</script> since <script type="math/tex">B_r(1)</script> implies the range <script type="math/tex">(1-r, 1+r)</script>, which contains elements outside.</p>
+Formally, \(\forall r &gt; 0, B_r(1) \not\subset [0, 1]\) since \(B_r(1)\) implies the range \((1-r, 1+r)\), which contains elements outside.</p>
 </blockquote>
 
-<p><strong>Q:</strong> Taking the same setup above, is <script type="math/tex">(0, 1) \in \mathbb{R}</script> open?</p>
+<p><strong>Q:</strong> Taking the same setup above, is \((0, 1) \in \mathbb{R}\) open?</p>
 <blockquote class="proof">
-  <p>Answer: Any element must be in <script type="math/tex">(0, 1)</script>, so we can always take the radius to be half the distance to the shorter border.<br />
-Formally, if <script type="math/tex">r = min\{x, 1-x\}</script>, then <script type="math/tex">B_r(x) \subset (0, 1)</script>.</p>
+  <p>Answer: Any element must be in \((0, 1)\), so we can always take the radius to be half the distance to the shorter border.<br />
+Formally, if \(r = min\{x, 1-x\}\), then \(B_r(x) \subset (0, 1)\).</p>
 </blockquote>
 
-<p><strong>Q:</strong> In general, for any metric space, is <script type="math/tex">B_r(x) \in S</script> open?</p>
+<p><strong>Q:</strong> In general, for any metric space, is \(B_r(x) \in S\) open?</p>
 <blockquote class="proof">
-  <p>To prove this, we must show <script type="math/tex">\forall y \in B_r(x)</script>, we have some <script type="math/tex">r' > 0</script> such that <script type="math/tex">B_{r'}(y) \subset B_r(x)</script>.<br />
-Let us define <script type="math/tex">d(x, y) = r_0</script>.<br />
-<strong>Claim</strong>: <script type="math/tex">B_{r - r_0}(y) \in B_r(x)</script>.<br />
-<script type="math/tex">% <![CDATA[
-\forall z \in B_{r - r_0}(y), d(z, y) < r - r_0 %]]></script>. By Triangle Inequality, <script type="math/tex">% <![CDATA[
-d(z, x) \leq d(z, y) + d(y, x) < (r - r_0) + r_0 = r %]]></script>. This means that <script type="math/tex">z \in B_r(x)</script>, which completes the proof.</p>
+  <p>To prove this, we must show \(\forall y \in B_r(x)\), we have some \(r' &gt; 0\) such that \(B_{r'}(y) \subset B_r(x)\).<br />
+Let us define \(d(x, y) = r_0\).<br />
+<strong>Claim</strong>: \(B_{r - r_0}(y) \in B_r(x)\).<br />
+\(\forall z \in B_{r - r_0}(y), d(z, y) &lt; r - r_0\). By Triangle Inequality, \(d(z, x) \leq d(z, y) + d(y, x) &lt; (r - r_0) + r_0 = r\). This means that \(z \in B_r(x)\), which completes the proof.</p>
 </blockquote>
 
 <h2 id="closed-subsets">Closed Subsets</h2>
-<p><strong>Definition</strong>: Let <script type="math/tex">(S, d)</script> be a metric space with <script type="math/tex">E \in S</script>. We say <script type="math/tex">E</script> is a <strong>closed subset</strong> of <script type="math/tex">S</script> if <script type="math/tex">E^C \in S</script> is open (where <script type="math/tex">E^C = \{x \in S \vert x \not\in E\})</script>.</p>
+<p><strong>Definition</strong>: Let \((S, d)\) be a metric space with \(E \in S\). We say \(E\) is a <strong>closed subset</strong> of \(S\) if \(E^C \in S\) is open (where \(E^C = \{x \in S \vert x \not\in E\})\).</p>
 
 <h3 id="examples-3">Examples</h3>
-<p><strong>Q:</strong> Is <script type="math/tex">[0, 1] \in R</script> closed?</p>
+<p><strong>Q:</strong> Is \([0, 1] \in R\) closed?</p>
 <blockquote class="proof">
-  <p>Yes. <script type="math/tex">[0, 1]^\complement = (-\infty, 0) \cup (1, \infty)</script>. We can then use the same argument as above to show that it is open.</p>
+  <p>Yes. \([0, 1]^\complement = (-\infty, 0) \cup (1, \infty)\). We can then use the same argument as above to show that it is open.</p>
 </blockquote>
 
-<p><strong>Q:</strong> Is <script type="math/tex">(0, 1) \in R</script> closed?</p>
+<p><strong>Q:</strong> Is \((0, 1) \in R\) closed?</p>
 <blockquote class="proof">
-  <p>No. <script type="math/tex">(0, 1)^\complement = (-\infty, 0] \cup [1, \infty)</script>. We can then use the same argument as above to show that it is not open.</p>
+  <p>No. \((0, 1)^\complement = (-\infty, 0] \cup [1, \infty)\). We can then use the same argument as above to show that it is not open.</p>
 </blockquote>
 
-<p><strong>Q:</strong> Is <script type="math/tex">E := \{\frac{1}{n} \vert n \in \mathbb{R}\} \in R</script> closed?</p>
+<p><strong>Q:</strong> Is \(E := \{\frac{1}{n} \vert n \in \mathbb{R}\} \in R\) closed?</p>
 <blockquote class="proof">
-  <p>No. <script type="math/tex">E^\complement = (1, \infty) \cup (1/2, 1) \cup (1/3, 1/2) \cup ... \cup (-\infty, 0]</script>. For any radius <script type="math/tex">r</script> around <script type="math/tex">0</script>, we can find a <script type="math/tex">1/n</script> such that it’s within this radius.<br />
-Equivalently, <script type="math/tex">\forall r>0, B_r(0)</script> always contains some elements in <script type="math/tex">E</script>. This implies that <script type="math/tex">B_r(0) \not\subset E^\complement</script>, so <script type="math/tex">E</script> is not closed.</p>
+  <p>No. \(E^\complement = (1, \infty) \cup (1/2, 1) \cup (1/3, 1/2) \cup ... \cup (-\infty, 0]\). For any radius \(r\) around \(0\), we can find a \(1/n\) such that it’s within this radius.<br />
+Equivalently, \(\forall r&gt;0, B_r(0)\) always contains some elements in \(E\). This implies that \(B_r(0) \not\subset E^\complement\), so \(E\) is not closed.</p>
 </blockquote>
 
 <p>These examples illustrate that <em>for a set to be closed, it should contain all its limit points</em>.</p>
@@ -259,40 +256,40 @@ Equivalently, <script type="math/tex">\forall r>0, B_r(0)</script> always contai
 <hr />
 
 <h2 id="limit-points">Limit Points</h2>
-<p><strong>Definition</strong>: Let <script type="math/tex">(S, d)</script> be a metric space, with <script type="math/tex">E \in S</script>. We call <script type="math/tex">x \in S</script> a <strong>limit point</strong> of <script type="math/tex">E</script> if <script type="math/tex">\forall r > 0, B_r(x) \cap E</script> contains a point <script type="math/tex">y</script> such that <script type="math/tex">y \neq x</script>.</p>
+<p><strong>Definition</strong>: Let \((S, d)\) be a metric space, with \(E \in S\). We call \(x \in S\) a <strong>limit point</strong> of \(E\) if \(\forall r &gt; 0, B_r(x) \cap E\) contains a point \(y\) such that \(y \neq x\).</p>
 
 <hr class="hr-subsection" />
 
 <h3 id="examples-4">Examples</h3>
-<p><strong>Q:</strong> What are the limit points of <script type="math/tex">E := (0, 1) \in R</script>?</p>
+<p><strong>Q:</strong> What are the limit points of \(E := (0, 1) \in R\)?</p>
 <blockquote class="proof">
-  <p><script type="math/tex">0</script> is a limit point, since there exists points in <script type="math/tex">B_r(0) \not\in R\ \forall r</script>
-Every point in <script type="math/tex">[0, 1]</script> is a limit point of <script type="math/tex">(0, 1)</script>.</p>
+  <p>\(0\) is a limit point, since there exists points in \(B_r(0) \not\in R\ \forall r\)
+Every point in \([0, 1]\) is a limit point of \((0, 1)\).</p>
 </blockquote>
 
-<p><strong>Q:</strong> Is it true that <em>any point</em> <script type="math/tex">x \in E</script> is a limit point of <script type="math/tex">E</script>?</p>
+<p><strong>Q:</strong> Is it true that <em>any point</em> \(x \in E\) is a limit point of \(E\)?</p>
 <blockquote class="proof">
-  <p>No. Take the example <script type="math/tex">E = \{1, 2, 3\}</script>. <script type="math/tex">1</script> is not a limit point of <script type="math/tex">E</script>.</p>
+  <p>No. Take the example \(E = \{1, 2, 3\}\). \(1\) is not a limit point of \(E\).</p>
 </blockquote>
 
 <hr />
 
 <h2 id="closure">Closure</h2>
-<p><strong>Definition</strong>: The <strong>closure</strong> of <script type="math/tex">E \in S</script> is defined to be the union of <script type="math/tex">E</script> and its limit points.</p>
+<p><strong>Definition</strong>: The <strong>closure</strong> of \(E \in S\) is defined to be the union of \(E\) and its limit points.</p>
 
-<p><script type="math/tex">\overline{E} = E \cup \{\textrm{ limit points of }E\}</script><br />
-e.g. <script type="math/tex">\overline{(0, 1)} = [0, 1]</script></p>
+<p>\(\overline{E} = E \cup \{\textrm{ limit points of }E\}\)<br />
+e.g. \(\overline{(0, 1)} = [0, 1]\)</p>
 
-<p><strong>Theorem</strong>: Let <script type="math/tex">(S, d)</script> be a metric space, and <script type="math/tex">E \subset S</script>. We claim that <script type="math/tex">E</script> is closed if and only if <script type="math/tex">E</script> contains all the limit points of <script type="math/tex">E</script>.</p>
+<p><strong>Theorem</strong>: Let \((S, d)\) be a metric space, and \(E \subset S\). We claim that \(E\) is closed if and only if \(E\) contains all the limit points of \(E\).</p>
 <blockquote class="proof">
-  <p>Proof <script type="math/tex">\rightarrow</script>: We want to show that if <script type="math/tex">x \not\in E</script>, then <script type="math/tex">x</script> is not a limit point of <script type="math/tex">E</script>.<br />
-<script type="math/tex">x \not\in E</script> if and only if <script type="math/tex">x \in E^\complement</script> is open. This implies that <script type="math/tex">\exists r > 0</script> such that <script type="math/tex">B_r(x) \subset E^\complement</script>, which means that <script type="math/tex">B_r(x) \cap E = \emptyset</script>. This shows that x is not a limit point of <script type="math/tex">E</script>.</p>
+  <p>Proof \(\rightarrow\): We want to show that if \(x \not\in E\), then \(x\) is not a limit point of \(E\).<br />
+\(x \not\in E\) if and only if \(x \in E^\complement\) is open. This implies that \(\exists r &gt; 0\) such that \(B_r(x) \subset E^\complement\), which means that \(B_r(x) \cap E = \emptyset\). This shows that x is not a limit point of \(E\).</p>
 
-  <p>Proof <script type="math/tex">\leftarrow</script>: We want to show <script type="math/tex">E^\complement</script> is open.
-<script type="math/tex">\forall x \in E^\complement</script>, we know <script type="math/tex">x \not\in E = \overline{E}</script>, which means <script type="math/tex">x</script> is not a limit point of <script type="math/tex">E</script>. This means <script type="math/tex">\exists r > 0</script> such that <script type="math/tex">B_r(x) \cap E</script> is either \emptyset or <script type="math/tex">\{x\}</script>. The second case cannot be true, since <script type="math/tex">x \not\in E</script>. Therefore, <script type="math/tex">B_r(x) \cap E = \emptyset</script>, so <script type="math/tex">B_r(x) \in E^\complement</script>. This shows that <script type="math/tex">E^\complement</script> is open, so <script type="math/tex">E</script> is closed.</p>
+  <p>Proof \(\leftarrow\): We want to show \(E^\complement\) is open.
+\(\forall x \in E^\complement\), we know \(x \not\in E = \overline{E}\), which means \(x\) is not a limit point of \(E\). This means \(\exists r &gt; 0\) such that \(B_r(x) \cap E\) is either \emptyset or \(\{x\}\). The second case cannot be true, since \(x \not\in E\). Therefore, \(B_r(x) \cap E = \emptyset\), so \(B_r(x) \in E^\complement\). This shows that \(E^\complement\) is open, so \(E\) is closed.</p>
 </blockquote>
 
-<p><strong>Exercise</strong>: Is <script type="math/tex">\mathbb{Q} \in \mathbb{R}</script> open or closed? What about <script type="math/tex">\overline{\mathbb{Q}}</script>?</p>
+<p><strong>Exercise</strong>: Is \(\mathbb{Q} \in \mathbb{R}\) open or closed? What about \(\overline{\mathbb{Q}}\)?</p>
 
   </div>
 

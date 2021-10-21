@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Zoom</title>
+  <meta name="description" content="Zoom">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/notes/trading/2020-06-01-zoom">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+loader: {load: ['[tex]/physics']},
+  tex: {packages: {'[+]': ['physics']}},
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Zoom">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/notes/trading/2020-06-01-zoom">
+  <meta property="og:description" content="Zoom">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Zoom">
+  <meta name="twitter:description" content="Zoom">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+  
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#zoom">Zoom</a>
+    <ul>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#trades">Trades</a></li>
+    </ul>
+  </li>
+</ul>
+
+    </div>
+    <hr>
+    
+
+
+    <h1 id="zoom">Zoom</h1>
+
+<h2 id="background">Background</h2>
+<ul>
+  <li>Monday, 6/1/2020, Zoom spiked ~10% on the speculation that their earnings report (Tue EOD) would greatly exceed expectations. @eric brought this up, and we agreed that it was most likely overvalued.</li>
+</ul>
+
+<h2 id="trades">Trades</h2>
+<ul>
+  <li>Since IV is insane at the moment (100%+), playing pure calls/puts are too risky. Put debit spreads and call credit spreads are good options to capture IV crush. I also thought about calendar spreads, but it would be a short calendar which I don’t have the capital for.</li>
+  <li>Entered Trades:
+    <ul>
+      <li>Call credit spread 220/225 at 1.7 per share. This was not filled.</li>
+      <li>Put debit spread 200/197.5 at 1.2 per share. This was filled right before market close (12:56 PST).</li>
+    </ul>
+  </li>
+  <li>Update:
+    <ul>
+      <li>Took small loss (.2). Proceeded to sell the same spread after earnings, and broke even after a day, as the stock started tanking.</li>
+    </ul>
+  </li>
+</ul>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    
+    
+    
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

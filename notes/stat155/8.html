@@ -65,20 +65,22 @@ loader: {load: ['[tex]/physics']},
 
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
 
   
-  <!-- Google Analytics -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-89539680-2', 'auto');
-    ga('send', 'pageview');
-
-  </script>
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
 
 
 </head>
@@ -138,8 +140,6 @@ loader: {load: ['[tex]/physics']},
     </div>
     
 
-    
-
     <hr>
 
     <h2 id="review--in-class-voting">Review – In-Class Voting</h2>
@@ -155,10 +155,10 @@ loader: {load: ['[tex]/physics']},
 
 <p>We get:</p>
 <ul>
-  <li>Plurality: <script type="math/tex">S \triangleright W \triangleright B</script></li>
-  <li>Broda: <script type="math/tex">S \triangleright W \triangleright B</script></li>
-  <li>Instant Runoff: <script type="math/tex">S \triangleright W \triangleright B</script></li>
-  <li>Approval Voting<sup id="fnref:approval-voting"><a href="#fn:approval-voting" class="footnote">1</a></sup>: Sanders</li>
+  <li>Plurality: \(S \triangleright W \triangleright B\)</li>
+  <li>Broda: \(S \triangleright W \triangleright B\)</li>
+  <li>Instant Runoff: \(S \triangleright W \triangleright B\)</li>
+  <li>Approval Voting<sup id="fnref:approval-voting" role="doc-noteref"><a href="#fn:approval-voting" class="footnote" rel="footnote">1</a></sup>: Sanders</li>
 </ul>
 
 <p>It seems that Sanders (at least within our class) is the <strong>Condorcet Winner</strong>. In other words, he wins pairwise against any competitor. <em>There is no paradox.</em></p>
@@ -168,14 +168,14 @@ loader: {load: ['[tex]/physics']},
 <h2 id="another-example">Another Example</h2>
 <p>100 voters with Plurality Voting:</p>
 <ul>
-  <li>Scenario <script type="math/tex">\pi_1</script> forces <script type="math/tex">A \triangleright B \triangleright C</script>:
+  <li>Scenario \(\pi_1\) forces \(A \triangleright B \triangleright C\):
     <ul>
       <li>A/B/C - 45</li>
       <li>B/C/A - 30</li>
       <li>C/B/A - 25</li>
     </ul>
   </li>
-  <li>Scenario <script type="math/tex">\pi_2</script> forces <script type="math/tex">B \triangleright A \triangleright C</script>:
+  <li>Scenario \(\pi_2\) forces \(B \triangleright A \triangleright C\):
     <ul>
       <li>A/B/C - 45</li>
       <li>B/C/A - 30</li>
@@ -184,7 +184,7 @@ loader: {load: ['[tex]/physics']},
   </li>
 </ul>
 
-<p>Note that Independence of Irrelevant Alternatives was violated! Changing the positions of <script type="math/tex">B</script> and <script type="math/tex">C</script> for the third class of voters changed the outcome of the positions of <script type="math/tex">B</script> and <script type="math/tex">A</script>.</p>
+<p>Note that Independence of Irrelevant Alternatives was violated! Changing the positions of \(B\) and \(C\) for the third class of voters changed the outcome of the positions of \(B\) and \(A\).</p>
 
 <hr />
 
@@ -213,30 +213,30 @@ loader: {load: ['[tex]/physics']},
 <ol>
   <li><strong>Symmetry</strong>/<strong>Anonymity</strong>: Who the voter is should not affect the result.
     <ul>
-      <li>Mathematically, permuting the preference profile <script type="math/tex">\pi</script> should not change the outcome of the election.</li>
+      <li>Mathematically, permuting the preference profile \(\pi\) should not change the outcome of the election.</li>
     </ul>
   </li>
-  <li><strong>Monotonicity</strong>: If a voter moves a particular candidate, say <script type="math/tex">A</script>, higher up within rankings, <script type="math/tex">A</script> should not drop in social ranking.</li>
+  <li><strong>Monotonicity</strong>: If a voter moves a particular candidate, say \(A\), higher up within rankings, \(A\) should not drop in social ranking.</li>
   <li><strong>Condorcet Winner Criterion</strong>/<strong>Condorcet Loser Criterion</strong>:</li>
-  <li><strong>IIA of Preference Strengths</strong>: Preference strength for a particular ranking, <script type="math/tex">A</script> vs <script type="math/tex">B</script>, is number of spots <script type="math/tex">A</script> is above <script type="math/tex">B</script>. If two spots have the same preference ranking for all voters, they should be the same in social ranking.</li>
-  <li><strong>Cancellation of Ranking Profiles</strong>: Suppose <script type="math/tex">A = {A, B, C}</script>. If we have the preference profiles <script type="math/tex">A/B/C</script>, <script type="math/tex">B/C/A</script>, <script type="math/tex">C/A/B</script>, then removing all three should not change the outcome.</li>
+  <li><strong>IIA of Preference Strengths</strong>: Preference strength for a particular ranking, \(A\) vs \(B\), is number of spots \(A\) is above \(B\). If two spots have the same preference ranking for all voters, they should be the same in social ranking.</li>
+  <li><strong>Cancellation of Ranking Profiles</strong>: Suppose \(A = {A, B, C}\). If we have the preference profiles \(A/B/C\), \(B/C/A\), \(C/A/B\), then removing all three should not change the outcome.</li>
 </ol>
 
 <p><strong>Stretegically Vulnerable</strong>: A strategy is strategically vulnerable if it violates IIA and leaves itself open to manipulation.</p>
 
-<p><strong>Arrows Impossibility Theorem</strong>: Any transitive ranking rule on <script type="math/tex">\vert A \vert > 3</script> that satisfies IIA and unanimity <em>must be a dictatorship</em>. (Only one voter dictates social ranking.)</p>
+<p><strong>Arrows Impossibility Theorem</strong>: Any transitive ranking rule on \(\vert A \vert &gt; 3\) that satisfies IIA and unanimity <em>must be a dictatorship</em>. (Only one voter dictates social ranking.)</p>
 
 <p><strong>Gibbard Satterthwaite Theorem</strong>: A strategy-proof voting rule, where no voter can gain from misrepresenting their true preference, is impossible without</p>
 
-<p>If <script type="math/tex">F</script> is a strategy-proof voting rule on <script type="math/tex">A, \vert A \vert \geq 3</script>, it must be a dictatorship.</p>
+<p>If \(F\) is a strategy-proof voting rule on \(A, \vert A \vert \geq 3\), it must be a dictatorship.</p>
 
 <hr />
 
 <h2 id="footnotes">Footnotes</h2>
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes">
   <ol>
-    <li id="fn:approval-voting">
-      <p>Does not use the outcomes of the previous. We conduct another vote in class. Details can be found <a href="https://www.wikiwand.com/en/Approval_voting">here</a>. <a href="#fnref:approval-voting" class="reversefootnote">⤴</a></p>
+    <li id="fn:approval-voting" role="doc-endnote">
+      <p>Does not use the outcomes of the previous. We conduct another vote in class. Details can be found <a href="https://www.wikiwand.com/en/Approval_voting">here</a>. <a href="#fnref:approval-voting" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
   </ol>
 </div>

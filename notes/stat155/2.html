@@ -65,20 +65,22 @@ loader: {load: ['[tex]/physics']},
 
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
 
   
-  <!-- Google Analytics -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-89539680-2', 'auto');
-    ga('send', 'pageview');
-
-  </script>
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
 
 
 </head>
@@ -139,8 +141,6 @@ loader: {load: ['[tex]/physics']},
 </ul>
 
     </div>
-    
-
     
 
     <hr>
@@ -215,7 +215,7 @@ loader: {load: ['[tex]/physics']},
 
 <hr class="hr-subsection" />
 
-<p>Requirements to be a combinatorial game: <sup id="fnref:partisan-games"><a href="#fn:partisan-games" class="footnote">1</a></sup></p>
+<p>Requirements to be a combinatorial game: <sup id="fnref:partisan-games" role="doc-noteref"><a href="#fn:partisan-games" class="footnote" rel="footnote">1</a></sup></p>
 <ul>
   <li>2 players</li>
   <li>No ties; there is a winner and game ends</li>
@@ -231,37 +231,36 @@ loader: {load: ['[tex]/physics']},
   </li>
 </ul>
 
-<p>The games we will study are called <strong>progressively bounded impartial combinatorial games</strong>, or <strong>PBICG</strong>. The games will have a fixed set of positions <script type="math/tex">X</script> and rules that dictate how to get from <script type="math/tex">x \in X</script> to <script type="math/tex">y \in X</script>. If you can go from <script type="math/tex">x</script> to <script type="math/tex">y</script>, then we say that <script type="math/tex">y</script> is a follower of <script type="math/tex">x</script>, and we write <script type="math/tex">y \in F(x) \subseteq X</script>. Terminal positions in a game are ones that have no followers. In other words, <script type="math/tex">f(x) = \emptyset</script>. The game ends when one of the players is at a terminal position on their turn.</p>
+<p>The games we will study are called <strong>progressively bounded impartial combinatorial games</strong>, or <strong>PBICG</strong>. The games will have a fixed set of positions \(X\) and rules that dictate how to get from \(x \in X\) to \(y \in X\). If you can go from \(x\) to \(y\), then we say that \(y\) is a follower of \(x\), and we write \(y \in F(x) \subseteq X\). Terminal positions in a game are ones that have no followers. In other words, \(f(x) = \emptyset\). The game ends when one of the players is at a terminal position on their turn.</p>
 
-<p><strong>Progressively Bounded</strong>: <script type="math/tex">% <![CDATA[
-\forall x \in X, \exists B(x) < \infty %]]></script> such that the game ends in at most <script type="math/tex">B(x)</script> moves. In other words, from any valid start position, there is a bounded set of possible moves that all terminate the game. This can be thought of as a directed graph.</p>
+<p><strong>Progressively Bounded</strong>: \(\forall x \in X, \exists B(x) &lt; \infty\) such that the game ends in at most \(B(x)\) moves. In other words, from any valid start position, there is a bounded set of possible moves that all terminate the game. This can be thought of as a directed graph.</p>
 <ul>
-  <li>Ferguson’s notation: We start with a graph <script type="math/tex">x</script> and a transition function <script type="math/tex">F</script>. As a directed graph, we have edges where source is <script type="math/tex">x</script> and destination is <script type="math/tex">y</script>, where <script type="math/tex">x</script> transitions to <script type="math/tex">y</script>. <script type="math/tex">X</script> represents all nodes (states) of a game, and <script type="math/tex">F(x)</script> represents all states that state <script type="math/tex">x</script> can transition to.</li>
+  <li>Ferguson’s notation: We start with a graph \(x\) and a transition function \(F\). As a directed graph, we have edges where source is \(x\) and destination is \(y\), where \(x\) transitions to \(y\). \(X\) represents all nodes (states) of a game, and \(F(x)\) represents all states that state \(x\) can transition to.</li>
 </ul>
 
 <h2 id="subtraction-game">Subtraction Game</h2>
 <p>A take-away game.</p>
 
-<p>This game is defined by <script type="math/tex">S=\{1,2,3\}</script>. Start with <script type="math/tex">n</script> chips. On your turn, you take away 1, 2, or 3 chips.</p>
+<p>This game is defined by \(S=\{1,2,3\}\). Start with \(n\) chips. On your turn, you take away 1, 2, or 3 chips.</p>
 
 <p>Take the example of 3 chips. This is an example of an <strong>end position</strong> since the game can be ended in one move.</p>
 
-<p>Take the example of 4 chips. It doesn’t matter what the player does, since the game is unwinnable.<sup id="fnref:perfect-play"><a href="#fn:perfect-play" class="footnote">2</a></sup> In other words, the previous player can guarantee a win.</p>
+<p>Take the example of 4 chips. It doesn’t matter what the player does, since the game is unwinnable.<sup id="fnref:perfect-play" role="doc-noteref"><a href="#fn:perfect-play" class="footnote" rel="footnote">2</a></sup> In other words, the previous player can guarantee a win.</p>
 
 <h2 id="homework">Homework</h2>
 <ul>
-  <li>Write down what happens in the above subtraction game when <script type="math/tex">n=1, 2, ... ,10</script>. Try to find a pattern. Label every situation.</li>
+  <li>Write down what happens in the above subtraction game when \(n=1, 2, ... ,10\). Try to find a pattern. Label every situation.</li>
 </ul>
 
 <hr class="hr-subsection" />
 
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes">
   <ol>
-    <li id="fn:partisan-games">
-      <p>We will not be studying partisan games. A good book to read about other kinds of games is <strong>Winning Ways for your Mathematical Plays</strong>, by Berlekamp. <a href="#fnref:partisan-games" class="reversefootnote">⤴</a></p>
+    <li id="fn:partisan-games" role="doc-endnote">
+      <p>We will not be studying partisan games. A good book to read about other kinds of games is <strong>Winning Ways for your Mathematical Plays</strong>, by Berlekamp. <a href="#fnref:partisan-games" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
-    <li id="fn:perfect-play">
-      <p>We assume no human error. <a href="#fnref:perfect-play" class="reversefootnote">⤴</a></p>
+    <li id="fn:perfect-play" role="doc-endnote">
+      <p>We assume no human error. <a href="#fnref:perfect-play" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
   </ol>
 </div>
