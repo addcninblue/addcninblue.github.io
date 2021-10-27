@@ -1,4 +1,72 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2021-10-20T22:29:33-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Blogs I Read</title><link href="https://addcnin.blue/2021/10/20/blogs/" rel="alternate" type="text/html" title="Blogs I Read" /><published>2021-10-20T00:00:00-07:00</published><updated>2021-10-20T00:00:00-07:00</updated><id>https://addcnin.blue/2021/10/20/blogs</id><content type="html" xml:base="https://addcnin.blue/2021/10/20/blogs/">&lt;p&gt;(and podcasts I listen to)&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2021-10-26T18:17:56-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Remarkable + Tailscale</title><link href="https://addcnin.blue/2021/10/26/remarkable-tailscale/" rel="alternate" type="text/html" title="Remarkable + Tailscale" /><published>2021-10-26T00:00:00-07:00</published><updated>2021-10-26T00:00:00-07:00</updated><id>https://addcnin.blue/2021/10/26/remarkable-tailscale</id><content type="html" xml:base="https://addcnin.blue/2021/10/26/remarkable-tailscale/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://tailscale.com/&quot;&gt;Tailscale&lt;/a&gt; is a pretty cool technology that allows devices to access each other across any network by automatically punching holes through networks. (Long gone are the days of &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh -L 8000:localhost:8000 server&lt;/code&gt; to do development! Now we can just go to &lt;code class=&quot;highlighter-rouge&quot;&gt;http://server:8000&lt;/code&gt; directly!) Its setup process is fairly simple for both Windows and Linux, but it doesn’t have detailed solutions for embedded devices (such as the Remarkable). This blogpost details the steps I took to get Tailscale working on my Remarkable.&lt;/p&gt;
+
+&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;You will need &lt;a href=&quot;https://github.com/Evidlo/remarkable_entware&quot;&gt;entware&lt;/a&gt; installed. This has the &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscale&lt;/code&gt; package.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Install &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscale&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;entware&lt;/code&gt;:&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;opkg install tailscale&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;For the first time we run &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscale&lt;/code&gt;, we need to do it manually to set up authentication. In two separate terminals, run:
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;Tailscale daemon. (Note that &lt;code class=&quot;highlighter-rouge&quot;&gt;--tun=userspace-networking&lt;/code&gt; is necessary! The Remarkable kernel &lt;em&gt;does not&lt;/em&gt; contain the proper modules to kernel-space networking.)&lt;/p&gt;
+
+        &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tailscaled --tun=userspace-networking&lt;/code&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Tailscale client. This will give you a link. Follow the instructions to authenticate&lt;/p&gt;
+
+        &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tailscale up&lt;/code&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now, we set up a systemd unit to automatically start and run &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscaled&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscale up&lt;/code&gt; on boot. Copy and paste the following into a new file at &lt;code class=&quot;highlighter-rouge&quot;&gt;/lib/systemd/system/tailscaled.service&lt;/code&gt;.&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; [Unit]
+ After=network.target
+ Description=Tailscale client daemon
+ StartLimitBurst=0
+ StartLimitIntervalSec=0
+ Wants=network.target
+
+ [Service]
+ Environment=&quot;HOME=/home/root&quot;
+ ExecStart=/opt/bin/tailscaled --tun=userspace-networking
+ ExecStartPost=/opt/bin/tailscale up
+ Restart=on-failure
+ RestartSec=5
+
+ [Install]
+ WantedBy=multi-user.target
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now, install the service:&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;systemctl enable tailscaled&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Reboot. We reboot here since I ran into some strange issues with &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscaled&lt;/code&gt; not stopping itself, and restarting is the fastest way around this.&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;shutdown -r now&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;And use &lt;code class=&quot;highlighter-rouge&quot;&gt;journalctl&lt;/code&gt; to monitor the status:&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;journalctl -f -u tailscaled&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Now &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscale&lt;/code&gt; should be working!&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background Tailscale is a pretty cool technology that allows devices to access each other across any network by automatically punching holes through networks. (Long gone are the days of ssh -L 8000:localhost:8000 server to do development! Now we can just go to http://server:8000 directly!) Its setup process is fairly simple for both Windows and Linux, but it doesn’t have detailed solutions for embedded devices (such as the Remarkable). This blogpost details the steps I took to get Tailscale working on my Remarkable.</summary></entry><entry><title type="html">Blogs I Read</title><link href="https://addcnin.blue/2021/10/20/blogs/" rel="alternate" type="text/html" title="Blogs I Read" /><published>2021-10-20T00:00:00-07:00</published><updated>2021-10-20T00:00:00-07:00</updated><id>https://addcnin.blue/2021/10/20/blogs</id><content type="html" xml:base="https://addcnin.blue/2021/10/20/blogs/">&lt;p&gt;(and podcasts I listen to)&lt;/p&gt;
 
 &lt;p&gt;I often find myself sharing this (very) short list of media I love, so here’s a compiled list. It’s ranked in rough order of how valuable I’ve found the content. Hopefully it helps someone!&lt;/p&gt;
 
@@ -395,9 +463,4 @@ A \textrm{\\} B &amp;amp; \mathrm{cheat} &amp;amp; \mathrm{honest} \\
 &lt;p&gt;&lt;a href=&quot;/assets/posts/facts/fact2.ipynb&quot;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Linear Discriminant Analysis Linear Discriminant Analysis, or LDA for short, is an ML model used in classification. Specifically, for a model of d features and n training points, it assumes that the d features are all distributed Normally (Gaussian), with the same variance. More formally, taken from my professor’s cs189 notes, we get:</summary></entry><entry><title type="html">Random Fact #2</title><link href="https://addcnin.blue/2020/03/22/fact2/" rel="alternate" type="text/html" title="Random Fact #2" /><published>2020-03-22T00:00:00-07:00</published><updated>2020-03-22T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/22/fact2</id><content type="html" xml:base="https://addcnin.blue/2020/03/22/fact2/">&lt;h2 id=&quot;todays-fact-temperature-defined-statistically&quot;&gt;Today’s Fact: Temperature, Defined Statistically&lt;/h2&gt;
 &lt;p&gt;TODO&lt;/p&gt;
 
-&lt;p&gt;Note: This fact was actually discussed 3/23, but was moved to 3/22 for content’s sake.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Temperature, Defined Statistically TODO</summary></entry><entry><title type="html">Random Fact #1</title><link href="https://addcnin.blue/2020/03/20/fact1/" rel="alternate" type="text/html" title="Random Fact #1" /><published>2020-03-20T00:00:00-07:00</published><updated>2020-03-20T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/20/fact1</id><content type="html" xml:base="https://addcnin.blue/2020/03/20/fact1/">&lt;h2 id=&quot;todays-fact-market-for-lemons&quot;&gt;Today’s Fact: Market for Lemons&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact1.png&quot; alt=&quot;Fact 1&quot; /&gt;
-Source: Stat 155 Textbook, &lt;em&gt;Game Theory&lt;/em&gt; by Anna R. Karlin and Yuval Peres&lt;/p&gt;
-
-&lt;h2 id=&quot;a-bit-of-background&quot;&gt;A Bit Of Background&lt;/h2&gt;
-&lt;p&gt;The Coronavirus hit us all pretty hard. Now that school is moved online, and Berkeley classes have all been moved to P/NP, I’ve decided to take on the goal of finding one daily random fact with my friend &lt;a href=&quot;https://medium.com/@andi.gu.ca&quot;&gt;Andi Gu&lt;/a&gt;. Hopefully, whoever stumbles upon this blog will find them as interesting as we do!&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Market for Lemons Source: Stat 155 Textbook, Game Theory by Anna R. Karlin and Yuval Peres</summary></entry></feed>
+&lt;p&gt;Note: This fact was actually discussed 3/23, but was moved to 3/22 for content’s sake.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Temperature, Defined Statistically TODO</summary></entry></feed>
