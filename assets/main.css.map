@@ -3,10 +3,10 @@
 	"file": "main.css",
 	"sources": [
 		"main.scss",
-		"vendor/ruby/2.6.0/gems/jekyll-whiteglass-1.11.1/_sass/whiteglass.scss",
-		"vendor/ruby/2.6.0/gems/jekyll-whiteglass-1.11.1/_sass/whiteglass/_base.scss",
-		"vendor/ruby/2.6.0/gems/jekyll-whiteglass-1.11.1/_sass/whiteglass/_layout.scss",
-		"vendor/ruby/2.6.0/gems/jekyll-whiteglass-1.11.1/_sass/whiteglass/_syntax-highlighting.scss"
+		"../../../../nix/store/67ilb1ygwm33n9z9sdwr0mj7bhcpynr7-ruby2.6.6-jekyll-whiteglass-1.11.1/lib/ruby/gems/2.6.0/gems/jekyll-whiteglass-1.11.1/_sass/whiteglass.scss",
+		"../../../../nix/store/67ilb1ygwm33n9z9sdwr0mj7bhcpynr7-ruby2.6.6-jekyll-whiteglass-1.11.1/lib/ruby/gems/2.6.0/gems/jekyll-whiteglass-1.11.1/_sass/whiteglass/_base.scss",
+		"../../../../nix/store/67ilb1ygwm33n9z9sdwr0mj7bhcpynr7-ruby2.6.6-jekyll-whiteglass-1.11.1/lib/ruby/gems/2.6.0/gems/jekyll-whiteglass-1.11.1/_sass/whiteglass/_layout.scss",
+		"../../../../nix/store/67ilb1ygwm33n9z9sdwr0mj7bhcpynr7-ruby2.6.6-jekyll-whiteglass-1.11.1/lib/ruby/gems/2.6.0/gems/jekyll-whiteglass-1.11.1/_sass/whiteglass/_syntax-highlighting.scss"
 	],
 	"sourcesContent": [
 		"@import \"whiteglass\";\n\n/* Make sure overflow doesn't mess with width */\nhtml { margin-left: calc(100vw - 100%); }\n\n/**\n * Hide header, footer, and table of contents\n * when printing\n */\n\n@media print {\n  .site-header, .site-footer, .table-of-contents {\n    display: none;\n  }\n}\n\n/**\n * Show website link when printing\n */\n\n@media not print {\n  .source {\n    display: none;\n  }\n}\n\n.source {\n  text-align: center;\n}\n\n/**\n * Create horizontal rule that is thinner and lighter for subsections\n */\n\n.hr-subsection {\n  background-color: #f0f0f0;\n  height: 2px;\n}\n\n/**\n * Underline referral links when clicking on footer\n */\n\nli {\n  &:target {\n    text-decoration: underline;\n  }\n}\n\nsummary {\n  display: flex;\n  align-items: center;\n\n  h1, h2, h3, h4 {\n    display: flex;\n    margin: 0;\n  }\n}\n\n/**\n * Style me.jpg\n */\n\n#me {\n  width: 48px;\n  height: 48px;\n  border-radius: 48px;\n}\n\nheader {\n  padding-top: 5px;\n}\n\n/**\n * Restyle element spacing on mobile\n */\n\n@include media-query($on-palm) {\n  .site-nav {\n    .page-link {\n      margin-left: 10px;\n    }\n  }\n}\n\n/**\n * Fix table spacing\n */\n\ntable {\n  border-spacing: 0;\n  padding: 0;\n}\n\n.proof {\n  font-style: inherit;\n  letter-spacing: inherit;\n  color: inherit;\n  font-size: inherit;\n}\n",
