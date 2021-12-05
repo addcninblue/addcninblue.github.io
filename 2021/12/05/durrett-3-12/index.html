@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Unintuitive Probability: Machine Repairs</title>
+  <meta name="description" content="The more classes I take in probability, the more I realize how often my intuition breaks for these problems, especially when the Exponential distribution is involved. Today I’ll be explaining a homework problem for Stat150 (Stochastic Processes) showcasing unintuitive behavior regarding exponential distributions. Furthermore, I’ll also show a simulation that backs up these results, along with the code used to generate the simulation.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/2021/12/05/durrett-3-12/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+  <script>
+    MathJax = {
+loader: {load: ['[tex]/physics']},
+  tex: {packages: {'[+]': ['physics']}},
+      options: {
+        renderActions: {
+          /* add a new named action not to override the original 'find' action */
+          find_script_mathtex: [10, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            }
+          }, '']
+        }
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  
+  <meta property="og:title" content="Unintuitive Probability: Machine Repairs">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/2021/12/05/durrett-3-12/">
+  <meta property="og:description" content="The more classes I take in probability, the more I realize how often my intuition breaks for these problems, especially when the Exponential distribution is involved. Today I’ll be explaining a homework problem for Stat150 (Stochastic Processes) showcasing unintuitive behavior regarding exponential distributions. Furthermore, I’ll also show a simulation that backs up these results, along with the code used to generate the simulation.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Unintuitive Probability: Machine Repairs">
+  <meta name="twitter:description" content="The more classes I take in probability, the more I realize how often my intuition breaks for these problems, especially when the Exponential distribution is involved. Today I’ll be explaining a hom...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+  
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Unintuitive Probability: Machine Repairs</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#problem-statement">Problem Statement</a></li>
+  <li><a href="#formal-solution">Formal Solution</a></li>
+  <li><a href="#intuitive-solution">Intuitive Solution</a></li>
+  <li><a href="#simulation-code">Simulation Code</a></li>
+  <li><a href="#simulation-results">Simulation Results</a></li>
+</ul>
+
+    </div>
+    
+
+    <hr>
+
+    <p>The more classes I take in probability, the more I realize how often my intuition breaks for these problems, <em>especially</em> when the Exponential distribution is involved. Today I’ll be explaining a homework problem for Stat150 (Stochastic Processes) showcasing unintuitive behavior regarding exponential distributions. Furthermore, I’ll also show a simulation that backs up these results, along with the code used to generate the simulation.</p>
+
+<h2 id="problem-statement">Problem Statement</h2>
+
+<p><img src="/assets/posts/2021-12-05-durrett-3-12/problem.png" alt="Problem Statement" /></p>
+
+<h2 id="formal-solution">Formal Solution</h2>
+
+<p>To solve this, we take advantage of the Rewards Theorem (Theorem 3.3 in Durrett; also <a href="http://www.columbia.edu/~ks20/4106-18-Fall/Notes-RRT.pdf">here</a> for a great explanation). Noting that each characteristic period is the first arrival of either a repair completing (\(\textrm{~ Exp}(\mu)\))or a mistake happening (\(\textrm{~ Exp}(\lambda)\)), the period is then the minimum of the two exponentials, (\(\textrm{~ Exp}(\mu + \lambda)\)). The “reward” here is correctly completing a fix, which can be viewed as an indicator RV that takes \(1\) only on success: \(\mathbb{1}_{t_i = \textrm{repair}}\). Applying the rewards theorem then yields</p>
+
+\[\frac{\textrm{E}[r_i]}{\textrm{E}[t_i]} = \frac{\textrm{E}[\mathbb{1}_{t_i = \textrm{repair}}]}{\textrm{E}[\textrm{Exp}(\mu + \lambda)]} = \mu\]
+
+<p>This is somewhat unintuitive! It’s saying that the rate at which machines are repaired is <em>independent of the rate at which the worker is making mistakes</em>!</p>
+
+<h2 id="intuitive-solution">Intuitive Solution</h2>
+
+<p>Now that we have a mathematical result, let’s try to intuit the cause. Conditioning on a mistake happening at some time \(t^*\), two things happen: the repair and mistake processes begin anew. However, we note that <em>even if the mistake didn’t happen at this time, both processes would have begun anew regardless due to the memoryless property of the exponential distribution</em>! This result is a bit astounding; to rephrase, due to the memoryless property of the exponential distribution, the worker’s “time until completion” would have restarted at any time \(t^*\) regardless of whether or not a mistake occurred. This directly means that the expected time until completion cannot depend on anything other than \(\mu\), which leads to our solution.</p>
+
+<h2 id="simulation-code">Simulation Code</h2>
+
+<p>To simulate this result, we generate two random vectors of the exponential distributions. Then, we create the times at which the mistakes are made in <code class="highlighter-rouge">mistake_times</code> (remembering that mistakes happen <em>independently</em> of repairs). After that, we accumulate times at which the machine is correctly fixed in <code class="highlighter-rouge">fix_times</code>. Taking the successive differences of <code class="highlighter-rouge">fix_times</code> gives the time between fixes, and plotting these values gives us our result.</p>
+
+<div class="language-jl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="n">Distributions</span>
+<span class="k">using</span> <span class="n">Plots</span>
+<span class="n">μ</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">λ</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="c"># Generate random vectors as simulated times</span>
+<span class="n">μs</span> <span class="o">=</span> <span class="n">rand</span><span class="x">(</span><span class="n">Exponential</span><span class="x">(</span><span class="n">μ</span><span class="x">),</span> <span class="n">n</span><span class="x">)</span>
+<span class="n">λs</span> <span class="o">=</span> <span class="n">rand</span><span class="x">(</span><span class="n">Exponential</span><span class="x">(</span><span class="n">λ</span><span class="x">),</span> <span class="n">n</span><span class="o">*</span><span class="mi">10</span><span class="x">)</span>
+
+<span class="n">mistake_times</span> <span class="o">=</span> <span class="n">cumsum</span><span class="x">(</span><span class="n">λs</span><span class="x">)</span>
+
+<span class="c"># Times that the machine is actually correctly fixed (ie. before interruption)</span>
+<span class="n">fix_times</span> <span class="o">=</span> <span class="x">[</span><span class="mf">0.0</span><span class="x">]</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">λ_index</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">repairtime</span> <span class="k">in</span> <span class="n">μs</span>
+  <span class="kd">global</span> <span class="n">time</span><span class="x">,</span> <span class="n">λ_index</span>
+    <span class="k">if</span> <span class="n">repairtime</span> <span class="o">+</span> <span class="n">time</span> <span class="o">&gt;</span> <span class="n">mistake_times</span><span class="x">[</span><span class="n">λ_index</span><span class="x">]</span> <span class="c"># no fix</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">mistake_times</span><span class="x">[</span><span class="n">λ_index</span><span class="x">]</span>
+        <span class="n">λ_index</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c"># increment fail index</span>
+    <span class="k">else</span> <span class="c"># fix</span>
+        <span class="n">time</span> <span class="o">+=</span> <span class="n">repairtime</span>
+        <span class="n">push!</span><span class="x">(</span><span class="n">fix_times</span><span class="x">,</span> <span class="n">time</span><span class="x">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c"># Construct animation; animate every 5 timesteps</span>
+<span class="n">diffs</span> <span class="o">=</span> <span class="n">diff</span><span class="x">(</span><span class="n">fix_times</span><span class="x">)</span>
+<span class="n">anim</span> <span class="o">=</span> <span class="nd">@gif</span> <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="x">(</span><span class="n">length</span><span class="x">(</span><span class="n">diffs</span><span class="x">)</span> <span class="o">÷</span> <span class="mi">5</span><span class="x">)</span>
+  <span class="n">vals</span> <span class="o">=</span> <span class="n">diffs</span><span class="x">[</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="x">]</span>
+  <span class="n">histogram</span><span class="x">(</span><span class="n">vals</span><span class="x">,</span> <span class="n">normalize</span><span class="o">=:</span><span class="n">probability</span><span class="x">)</span> <span class="c"># y1</span>
+  <span class="n">vline!</span><span class="x">([</span><span class="n">mean</span><span class="x">(</span><span class="n">vals</span><span class="x">)])</span>                    <span class="c"># y2</span>
+  <span class="n">vline!</span><span class="x">([</span><span class="n">μ</span><span class="x">])</span>                             <span class="c"># y3</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="simulation-results">Simulation Results</h2>
+
+<p>The orange line <code class="highlighter-rouge">y2</code> is the simulated mean, and the green line <code class="highlighter-rouge">y3</code> is the expected mean (from our math above).</p>
+
+<p>With \(\mu = 1, \lambda = 3\), we get:</p>
+
+<p><img src="/assets/posts/2021-12-05-durrett-3-12/sim.gif" alt="Simulation" /></p>
+
+<p>and see that our simulated results do indeed match the math.</p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    
+    
+    
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

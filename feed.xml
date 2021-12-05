@@ -1,4 +1,72 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2021-11-26T00:08:28-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">I’ll Take My Quarterback, Thanks</title><link href="https://addcnin.blue/2021/11/04/a-quarter-of-efficiency/" rel="alternate" type="text/html" title="I’ll Take My Quarterback, Thanks" /><published>2021-11-04T00:00:00-07:00</published><updated>2021-11-04T00:00:00-07:00</updated><id>https://addcnin.blue/2021/11/04/a-quarter-of-efficiency</id><content type="html" xml:base="https://addcnin.blue/2021/11/04/a-quarter-of-efficiency/">&lt;p&gt;Many things in life don’t have a clear estimate at a first glance – many times, 10% will seem like an underestimate, and 100% will seem like an overestimate. In these situations, I’ve learned that it’s actually pretty good to take the geometric mean of the two as a ballpark estimate: ~30%, or roughly something like 1/4 ~ 1/3.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2021-12-05T12:13:16-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Unintuitive Probability: Machine Repairs</title><link href="https://addcnin.blue/2021/12/05/durrett-3-12/" rel="alternate" type="text/html" title="Unintuitive Probability: Machine Repairs" /><published>2021-12-05T00:00:00-08:00</published><updated>2021-12-05T00:00:00-08:00</updated><id>https://addcnin.blue/2021/12/05/durrett-3-12</id><content type="html" xml:base="https://addcnin.blue/2021/12/05/durrett-3-12/">&lt;p&gt;The more classes I take in probability, the more I realize how often my intuition breaks for these problems, &lt;em&gt;especially&lt;/em&gt; when the Exponential distribution is involved. Today I’ll be explaining a homework problem for Stat150 (Stochastic Processes) showcasing unintuitive behavior regarding exponential distributions. Furthermore, I’ll also show a simulation that backs up these results, along with the code used to generate the simulation.&lt;/p&gt;
+
+&lt;h2 id=&quot;problem-statement&quot;&gt;Problem Statement&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/2021-12-05-durrett-3-12/problem.png&quot; alt=&quot;Problem Statement&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;formal-solution&quot;&gt;Formal Solution&lt;/h2&gt;
+
+&lt;p&gt;To solve this, we take advantage of the Rewards Theorem (Theorem 3.3 in Durrett; also &lt;a href=&quot;http://www.columbia.edu/~ks20/4106-18-Fall/Notes-RRT.pdf&quot;&gt;here&lt;/a&gt; for a great explanation). Noting that each characteristic period is the first arrival of either a repair completing (\(\textrm{~ Exp}(\mu)\))or a mistake happening (\(\textrm{~ Exp}(\lambda)\)), the period is then the minimum of the two exponentials, (\(\textrm{~ Exp}(\mu + \lambda)\)). The “reward” here is correctly completing a fix, which can be viewed as an indicator RV that takes \(1\) only on success: \(\mathbb{1}_{t_i = \textrm{repair}}\). Applying the rewards theorem then yields&lt;/p&gt;
+
+\[\frac{\textrm{E}[r_i]}{\textrm{E}[t_i]} = \frac{\textrm{E}[\mathbb{1}_{t_i = \textrm{repair}}]}{\textrm{E}[\textrm{Exp}(\mu + \lambda)]} = \mu\]
+
+&lt;p&gt;This is somewhat unintuitive! It’s saying that the rate at which machines are repaired is &lt;em&gt;independent of the rate at which the worker is making mistakes&lt;/em&gt;!&lt;/p&gt;
+
+&lt;h2 id=&quot;intuitive-solution&quot;&gt;Intuitive Solution&lt;/h2&gt;
+
+&lt;p&gt;Now that we have a mathematical result, let’s try to intuit the cause. Conditioning on a mistake happening at some time \(t^*\), two things happen: the repair and mistake processes begin anew. However, we note that &lt;em&gt;even if the mistake didn’t happen at this time, both processes would have begun anew regardless due to the memoryless property of the exponential distribution&lt;/em&gt;! This result is a bit astounding; to rephrase, due to the memoryless property of the exponential distribution, the worker’s “time until completion” would have restarted at any time \(t^*\) regardless of whether or not a mistake occurred. This directly means that the expected time until completion cannot depend on anything other than \(\mu\), which leads to our solution.&lt;/p&gt;
+
+&lt;h2 id=&quot;simulation-code&quot;&gt;Simulation Code&lt;/h2&gt;
+
+&lt;p&gt;To simulate this result, we generate two random vectors of the exponential distributions. Then, we create the times at which the mistakes are made in &lt;code class=&quot;highlighter-rouge&quot;&gt;mistake_times&lt;/code&gt; (remembering that mistakes happen &lt;em&gt;independently&lt;/em&gt; of repairs). After that, we accumulate times at which the machine is correctly fixed in &lt;code class=&quot;highlighter-rouge&quot;&gt;fix_times&lt;/code&gt;. Taking the successive differences of &lt;code class=&quot;highlighter-rouge&quot;&gt;fix_times&lt;/code&gt; gives the time between fixes, and plotting these values gives us our result.&lt;/p&gt;
+
+&lt;div class=&quot;language-jl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Distributions&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Plots&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;μ&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;λ&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Generate random vectors as simulated times&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;μs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Exponential&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;μ&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;λs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Exponential&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;λ&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;mistake_times&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cumsum&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;λs&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Times that the machine is actually correctly fixed (ie. before interruption)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fix_times&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;x&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;λ_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repairtime&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;μs&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;λ_index&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repairtime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mistake_times&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;λ_index&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# no fix&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mistake_times&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;λ_index&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;λ_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# increment fail index&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# fix&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repairtime&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;push!&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fix_times&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Construct animation; animate every 5 timesteps&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;diffs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fix_times&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;anim&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@gif&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;diffs&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;÷&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;vals&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diffs&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;histogram&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vals&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normalize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;probability&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# y1&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;vline!&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vals&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)])&lt;/span&gt;                    &lt;span class=&quot;c&quot;&gt;# y2&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;vline!&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;μ&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;])&lt;/span&gt;                             &lt;span class=&quot;c&quot;&gt;# y3&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;simulation-results&quot;&gt;Simulation Results&lt;/h2&gt;
+
+&lt;p&gt;The orange line &lt;code class=&quot;highlighter-rouge&quot;&gt;y2&lt;/code&gt; is the simulated mean, and the green line &lt;code class=&quot;highlighter-rouge&quot;&gt;y3&lt;/code&gt; is the expected mean (from our math above).&lt;/p&gt;
+
+&lt;p&gt;With \(\mu = 1, \lambda = 3\), we get:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/2021-12-05-durrett-3-12/sim.gif&quot; alt=&quot;Simulation&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;and see that our simulated results do indeed match the math.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">The more classes I take in probability, the more I realize how often my intuition breaks for these problems, especially when the Exponential distribution is involved. Today I’ll be explaining a homework problem for Stat150 (Stochastic Processes) showcasing unintuitive behavior regarding exponential distributions. Furthermore, I’ll also show a simulation that backs up these results, along with the code used to generate the simulation.</summary></entry><entry><title type="html">I’ll Take My Quarterback, Thanks</title><link href="https://addcnin.blue/2021/11/04/a-quarter-of-efficiency/" rel="alternate" type="text/html" title="I’ll Take My Quarterback, Thanks" /><published>2021-11-04T00:00:00-07:00</published><updated>2021-11-04T00:00:00-07:00</updated><id>https://addcnin.blue/2021/11/04/a-quarter-of-efficiency</id><content type="html" xml:base="https://addcnin.blue/2021/11/04/a-quarter-of-efficiency/">&lt;p&gt;Many things in life don’t have a clear estimate at a first glance – many times, 10% will seem like an underestimate, and 100% will seem like an overestimate. In these situations, I’ve learned that it’s actually pretty good to take the geometric mean of the two as a ballpark estimate: ~30%, or roughly something like 1/4 ~ 1/3.&lt;/p&gt;
 
 &lt;p&gt;Let’s take a few examples:&lt;/p&gt;
 &lt;ul&gt;
@@ -457,41 +525,4 @@ A \textrm{\\} B &amp;amp; \mathrm{cheat} &amp;amp; \mathrm{honest} \\
 
 &lt;p&gt;with the last step following since it is reasonable to assume \(R \gg h\)&lt;/p&gt;
 
-&lt;p&gt;The only remaining variable is \(\theta\) – it is reasonable to assume a small angle \(\theta\) (i.e. \(\theta \approx \frac{\pi}{10}\), so that this adds a factor of approximately 0.1). With \(\gamma=72.8\) dynes per centimeter and \(m=80\) kilograms, \(R \approx 13 \text{km}\).&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Foot On Water Andi came up with an insane question: How wide does a human foot have to be for a human to stand on water? Of course, he came up with something insane, reproduced here.</summary></entry><entry><title type="html">Random Fact #3</title><link href="https://addcnin.blue/2020/03/23/fact3/" rel="alternate" type="text/html" title="Random Fact #3" /><published>2020-03-23T00:00:00-07:00</published><updated>2020-03-23T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/23/fact3</id><content type="html" xml:base="https://addcnin.blue/2020/03/23/fact3/">&lt;h2 id=&quot;todays-fact-linear-discriminant-analysis&quot;&gt;Today’s Fact: Linear Discriminant Analysis&lt;/h2&gt;
-&lt;p&gt;Linear Discriminant Analysis, or LDA for short, is an ML model used in classification. Specifically, for a model of &lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; features and &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; training points, it assumes that the &lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt; features are all distributed Normally (Gaussian), with the same variance. More formally, taken from my professor’s &lt;a href=&quot;https://people.eecs.berkeley.edu/~jrs/189/lec/07.pdf&quot;&gt;cs189 notes&lt;/a&gt;, we get:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact2_1.png&quot; alt=&quot;Lecture Note 1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;This doesn’t help much for those who are unfamiliar with Machine Learning, so he also included helpful diagrams. Below is a two-class classification (imagine your input is either of class &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; or class &lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt;, and you’re deciding which class it’s supposed to be in). The decision function (breaking point between choosing &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; versus &lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt;) is the black line; less than 0.5 indicates a stronger guess towards the left side, and greater than 0.5 indicates a stronger guess towards the right class. Below that, we have a multi-class problem, where each class’s boundaries are broken up by black line:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact2_2.png&quot; alt=&quot;Lecture Note 2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;When Andi saw this, he immediately thought of &lt;a href=&quot;https://en.wikipedia.org/wiki/K-means_clustering&quot;&gt;k-means clustering&lt;/a&gt;, which is a type of unsupervised learning meant to cluster similar data without knowing their actual labels. K-means often uses similar voronoi diagrams to represent its output, so he raised a question: How does K-means compare to LDA, even though they fundamentally were quite different (supervised vs unsupervised, classification vs grouping)? And so we simulated it.&lt;/p&gt;
-
-&lt;hr class=&quot;hr-subsection&quot; /&gt;
-
-&lt;h3 id=&quot;simulation&quot;&gt;Simulation&lt;/h3&gt;
-
-&lt;p&gt;First, we examined the case of Normally distributed data that is decently spread out from each other, like so:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact2_1_data.png&quot; alt=&quot;Simulation 1, Data&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here, we see that LDA and KMeans actually (somewhat surprisingly!) performed about the same:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact2_1_kmeans.png&quot; alt=&quot;Simulation 1, KMeans&quot; /&gt;
-&lt;img src=&quot;/assets/posts/facts/fact2_1_lda.png&quot; alt=&quot;Simulation 1, LDA&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now, we looked at the case where data is overlapping, like so:
-&lt;img src=&quot;/assets/posts/facts/fact2_2_data.png&quot; alt=&quot;Simulation 2, Data&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We see that the results are different this time (!):&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact2_2_kmeans.png&quot; alt=&quot;Simulation 2, KMeans&quot; /&gt;
-&lt;img src=&quot;/assets/posts/facts/fact2_2_lda.png&quot; alt=&quot;Simulation 2, LDA&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Notice that in the second case, where there are overlapping data, &lt;em&gt;LDA still learns of a distinction between class &lt;code class=&quot;highlighter-rouge&quot;&gt;Yellow&lt;/code&gt; and class &lt;code class=&quot;highlighter-rouge&quot;&gt;Purple&lt;/code&gt;&lt;/em&gt;. K-means completely lost it there, since it has no idea &lt;em&gt;what the labels are supposed to be&lt;/em&gt;. This is expected, since K-means is intended to group similar data, not learn things like this. We thought that it was quite interesting that K-means performed as well as it did in part 1.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;addendum&quot;&gt;Addendum&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;/assets/posts/facts/fact2.ipynb&quot;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Linear Discriminant Analysis Linear Discriminant Analysis, or LDA for short, is an ML model used in classification. Specifically, for a model of d features and n training points, it assumes that the d features are all distributed Normally (Gaussian), with the same variance. More formally, taken from my professor’s cs189 notes, we get:</summary></entry></feed>
+&lt;p&gt;The only remaining variable is \(\theta\) – it is reasonable to assume a small angle \(\theta\) (i.e. \(\theta \approx \frac{\pi}{10}\), so that this adds a factor of approximately 0.1). With \(\gamma=72.8\) dynes per centimeter and \(m=80\) kilograms, \(R \approx 13 \text{km}\).&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Foot On Water Andi came up with an insane question: How wide does a human foot have to be for a human to stand on water? Of course, he came up with something insane, reproduced here.</summary></entry></feed>
