@@ -1,4 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2021-12-05T12:13:16-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Unintuitive Probability: Machine Repairs</title><link href="https://addcnin.blue/2021/12/05/durrett-3-12/" rel="alternate" type="text/html" title="Unintuitive Probability: Machine Repairs" /><published>2021-12-05T00:00:00-08:00</published><updated>2021-12-05T00:00:00-08:00</updated><id>https://addcnin.blue/2021/12/05/durrett-3-12</id><content type="html" xml:base="https://addcnin.blue/2021/12/05/durrett-3-12/">&lt;p&gt;The more classes I take in probability, the more I realize how often my intuition breaks for these problems, &lt;em&gt;especially&lt;/em&gt; when the Exponential distribution is involved. Today I’ll be explaining a homework problem for Stat150 (Stochastic Processes) showcasing unintuitive behavior regarding exponential distributions. Furthermore, I’ll also show a simulation that backs up these results, along with the code used to generate the simulation.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2021-12-08T18:00:51-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">A Skip, a Hedge, and a Leap of Faith</title><link href="https://addcnin.blue/2021/12/08/full-time-job/" rel="alternate" type="text/html" title="A Skip, a Hedge, and a Leap of Faith" /><published>2021-12-08T00:00:00-08:00</published><updated>2021-12-08T00:00:00-08:00</updated><id>https://addcnin.blue/2021/12/08/full-time-job</id><content type="html" xml:base="https://addcnin.blue/2021/12/08/full-time-job/">&lt;p&gt;“If I may ask, where are you planning to work at full-time? Is it for evil or for good?”&lt;/p&gt;
+
+&lt;p&gt;“Well, it’s not strictly Good, but I don’t suppose it’s &lt;em&gt;that Evil&lt;/em&gt;, per se”&lt;/p&gt;
+
+&lt;p&gt;Laughing, my physics professor responded with, “I respect your answer very much, I do … I had lots of smart friends from college – the brightest of them – who ended up in finance as well.”&lt;/p&gt;
+
+&lt;p&gt;So I suppose I might as well write down some of my thoughts that led to me working in finance, and talk about some meta points while I’m at it.&lt;/p&gt;
+
+&lt;h2 id=&quot;inflation-the-economy-and-speculation&quot;&gt;Inflation, the Economy, and Speculation&lt;/h2&gt;
+
+&lt;p&gt;It seems to me the three following things are true of our current economy:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;High (runaway?) inflation.&lt;/li&gt;
+  &lt;li&gt;Loose monetary policy.&lt;/li&gt;
+  &lt;li&gt;High speculation across the markets.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A bit of exposition on each point:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The government has been handwaving this away, saying it’s “transitory” and a short-term result of the pandemic&lt;sup id=&quot;fnref:transitory-inflation&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:transitory-inflation&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. I fear that this is a long-term effect that perhaps is one part underestimated by many and another part down-played to prevent panic. After all, price hikes have been through the roof everywhere! A recent &lt;a href=&quot;https://www.federalreserve.gov/econres/feds/files/2021062pap.pdf&quot;&gt;paper by the Fed&lt;/a&gt; has been an interesting read on this point, and highlights the extent to which economists debate about the causes of inflation.&lt;/li&gt;
+  &lt;li&gt;This one is non-controversial, assumably, so I won’t go into it much. &lt;a href=&quot;https://www.brookings.edu/research/fed-response-to-covid19/&quot;&gt;Here’s a good summary of actions taken by the government, written by Brookings&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Whether &lt;a href=&quot;https://www.bloomberg.com/opinion/articles/2020-06-09/the-bad-stocks-are-the-most-fun&quot;&gt;boredom-driven&lt;/a&gt;, low-borrow-rate-driven, or &lt;a href=&quot;https://www.wsj.com/articles/inflation-surge-whips-up-market-froth-11636817049&quot;&gt;inflation-driven&lt;/a&gt;, I think it’s safe to say that speculation hasn’t run this hot in a while. This isn’t limited to just equities – cousins such as options and cryptocurrencies have seen wild rides ($GME, anyone?), and even the housing market hasn’t been left untouched. On this point, I’ll go as far as to say that the &lt;a href=&quot;https://news.crunchbase.com/news/global-vc-funding-h1-2021-monthly-recap/&quot;&gt;record level of VC funding&lt;/a&gt; is due to the same effect. Even the &lt;a href=&quot;https://www.federalreserve.gov/publications/files/financial-stability-report-20210506.pdf&quot;&gt;FED says as much&lt;/a&gt;:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Valuations for some assets are elevated relative to historical norms even when using measures that account for Treasury yields. In this setting, asset prices may be vulnerable to significant declines should risk appetite fall.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Where does that lead us? I don’t know, but I expect to see a few things. In the short- and medium-term, I expect increased volatility in the markets. We see that the $VIX is still at a bit higher compared to pre-pandemic levels, and we also see that the $VVIX (volatility of the $VIX) is a bit higher as well. I also wouldn’t be surprised to see some kind of meltdown in the markets completely caused by animal spirits, considering that leverage serves to accelerate these random effects.&lt;/p&gt;
+
+&lt;h1 id=&quot;recruiting&quot;&gt;Recruiting&lt;/h1&gt;
+
+&lt;p&gt;So this recruiting cycle, I broke down the options I had into these four categories. &lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Large tech companies&lt;/li&gt;
+  &lt;li&gt;Mid-stage / Pre-IPO companies&lt;/li&gt;
+  &lt;li&gt;Early-stage startups&lt;/li&gt;
+  &lt;li&gt;Trading (Market-making)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;With the dual objectives of growing as a software engineer (in writing code, in being able to self-direct projects, and in being able to directly define and validate product requirements) and of having financial security, I pored over my options.&lt;/p&gt;
+
+&lt;p&gt;Large tech is quite a strong contender - pay is reliable even in a financial downturn, and companies of that scale can have pretty interesting work. However, from my past experience at a FAANG, it seemed just as possible that I’d easily become &lt;em&gt;just another engineer&lt;/em&gt; lost in the books, and my job would be &lt;em&gt;just another pipeline&lt;/em&gt; to make things work. Furthermore, a lot of these companies are so big that most tools used are developed in-house, meaning I would develop strong skills in tools that no one else uses. That, coupled with the perception of stagnation at a large tech company, ultimately drove me away.&lt;/p&gt;
+
+&lt;p&gt;Midstage tech companies were all the rage a short while ago (in the age of Uber, Lyft, Snowflake, etc.), and appear to be almost as popular as they were (Anyscale, Verkada, etc.). Having considered this route for a while, I can say that the one thing that eventually turned me away was the seeming financial instability of it all. As mentioned above, there’s a record level of VC funding right now, meaning that companies are raising more money and getting higher valuations, and it seems the effects are twofold. First, it means that in an economic downturn, the startup “runway” model of cash-burning would become unviable quickly, and a star startup can easily go under; it seems that this record level of funding has left them in a precarious state. The second effect is that, supposing an asset crash never happens, these companies’ valuations are already so high that the potential upside of some “IPO pop” (or equivalent increased valuation) is dampened. This makes sense by simple economics – low interest rates means that the present value of money is higher, meaning that we discount less for what we anticipate.&lt;/p&gt;
+
+&lt;p&gt;On the early-stage startup front, the analysis is quite similar to midstage startups, with the added bonus of being able to learn a lot in the right setting. After my past summer’s internship, I’ve come to understand the value of &lt;em&gt;good mentorship&lt;/em&gt;, and I’ve also come to realize that this definitely isn’t a given, especially at a company more focused on its own growth than its employees’ (and rightly so). As a result, I figured early-stage startups would be great later on, but not as a first job.&lt;/p&gt;
+
+&lt;p&gt;And that leaves me with trading.&lt;/p&gt;
+
+&lt;h2 id=&quot;an-aside-on-market-making&quot;&gt;An Aside: On Market Making&lt;/h2&gt;
+
+&lt;p&gt;Before we go into how it answers these dual objectives, perhaps it’s a good idea to address the most common objection I get: the notion that “Wall Street Finance” is just a bunch of rich people trying to take advantage of the small guy. With the recent $GME saga culminating in the Robinhood ban on trading $GME and the &lt;a href=&quot;https://www.reddit.com/r/wallstreetbets/comments/l747eg/citadel_reloaded_their_shorts_before_they_told/&quot;&gt;subsequent fallout with conspiracy theories of Robinhood and Citadel colluding&lt;/a&gt;&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, I can understand why people are wary of the financial industry as a whole. I, too, was in those shoes half a year ago.&lt;/p&gt;
+
+&lt;p&gt;Through more reading however, it’s become quite apparent that retail doesn’t quite understand the role of market makers. Matt Levine has this fantastic explanation of &lt;a href=&quot;https://www.bloomberg.com/opinion/articles/2021-02-05/robinhood-gamestop-saga-pressures-payment-for-order-flow&quot;&gt;how market making actually works&lt;/a&gt;, and the SEC did this &lt;a href=&quot;https://www.sec.gov/comments/credit-market-interconnectedness/cll10-2.pdf&quot;&gt;interesting investigation&lt;/a&gt; into the role of market makers on keeping liquidity through the COVID-19 crisis. On the whole, market makers aren’t institutions that facilitate things like the $GME wave, nor are they ones who illegally collude with brokers to take the common person’s money. That’s just not their business … usually. There &lt;em&gt;are&lt;/em&gt; cases of &lt;a href=&quot;https://www.sec.gov/files/Market%20Manipulations%20and%20Case%20Studies.pdf&quot;&gt;market manipulations by market makers&lt;/a&gt;, so it’s very much still true that honesty in the markets requires good faith on the part of market makers.&lt;/p&gt;
+
+&lt;p&gt;The question then becomes: Is Optiver a market maker that operates in good faith? After my summer there, I’d say yes, with a caveat. They’ve done quite a bit and more in terms of keeping market structures fair, from &lt;a href=&quot;https://www.optiver.com/2021/08/11/the-us-equity-options-market-is-overdue-for-an-update/&quot;&gt;writing many blog posts on things like PFOF&lt;/a&gt; to working with exchanges themselves to ensure that the exchange/trader boundary is fair (ie. that no algorithmic trader gets an advantage due to poor code).&lt;/p&gt;
+
+&lt;h2 id=&quot;a-skip-a-hedge-and-a-leap-of-faith&quot;&gt;A Skip, a Hedge, and a Leap of Faith&lt;/h2&gt;
+
+&lt;p&gt;So back to how working in finance addresses the two goals above.&lt;/p&gt;
+
+&lt;p&gt;On learning: At Optiver, the tech side functioned similarly to a mid-stage startup. There were no PMs; teams were groups that formed around work that needed to be done (and groups changed as the needs of the company changed.) Individual contributors collaborated with their teams to identify things that needed to be done, but often worked directly with traders and relevant parties to scope out their own work and create the projects. This was quite liberating – it was nice to be able to learn to drive my own projects! Furthermore, Optiver places a large emphasis on writing good code (all new employees have to go through bootcamp and read the “Bible” – “Clean Code” by Robert Martin). On the code I wrote, I received lots of helpful pointers that greatly strengthened the maintainability of my code. Of course, this is all local to the particular company and team – I can’t say this is true of the industry, and based on what I’ve heard, it doesn’t seem to be!&lt;/p&gt;
+
+&lt;p&gt;On financial security: It’s no secret that the trading industry pays well. My hypothesis, however, is that the Efficient Market Hypothesis probably comes into play here – given some skill set, a person probably makes the same regardless of where they go in the long run. For example, I might be sacrificing learning to create at Google-scale by going into finance, and compensated in some other form. Or, perhaps I lose the ability to work from home in exchange for a more fast-paced working environment. Or, perhaps I lose out on golden lottery tickets in startups in exchange for a set bonus structure. Whatever the case, it’s not obvious to me that the trading industry wins outright in this category just based on the compensation numbers.&lt;/p&gt;
+
+&lt;p&gt;The reason the finance industry does win out, though, is due to where I think our economy is headed. To preface this, it should be known that market makers profit most when lots of trading happens&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Then, taking the logical conclusion of the above section on our economy, it’s safe to say that this unstable economical position will lead to a large rebalance in the economy, causing large amounts of trades in the asset market.&lt;/p&gt;
+
+&lt;h2 id=&quot;its-not-all-golden-though&quot;&gt;It’s Not All Golden, Though&lt;/h2&gt;
+
+&lt;p&gt;In the finance industry, one thing is true: Money talks. It’s a double-edged sword: your performance can always be traced back to your delta on the bottom line, and your performance can always be traced back to your delta on the bottom line. It lends itself well to a meritocracy, while losing some of the human aspects. After having worked at some slowly-moving, politics-laden work cultures, I can safely say that this is a tradeoff I’m willing to take, at least for a while.&lt;/p&gt;
+
+&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:transitory-inflation&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;I started writing this blog post in November, before the FED changed their tune. We see with the benefit of hindsight that our prediction was in fact correct, as the FED is accelerating their tapering. &lt;a href=&quot;#fnref:transitory-inflation&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;I know, it’s probably controversial! If you have thoughts, please email me! &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;To view the tweet, visit &lt;a href=&quot;https://web.archive.org/web/20210128181446/https://twitter.com/justinkan/status/1354853920762253315?s=21&quot;&gt;The Wayback Machine&lt;/a&gt;. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;This is because in making markets, you place quotes where you believe you have an upper hand in the price. To make the more, you’d like more people to trade against you on your quoted price. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">“If I may ask, where are you planning to work at full-time? Is it for evil or for good?”</summary></entry><entry><title type="html">Unintuitive Probability: Machine Repairs</title><link href="https://addcnin.blue/2021/12/05/durrett-3-12/" rel="alternate" type="text/html" title="Unintuitive Probability: Machine Repairs" /><published>2021-12-05T00:00:00-08:00</published><updated>2021-12-05T00:00:00-08:00</updated><id>https://addcnin.blue/2021/12/05/durrett-3-12</id><content type="html" xml:base="https://addcnin.blue/2021/12/05/durrett-3-12/">&lt;p&gt;The more classes I take in probability, the more I realize how often my intuition breaks for these problems, &lt;em&gt;especially&lt;/em&gt; when the Exponential distribution is involved. Today I’ll be explaining a homework problem for Stat150 (Stochastic Processes) showcasing unintuitive behavior regarding exponential distributions. Furthermore, I’ll also show a simulation that backs up these results, along with the code used to generate the simulation.&lt;/p&gt;
 
 &lt;h2 id=&quot;problem-statement&quot;&gt;Problem Statement&lt;/h2&gt;
 
@@ -66,7 +158,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/posts/2021-12-05-durrett-3-12/sim.gif&quot; alt=&quot;Simulation&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;and see that our simulated results do indeed match the math.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">The more classes I take in probability, the more I realize how often my intuition breaks for these problems, especially when the Exponential distribution is involved. Today I’ll be explaining a homework problem for Stat150 (Stochastic Processes) showcasing unintuitive behavior regarding exponential distributions. Furthermore, I’ll also show a simulation that backs up these results, along with the code used to generate the simulation.</summary></entry><entry><title type="html">I’ll Take My Quarterback, Thanks</title><link href="https://addcnin.blue/2021/11/04/a-quarter-of-efficiency/" rel="alternate" type="text/html" title="I’ll Take My Quarterback, Thanks" /><published>2021-11-04T00:00:00-07:00</published><updated>2021-11-04T00:00:00-07:00</updated><id>https://addcnin.blue/2021/11/04/a-quarter-of-efficiency</id><content type="html" xml:base="https://addcnin.blue/2021/11/04/a-quarter-of-efficiency/">&lt;p&gt;Many things in life don’t have a clear estimate at a first glance – many times, 10% will seem like an underestimate, and 100% will seem like an overestimate. In these situations, I’ve learned that it’s actually pretty good to take the geometric mean of the two as a ballpark estimate: ~30%, or roughly something like 1/4 ~ 1/3.&lt;/p&gt;
+&lt;p&gt;and see that our simulated results do indeed match the math.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">The more classes I take in probability, the more I realize how often my intuition breaks for these problems, especially when the Exponential distribution is involved. Today I’ll be explaining a homework problem for Stat150 (Stochastic Processes) showcasing unintuitive behavior regarding exponential distributions. Furthermore, I’ll also show a simulation that backs up these results, along with the code used to generate the simulation.</summary></entry><entry><title type="html">I’ll Take My Quarterback, Thanks</title><link href="https://addcnin.blue/2021/11/26/a-quarter-of-efficiency/" rel="alternate" type="text/html" title="I’ll Take My Quarterback, Thanks" /><published>2021-11-26T00:00:00-08:00</published><updated>2021-11-26T00:00:00-08:00</updated><id>https://addcnin.blue/2021/11/26/a-quarter-of-efficiency</id><content type="html" xml:base="https://addcnin.blue/2021/11/26/a-quarter-of-efficiency/">&lt;p&gt;Many things in life don’t have a clear estimate at a first glance – many times, 10% will seem like an underestimate, and 100% will seem like an overestimate. In these situations, I’ve learned that it’s actually pretty good to take the geometric mean of the two as a ballpark estimate: ~30%, or roughly something like 1/4 ~ 1/3.&lt;/p&gt;
 
 &lt;p&gt;Let’s take a few examples:&lt;/p&gt;
 &lt;ul&gt;
@@ -490,39 +582,4 @@ A \textrm{\\} B &amp;amp; \mathrm{cheat} &amp;amp; \mathrm{honest} \\
       &lt;p&gt;Modelled off of Berkeleytime, &lt;a href=&quot;#fnref:berkeleytime&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format encourages cheating, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.</summary></entry><entry><title type="html">Random Fact #4</title><link href="https://addcnin.blue/2020/03/24/fact3/" rel="alternate" type="text/html" title="Random Fact #4" /><published>2020-03-24T00:00:00-07:00</published><updated>2020-03-24T00:00:00-07:00</updated><id>https://addcnin.blue/2020/03/24/fact3</id><content type="html" xml:base="https://addcnin.blue/2020/03/24/fact3/">&lt;h2 id=&quot;todays-fact-foot-on-water&quot;&gt;Today’s Fact: Foot On Water&lt;/h2&gt;
-&lt;p&gt;Andi came up with an insane question: How wide does a human foot have to be for a human to stand on water? Of course, he came up with something insane, reproduced here.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;foot-on-water-andi-gu&quot;&gt;Foot On Water, Andi Gu&lt;/h2&gt;
-
-&lt;h3 id=&quot;relevant-parameters&quot;&gt;Relevant Parameters&lt;/h3&gt;
-
-&lt;p&gt;Let \(m\) be the mass of some person, let \(R\) be the radius of his foot (which we model as a circle), and let \(\gamma\) be the surface energy of water (i.e. surface tension).&lt;/p&gt;
-
-&lt;p&gt;We make a simplistic model in which the water deforms in a circularly symmetric pattern around the foot, that when viewed at a cross-section appears as follows:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/posts/facts/fact_4.png&quot; alt=&quot;watershape&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;derivation-of-foot-size&quot;&gt;Derivation of Foot Size&lt;/h3&gt;
-
-&lt;p&gt;The increase in the water surface area is&lt;/p&gt;
-
-\[\begin{align*}
-    \Delta A &amp;amp;= \int_{R}^{R+\frac{h}{\tan \theta}} 2\pi r (\frac{1}{\cos \theta}-1) d{r} \\
-    &amp;amp;= \pi (\frac{h^2}{\tan^2 \theta} + \frac{2Rh}{\tan \theta}) \frac{1-\cos \theta}{\cos \theta}
-\end{align*}\]
-
-&lt;p&gt;Since \(\Delta E=\gamma \Delta A\), we have:&lt;/p&gt;
-
-\[\begin{align*}
-    F_{up} &amp;amp;= \frac{\partial E}{\partial h} \\
-    &amp;amp;= \gamma \pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{2h}{\tan^2 \theta}+\frac{2R}{\tan \theta}) \\
-    &amp;amp;= 2\gamma\pi (\frac{1-\cos \theta}{\cos \theta}) (\frac{h+R \tan \theta}{\tan^2 \theta}) \\
-    &amp;amp;\approx 2\gamma \pi R \frac{1-\cos \theta}{\sin \theta}
-\end{align*}\]
-
-&lt;p&gt;with the last step following since it is reasonable to assume \(R \gg h\)&lt;/p&gt;
-
-&lt;p&gt;The only remaining variable is \(\theta\) – it is reasonable to assume a small angle \(\theta\) (i.e. \(\theta \approx \frac{\pi}{10}\), so that this adds a factor of approximately 0.1). With \(\gamma=72.8\) dynes per centimeter and \(m=80\) kilograms, \(R \approx 13 \text{km}\).&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Today’s Fact: Foot On Water Andi came up with an insane question: How wide does a human foot have to be for a human to stand on water? Of course, he came up with something insane, reproduced here.</summary></entry></feed>
+&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format encourages cheating, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.</summary></entry></feed>
