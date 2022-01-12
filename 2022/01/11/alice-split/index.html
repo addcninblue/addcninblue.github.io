@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>Winter Break Project Review #1: DIY Mechanical Keyboard</title>
+  <meta name="description" content="My initial motivation to learn Computer Science came from doing side projects. It was through doing these projects that I realized how little I knew and how much there was left to learn (and how much there would always be to learn!). Sometime in the past year, I’ve come to realize that the bulk of my time has shifted from doing these side projects to laboring away on problem sets. This is not intrinsically a bad thing! However, as the classes become more and more advanced, the theory I’m learning has become more and more disconnected from the practical usefulness I wanted to get out of college. As a result, I’ve been losing motivation to learn concepts.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/2022/01/11/alice-split/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+
+
+  
+  <meta property="og:title" content="Winter Break Project Review #1: DIY Mechanical Keyboard">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/2022/01/11/alice-split/">
+  <meta property="og:description" content="My initial motivation to learn Computer Science came from doing side projects. It was through doing these projects that I realized how little I knew and how much there was left to learn (and how much there would always be to learn!). Sometime in the past year, I’ve come to realize that the bulk of my time has shifted from doing these side projects to laboring away on problem sets. This is not intrinsically a bad thing! However, as the classes become more and more advanced, the theory I’m learning has become more and more disconnected from the practical usefulness I wanted to get out of college. As a result, I’ve been losing motivation to learn concepts.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="Winter Break Project Review #1: DIY Mechanical Keyboard">
+  <meta name="twitter:description" content="My initial motivation to learn Computer Science came from doing side projects. It was through doing these projects that I realized how little I knew and how much there was left to learn (and how mu...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+  
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Winter Break Project Review #1: DIY Mechanical Keyboard</h1>
+  </header>
+
+  <div class="post-content">
+
+    
+    <div class="table-of-contents">
+    <hr>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#project-review">Project Review</a></li>
+  <li><a href="#a-mini-intro-to-myself-a-month-ago">A Mini Intro to Myself A Month Ago</a></li>
+  <li><a href="#openscad-i-wish-i-knew-this-existed">Openscad: I Wish I Knew This Existed</a></li>
+  <li><a href="#3d-printing-a-blessing-and-a-curse">3D Printing: A Blessing and A Curse</a></li>
+  <li><a href="#takeaways">Takeaways</a>
+    <ul>
+      <li><a href="#3d-printing">3D Printing</a></li>
+      <li><a href="#measure-twice-and-cut-once">Measure Twice and Cut Once</a></li>
+      <li><a href="#the-right-tools-can-make-all-the-difference">The Right Tools Can Make All The Difference</a></li>
+    </ul>
+  </li>
+  <li><a href="#footnotes">Footnotes</a></li>
+</ul>
+
+    </div>
+    <hr>
+    
+
+    <p>My initial motivation to learn Computer Science came from doing side projects.
+It was through doing these projects that I realized how little I knew and how
+much there was left to learn (and how much there would always be to learn!).
+Sometime in the past year, I’ve come to realize that the bulk of my time has
+shifted from doing these side projects to laboring away on problem sets. This
+is not intrinsically a bad thing! However, as the classes become more and more
+advanced, the theory I’m learning has become more and more disconnected from
+the practical usefulness I wanted to get out of college. As a result, I’ve been
+losing motivation to learn concepts.</p>
+
+<p>So, one of my goals in senior year is to start doing these side projects again,
+with the aim to apply concepts learned in school and to also motivate learning
+deeper concepts.</p>
+
+<p>This winter break, I challenged myself to finish a few things:</p>
+<ul>
+  <li>Design and create a mechanical keyboard from scratch</li>
+  <li>Create an autotrader for <a href="https://kalshi.com/">Kalshi</a></li>
+  <li>Write a <a href="https://tree-sitter.github.io/tree-sitter/">Tree-sitter grammar</a> for <a href="https://cooklang.org/">Cooklang</a>.</li>
+  <li>Develop course content for my <a href="https://cs198.org/">new upcoming decal</a>.</li>
+</ul>
+
+<p>As these projects are all nearing their completion, I decided to start
+documenting things I learned. This post will be about project #1.</p>
+
+<p><em>[Pictures to be added later]</em></p>
+
+<h2 id="project-review">Project Review</h2>
+
+<p>I went into this project with the intent of learning the following:</p>
+
+<ul>
+  <li>How to do Computer-Aided Design (CAD)</li>
+  <li>How 3D printing works, particularly its limits</li>
+  <li>How to apply EE concepts learned in school to real projects</li>
+</ul>
+
+<p>and of course, I wanted a new keyboard! Toward these goals, I think the project
+was a huge success. I’ll detail a intro I wish I had for myself, and then go on
+to talk about the various tools I used.</p>
+
+<h2 id="a-mini-intro-to-myself-a-month-ago">A Mini Intro to Myself A Month Ago</h2>
+
+<p>When I first started on this project, it was unclear to me the “build steps”
+that would be necessary to go from design to printed product. Does there exist
+some unified toolchain, as there often does in software, or would I need to
+piece together parts? It turns out the answer for 3D design and printing is the
+latter. The steps are roughly as follows:</p>
+
+<ol>
+  <li>Create a design in CAD software.</li>
+  <li>Then, export these designs as STL files. To note, STL files are “rendered”
+files that essentially ‘meshify’ everything. This means things like rounded
+corners are rendered into meshes of triangles. The only way to preserve the
+original design’s fidelity is to save the project using your CAD editor’s
+file type (which differs by each CAD).</li>
+  <li>After you have a STL, use a
+<a href="https://all3dp.com/1/best-3d-slicer-software-3d-printer/">slicer</a> to
+convert the 3D model into directions for the printer to follow. These files
+should have the extension <code class="highlighter-rouge">.gcode</code>. For my projects, I chose to use
+PrusaSlicer.</li>
+  <li>Once the <code class="highlighter-rouge">.gcode</code> is generated, this can be loaded onto the 3D printer and printed!</li>
+</ol>
+
+<p>The intuition behind each step, in English, is as follows:</p>
+
+<ol>
+  <li>You tell the CAD software what design you want to create.</li>
+  <li>You then tell the CAD software to create a render that roughly approximates
+the design you want (<em>approximates</em> because it’s impossible to draw a fully
+round corner in real life).</li>
+  <li>You then use another software (the slicer) to take this rendered design and
+generate machine commands that tell the 3D printer what steps you want it to
+take (move the nozzle to this coordinate and start spewing plastic).</li>
+  <li>These commands are then loaded onto the 3D printer itself and printed.</li>
+</ol>
+
+<h2 id="openscad-i-wish-i-knew-this-existed">Openscad: I Wish I Knew This Existed</h2>
+
+<p><a href="https://openscad.org/">Openscad</a> was the CAD I used to generate my models. I
+chose this since I wanted to try out a programmatic way to generate 3D models,
+and since keyboards are parametric by nature. There is a great flowchart that I
+used to figure out which software I should use included in the footnotes
+<sup id="fnref:CAD-Choosing" role="doc-noteref"><a href="#fn:CAD-Choosing" class="footnote" rel="footnote">1</a></sup>.</p>
+
+<p>Openscad is a CAD that lets you fully generate models through their programming
+language. My non-professional opinion is that it straddles the line somewhere
+between “magical” and “cursed”. Let me explain.</p>
+
+<p>First, its standard library is <a href="https://openscad.org/cheatsheet/">quite small</a>.
+This is a two-sided sword: it makes the language quite easy to pick up, but it
+also means that common things don’t exist. Things like sums, etc require the
+individual to write helper functions. As a result, it seems like most people
+actually have their own homebrewed standard libraries that they include in
+every project. As I’m writing this, I realized I’ve never bothered to look for
+a batteries-included general standard library, and it seems like <a href="https://openscad.org/libraries.html">there are
+multiple</a>. (That would’ve been nice to know!)</p>
+
+<p>But what Openscad does well – it’s a great language to model something if you
+know <em>exactly</em> what you want. The language is pretty intuitive; you just might
+need to get creative with the primitives initially to get the hang of it.
+Overall, it’s a fantastic way for people who are really familiar with software
+to get into the CAD world.</p>
+
+<p>There are some rough edges outside of its programmatic side. Debugging the 3D
+design is a large part of designing something in CAD, and I feel that Openscad
+lacks a bit in that regard. Sometimes, trying to figure out why a part doesn’t
+render correctly is an exercise in patience, as there’s no easy way to have
+Openscad describe <em>why</em> a shape was rendered the way it was. I gradually
+learned to work around this by rendering each part individually, and it seems
+more generally that this is what people do – they put in a “Debug Mode” flag
+that allows them to see these transformations. I’d love for this to be an
+Openscad feature though.</p>
+
+<h2 id="3d-printing-a-blessing-and-a-curse">3D Printing: A Blessing and A Curse</h2>
+
+<p>I bought an <a href="https://www.amazon.com/Integrated-Structure-Motherboard-Carborundum-8-66x8-66x9-84in/dp/B07FFTHMMN/">Ender 3
+V2</a>
+to do my 3D printing. Amazon delivery services notwithstanding<sup id="fnref:Amazon" role="doc-noteref"><a href="#fn:Amazon" class="footnote" rel="footnote">2</a></sup>, this
+printer has been a pain to set up and a joy to use.</p>
+
+<p>Assembling the printer was pretty fast. It came with Ikea-like instructions
+that were fairly easy to follow. I’d estimate the process took roughly an
+afternoon. However, the process to actually get the first print out was
+anything but simple. My lessons boil down to the following:</p>
+
+<ul>
+  <li>Bed height matters <em>a lot</em>. If your prints aren’t sticking, there’s a good
+chance this is the issue. There’s a great infographic I found post-mortem in
+the footnotes<sup id="fnref:Bed-Leveling" role="doc-noteref"><a href="#fn:Bed-Leveling" class="footnote" rel="footnote">3</a></sup>.</li>
+  <li>On that note, use 9-point leveling if your printer allows for it.
+Essentially, it allows you to level your bed at 9 points of accuracy. For the
+Ender 3 V2, there’s <a href="https://github.com/Jyers/Marlin">Jyers’s Mod</a> that allows
+for this.</li>
+  <li>If your prints <em>still</em> aren’t sticking, and you’re sure that the bed is
+level, check what type of PLA you have and the temperatures the manufacturer
+recommends. For a novice, this is non-obvious. I bought a matte ink, and it
+turns out the prints weren’t sticking since it required hotter tempertures both
+for the extruder and for the bed.</li>
+  <li>Lastly, if your prints <em>still</em> aren’t sticking, wash your bed with hot water
+and dishwasher soap. For some reason, I need to do this before <em>every single
+print</em> for them to stick.</li>
+</ul>
+
+<h2 id="takeaways">Takeaways</h2>
+
+<h3 id="3d-printing">3D Printing</h3>
+
+<p>This process is much slower than I expected. For reference, printing the top
+levels of my keyboard took about ~4 hours each on the “draft” setting
+(second-to-last in terms of quality). The bases took about ~7 hours each. This
+means that 3D printing is good for semi-rapid prototyping, somewhere between
+REPL-speeds and sending a print to China. (It still seems faster than FAANG
+build tools, to be honest /s).</p>
+
+<h3 id="measure-twice-and-cut-once">Measure Twice and Cut Once</h3>
+
+<p>As I was juggling several projects over the break, I started printing the
+keyboard when I thought it was “about 95% done”. Boy did I realize that was a
+mistake! I ended up printing keyboard plates that had keys that were too far
+apart, requiring me to print the set again. Furthermore, I failed to properly
+consider the placement of the rotary knob, meaning I had to cut out part of the
+bottom case to accommodate for the knob. These weren’t catastrophic
+project-ending failures, but it definitely caused unnecessary delays.</p>
+
+<h3 id="the-right-tools-can-make-all-the-difference">The Right Tools Can Make All The Difference</h3>
+
+<p>I initially wired the right hand keyboard with stripped wire I salvaged from my
+EE labs. To separate the rows and columns, I figured I could just use some kind
+of tape. After all, that’s what the guide I read said to use. Boy was that a
+mistake. The tape I used was too thin and ended up tearing, leaving me with
+random ghost connections. I ended up biting the bullet and buying <a href="https://www.amazon.com/gp/product/B088KQFHV7/">wire from
+Amazon</a>. What a difference that
+made! Not only was the wiring cleaner, it was also multiples faster to wire and
+debug. Sometimes, blaming the tool is just a scapegoat for bad skill (sports
+players, anyone?), but in times like these, having the right tools can make a
+world of difference.</p>
+
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:CAD-Choosing" role="doc-endnote">
+      <p><img src="https://i.redd.it/lvhhiaxuukl41.png" alt="Model-Making Programs For 3D Printing" /> <a href="#fnref:CAD-Choosing" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+    <li id="fn:Amazon" role="doc-endnote">
+      <p>They lost this printer in the mail somehow, so I had to cancel my shipment to have them send another one. <a href="#fnref:Amazon" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+    <li id="fn:Bed-Leveling" role="doc-endnote">
+      <p><img src="https://i.imgur.com/tbvOlB9.jpeg" alt="Bed Leveling" /> <a href="#fnref:Bed-Leveling" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    
+    
+    
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

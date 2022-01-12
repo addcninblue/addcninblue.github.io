@@ -1,4 +1,195 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2021-12-08T19:25:27-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">A Skip, a Hedge, and a Leap of Faith</title><link href="https://addcnin.blue/2021/12/08/full-time-job/" rel="alternate" type="text/html" title="A Skip, a Hedge, and a Leap of Faith" /><published>2021-12-08T00:00:00-08:00</published><updated>2021-12-08T00:00:00-08:00</updated><id>https://addcnin.blue/2021/12/08/full-time-job</id><content type="html" xml:base="https://addcnin.blue/2021/12/08/full-time-job/">&lt;p&gt;“If I may ask, where are you planning to work at full-time? Is it for evil or for good?”&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-01-11T20:04:58-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Winter Break Project Review #1: DIY Mechanical Keyboard</title><link href="https://addcnin.blue/2022/01/11/alice-split/" rel="alternate" type="text/html" title="Winter Break Project Review #1: DIY Mechanical Keyboard" /><published>2022-01-11T00:00:00-08:00</published><updated>2022-01-11T00:00:00-08:00</updated><id>https://addcnin.blue/2022/01/11/alice-split</id><content type="html" xml:base="https://addcnin.blue/2022/01/11/alice-split/">&lt;p&gt;My initial motivation to learn Computer Science came from doing side projects.
+It was through doing these projects that I realized how little I knew and how
+much there was left to learn (and how much there would always be to learn!).
+Sometime in the past year, I’ve come to realize that the bulk of my time has
+shifted from doing these side projects to laboring away on problem sets. This
+is not intrinsically a bad thing! However, as the classes become more and more
+advanced, the theory I’m learning has become more and more disconnected from
+the practical usefulness I wanted to get out of college. As a result, I’ve been
+losing motivation to learn concepts.&lt;/p&gt;
+
+&lt;p&gt;So, one of my goals in senior year is to start doing these side projects again,
+with the aim to apply concepts learned in school and to also motivate learning
+deeper concepts.&lt;/p&gt;
+
+&lt;p&gt;This winter break, I challenged myself to finish a few things:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Design and create a mechanical keyboard from scratch&lt;/li&gt;
+  &lt;li&gt;Create an autotrader for &lt;a href=&quot;https://kalshi.com/&quot;&gt;Kalshi&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Write a &lt;a href=&quot;https://tree-sitter.github.io/tree-sitter/&quot;&gt;Tree-sitter grammar&lt;/a&gt; for &lt;a href=&quot;https://cooklang.org/&quot;&gt;Cooklang&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Develop course content for my &lt;a href=&quot;https://cs198.org/&quot;&gt;new upcoming decal&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As these projects are all nearing their completion, I decided to start
+documenting things I learned. This post will be about project #1.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;[Pictures to be added later]&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;project-review&quot;&gt;Project Review&lt;/h2&gt;
+
+&lt;p&gt;I went into this project with the intent of learning the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to do Computer-Aided Design (CAD)&lt;/li&gt;
+  &lt;li&gt;How 3D printing works, particularly its limits&lt;/li&gt;
+  &lt;li&gt;How to apply EE concepts learned in school to real projects&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;and of course, I wanted a new keyboard! Toward these goals, I think the project
+was a huge success. I’ll detail a intro I wish I had for myself, and then go on
+to talk about the various tools I used.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-mini-intro-to-myself-a-month-ago&quot;&gt;A Mini Intro to Myself A Month Ago&lt;/h2&gt;
+
+&lt;p&gt;When I first started on this project, it was unclear to me the “build steps”
+that would be necessary to go from design to printed product. Does there exist
+some unified toolchain, as there often does in software, or would I need to
+piece together parts? It turns out the answer for 3D design and printing is the
+latter. The steps are roughly as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create a design in CAD software.&lt;/li&gt;
+  &lt;li&gt;Then, export these designs as STL files. To note, STL files are “rendered”
+files that essentially ‘meshify’ everything. This means things like rounded
+corners are rendered into meshes of triangles. The only way to preserve the
+original design’s fidelity is to save the project using your CAD editor’s
+file type (which differs by each CAD).&lt;/li&gt;
+  &lt;li&gt;After you have a STL, use a
+&lt;a href=&quot;https://all3dp.com/1/best-3d-slicer-software-3d-printer/&quot;&gt;slicer&lt;/a&gt; to
+convert the 3D model into directions for the printer to follow. These files
+should have the extension &lt;code class=&quot;highlighter-rouge&quot;&gt;.gcode&lt;/code&gt;. For my projects, I chose to use
+PrusaSlicer.&lt;/li&gt;
+  &lt;li&gt;Once the &lt;code class=&quot;highlighter-rouge&quot;&gt;.gcode&lt;/code&gt; is generated, this can be loaded onto the 3D printer and printed!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The intuition behind each step, in English, is as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;You tell the CAD software what design you want to create.&lt;/li&gt;
+  &lt;li&gt;You then tell the CAD software to create a render that roughly approximates
+the design you want (&lt;em&gt;approximates&lt;/em&gt; because it’s impossible to draw a fully
+round corner in real life).&lt;/li&gt;
+  &lt;li&gt;You then use another software (the slicer) to take this rendered design and
+generate machine commands that tell the 3D printer what steps you want it to
+take (move the nozzle to this coordinate and start spewing plastic).&lt;/li&gt;
+  &lt;li&gt;These commands are then loaded onto the 3D printer itself and printed.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;openscad-i-wish-i-knew-this-existed&quot;&gt;Openscad: I Wish I Knew This Existed&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://openscad.org/&quot;&gt;Openscad&lt;/a&gt; was the CAD I used to generate my models. I
+chose this since I wanted to try out a programmatic way to generate 3D models,
+and since keyboards are parametric by nature. There is a great flowchart that I
+used to figure out which software I should use included in the footnotes
+&lt;sup id=&quot;fnref:CAD-Choosing&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:CAD-Choosing&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;Openscad is a CAD that lets you fully generate models through their programming
+language. My non-professional opinion is that it straddles the line somewhere
+between “magical” and “cursed”. Let me explain.&lt;/p&gt;
+
+&lt;p&gt;First, its standard library is &lt;a href=&quot;https://openscad.org/cheatsheet/&quot;&gt;quite small&lt;/a&gt;.
+This is a two-sided sword: it makes the language quite easy to pick up, but it
+also means that common things don’t exist. Things like sums, etc require the
+individual to write helper functions. As a result, it seems like most people
+actually have their own homebrewed standard libraries that they include in
+every project. As I’m writing this, I realized I’ve never bothered to look for
+a batteries-included general standard library, and it seems like &lt;a href=&quot;https://openscad.org/libraries.html&quot;&gt;there are
+multiple&lt;/a&gt;. (That would’ve been nice to know!)&lt;/p&gt;
+
+&lt;p&gt;But what Openscad does well – it’s a great language to model something if you
+know &lt;em&gt;exactly&lt;/em&gt; what you want. The language is pretty intuitive; you just might
+need to get creative with the primitives initially to get the hang of it.
+Overall, it’s a fantastic way for people who are really familiar with software
+to get into the CAD world.&lt;/p&gt;
+
+&lt;p&gt;There are some rough edges outside of its programmatic side. Debugging the 3D
+design is a large part of designing something in CAD, and I feel that Openscad
+lacks a bit in that regard. Sometimes, trying to figure out why a part doesn’t
+render correctly is an exercise in patience, as there’s no easy way to have
+Openscad describe &lt;em&gt;why&lt;/em&gt; a shape was rendered the way it was. I gradually
+learned to work around this by rendering each part individually, and it seems
+more generally that this is what people do – they put in a “Debug Mode” flag
+that allows them to see these transformations. I’d love for this to be an
+Openscad feature though.&lt;/p&gt;
+
+&lt;h2 id=&quot;3d-printing-a-blessing-and-a-curse&quot;&gt;3D Printing: A Blessing and A Curse&lt;/h2&gt;
+
+&lt;p&gt;I bought an &lt;a href=&quot;https://www.amazon.com/Integrated-Structure-Motherboard-Carborundum-8-66x8-66x9-84in/dp/B07FFTHMMN/&quot;&gt;Ender 3
+V2&lt;/a&gt;
+to do my 3D printing. Amazon delivery services notwithstanding&lt;sup id=&quot;fnref:Amazon&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:Amazon&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, this
+printer has been a pain to set up and a joy to use.&lt;/p&gt;
+
+&lt;p&gt;Assembling the printer was pretty fast. It came with Ikea-like instructions
+that were fairly easy to follow. I’d estimate the process took roughly an
+afternoon. However, the process to actually get the first print out was
+anything but simple. My lessons boil down to the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bed height matters &lt;em&gt;a lot&lt;/em&gt;. If your prints aren’t sticking, there’s a good
+chance this is the issue. There’s a great infographic I found post-mortem in
+the footnotes&lt;sup id=&quot;fnref:Bed-Leveling&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:Bed-Leveling&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
+  &lt;li&gt;On that note, use 9-point leveling if your printer allows for it.
+Essentially, it allows you to level your bed at 9 points of accuracy. For the
+Ender 3 V2, there’s &lt;a href=&quot;https://github.com/Jyers/Marlin&quot;&gt;Jyers’s Mod&lt;/a&gt; that allows
+for this.&lt;/li&gt;
+  &lt;li&gt;If your prints &lt;em&gt;still&lt;/em&gt; aren’t sticking, and you’re sure that the bed is
+level, check what type of PLA you have and the temperatures the manufacturer
+recommends. For a novice, this is non-obvious. I bought a matte ink, and it
+turns out the prints weren’t sticking since it required hotter tempertures both
+for the extruder and for the bed.&lt;/li&gt;
+  &lt;li&gt;Lastly, if your prints &lt;em&gt;still&lt;/em&gt; aren’t sticking, wash your bed with hot water
+and dishwasher soap. For some reason, I need to do this before &lt;em&gt;every single
+print&lt;/em&gt; for them to stick.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;takeaways&quot;&gt;Takeaways&lt;/h2&gt;
+
+&lt;h3 id=&quot;3d-printing&quot;&gt;3D Printing&lt;/h3&gt;
+
+&lt;p&gt;This process is much slower than I expected. For reference, printing the top
+levels of my keyboard took about ~4 hours each on the “draft” setting
+(second-to-last in terms of quality). The bases took about ~7 hours each. This
+means that 3D printing is good for semi-rapid prototyping, somewhere between
+REPL-speeds and sending a print to China. (It still seems faster than FAANG
+build tools, to be honest /s).&lt;/p&gt;
+
+&lt;h3 id=&quot;measure-twice-and-cut-once&quot;&gt;Measure Twice and Cut Once&lt;/h3&gt;
+
+&lt;p&gt;As I was juggling several projects over the break, I started printing the
+keyboard when I thought it was “about 95% done”. Boy did I realize that was a
+mistake! I ended up printing keyboard plates that had keys that were too far
+apart, requiring me to print the set again. Furthermore, I failed to properly
+consider the placement of the rotary knob, meaning I had to cut out part of the
+bottom case to accommodate for the knob. These weren’t catastrophic
+project-ending failures, but it definitely caused unnecessary delays.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-right-tools-can-make-all-the-difference&quot;&gt;The Right Tools Can Make All The Difference&lt;/h3&gt;
+
+&lt;p&gt;I initially wired the right hand keyboard with stripped wire I salvaged from my
+EE labs. To separate the rows and columns, I figured I could just use some kind
+of tape. After all, that’s what the guide I read said to use. Boy was that a
+mistake. The tape I used was too thin and ended up tearing, leaving me with
+random ghost connections. I ended up biting the bullet and buying &lt;a href=&quot;https://www.amazon.com/gp/product/B088KQFHV7/&quot;&gt;wire from
+Amazon&lt;/a&gt;. What a difference that
+made! Not only was the wiring cleaner, it was also multiples faster to wire and
+debug. Sometimes, blaming the tool is just a scapegoat for bad skill (sports
+players, anyone?), but in times like these, having the right tools can make a
+world of difference.&lt;/p&gt;
+
+&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:CAD-Choosing&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;img src=&quot;https://i.redd.it/lvhhiaxuukl41.png&quot; alt=&quot;Model-Making Programs For 3D Printing&quot; /&gt; &lt;a href=&quot;#fnref:CAD-Choosing&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:Amazon&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;They lost this printer in the mail somehow, so I had to cancel my shipment to have them send another one. &lt;a href=&quot;#fnref:Amazon&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:Bed-Leveling&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;&lt;img src=&quot;https://i.imgur.com/tbvOlB9.jpeg&quot; alt=&quot;Bed Leveling&quot; /&gt; &lt;a href=&quot;#fnref:Bed-Leveling&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">My initial motivation to learn Computer Science came from doing side projects. It was through doing these projects that I realized how little I knew and how much there was left to learn (and how much there would always be to learn!). Sometime in the past year, I’ve come to realize that the bulk of my time has shifted from doing these side projects to laboring away on problem sets. This is not intrinsically a bad thing! However, as the classes become more and more advanced, the theory I’m learning has become more and more disconnected from the practical usefulness I wanted to get out of college. As a result, I’ve been losing motivation to learn concepts.</summary></entry><entry><title type="html">A Skip, a Hedge, and a Leap of Faith</title><link href="https://addcnin.blue/2021/12/08/full-time-job/" rel="alternate" type="text/html" title="A Skip, a Hedge, and a Leap of Faith" /><published>2021-12-08T00:00:00-08:00</published><updated>2021-12-08T00:00:00-08:00</updated><id>https://addcnin.blue/2021/12/08/full-time-job</id><content type="html" xml:base="https://addcnin.blue/2021/12/08/full-time-job/">&lt;p&gt;“If I may ask, where are you planning to work at full-time? Is it for evil or for good?”&lt;/p&gt;
 
 &lt;p&gt;“Well, it’s not strictly Good, but I don’t suppose it’s &lt;em&gt;that Evil&lt;/em&gt;, per se”&lt;/p&gt;
 
@@ -43,17 +234,17 @@
 
 &lt;p&gt;With the dual objectives of growing as a software engineer (in writing code, in being able to self-direct projects, and in being able to directly define and validate product requirements) and of having financial security, I pored over my options.&lt;/p&gt;
 
-&lt;p&gt;Large tech is quite a strong contender - pay is reliable even in a financial downturn, and companies of that scale can have pretty interesting work. However, from my past experience at a FAANG, it seemed just as possible that I’d easily become &lt;em&gt;just another engineer&lt;/em&gt; lost in the books, and my job would be &lt;em&gt;just another pipeline&lt;/em&gt; to make things work. Furthermore, a lot of these companies are so big that most tools used are developed in-house, meaning I would develop strong skills in tools that no one else uses. That, coupled with the perception of stagnation at a large tech company, ultimately drove me away.&lt;/p&gt;
+&lt;p&gt;Large tech is quite a strong contender - pay is reliable even in a financial downturn, and companies of that scale can have pretty interesting work. However, from my past experience at a FAANG, it seemed just as possible that I’d easily become &lt;em&gt;just another engineer&lt;/em&gt; lost in the books, and my job would be &lt;em&gt;just another pipeline&lt;/em&gt; to make things work. &lt;!-- TODO: wordy --&gt; Furthermore, a lot of these companies are so big that most tools used are developed in-house, meaning I would develop strong skills in tools that no one else uses. That, coupled with the perception of stagnation at a large tech company, ultimately drove me away.&lt;/p&gt;
 
 &lt;p&gt;Midstage tech companies were all the rage a short while ago (in the age of Uber, Lyft, Snowflake, etc.), and appear to be almost as popular as they were (Anyscale, Verkada, etc.). Having considered this route for a while, I can say that the one thing that eventually turned me away was the seeming financial instability of it all. As mentioned above, there’s a record level of VC funding right now, meaning that companies are raising more money and getting higher valuations, and it seems the effects are twofold. First, it means that in an economic downturn, the startup “runway” model of cash-burning would become unviable quickly, and a star startup can easily go under; it seems that this record level of funding has left them in a precarious state. The second effect is that, supposing an asset crash never happens, these companies’ valuations are already so high that the potential upside of some “IPO pop” (or equivalent increased valuation) is dampened. This makes sense by simple economics – low interest rates means that the present value of money is higher, meaning that we discount less for what we anticipate.&lt;/p&gt;
 
-&lt;p&gt;On the early-stage startup front, the analysis is quite similar to midstage startups, with the added bonus of being able to learn a lot in the right setting. After my past summer’s internship, I’ve come to understand the value of &lt;em&gt;good mentorship&lt;/em&gt;, and I’ve also come to realize that this definitely isn’t a given, especially at a company more focused on its own growth than its employees’ (and rightly so). As a result, I figured early-stage startups would be great later on, but not as a first job.&lt;/p&gt;
+&lt;p&gt;On the early-stage startup front, the analysis is quite similar to midstage startups, with the added bonus of being able to learn a lot in the right setting. &lt;!-- TODO: wordy --&gt; After my past summer’s internship, I’ve come to understand the value of &lt;em&gt;good mentorship&lt;/em&gt;, and I’ve also come to realize that this definitely isn’t a given, especially at a company more focused on its own growth than its employees’ (and rightly so). As a result, I figured early-stage startups would be great later on, but not as a first job.&lt;/p&gt;
 
 &lt;p&gt;And that leaves me with trading.&lt;/p&gt;
 
 &lt;h2 id=&quot;an-aside-on-market-making&quot;&gt;An Aside: On Market Making&lt;/h2&gt;
 
-&lt;p&gt;Before we go into how it answers these dual objectives, perhaps it’s a good idea to address the most common objection I get: the notion that “Wall Street Finance” is just a bunch of rich people trying to take advantage of the small guy. With the recent $GME saga culminating in the Robinhood ban on trading $GME and the &lt;a href=&quot;https://www.reddit.com/r/wallstreetbets/comments/l747eg/citadel_reloaded_their_shorts_before_they_told/&quot;&gt;subsequent fallout with conspiracy theories of Robinhood and Citadel colluding&lt;/a&gt;&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, I can understand why people are wary of the financial industry as a whole. I, too, was in those shoes half a year ago.&lt;/p&gt;
+&lt;p&gt;Before we go into how it answers these dual objectives, perhaps it’s a good idea to address the most common objection I get: the notion that “Wall Street Finance” is just a bunch of rich people trying to take advantage of the small guy. &lt;!-- TODO: wordy --&gt; With the recent $GME saga culminating in the Robinhood ban on trading $GME and the &lt;a href=&quot;https://www.reddit.com/r/wallstreetbets/comments/l747eg/citadel_reloaded_their_shorts_before_they_told/&quot;&gt;subsequent fallout with conspiracy theories of Robinhood and Citadel colluding&lt;/a&gt;&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, I can understand why people are wary of the financial industry as a whole. I, too, was in those shoes half a year ago.&lt;/p&gt;
 
 &lt;p&gt;Through more reading however, it’s become quite apparent that retail doesn’t quite understand the role of market makers. Matt Levine has this fantastic explanation of &lt;a href=&quot;https://www.bloomberg.com/opinion/articles/2021-02-05/robinhood-gamestop-saga-pressures-payment-for-order-flow&quot;&gt;how market making actually works&lt;/a&gt;, and the SEC did this &lt;a href=&quot;https://www.sec.gov/comments/credit-market-interconnectedness/cll10-2.pdf&quot;&gt;interesting investigation&lt;/a&gt; into the role of market makers on keeping liquidity through the COVID-19 crisis. On the whole, market makers aren’t institutions that facilitate things like the $GME wave, nor are they ones who illegally collude with brokers to take the common person’s money. That’s just not their business … usually. There &lt;em&gt;are&lt;/em&gt; cases of &lt;a href=&quot;https://www.sec.gov/files/Market%20Manipulations%20and%20Case%20Studies.pdf&quot;&gt;market manipulations by market makers&lt;/a&gt;, so it’s very much still true that honesty in the markets requires good faith on the part of market makers.&lt;/p&gt;
 
@@ -525,61 +716,4 @@ P1 \textrm{\\} P2&amp;amp; \textrm{hoard} &amp;amp; \textrm{don't hoard} \\
 &lt;h2 id=&quot;some-screenshots&quot;&gt;Some Screenshots&lt;/h2&gt;
 &lt;p&gt;Jupyterhub up and running:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/posts/homelab/jupyter.png&quot; alt=&quot;jupyterhub&quot; /&gt;&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found here. I chose to install NixOS, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.</summary></entry><entry><title type="html">P/NP and Game Theory</title><link href="https://addcnin.blue/2020/04/05/pnp-game-theory/" rel="alternate" type="text/html" title="P/NP and Game Theory" /><published>2020-04-05T00:00:00-07:00</published><updated>2020-04-05T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/05/pnp-game-theory</id><content type="html" xml:base="https://addcnin.blue/2020/04/05/pnp-game-theory/">&lt;p&gt;In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format &lt;em&gt;encourages cheating&lt;/em&gt;, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;N.B.: This post was originally the essay for one of my Stat 155 assignments. I thought it interesting enough to share on my blog – I hope you enjoy it!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;uc-zoom&quot;&gt;UC Zoom&lt;/h2&gt;
-
-&lt;p&gt;On Friday, March 13th, classes were officially moved online by the UC Berkeley Administration. At this point, the change to the grading rubric had not been made yet. Let us model a typical Computer Science class, where grades are curved to a B+, as an n-player zero-sum game&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (with zero being the mean, and each integer difference being one standard deviation). To simplify this, we examine the two-player zero-sum game, which is well-studied.&lt;/p&gt;
-
-&lt;p&gt;The game is modeled as follows, with each student having two possibilities, &lt;code class=&quot;highlighter-rouge&quot;&gt;cheat&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;honest&lt;/code&gt;. We assume that the students are of equal skill, and that cheating gives a \(+1\) standard deviation edge. Being caught in a class is \(-0.12\)&lt;sup id=&quot;fnref:cheating-payoff&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:cheating-payoff&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. Payoffs are written to row, who is \(A\) in this case:&lt;/p&gt;
-
-\[\begin{bmatrix}
-A \textrm{\\} B &amp;amp; \mathrm{cheat} &amp;amp; \mathrm{honest} \\
-\mathrm{cheat} &amp;amp; 0 &amp;amp; 0.88 \\
-\mathrm{honest} &amp;amp; -0.88 &amp;amp; 0 \\
-\end{bmatrix}\]
-
-&lt;p&gt;We see \(\mathrm{(cheat, cheat)}\) is the dominant strategy, meaning in the case of letter grading, our model tells us that students do in fact have an incentive to cheat.&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;campuswide-pnp-policy&quot;&gt;Campuswide P/NP Policy&lt;/h2&gt;
-&lt;p&gt;With the campuswide P/NP policy in place, the incentive to cheat is suddenly changed. In the CS department, it is yet unclear how grades will be assigned, but taking that a C- minimum is required to get a passing grade, one can do several standard deviations below mean and still pass in the class. Looking at grade distributions of a large CS class (\(N &amp;gt; 19000\)), historic grades have told us that C- and up covers 95% of the population&lt;sup id=&quot;fnref:berkeleytime&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:berkeleytime&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Therefore, in a game where two students are both taking the course for P/NP credit, modeling the grade distributions off of a large CS class, there seems to be very low incentive for anyone to cheat. Regardless of whether or not they cheat, they will more than likely make the cutoff if they put enough effort into the class, and cheating only gives the extra possibility of getting caught. Therefore, with P/NP, it seems that &lt;em&gt;the incentive for cheating decreases&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;This time, the game is modeled as a general-sum game, since one person doing well has a negligible impact on another. We only look at the payout of one person, since in the n-person general-sum game, everyone has a symmetric payout.&lt;/p&gt;
-
-\[\begin{bmatrix}
-\mathrm{cheat} &amp;amp; \mathrm{honest} \\
-0 + \epsilon &amp;amp; 0 \\
-\end{bmatrix}\]
-
-&lt;h2 id=&quot;banning-proctoring-over-zoom&quot;&gt;Banning Proctoring Over Zoom&lt;/h2&gt;
-&lt;p&gt;With the ban of proctoring, the risk of getting caught for cheating is all but zeroed. Does this impact the risk of cheating?&lt;/p&gt;
-
-&lt;p&gt;With the Zoom ban, many CS classes have shifted to an open-book policy. This means that, effectively, everything in the test can be looked up either way. As a result, while cheating is easily doable, with other mitigations such as test randomization, it seems that there is little impact on the rate of cheating. We get the same chart, after adding the ease of cheating and subtracting the hoops needed to hop through to cheat.&lt;/p&gt;
-
-\[\begin{bmatrix}
-\mathrm{cheat} &amp;amp; \mathrm{honest} \\
-0 + \epsilon &amp;amp; 0 \\
-\end{bmatrix}\]
-
-&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
-
-&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;A brief note about the choice of zero-sum versus general-sum: Since classes in the CS department are all curved, this would mean that, if we took two students \(A\) and \(B\), fixing \(A\)’s performance would mean that \(B\) doing better causes \(A\) to get a worse grade. We see that in the two-player scenario, since their grades must average to the same grade, \(B\) getting \(+d\) standard deviations would result in \(A\) getting \(-d\). This is a zero-sum game. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:cheating-payoff&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;Suppose 1 in every 50 students are caught for cheating. (This amounts to 2%.) Empirically, we have no data for cheating, since it would require all students to admit their cheating, which is somewhat of a catch-22. Either way, suppose that getting caught for cheating results in \(-5\) on their grade, whereas not getting caught results in \(+1\). This is a bernoulli random variable with \(p=0.02\), and the expected value is \(0.02 * -5 + 0.98 * 1 = 0.88\). &lt;a href=&quot;#fnref:cheating-payoff&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;Note that these incentives are still in place even without online testing; it’s just that cheating with proctors in person is probably much harder. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:berkeleytime&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;Modelled off of Berkeleytime, &lt;a href=&quot;#fnref:berkeleytime&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">In light of the recent changes of UC Berkeley’s grading scheme to P/NP, it’s quite interesting to examine the problem of grading through a Game Theoretic perspective. Lots of students have proposed that the change to an online format encourages cheating, and that the curves for this semester will change drastically as a result. In this essay, I hope to explore this claim and test its validity.</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;/assets/posts/homelab/jupyter.png&quot; alt=&quot;jupyterhub&quot; /&gt;&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found here. I chose to install NixOS, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.</summary></entry></feed>
