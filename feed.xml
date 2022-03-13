@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-03-12T17:57:12-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Learning, Learning to Learn, and Teaching</title><link href="https://addcnin.blue/2022/03/12/teaching/" rel="alternate" type="text/html" title="Learning, Learning to Learn, and Teaching" /><published>2022-03-12T00:00:00-08:00</published><updated>2022-03-12T00:00:00-08:00</updated><id>https://addcnin.blue/2022/03/12/teaching</id><content type="html" xml:base="https://addcnin.blue/2022/03/12/teaching/">&lt;p&gt;I’ve taught for several semesters in Berkeley now, and I think it’s high time
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-03-12T18:25:52-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Learning, Learning to Learn, and Teaching</title><link href="https://addcnin.blue/2022/03/12/teaching/" rel="alternate" type="text/html" title="Learning, Learning to Learn, and Teaching" /><published>2022-03-12T00:00:00-08:00</published><updated>2022-03-12T00:00:00-08:00</updated><id>https://addcnin.blue/2022/03/12/teaching</id><content type="html" xml:base="https://addcnin.blue/2022/03/12/teaching/">&lt;p&gt;I’ve taught for several semesters in Berkeley now, and I think it’s high time
 I wrote some thoughts down before my knowledge on teaching fades
 away.&lt;sup id=&quot;fnref:teaching&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:teaching&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; So here’s a collection of thoughts: we begin with a light
 theory of how people acquire knowledge through inquiry, followed by a quick
@@ -20,15 +20,14 @@ their soul rather than reflections of their teachers.&lt;/p&gt;
 &lt;p&gt;How do people learn? It all begins when a person asks “why?” and starts seeking
 answers for themselves.&lt;sup id=&quot;fnref:babies-why&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:babies-why&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
-&lt;p&gt;It’s important to understand why this is fundamentally successful. First,
-there’s the question of motivation. When a person begins questioning the world,
-it’s their internal motivation driving them to answer a question. This
-motivation allows the individual to dig deeply into their question of choice,
-possibly uncovering the truth they initially set out to find, possibly
-stumbling upon another question. Regardless of the outcome, however, it’s
-imperative to note that the individual’s motives are not due to external
-factors. Rather, they’re internal, allowing them to try, retry, and retry again
-should they run into a wall.&lt;/p&gt;
+&lt;p&gt;It’s important to understand why this is successful. First, there’s the
+question of motivation. When a person begins questioning the world, it’s their
+internal motivation driving them to answer a question. This motivation allows
+the individual to dig deeply into their question of choice, possibly uncovering
+the truth they initially set out to find, possibly stumbling upon another
+question. Regardless of the outcome, however, it’s imperative to note that the
+individual’s motives are not due to external factors. Rather, they’re internal,
+allowing them to try, retry, and retry again should they run into a wall.&lt;/p&gt;
 
 &lt;p&gt;At the end of the journey to discovery, when all the “Why”s are answered, all
 we’re left with is knowledge and satisfaction. It’s incredibly gratifying to be
@@ -133,10 +132,10 @@ capable, why does teaching even exist? Why isn’t it always better for students
 to ask questions, stumble around, and get a solid, fundamental grasp of
 everything?&lt;/p&gt;
 
-&lt;p&gt;I believe the answer is largely a question of efficiency. While it’s possible a
-student can answer their own questions and discover new things about the world
-around them, it simultaneously remains true that there are an infinite number
-of “wrong paths” to go down.&lt;/p&gt;
+&lt;p&gt;The answer is largely a question of efficiency. While it’s possible a student
+can answer their own questions and discover new things about the world around
+them, it simultaneously remains true that there are an infinite number of
+“wrong paths” to go down.&lt;/p&gt;
 
 &lt;h3 id=&quot;the-role-of-teaching&quot;&gt;The Role of Teaching&lt;/h3&gt;
 
@@ -154,7 +153,7 @@ it &lt;em&gt;does not approximate learning&lt;/em&gt;! Students cannot be given 
 then a hypothesis after, since it’s mentally unclear where this result is
 supposed to fit into their framework of reality.&lt;/p&gt;
 
-&lt;p&gt;How do we fix this? I believe teaching should always start from a foundational
+&lt;p&gt;To fix this, we should rethink teaching by starting from a foundational
 motivation. In the Calculus example above, instead of starting from a result,
 form a motivating question first: “Suppose a ball were thrown in the air. How
 do we calculate its highest point off the ground?” (This example can also be
@@ -170,7 +169,7 @@ the “valid solution” that students should come to.&lt;/p&gt;
 process of error is sometimes completely removed since the process of
 constructing bad paths has become artificial.&lt;/p&gt;
 
-&lt;p&gt;I think this is a necessary sacrifice we take in favor of accelerated learning,
+&lt;p&gt;Think this is a necessary sacrifice we take in favor of accelerated learning,
 within bounds. Many teachers forget the process of motivated learning and
 become prescriptive (and they wonder why concepts don’t stick in students’
 heads). As educators, we can do a lot better: put yourself in your students’
