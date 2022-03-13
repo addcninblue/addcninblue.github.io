@@ -1,4 +1,196 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-01-11T20:04:58-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Winter Break Project Review #1: DIY Mechanical Keyboard</title><link href="https://addcnin.blue/2022/01/11/alice-split/" rel="alternate" type="text/html" title="Winter Break Project Review #1: DIY Mechanical Keyboard" /><published>2022-01-11T00:00:00-08:00</published><updated>2022-01-11T00:00:00-08:00</updated><id>https://addcnin.blue/2022/01/11/alice-split</id><content type="html" xml:base="https://addcnin.blue/2022/01/11/alice-split/">&lt;p&gt;My initial motivation to learn Computer Science came from doing side projects.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-03-12T17:57:12-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Learning, Learning to Learn, and Teaching</title><link href="https://addcnin.blue/2022/03/12/teaching/" rel="alternate" type="text/html" title="Learning, Learning to Learn, and Teaching" /><published>2022-03-12T00:00:00-08:00</published><updated>2022-03-12T00:00:00-08:00</updated><id>https://addcnin.blue/2022/03/12/teaching</id><content type="html" xml:base="https://addcnin.blue/2022/03/12/teaching/">&lt;p&gt;I’ve taught for several semesters in Berkeley now, and I think it’s high time
+I wrote some thoughts down before my knowledge on teaching fades
+away.&lt;sup id=&quot;fnref:teaching&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:teaching&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; So here’s a collection of thoughts: we begin with a light
+theory of how people acquire knowledge through inquiry, followed by a quick
+meta-analysis of learning to learn, ending with teaching.&lt;/p&gt;
+
+&lt;p&gt;I like to view teaching as a way of approximating the learning processes that
+people would normally undergo. The key difference is usually either of
+convenience or speed; learning is quite arduous, and teaching often eases the
+process.&lt;/p&gt;
+
+&lt;p&gt;But through teaching, lots of educators forget what it’s like to be a student.
+They lean on prescriptive methods of teaching, leading students to be walking
+mirrors of their word. Through this post, I sincerely hope that students and
+educators alike will be able to rethink learning and become reflections of
+their soul rather than reflections of their teachers.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+
+&lt;p&gt;How do people learn? It all begins when a person asks “why?” and starts seeking
+answers for themselves.&lt;sup id=&quot;fnref:babies-why&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:babies-why&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s important to understand why this is fundamentally successful. First,
+there’s the question of motivation. When a person begins questioning the world,
+it’s their internal motivation driving them to answer a question. This
+motivation allows the individual to dig deeply into their question of choice,
+possibly uncovering the truth they initially set out to find, possibly
+stumbling upon another question. Regardless of the outcome, however, it’s
+imperative to note that the individual’s motives are not due to external
+factors. Rather, they’re internal, allowing them to try, retry, and retry again
+should they run into a wall.&lt;/p&gt;
+
+&lt;p&gt;At the end of the journey to discovery, when all the “Why”s are answered, all
+we’re left with is knowledge and satisfaction. It’s incredibly gratifying to be
+able to ask a question, start with only a toolbox of inquisition, and to arrive
+at some tangible knowledge.&lt;/p&gt;
+
+&lt;p&gt;Importantly, this process highlights a key component of learning: through the
+grueling process of hunting down hints and clues that eventually yield the
+answers, we implicitly learn about learning. We learn what to do, what not to
+do, and how to go about answering similar questions in the future. It’s
+somewhat akin to acquiring a new set of tools in our toolbox of inquisition.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning-to-learn&quot;&gt;Learning to Learn&lt;/h2&gt;
+
+&lt;p&gt;Let’s examine this a bit more. If we want to be good teachers, it’s imperative
+to understand the mechanism through which we obtain knowledge. Formalizing
+the previous section on learning, we have a model that looks like the
+following:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Student has initial set of facts, as well as a toolbox of methods they
+understand to experiment on the world.&lt;sup id=&quot;fnref:consistency&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:consistency&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; They ask some motivated
+question about the world around them.&lt;/li&gt;
+  &lt;li&gt;To answer this question, they initially have a broad hypothesis of how the
+world should behave like according to their set of facts. Notably, this
+includes the form of their answer, even if misconstrued.&lt;/li&gt;
+  &lt;li&gt;They then conduct experiments to verify or challenge their beliefs.&lt;/li&gt;
+  &lt;li&gt;Eventually, they will obtain a new set of facts that updates their
+understanding of the world. In the process, they might also obtain a new
+method of experimentation to add to their toolbox.&lt;/li&gt;
+  &lt;li&gt;Repeat from step 1, with the extra knowledge and tools from step 4.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;example-discovering-probability&quot;&gt;Example: “Discovering Probability”&lt;/h3&gt;
+
+&lt;p&gt;Let’s use this framework to imagine what it might be like to rediscover the
+memoryless property of coin flips.&lt;/p&gt;
+
+&lt;p&gt;A reasonable (even if wrong) initial set of beliefs about the world might be
+something like this:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Beliefs:
+    &lt;ul&gt;
+      &lt;li&gt;Coins have some fixed chance of landing Heads or Tails. This chance does
+  not change between flips.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Toolbox:
+    &lt;ul&gt;
+      &lt;li&gt;We can flip coins to test the chance of outcomes. (&lt;em&gt;physical&lt;/em&gt;)&lt;/li&gt;
+      &lt;li&gt;If we believe strongly that the chance of flipping Heads is fixed, we can
+  also simulate this. (&lt;em&gt;computational&lt;/em&gt;)&lt;/li&gt;
+      &lt;li&gt;Similarly, if we believe strongly that the chance of flipping Heads is
+  fixed, we can mathematically prove this. (&lt;em&gt;proof&lt;/em&gt;) [^proof]&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Initial hypothesis (belief that we want to test):
+    &lt;ul&gt;
+      &lt;li&gt;Coins are fair, so if we get many Heads in a row, it should start giving
+  us Tails.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Assuming that we only have the &lt;em&gt;physical&lt;/em&gt; method available, we can easily test
+the memoryless property of coin flips. If our initial hypothesis is true, then
+we should expect to see more Heads than Tails after a Tail. However, recording
+large number of flips will show us that this isn’t true.&lt;/p&gt;
+
+&lt;p&gt;As a result, we can update our internal beliefs about coin flips.&lt;/p&gt;
+
+&lt;p&gt;A couple of remarks are in order.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;It’s interesting to note that if one holds the belief of coins being
+consistent through flips, the memoryless property falls out immediately.
+(Formally, conditional independence implies the memoryless property.)&lt;/li&gt;
+  &lt;li&gt;However, students will sometimes hold the simultaneous belief that coins are
+(1) unchanging through rolls, and yet (2) believe in some kind of “mean
+reversion,” or “bias toward the mean on subsequent rolls”. When confronted
+with this discrepancy, they’ll often doubt (1) rather than (2), making the
+&lt;em&gt;computational&lt;/em&gt; and &lt;em&gt;proof&lt;/em&gt;-based methods unavailable to them.&lt;/li&gt;
+  &lt;li&gt;Typically, as we go through this process of testing, we also run into
+roadblocks and contradictions. These can be frustrating, but they’re
+actually quite critical to learning! Since part of the process is
+formulating a hypothesis, it’s important to understand the actual space of
+viable hypotheses. Finding counterexamples allow us to understand the
+boundaries of the hypothesis space, which in turn allow us to ask better,
+more-informed questions.&lt;/li&gt;
+  &lt;li&gt;Also, as we go through this process, we often will come up with better ways
+of doing things. (As the proverb goes, “necessity is the mother of
+invention!”) These discoveries add to our toolbox, adding to step 1 and
+accelerating step 3.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;teaching&quot;&gt;Teaching&lt;/h2&gt;
+
+&lt;p&gt;With this model of learning in mind, we turn to teaching. Before we answer the
+question of &lt;em&gt;how&lt;/em&gt; we should teach, there’s a more fundamental question that
+needs to be answered. Assuming a student is sufficiently self-motivated and
+capable, why does teaching even exist? Why isn’t it always better for students
+to ask questions, stumble around, and get a solid, fundamental grasp of
+everything?&lt;/p&gt;
+
+&lt;p&gt;I believe the answer is largely a question of efficiency. While it’s possible a
+student can answer their own questions and discover new things about the world
+around them, it simultaneously remains true that there are an infinite number
+of “wrong paths” to go down.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-role-of-teaching&quot;&gt;The Role of Teaching&lt;/h3&gt;
+
+&lt;p&gt;So how should we teach? In its purest form, teaching should approximate the
+process outlined in &lt;a href=&quot;#learning-to-learn&quot;&gt;Learning to Learn&lt;/a&gt;, with one important
+modification: the teacher is given the role of guiding a student through making
+&lt;em&gt;insightful&lt;/em&gt; hypotheses and &lt;em&gt;insightful&lt;/em&gt; wrong decisions.&lt;/p&gt;
+
+&lt;p&gt;In particular, this means teaching should never be prescriptive, where a method
+is given without rationale and told to be adhered to. All too common, we see
+this in public education. In calculus, for example, students are told to “just
+differentiate, set to zero, and solve,” and to “check the second derivative
+for validity.” According to our framework above, this method is wrong because
+it &lt;em&gt;does not approximate learning&lt;/em&gt;! Students cannot be given a result first and
+then a hypothesis after, since it’s mentally unclear where this result is
+supposed to fit into their framework of reality.&lt;/p&gt;
+
+&lt;p&gt;How do we fix this? I believe teaching should always start from a foundational
+motivation. In the Calculus example above, instead of starting from a result,
+form a motivating question first: “Suppose a ball were thrown in the air. How
+do we calculate its highest point off the ground?” (This example can also be
+helped with a graph of the ball at various points describing a parabola.) With
+this motivating question, students can then form their own hypotheses and
+understand where each possible solution falls short. In the end, it’s ideal for
+the instructor to manually describe approaches that break, and then describe
+the “valid solution” that students should come to.&lt;/p&gt;
+
+&lt;h3 id=&quot;shortfalls-of-teaching&quot;&gt;Shortfalls of Teaching&lt;/h3&gt;
+
+&lt;p&gt;As with any approximation, there are shortfalls. With teaching, it’s that the
+process of error is sometimes completely removed since the process of
+constructing bad paths has become artificial.&lt;/p&gt;
+
+&lt;p&gt;I think this is a necessary sacrifice we take in favor of accelerated learning,
+within bounds. Many teachers forget the process of motivated learning and
+become prescriptive (and they wonder why concepts don’t stick in students’
+heads). As educators, we can do a lot better: put yourself in your students’
+shoes, rewind your brains to match theirs, and relearn the concepts with them
+from a clean slate.&lt;/p&gt;
+
+&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:teaching&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;It’s a pipe dream, but someday I’d love to be a teaching professor! School seems quite tedious and a PhD seems out of grasp, but who knows what a few years in industry will do… &lt;a href=&quot;#fnref:teaching&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:babies-why&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;I mean, have you ever talked to a toddler who just learned the word “why”? Perhaps this is why they acquire knowledge so quickly… &lt;a href=&quot;#fnref:babies-why&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:consistency&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Actually, we also have to make the assumption that the universe is consistent and understandable. This seems obvious in our age, but it’s not a priori clear that the universe should behave the same tomorrow as it does today. Suffice it to say however that we all take this for granted, so we don’t have much need to explicitly say this. &lt;a href=&quot;#fnref:consistency&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">I’ve taught for several semesters in Berkeley now, and I think it’s high time I wrote some thoughts down before my knowledge on teaching fades away.1 So here’s a collection of thoughts: we begin with a light theory of how people acquire knowledge through inquiry, followed by a quick meta-analysis of learning to learn, ending with teaching. It’s a pipe dream, but someday I’d love to be a teaching professor! School seems quite tedious and a PhD seems out of grasp, but who knows what a few years in industry will do… ⤴</summary></entry><entry><title type="html">Winter Break Project Review #1: DIY Mechanical Keyboard</title><link href="https://addcnin.blue/2022/01/11/alice-split/" rel="alternate" type="text/html" title="Winter Break Project Review #1: DIY Mechanical Keyboard" /><published>2022-01-11T00:00:00-08:00</published><updated>2022-01-11T00:00:00-08:00</updated><id>https://addcnin.blue/2022/01/11/alice-split</id><content type="html" xml:base="https://addcnin.blue/2022/01/11/alice-split/">&lt;p&gt;My initial motivation to learn Computer Science came from doing side projects.
 It was through doing these projects that I realized how little I knew and how
 much there was left to learn (and how much there would always be to learn!).
 Sometime in the past year, I’ve come to realize that the bulk of my time has
@@ -656,64 +848,4 @@ P1 \textrm{\\} P2&amp;amp; \textrm{hoard} &amp;amp; \textrm{don't hoard} \\
       &lt;p&gt;Here, I make a key assumption that price elasticity of hoarded goods are elastic beyond their basic consumption. The author of the Adam Smith Institute article, Macdonald, has observed anecdotally that his experience supports this conclusion. &lt;a href=&quot;#fnref:price-elasticity&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">With the Coronavirus, tissue paper and supplies are flying out of stores. Some argue that it’s a natural human reaction best explained by Game Theory. In this essay, I will explore these claims, as well as how several countries have responded differently, and how their policies can be explained by Game Theory.</summary></entry><entry><title type="html">Homelab with NixOS, Jupyter, and More</title><link href="https://addcnin.blue/2020/04/13/homelab/" rel="alternate" type="text/html" title="Homelab with NixOS, Jupyter, and More" /><published>2020-04-13T00:00:00-07:00</published><updated>2020-04-13T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/13/homelab</id><content type="html" xml:base="https://addcnin.blue/2020/04/13/homelab/">&lt;p&gt;For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found &lt;a href=&quot;https://pcpartpicker.com/user/addcn/saved/kfN2Vn&quot;&gt;here&lt;/a&gt;. I chose to install &lt;a href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt;, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.&lt;/p&gt;
-
-&lt;h2 id=&quot;rationale-for-parts&quot;&gt;Rationale For Parts&lt;/h2&gt;
-&lt;p&gt;I chose a 3700X mainly for the insane number of cores, as hosting several concurrent applications would require a lot of multithreading. I considered the 3600, and I figured the increase in cores was worth the small bump in price. For the GPU, I debated between the 1080 Ti and a 2070 Super, and I eventually opted for the 1080 Ti for the increased memory, figuring that the FP16 performance wouldn’t be seen by me (at least not for a while). (Later on in the month, my neighbor gave me an old computer, and I found a 1080 inside. I’m extremely lucky and grateful for him :’).) The main hard drive is an NVMe SSD. The hard drives are used Barracuda drives, and will be purchased off of Craigslist. Eventually, once the coronavirus wave passes and I purchase the hard drives, I will use &lt;a href=&quot;https://www.kernel.org/doc/Documentation/bcache.txt&quot;&gt;bcache&lt;/a&gt; to turn the SSD into a caching layer, with the main memory on the hard drives. The configuration will use LVM on top of software RAID 6, so that storage is very easily configurable and reliable.&lt;/p&gt;
-
-&lt;h2 id=&quot;nixos&quot;&gt;NixOS&lt;/h2&gt;
-&lt;p&gt;NixOS installation is pretty straightforward. Their &lt;a href=&quot;https://nixos.wiki/wiki/NixOS_Installation_Guide&quot;&gt;guide&lt;/a&gt; is very well written, so I defer to them for installation instructions. My dotfiles can be found &lt;a href=&quot;https://github.com/addcninblue/dotfiles/tree/nixos&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;jupyterhub&quot;&gt;JupyterHub&lt;/h2&gt;
-&lt;p&gt;Since I would be doing a decent amount of computation, and since my main laptop is a Pixelbook, I wanted to be able to have access to a Python interpreter anywhere, particularly hosted on a website. As a result, I decided to use &lt;a href=&quot;https://jupyterhub.readthedocs.io/en/stable/&quot;&gt;Jupyterhub&lt;/a&gt;, which is pretty stable and has really good documentation. I set up the installation in an LXC container running Ubuntu 18.04, following the instructions &lt;a href=&quot;https://jupyterhub.readthedocs.io/en/stable/installation-guide-hard.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Installing new kernels for JupyterHub was a huge headache, however. There are a lot of package managers for Python, including &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualenv&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;venv&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt;, and often their usages overlap with one another. Maintaining them is quite the headache! For JupyterHub, &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; is used to make environments, and &lt;em&gt;kernels&lt;/em&gt; are used when executing code inside JupyterHub. Below is a detailed rundown of creation of a new conda environment for a particular user:&lt;/p&gt;
-
-&lt;h3 id=&quot;creating-a-new-environment&quot;&gt;Creating a New Environment&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;First, we create the &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; environment. Here, our conda environment is called &lt;code class=&quot;highlighter-rouge&quot;&gt;conda_env&lt;/code&gt; and we install the &lt;code class=&quot;highlighter-rouge&quot;&gt;ipykernel&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;matplotlib&lt;/code&gt; packages. You can choose your packages, but note that &lt;code class=&quot;highlighter-rouge&quot;&gt;ipykernel&lt;/code&gt; &lt;em&gt;must&lt;/em&gt; be installed: &lt;code class=&quot;highlighter-rouge&quot;&gt;conda create --name &quot;conda_env&quot; python=3.7 ipykernel matplotlib&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Next, we activate the conda environment: &lt;code class=&quot;highlighter-rouge&quot;&gt;conda activate conda_env&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Now, since we have our conda environment activated, the &lt;code class=&quot;highlighter-rouge&quot;&gt;python&lt;/code&gt; binary will be bound to the &lt;code class=&quot;highlighter-rouge&quot;&gt;python&lt;/code&gt; package that the &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; environment created. (You can use &lt;code class=&quot;highlighter-rouge&quot;&gt;which python&lt;/code&gt; to see that in action!) Now, we can use &lt;code class=&quot;highlighter-rouge&quot;&gt;python -m ipykernel install --user --name &quot;kernel_name&quot;&lt;/code&gt; to install a new kernel with the name &lt;code class=&quot;highlighter-rouge&quot;&gt;kernel_name&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;listing-environments&quot;&gt;Listing Environments&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Listing &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; environments: &lt;code class=&quot;highlighter-rouge&quot;&gt;conda info --envs&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Listing JupyterHub kernels: &lt;code class=&quot;highlighter-rouge&quot;&gt;jupyter kernelspec list&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;deleting-kernels-and-conda-environments&quot;&gt;Deleting Kernels and Conda Environments&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;First, we remove the jupyter kernel: &lt;code class=&quot;highlighter-rouge&quot;&gt;jupyter kernelspec remove &quot;kernel_name&quot;&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Next, we remove the conda environment that created the kernel: &lt;code class=&quot;highlighter-rouge&quot;&gt;conda remove --name &quot;conda_env&quot; --all&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;bonus-installing-packages-from-requirementstxt&quot;&gt;Bonus: Installing Packages From requirements.txt&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Follow steps from &lt;a href=&quot;#creating-a-new-environment&quot;&gt;&lt;strong&gt;Creating a New Environment&lt;/strong&gt;&lt;/a&gt;, but before installing the kernel, run &lt;code class=&quot;highlighter-rouge&quot;&gt;conda install --file requirements.txt&lt;/code&gt; to install the packages to the &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; environment. Then, proceed as usual.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;making-lxc-play-nice&quot;&gt;Making LXC Play Nice&lt;/h2&gt;
-&lt;p&gt;The last thing I needed to do to make the container GPU-accelerated was to pass the GPU through as a device from the host OS to the container. It was definitely not trivial.&lt;/p&gt;
-
-&lt;h3 id=&quot;gpu-passthrough&quot;&gt;GPU Passthrough&lt;/h3&gt;
-&lt;p&gt;This was by far the most annoying part of this build. Stéphane Graber’s blog has a very very well written &lt;a href=&quot;https://stgraber.org/2017/03/21/cuda-in-lxd/&quot;&gt;post&lt;/a&gt; about how to get GPU passthrough to work, but since I am using different operating systems, I will highlight some things that might trip others up:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The Nvidia driver version &lt;em&gt;must be exactly the same&lt;/em&gt;. &lt;strong&gt;This includes the minor version!&lt;/strong&gt; A driver mismatch will cause you endless pain and suffering. For those who are venturing down this path, I recommend to first install the host Nvidia driver and CUDA driver, and then download matching versions for the LXC client.&lt;/li&gt;
-  &lt;li&gt;When you install the &lt;code class=&quot;highlighter-rouge&quot;&gt;.run&lt;/code&gt; Nvidia driver on the LXC client, you might run into something along the lines of “xxx kernel module is already installed”. To fix this, append &lt;code class=&quot;highlighter-rouge&quot;&gt;--no-kernel-module&lt;/code&gt; to the script (so it looks something like &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo sh NVIDIA-Linux-x86_64-440.36.run --no-kernel-module&lt;/code&gt;). I don’t fully understand this, but my understanding is that since LXC containers use the host kernel, the module is getting loaded by the host operating system, so the kernel module doesn’t need to be installed by the guest container. Here, that would mean that we would only need to install the driver for the tools, not for the kernel module).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;bind-mounting-folders&quot;&gt;Bind-Mounting Folders&lt;/h3&gt;
-&lt;p&gt;The next thing I wanted to do was to bind-mount folders from my host operating system into the container to be accessible by JupyterHub. Since the installation of JupyterHub meant that each user would get their own home folder, I figured bind-mounting home from the host operating system to home on the container would be trivial. As all things go, it wasn’t.&lt;/p&gt;
-
-&lt;p&gt;Again, Stéphane Graber’s blog has another &lt;a href=&quot;https://stgraber.org/2017/06/15/custom-user-mappings-in-lxd-containers/&quot;&gt;post&lt;/a&gt; on getting user mappings working in containers. This time, I didn’t run into particular issues, and following his mappings worked very well.&lt;/p&gt;
-
-&lt;h2 id=&quot;raid-lvm-and-bcache&quot;&gt;RAID, LVM, and Bcache&lt;/h2&gt;
-&lt;p&gt;Once the coronavirus situation dies down, I will be able to purchase the hard drives, and I will edit this part with the installation process.&lt;/p&gt;
-
-&lt;p&gt;Update: And it’s here! Check out the new blog post &lt;a href=&quot;/2020/05/03/homelab-2/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;some-screenshots&quot;&gt;Some Screenshots&lt;/h2&gt;
-&lt;p&gt;Jupyterhub up and running:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/posts/homelab/jupyter.png&quot; alt=&quot;jupyterhub&quot; /&gt;&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">For half a year (and more), I’ve been thinking about building a computer to learn and train ML models on, as well as to host my web applications on. Over this past half month, I finally bit the bullet, opting for a Ryzen 3700X paired with an Nvidia 1080 Ti. The full parts list can be found here. I chose to install NixOS, a declarative operating system, and this post outlines the full software-side process, including several hurdles I came across.</summary></entry></feed>
+&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">With the Coronavirus, tissue paper and supplies are flying out of stores. Some argue that it’s a natural human reaction best explained by Game Theory. In this essay, I will explore these claims, as well as how several countries have responded differently, and how their policies can be explained by Game Theory.</summary></entry></feed>
