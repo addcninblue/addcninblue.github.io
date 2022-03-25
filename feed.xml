@@ -1,19 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-03-13T00:31:45-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Learning, Learning to Learn, and Teaching</title><link href="https://addcnin.blue/2022/03/12/teaching/" rel="alternate" type="text/html" title="Learning, Learning to Learn, and Teaching" /><published>2022-03-12T00:00:00-08:00</published><updated>2022-03-12T00:00:00-08:00</updated><id>https://addcnin.blue/2022/03/12/teaching</id><content type="html" xml:base="https://addcnin.blue/2022/03/12/teaching/">&lt;p&gt;I’ve taught for several semesters in Berkeley now, and I think it’s high time
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-03-25T14:32:05-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Learning, Learning to Learn, and Teaching</title><link href="https://addcnin.blue/2022/03/12/teaching/" rel="alternate" type="text/html" title="Learning, Learning to Learn, and Teaching" /><published>2022-03-12T00:00:00-08:00</published><updated>2022-03-12T00:00:00-08:00</updated><id>https://addcnin.blue/2022/03/12/teaching</id><content type="html" xml:base="https://addcnin.blue/2022/03/12/teaching/">&lt;p&gt;I’ve taught for several semesters in Berkeley now, and I think it’s high time
 I wrote some thoughts down before my knowledge on teaching fades
 away.&lt;sup id=&quot;fnref:teaching&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:teaching&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; So here’s a collection of thoughts: we begin with a light
 theory of how people acquire knowledge through inquiry, followed by a quick
 meta-analysis of learning to learn, ending with teaching.&lt;/p&gt;
 
 &lt;p&gt;I like to view teaching as a way of approximating the learning processes that
-people would normally undergo. The key difference is usually either of
-convenience or speed; learning is quite arduous, and teaching often eases the
-process.&lt;/p&gt;
+people would normally undergo. The key difference is usually convenience and
+speed; learning can be quite arduous, and teaching often eases the process.&lt;/p&gt;
 
-&lt;p&gt;But through teaching, lots of educators forget what it’s like to be a student.
-They lean on prescriptive methods of teaching, leading students to be walking
-mirrors of their word. Through this post, I sincerely hope that students and
-educators alike will be able to rethink learning and become reflections of
-their soul rather than reflections of their teachers.&lt;/p&gt;
+&lt;p&gt;But many educators forget what it’s like to be a student. They lean on
+prescriptive methods of teaching, leading students to be walking reflection of
+their image. Through this post, I hope that students and educators alike will
+be able to rethink learning.&lt;/p&gt;
 
 &lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
 
@@ -26,10 +24,10 @@ internal motivation driving them to answer a question. This motivation allows
 the individual to dig deeply into their question of choice, possibly uncovering
 the truth they initially set out to find, possibly stumbling upon another
 question. Regardless of the outcome, however, it’s imperative to note that the
-individual’s motives are not due to external factors. Rather, they’re internal,
+individual’s motives do not stem from external factors. Rather, they’re internal,
 allowing them to try, retry, and retry again should they run into a wall.&lt;/p&gt;
 
-&lt;p&gt;At the end of the journey to discovery, when all the “Why”s are answered, all
+&lt;p&gt;At the end of the journey to discovery, when all the why’s are answered, all
 they’re left with is knowledge and satisfaction. It’s incredibly gratifying to be
 able to ask a question, start with only a toolbox of inquisition, and to arrive
 at some tangible knowledge.&lt;/p&gt;
@@ -37,8 +35,8 @@ at some tangible knowledge.&lt;/p&gt;
 &lt;p&gt;Importantly, this process highlights a key component of learning: through the
 grueling process of hunting down hints and clues that eventually yield the
 answers, we implicitly learn about learning. We learn what to do, what not to
-do, and how to go about answering similar questions in the future. It’s
-somewhat akin to acquiring a new set of tools in our toolbox of inquisition.&lt;/p&gt;
+do, and how to go about answering similar questions in the future. In doing so,
+we add new tools to our toolbox of inquisition.&lt;/p&gt;
 
 &lt;h2 id=&quot;learning-to-learn&quot;&gt;Learning to Learn&lt;/h2&gt;
 
@@ -51,9 +49,8 @@ following:&lt;/p&gt;
   &lt;li&gt;Student has initial set of facts, as well as a toolbox of methods they
 understand to experiment on the world.&lt;sup id=&quot;fnref:consistency&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:consistency&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; They ask some motivated
 question about the world around them.&lt;/li&gt;
-  &lt;li&gt;To answer this question, they initially have a broad hypothesis of how the
-world should behave like according to their set of facts. Notably, this
-includes the form of their answer, even if misconstrued.&lt;/li&gt;
+  &lt;li&gt;To answer this question, they initially have a broad (correct or incorrect)
+hypothesis of how the world should behave according to their set of facts.&lt;/li&gt;
   &lt;li&gt;They then conduct experiments to verify or challenge their beliefs.&lt;/li&gt;
   &lt;li&gt;Eventually, they will obtain a new set of facts that updates their
 understanding of the world. In the process, they might also obtain a new
@@ -174,11 +171,11 @@ bounds. Many teachers forget the process of motivated learning and become
 prescriptive (and they wonder why concepts don’t stick in students’ heads). As
 educators, we can do a lot better: put yourself in your students’ shoes, rewind
 your brains to match theirs, and relearn the concepts with them from a clean
-slate. fdas&lt;/p&gt;
+slate.&lt;/p&gt;
 
 &lt;h2 id=&quot;credits&quot;&gt;Credits&lt;/h2&gt;
 
-&lt;p&gt;Thanks to Andi Gu for reading a draft of this.&lt;/p&gt;
+&lt;p&gt;Thanks to Andi Gu and Sean O’Brien for reading a draft of this.&lt;/p&gt;
 
 &lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
 &lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
