@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-05-22T00:51:54-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Learning, Learning to Learn, and Teaching</title><link href="https://addcnin.blue/2022/03/12/teaching/" rel="alternate" type="text/html" title="Learning, Learning to Learn, and Teaching" /><published>2022-03-12T00:00:00-08:00</published><updated>2022-03-12T00:00:00-08:00</updated><id>https://addcnin.blue/2022/03/12/teaching</id><content type="html" xml:base="https://addcnin.blue/2022/03/12/teaching/">&lt;p&gt;I’ve taught for several semesters in Berkeley now, and I think it’s high time
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-05-23T23:38:13-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Options Analysis</title><link href="https://addcnin.blue/2022/05/23/options_analysis/" rel="alternate" type="text/html" title="Options Analysis" /><published>2022-05-23T00:00:00-07:00</published><updated>2022-05-23T00:00:00-07:00</updated><id>https://addcnin.blue/2022/05/23/options_analysis</id><content type="html" xml:base="https://addcnin.blue/2022/05/23/options_analysis/">&lt;p&gt;Anyone studying options for long enough begins to wonder about how the Greeks
+interact. Like, sure, an option’s delta approaches 0 or 1 (depending on its
+moneyness) as it gets closer to expiration, but what happens to its gamma, as
+it gets closer to expiration? Does that depend on its delta? Natenburg goes a
+bit into this with a plethora of graphs in his textbook. The unfortunate thing
+about books is that they’re all 2D and noninteractive.&lt;/p&gt;
+
+&lt;p&gt;I decided to see what I could spin up with Julia and a bit of elbow grease. I
+grabbed the latest option chain with &lt;a href=&quot;https://developer.tdameritrade.com/option-chains/apis&quot;&gt;TD
+Ameritrade&lt;/a&gt; and got to
+work. (At the time of these graphs, SPY was trading near $419.) Behold, some
+graphs:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Gamma in response to Time and Delta:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/2022-05-23-options_analysis/date_delta_gamma.png&quot; alt=&quot;Gamma in response to Time and Delta&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Volatility in response to Time and Price (aka Vol Smile)&lt;/strong&gt;
+&lt;img src=&quot;/assets/posts/2022-05-23-options_analysis/date_price_volatility.png&quot; alt=&quot;Volatility in response to Time and Price (aka Vol Smile)&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you’d like to play with this, feel free to play around with the
+&lt;a href=&quot;https://github.com/addcninblue/options-viewer&quot;&gt;repo&lt;/a&gt;.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Anyone studying options for long enough begins to wonder about how the Greeks interact. Like, sure, an option’s delta approaches 0 or 1 (depending on its moneyness) as it gets closer to expiration, but what happens to its gamma, as it gets closer to expiration? Does that depend on its delta? Natenburg goes a bit into this with a plethora of graphs in his textbook. The unfortunate thing about books is that they’re all 2D and noninteractive.</summary></entry><entry><title type="html">Learning, Learning to Learn, and Teaching</title><link href="https://addcnin.blue/2022/03/12/teaching/" rel="alternate" type="text/html" title="Learning, Learning to Learn, and Teaching" /><published>2022-03-12T00:00:00-08:00</published><updated>2022-03-12T00:00:00-08:00</updated><id>https://addcnin.blue/2022/03/12/teaching</id><content type="html" xml:base="https://addcnin.blue/2022/03/12/teaching/">&lt;p&gt;I’ve taught for several semesters in Berkeley now, and I think it’s high time
 I wrote some thoughts down before my knowledge on teaching fades
 away.&lt;sup id=&quot;fnref:teaching&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:teaching&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; So here’s a collection of thoughts: we begin with a light
 theory of how people acquire knowledge through inquiry, followed by a quick
@@ -763,96 +784,4 @@ world of difference.&lt;/p&gt;
 
 &lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
 &lt;p&gt;Look at the space!
-&lt;img src=&quot;/assets/posts/homelab/lsblk.png&quot; alt=&quot;lsblk&quot; /&gt;&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">The hard drives finally came, so in this post, I’ll be documenting RAID (mdadm) and LVM (with lvmcache). I have a Samsung 970 EVO NVMe SSD which already has 3 partitions in this order: boot, root, swap (without LVM). In this post, we will be adding 4x 3TB Seagate Barracuda drives in RAID10 with mdadm, and with LVM top. We will then move the root partition to the RAID10 array.</summary></entry><entry><title type="html">Covid-19 and Game Theory</title><link href="https://addcnin.blue/2020/04/16/game-theory-covid-19/" rel="alternate" type="text/html" title="Covid-19 and Game Theory" /><published>2020-04-16T00:00:00-07:00</published><updated>2020-04-16T00:00:00-07:00</updated><id>https://addcnin.blue/2020/04/16/game-theory-covid-19</id><content type="html" xml:base="https://addcnin.blue/2020/04/16/game-theory-covid-19/">&lt;p&gt;With the Coronavirus, tissue paper and supplies are flying out of stores. Some argue that it’s a natural human reaction best explained by Game Theory. In this essay, I will explore these claims, as well as how several countries have responded differently, and how their policies can be explained by Game Theory.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;N.B.: This post was originally the essay for one of my Stat 155 assignments. I thought it interesting enough to share on my blog – I hope you enjoy it!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;articles-referenced-and-their-claims&quot;&gt;Articles Referenced and Their Claims&lt;/h2&gt;
-&lt;p&gt;In The Herald&lt;sup id=&quot;fnref:The-Herald&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:The-Herald&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, the Adam Smith Institute&lt;sup id=&quot;fnref:Adam-Smith-Institute&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:Adam-Smith-Institute&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, and Asia Times&lt;sup id=&quot;fnref:Asia-Times&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:Asia-Times&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, the authors argue that the situation is well-explained by Prisoners’ Dilemma. In The Herald, McArdle makes the additional claim that Western countries have a lack of trust that Eastern countries do not have, exacerbating the Prisoners’ Dilemma problem. Macdonald of the Adam Smith Institute makes a particularly astute economic observation that “raising prices in our current context is not a cynical cash grab, but an effective means of restoring consumer confidence and ensuring we can all access the goods we need during these strange and difficult times”.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A minor charge can be compared to temporary economic and material disruption. That would have been the sole significant setback had corporations cooperated. In this case the entire economic machinery would have toned down and shrunk, and thus everyone would have been affected more or less the same.&lt;/p&gt;
-
-  &lt;p&gt;The problem, however, arises when some parties betray the faith. From a single corporation’s or businessman’s point of view, if they stay faithful, and other parties do not adhere to the bargain, they fall back in the competition. The disadvantage sustained could very plausibly be insurmountable, akin to one prisoner walking off free while the other suffers a massive loss.&lt;/p&gt;
-
-  &lt;p&gt;– Kaushik, Asia Times&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In &lt;a href=&quot;https://medium.com/@vivfang/coronavirus-game-6fdf4d4d4007&quot;&gt;an article published on Medium&lt;/a&gt;, Fang tackles a popular post floating on Facebook claiming to explain the Coronavirus in terms of Game Theory by arguing that the explanation was flawed due to a wrong application of said theory. Fang then reproduces the game, this time with her own chart. Noticeably, the chart, reproduced below, has a Nash Equilibrium that is Pareto Efficient!
-&lt;img src=&quot;/assets/posts/2020-04-16-game-theory-covid-19/medium-article-chart.png&quot; alt=&quot;Medium Article Chart&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;prisoners-dilemma&quot;&gt;Prisoners’ Dilemma&lt;/h2&gt;
-&lt;p&gt;But are we as humans really stuck in a game of Prisoners’ Dilemma? Seeing that several Asian countries, and Taiwan in particular, have no issues with hoarding, we must either settle for the conclusion that humans are fundamentally different across the East and the West, as McArdle claims, or that there is some other factor at play &lt;em&gt;impacting the setup of the game itself&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;In the situation where the setup of the games are the same, where both the East and West are facing Prisoners’ Dilemmas, the lack of shortages in the East would mean that the people are cooperating. While plausible, these differences must necessarily be attributed to a difference in culture, meaning that scarcity would manifest differently across the United States. Seeing that communities everywhere see shortages, there must be some other explanation.&lt;/p&gt;
-
-&lt;p&gt;Suppose for a moment that supplies are not scarce; ie. no matter how much toilet paper one buys, another will not be impacted. Denote the payoff of hoarding to be \(-5\) due to diminishing returns, and the payoff of not hoarding to be \(0\).&lt;/p&gt;
-
-\[\begin{bmatrix}
-P1 \textrm{\\} P2&amp;amp; \textrm{hoard} &amp;amp; \textrm{don't hoard} \\
-\textrm{hoard}       &amp;amp; (-5, -5) &amp;amp; (-5, 0) \\
-\textrm{don't hoard} &amp;amp; (0, -5)  &amp;amp; (0, 0) \\
-\end{bmatrix}\]
-
-&lt;p&gt;In this setup, we immediately see that the Prisoners’ Dilemma problem has disappeared – \(\textrm{(don't hoard, don't hoard)}\) is the Nash Equilibrium &lt;em&gt;and the Pareto Optimum&lt;/em&gt;, meaning that with a lack of resources, there is no incentive for anyone to hoard resources! This makes sense – why hoard knowing that resources will always be available when you need it?&lt;/p&gt;
-
-&lt;h2 id=&quot;response-to-the-coronavirus&quot;&gt;Response to the Coronavirus&lt;/h2&gt;
-&lt;p&gt;Let us take a step back and view responses to the coronavirus; in particular, we compare Taiwan’s&lt;sup id=&quot;fnref:wikipedia-taiwan&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:wikipedia-taiwan&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; approach to the United States’&lt;sup id=&quot;fnref:wikipedia-usa&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:wikipedia-usa&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-
-&lt;p&gt;On December 31st, 2019, both the United States and Taiwan learned about the cases in China. On that same day, Taiwan started inspecting inbound flights from Wuhan, while the United States waited until much much later. Mask rationing was implemented on February 6th, with the Taiwanese Armed Forces deployed to aid the scaling of mask production in factories. In the United States, people were recommended to not wear masks, claiming that their efficacy was unproven and limited. In the third week of February, medical experts “concluded that the United States had already lost the fight to contain the virus”.[^nytimes-red-dawn] Contrasting this is the efforts of Taiwan, who as of today only have a mere 395 cases (fewer than my county!) and are exporting face masks!&lt;/p&gt;
-
-&lt;p&gt;Arguments as to why Taiwan and other countries’ responses have been so quick are varied, including the fact that they have seen SARS, a similar virus and situation, but one thing is clear: their people have much less to fear when they know that containment is quite evident and adequate. This effectively reduces their situation to the lack of shortage situation discussed earlier, since they can depend on supply chains not shutting down because of adequate preparation.&lt;/p&gt;
-
-&lt;h2 id=&quot;facing-the-shortages&quot;&gt;Facing the Shortages&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;But are people acting irrationally? At a collective level, it is leading to shortages of goods. But in a direct sense, people are acting rationally. It becomes optimal rather than suboptimal to start stockpiling if everyone else does because their stockpiling creates the very supply problem they are trying to avoid in the first place.&lt;/p&gt;
-
-  &lt;p&gt;– Macdonald, Adam Smith Institute&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;I was an intended Economics major prior to switching to Statistics. Macdonald’s claim piqued my interest, so let’s examine them through a statistical lens.&lt;/p&gt;
-
-&lt;p&gt;In the situation where market values are not restricted, we have the following payoff diagram: In the case where people both do not hoard, there is no change from the status quo, so the payoff to both is 0. In the case where one hoards and the other doesn’t, one gains and the other loses. In the case where both hoard, there is a small loss to both (since there is a loss of accessible resources in the case either need them). This is classical Prisoners’ Dilemma:&lt;/p&gt;
-
-\[\begin{bmatrix}
-P1 \textrm{\\} P2&amp;amp; \textrm{hoard} &amp;amp; \textrm{don't hoard} \\
-\textrm{hoard}       &amp;amp; (-2, -2) &amp;amp; (3, -3) \\
-\textrm{don't hoard} &amp;amp; (-3, 3)  &amp;amp; (0, 0) \\
-\end{bmatrix}\]
-
-&lt;p&gt;Now, suppose there is a price floor imposed on the market, equivalent to the total marginal utility gained through hoarding beyond the original market equilibrium. The scenario is the same, with one changed parameter: hoarding is more expensive now, incurring a loss of \(-3\). We define a new field, \(\textrm{hoard less}\), describing a situation where hoarding is in effect, but with less quantity. Assuming that both people have a price-elastic response&lt;sup id=&quot;fnref:price-elasticity&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:price-elasticity&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
-
-\[\begin{bmatrix}
-P1 \textrm{\\} P2&amp;amp; \textrm{hoard} &amp;amp; \textrm{don't hoard} \\
-\textrm{hoard}       &amp;amp; (-5, -5) &amp;amp; (0, -3) \\
-\textrm{don't hoard} &amp;amp; (-3, 0)  &amp;amp; (0, 0) \\
-\end{bmatrix}\]
-
-&lt;p&gt;Immediately, we see that we have recovered a situation with the Nash Equilibrium equal to the Pareto Equilibrium equal to not hoarding for both. In other words, the market price floor has a positive effect in this scenario.&lt;/p&gt;
-
-&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
-
-&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:The-Herald&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;https://www.heraldscotland.com/news/18314703.helen-mcardle-game-theory-tells-us-britains-reaction-coronavirus/ &lt;a href=&quot;#fnref:The-Herald&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:Adam-Smith-Institute&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;https://www.adamsmith.org/blog/covid-19-and-game-theory &lt;a href=&quot;#fnref:Adam-Smith-Institute&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:Asia-Times&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;https://asiatimes.com/2020/03/covid-19-and-the-prisoners-dilemma/ &lt;a href=&quot;#fnref:Asia-Times&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:wikipedia-taiwan&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Taiwan &lt;a href=&quot;#fnref:wikipedia-taiwan&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:wikipedia-usa&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;https://en.wikipedia.org/wiki/Timeline_of_the_2020_coronavirus_pandemic_in_the_United_States &lt;a href=&quot;#fnref:wikipedia-usa&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:price-elasticity&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;Here, I make a key assumption that price elasticity of hoarded goods are elastic beyond their basic consumption. The author of the Adam Smith Institute article, Macdonald, has observed anecdotally that his experience supports this conclusion. &lt;a href=&quot;#fnref:price-elasticity&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">With the Coronavirus, tissue paper and supplies are flying out of stores. Some argue that it’s a natural human reaction best explained by Game Theory. In this essay, I will explore these claims, as well as how several countries have responded differently, and how their policies can be explained by Game Theory.</summary></entry></feed>
+&lt;img src=&quot;/assets/posts/homelab/lsblk.png&quot; alt=&quot;lsblk&quot; /&gt;&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">The hard drives finally came, so in this post, I’ll be documenting RAID (mdadm) and LVM (with lvmcache). I have a Samsung 970 EVO NVMe SSD which already has 3 partitions in this order: boot, root, swap (without LVM). In this post, we will be adding 4x 3TB Seagate Barracuda drives in RAID10 with mdadm, and with LVM top. We will then move the root partition to the RAID10 array.</summary></entry></feed>
