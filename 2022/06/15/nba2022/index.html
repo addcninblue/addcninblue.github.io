@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>NBA 2022 Analysis</title>
+  <meta name="description" content="I’ve never really been a big sports guy, but my brother somehow dragged me into watching the NBA Playoffs. It’s been pretty fun! The series is intense and close, and naturally, I’ve been itching to see if I can wrangle some numbers out of the mess called basketball. Here, I talk a bit about what I did to try to get information out of these numbers, but it’s also a dive into my experience with PyMC3 and Turing.jl.">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://addcnin.blue/2022/06/15/nba2022/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Addison Chan" href="https://addcnin.blue/feed.xml">
+
+  
+
+
+  
+  <meta property="og:title" content="NBA 2022 Analysis">
+  <meta property="og:site_name" content="Addison Chan">
+  <meta property="og:url" content="https://addcnin.blue/2022/06/15/nba2022/">
+  <meta property="og:description" content="I’ve never really been a big sports guy, but my brother somehow dragged me into watching the NBA Playoffs. It’s been pretty fun! The series is intense and close, and naturally, I’ve been itching to see if I can wrangle some numbers out of the mess called basketball. Here, I talk a bit about what I did to try to get information out of these numbers, but it’s also a dive into my experience with PyMC3 and Turing.jl.">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="addcninblue">
+  <meta name="twitter:title" content="NBA 2022 Analysis">
+  <meta name="twitter:description" content="I’ve never really been a big sports guy, but my brother somehow dragged me into watching the NBA Playoffs. It’s been pretty fun! The series is intense and close, and naturally, I’ve been itching to...">
+  
+    <meta name="twitter:creator" content="addcninblue">
+  
+  
+
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+  
+  
+  
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-89539680-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><img src="/assets/me.jpg" id="me" alt=""> </img></a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/interesting/">&nbsp</a>
+      
+        
+        <a class="page-link" href="/notes/">Notes</a>
+      
+        
+        <a class="page-link" href="/teaching/">Teaching</a>
+      
+        
+        <a class="page-link" href="/blog/">Blog</a>
+      
+        
+        <a class="page-link" href="/projects/">Projects</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">NBA 2022 Analysis</h1>
+    
+    <p class="post-meta"><time datetime="2022-06-15T00:00:00-07:00" itemprop="datePublished">Jun 15, 2022</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>I’ve never really been a big sports guy, but my brother somehow dragged me into
+watching the NBA Playoffs. It’s been pretty fun! The series is intense and
+close, and naturally, I’ve been itching to see if I can wrangle some numbers
+out of the mess called basketball. Here, I talk a bit about what I did to try
+to get information out of these numbers, but it’s also a dive into my
+experience with PyMC3 and Turing.jl.</p>
+
+<blockquote>
+  <p>Warning ahead: All models are wrong, but some are more useful than others. I
+don’t know if this is one of the useful ones.</p>
+</blockquote>
+
+<p>In the first three games, I noticed that Curry was scoring like a madman.
+Curious to see whether he was scoring far above his usual, I graphed a
+box-and-whisker plot of the top players’ usual points and eyeballed it. It
+seems that some players are scoring at their 50-75th percentile range (Curry
+included), whereas others are scoring at the bottom of their range (Klay). This
+analysis wasn’t quite that useful, mainly due to one pain point of plotting in
+Julia: it seems like it’s impossible to overlay scatter points on top of a
+box-and-whisker plot!<sup id="fnref:Julia" role="doc-noteref"><a href="#fn:Julia" class="footnote" rel="footnote">1</a></sup></p>
+
+<p><strong>Boston Scores:</strong></p>
+
+<p><img src="/assets/posts/2022-06-15-nba2022/bos.png" alt="Boston Scores" /></p>
+
+<p><strong>Warrior Scores:</strong></p>
+
+<p><img src="/assets/posts/2022-06-15-nba2022/gsw.png" alt="Warrior Scores" /></p>
+
+<p>Seeing this, I left the data alone, and then we watched Game 5.</p>
+
+<p>What an absolutely spectacular game that was! For the first time in forever,
+Curry didn’t score a single 3 in that game. It piqued my curiosity: I remember
+a while ago that I read about how <a href="https://datasciencejuliahackers.com/football-simulation.html">hierarchical Bayes models could be used to
+model game outcomes in
+Julia</a>, and I was
+curious if I could do something similar to get the scoring abilities of each
+player. It wouldn’t be a direct copy-paste of the football simulation for one
+big reason: instead of modeling a team, I’d be modeling individual players that
+sum up to a team. Since this was right after my bad experience with Julia
+above, where the box-and-whisker plot wasn’t very versatile, I wanted to go
+back to Python. Picking up PyMC, I tried to figure out how to implement such a
+model.</p>
+
+<p>I spent the next day or so reading up on PyMC and trying to figure out whether
+I could bend it to my will. The issue with libraries like PyMC is that you have
+to be very careful with the operations you do; since it’s all just an interface
+to a lower-level library, there’s a restricted set of operations allowed. For
+this particular problem, it seems like the two-team problem is solved; the only
+question was to generalize it to teammates that make up a dynamic team.</p>
+
+<p>The first bright idea that popped up was to construct all permutations of a
+team as subteams, and then to run the model. There were several issues with
+this approach. In the most naive way to do this, we would end up throwing away
+individual players’ contributions. Supposing then we’re a bit smarter, that we
+encode the teams as a fixed sum of individual random variables and allow the
+model to update those underlying RVs, we’re still left with the implementation
+problem: how exactly do you create this many intermediate variables?</p>
+
+<p>I tried researching for a while, but eventually gave up. (In retrospect, I
+suspect a <code class="highlighter-rouge">for</code> loop probably would work, but I’m quite unsure.) It was at this
+point that I remembered Julia’s <code class="highlighter-rouge">Turing.jl</code> library allows for arbitrary Julia
+expressions, and as I’m moderately familiar with the language, I figured it’d
+be worth it to give it a second shot.</p>
+
+<p>It turns out that specifying the model wasn’t that difficult! The only point of
+creativity was to specify 10 inputs to the function (each player playing at a
+particular time segment) rather than each team. Then, the model boils down to
+the sum of all of the players on one team subtracted by the sum of the players
+on the other. For the curious, the relevant lines are
+<a href="https://github.com/addcninblue/nba2022/blob/master/model.jl#L56-L64">here</a>.</p>
+
+<p>And the results!</p>
+
+<p><strong>Attack Values</strong></p>
+
+<p><img src="/assets/posts/2022-06-15-nba2022/model_results.svg" alt="Attack Values" /></p>
+
+<p>Interestingly, all defense values are very close to 0. Thinking about it, it
+makes a lot of sense – when players play round-robin, it’s possible to infer
+attack-defense values, since we can have rock-paper-scissors situations.
+However, when it’s a bipartite graph, as with two teams, it’s hard to tease out
+the reason behind scoring more, whether it’s due to one player having greater
+attack or due to another having lower defense.</p>
+
+<p>While training this model, I dug into the <code class="highlighter-rouge">Turing.ml</code> documentation a bit more.
+There’s an interesting section on <a href="https://turing.ml/dev/docs/using-turing/performancetips">performance
+tuning</a>. I figured
+that since my model probably qualifies as a bigger one that I should try
+<code class="highlighter-rouge">:reversediff</code>. Adding that reduced my model training by about a minute, from
+~6 minutes to 5. Then, looking into <a href="https://turing.ml/dev/docs/using-turing/autodiff">the autodiff
+section</a> more, I verified
+that I could memoize the computation, and did so. The training went down to
+seconds! Wow!</p>
+
+<p>Because of this short time, I had a lot more flexibility to mess with my data
+and try different things. One thing I glossed over earlier was that the data
+was partitioned by player time. This means that each data slice tracks only the
+time 10 players are playing on the court, and stops when any one gets switched
+out. In my initial analysis, I cut out all samples where the time is less than
+60 seconds, since scoring can lead to high variance. (1 points in 1 minute
+should be viewed as less important than 10 points in 10 minutes.) I tried
+variations of cutoff times, but it does indeed seem like the noise issue
+exists. I ended up going back to a 60-second cutoff, and it’s what exists in
+the repo.</p>
+
+<p>Hopefully this was interesting! If you want to play around with the data and
+the repo, check it out <a href="https://github.com/addcninblue/nba2022">here</a>.</p>
+
+<h1 id="footnotes">Footnotes</h1>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:Julia" role="doc-endnote">
+      <p>I’ve been using Julia more and more as my go-to language to do things, but lots of things like this have just been annoying to use, and I’m regretfully back to Python for usecases like plotting and data wrangling. It seems like Julia isn’t quite ready yet. <a href="#fnref:Julia" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    
+    
+    
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+@addcninblue
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

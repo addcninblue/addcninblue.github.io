@@ -1,25 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-06-15T23:28:45-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Options Analysis</title><link href="https://addcnin.blue/2022/05/23/options_analysis/" rel="alternate" type="text/html" title="Options Analysis" /><published>2022-05-23T00:00:00-07:00</published><updated>2022-05-23T00:00:00-07:00</updated><id>https://addcnin.blue/2022/05/23/options_analysis</id><content type="html" xml:base="https://addcnin.blue/2022/05/23/options_analysis/">&lt;p&gt;Anyone studying options for long enough begins to wonder about how the Greeks
-interact. Like, sure, an option’s delta approaches 0 or 1 (depending on its
-moneyness) as it gets closer to expiration, but what happens to its gamma, as
-it gets closer to expiration? Does that depend on its delta? Natenburg goes a
-bit into this with a plethora of graphs in his textbook. The unfortunate thing
-about books is that they’re all 2D and noninteractive.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-06-16T00:05:58-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">NBA 2022 Analysis</title><link href="https://addcnin.blue/2022/06/15/nba2022/" rel="alternate" type="text/html" title="NBA 2022 Analysis" /><published>2022-06-15T00:00:00-07:00</published><updated>2022-06-15T00:00:00-07:00</updated><id>https://addcnin.blue/2022/06/15/nba2022</id><content type="html" xml:base="https://addcnin.blue/2022/06/15/nba2022/">&lt;p&gt;I’ve never really been a big sports guy, but my brother somehow dragged me into
+watching the NBA Playoffs. It’s been pretty fun! The series is intense and
+close, and naturally, I’ve been itching to see if I can wrangle some numbers
+out of the mess called basketball. Here, I talk a bit about what I did to try
+to get information out of these numbers, but it’s also a dive into my
+experience with PyMC3 and Turing.jl.&lt;/p&gt;
 
-&lt;p&gt;I decided to see what I could spin up with Julia and a bit of elbow grease. I
-grabbed the latest option chain with &lt;a href=&quot;https://developer.tdameritrade.com/option-chains/apis&quot;&gt;TD
-Ameritrade&lt;/a&gt; and got to
-work. (At the time of these graphs, SPY was trading near $419.) Behold, some
-graphs:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Warning ahead: All models are wrong, but some are more useful than others. I
+don’t know if this is one of the useful ones.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;&lt;strong&gt;Gamma in response to Time and Delta:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In the first three games, I noticed that Curry was scoring like a madman.
+Curious to see whether he was scoring far above his usual, I graphed a
+box-and-whisker plot of the top players’ usual points and eyeballed it. It
+seems that some players are scoring at their 50-75th percentile range (Curry
+included), whereas others are scoring at the bottom of their range (Klay). This
+analysis wasn’t quite that useful, mainly due to one pain point of plotting in
+Julia: it seems like it’s impossible to overlay scatter points on top of a
+box-and-whisker plot!&lt;sup id=&quot;fnref:Julia&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:Julia&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/posts/2022-05-23-options_analysis/date_delta_gamma.png&quot; alt=&quot;Gamma in response to Time and Delta&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Boston Scores:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Volatility in response to Time and Price (aka Vol Smile)&lt;/strong&gt;
-&lt;img src=&quot;/assets/posts/2022-05-23-options_analysis/date_price_volatility.png&quot; alt=&quot;Volatility in response to Time and Price (aka Vol Smile)&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/posts/2022-06-15-nba2022/bos.png&quot; alt=&quot;Boston Scores&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;If you’d like to play with this, feel free to play around with the
-&lt;a href=&quot;https://github.com/addcninblue/options-viewer&quot;&gt;repo&lt;/a&gt;.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Anyone studying options for long enough begins to wonder about how the Greeks interact. Like, sure, an option’s delta approaches 0 or 1 (depending on its moneyness) as it gets closer to expiration, but what happens to its gamma, as it gets closer to expiration? Does that depend on its delta? Natenburg goes a bit into this with a plethora of graphs in his textbook. The unfortunate thing about books is that they’re all 2D and noninteractive.</summary></entry><entry><title type="html">Options Analysis</title><link href="https://addcnin.blue/2022/05/23/nba2022/" rel="alternate" type="text/html" title="Options Analysis" /><published>2022-05-23T00:00:00-07:00</published><updated>2022-05-23T00:00:00-07:00</updated><id>https://addcnin.blue/2022/05/23/nba2022</id><content type="html" xml:base="https://addcnin.blue/2022/05/23/nba2022/">&lt;p&gt;Anyone studying options for long enough begins to wonder about how the Greeks
+&lt;p&gt;&lt;strong&gt;Warrior Scores:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/2022-06-15-nba2022/gsw.png&quot; alt=&quot;Warrior Scores&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Seeing this, I left the data alone, and then we watched Game 5.&lt;/p&gt;
+
+&lt;p&gt;What an absolutely spectacular game that was! For the first time in forever,
+Curry didn’t score a single 3 in that game. It piqued my curiosity: I remember
+a while ago that I read about how &lt;a href=&quot;https://datasciencejuliahackers.com/football-simulation.html&quot;&gt;hierarchical Bayes models could be used to
+model game outcomes in
+Julia&lt;/a&gt;, and I was
+curious if I could do something similar to get the scoring abilities of each
+player. It wouldn’t be a direct copy-paste of the football simulation for one
+big reason: instead of modeling a team, I’d be modeling individual players that
+sum up to a team. Since this was right after my bad experience with Julia
+above, where the box-and-whisker plot wasn’t very versatile, I wanted to go
+back to Python. Picking up PyMC, I tried to figure out how to implement such a
+model.&lt;/p&gt;
+
+&lt;p&gt;I spent the next day or so reading up on PyMC and trying to figure out whether
+I could bend it to my will. The issue with libraries like PyMC is that you have
+to be very careful with the operations you do; since it’s all just an interface
+to a lower-level library, there’s a restricted set of operations allowed. For
+this particular problem, it seems like the two-team problem is solved; the only
+question was to generalize it to teammates that make up a dynamic team.&lt;/p&gt;
+
+&lt;p&gt;The first bright idea that popped up was to construct all permutations of a
+team as subteams, and then to run the model. There were several issues with
+this approach. In the most naive way to do this, we would end up throwing away
+individual players’ contributions. Supposing then we’re a bit smarter, that we
+encode the teams as a fixed sum of individual random variables and allow the
+model to update those underlying RVs, we’re still left with the implementation
+problem: how exactly do you create this many intermediate variables?&lt;/p&gt;
+
+&lt;p&gt;I tried researching for a while, but eventually gave up. (In retrospect, I
+suspect a &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt; loop probably would work, but I’m quite unsure.) It was at this
+point that I remembered Julia’s &lt;code class=&quot;highlighter-rouge&quot;&gt;Turing.jl&lt;/code&gt; library allows for arbitrary Julia
+expressions, and as I’m moderately familiar with the language, I figured it’d
+be worth it to give it a second shot.&lt;/p&gt;
+
+&lt;p&gt;It turns out that specifying the model wasn’t that difficult! The only point of
+creativity was to specify 10 inputs to the function (each player playing at a
+particular time segment) rather than each team. Then, the model boils down to
+the sum of all of the players on one team subtracted by the sum of the players
+on the other. For the curious, the relevant lines are
+&lt;a href=&quot;https://github.com/addcninblue/nba2022/blob/master/model.jl#L56-L64&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;And the results!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Attack Values&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/2022-06-15-nba2022/model_results.svg&quot; alt=&quot;Attack Values&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Interestingly, all defense values are very close to 0. Thinking about it, it
+makes a lot of sense – when players play round-robin, it’s possible to infer
+attack-defense values, since we can have rock-paper-scissors situations.
+However, when it’s a bipartite graph, as with two teams, it’s hard to tease out
+the reason behind scoring more, whether it’s due to one player having greater
+attack or due to another having lower defense.&lt;/p&gt;
+
+&lt;p&gt;While training this model, I dug into the &lt;code class=&quot;highlighter-rouge&quot;&gt;Turing.ml&lt;/code&gt; documentation a bit more.
+There’s an interesting section on &lt;a href=&quot;https://turing.ml/dev/docs/using-turing/performancetips&quot;&gt;performance
+tuning&lt;/a&gt;. I figured
+that since my model probably qualifies as a bigger one that I should try
+&lt;code class=&quot;highlighter-rouge&quot;&gt;:reversediff&lt;/code&gt;. Adding that reduced my model training by about a minute, from
+~6 minutes to 5. Then, looking into &lt;a href=&quot;https://turing.ml/dev/docs/using-turing/autodiff&quot;&gt;the autodiff
+section&lt;/a&gt; more, I verified
+that I could memoize the computation, and did so. The training went down to
+seconds! Wow!&lt;/p&gt;
+
+&lt;p&gt;Because of this short time, I had a lot more flexibility to mess with my data
+and try different things. One thing I glossed over earlier was that the data
+was partitioned by player time. This means that each data slice tracks only the
+time 10 players are playing on the court, and stops when any one gets switched
+out. In my initial analysis, I cut out all samples where the time is less than
+60 seconds, since scoring can lead to high variance. (1 points in 1 minute
+should be viewed as less important than 10 points in 10 minutes.) I tried
+variations of cutoff times, but it does indeed seem like the noise issue
+exists. I ended up going back to a 60-second cutoff, and it’s what exists in
+the repo.&lt;/p&gt;
+
+&lt;p&gt;Hopefully this was interesting! If you want to play around with the data and
+the repo, check it out &lt;a href=&quot;https://github.com/addcninblue/nba2022&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h1&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:Julia&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;I’ve been using Julia more and more as my go-to language to do things, but lots of things like this have just been annoying to use, and I’m regretfully back to Python for usecases like plotting and data wrangling. It seems like Julia isn’t quite ready yet. &lt;a href=&quot;#fnref:Julia&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">I’ve never really been a big sports guy, but my brother somehow dragged me into watching the NBA Playoffs. It’s been pretty fun! The series is intense and close, and naturally, I’ve been itching to see if I can wrangle some numbers out of the mess called basketball. Here, I talk a bit about what I did to try to get information out of these numbers, but it’s also a dive into my experience with PyMC3 and Turing.jl.</summary></entry><entry><title type="html">Options Analysis</title><link href="https://addcnin.blue/2022/05/23/options_analysis/" rel="alternate" type="text/html" title="Options Analysis" /><published>2022-05-23T00:00:00-07:00</published><updated>2022-05-23T00:00:00-07:00</updated><id>https://addcnin.blue/2022/05/23/options_analysis</id><content type="html" xml:base="https://addcnin.blue/2022/05/23/options_analysis/">&lt;p&gt;Anyone studying options for long enough begins to wonder about how the Greeks
 interact. Like, sure, an option’s delta approaches 0 or 1 (depending on its
 moneyness) as it gets closer to expiration, but what happens to its gamma, as
 it gets closer to expiration? Does that depend on its delta? Natenburg goes a
