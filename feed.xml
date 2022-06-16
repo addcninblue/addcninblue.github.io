@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-05-23T23:38:13-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Options Analysis</title><link href="https://addcnin.blue/2022/05/23/options_analysis/" rel="alternate" type="text/html" title="Options Analysis" /><published>2022-05-23T00:00:00-07:00</published><updated>2022-05-23T00:00:00-07:00</updated><id>https://addcnin.blue/2022/05/23/options_analysis</id><content type="html" xml:base="https://addcnin.blue/2022/05/23/options_analysis/">&lt;p&gt;Anyone studying options for long enough begins to wonder about how the Greeks
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-06-15T23:28:45-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Options Analysis</title><link href="https://addcnin.blue/2022/05/23/options_analysis/" rel="alternate" type="text/html" title="Options Analysis" /><published>2022-05-23T00:00:00-07:00</published><updated>2022-05-23T00:00:00-07:00</updated><id>https://addcnin.blue/2022/05/23/options_analysis</id><content type="html" xml:base="https://addcnin.blue/2022/05/23/options_analysis/">&lt;p&gt;Anyone studying options for long enough begins to wonder about how the Greeks
+interact. Like, sure, an option’s delta approaches 0 or 1 (depending on its
+moneyness) as it gets closer to expiration, but what happens to its gamma, as
+it gets closer to expiration? Does that depend on its delta? Natenburg goes a
+bit into this with a plethora of graphs in his textbook. The unfortunate thing
+about books is that they’re all 2D and noninteractive.&lt;/p&gt;
+
+&lt;p&gt;I decided to see what I could spin up with Julia and a bit of elbow grease. I
+grabbed the latest option chain with &lt;a href=&quot;https://developer.tdameritrade.com/option-chains/apis&quot;&gt;TD
+Ameritrade&lt;/a&gt; and got to
+work. (At the time of these graphs, SPY was trading near $419.) Behold, some
+graphs:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Gamma in response to Time and Delta:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/posts/2022-05-23-options_analysis/date_delta_gamma.png&quot; alt=&quot;Gamma in response to Time and Delta&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Volatility in response to Time and Price (aka Vol Smile)&lt;/strong&gt;
+&lt;img src=&quot;/assets/posts/2022-05-23-options_analysis/date_price_volatility.png&quot; alt=&quot;Volatility in response to Time and Price (aka Vol Smile)&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you’d like to play with this, feel free to play around with the
+&lt;a href=&quot;https://github.com/addcninblue/options-viewer&quot;&gt;repo&lt;/a&gt;.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Anyone studying options for long enough begins to wonder about how the Greeks interact. Like, sure, an option’s delta approaches 0 or 1 (depending on its moneyness) as it gets closer to expiration, but what happens to its gamma, as it gets closer to expiration? Does that depend on its delta? Natenburg goes a bit into this with a plethora of graphs in his textbook. The unfortunate thing about books is that they’re all 2D and noninteractive.</summary></entry><entry><title type="html">Options Analysis</title><link href="https://addcnin.blue/2022/05/23/nba2022/" rel="alternate" type="text/html" title="Options Analysis" /><published>2022-05-23T00:00:00-07:00</published><updated>2022-05-23T00:00:00-07:00</updated><id>https://addcnin.blue/2022/05/23/nba2022</id><content type="html" xml:base="https://addcnin.blue/2022/05/23/nba2022/">&lt;p&gt;Anyone studying options for long enough begins to wonder about how the Greeks
 interact. Like, sure, an option’s delta approaches 0 or 1 (depending on its
 moneyness) as it gets closer to expiration, but what happens to its gamma, as
 it gets closer to expiration? Does that depend on its delta? Natenburg goes a
@@ -741,47 +762,4 @@ world of difference.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Live booting the Nixos ISO, and trying to chroot into that environment to &lt;code class=&quot;highlighter-rouge&quot;&gt;nixos-rebuild switch&lt;/code&gt;. This failed due to some strange error about being unable to write to the filesystem.&lt;/li&gt;
   &lt;li&gt;Live booting from Ubuntu to try to rebuild grub there. This failed because it requires either a chroot or directly specifying the EFI directory, and the chroot fails because Nixos doesn’t have a /bin/bash, and the EFI directory approach failed for some unknown reason.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background I use NixOS as my main OS in everything (from personal laptop to my server), but I was beginning to miss Windows for gaming. (WINE won’t cut it here.) As a result, I went searching for installing Windows alongside an existing NixOS installation, but I couldn’t find one anywhere. I decided to just dive in, and it worked! Here is a high-level list of the steps I took. For reference, I am installing this on an XPS 9550, with EFI.</summary></entry><entry><title type="html">Homelab: Part 2</title><link href="https://addcnin.blue/2020/05/03/homelab-2/" rel="alternate" type="text/html" title="Homelab: Part 2" /><published>2020-05-03T00:00:00-07:00</published><updated>2020-05-03T00:00:00-07:00</updated><id>https://addcnin.blue/2020/05/03/homelab-2</id><content type="html" xml:base="https://addcnin.blue/2020/05/03/homelab-2/">&lt;p&gt;The hard drives finally came, so in this post, I’ll be documenting RAID (mdadm) and LVM (with lvmcache). I have a Samsung 970 EVO NVMe SSD which already has 3 partitions in this order: boot, root, swap (without LVM). In this post, we will be adding 4x 3TB Seagate Barracuda drives in RAID10 with mdadm, and with LVM top. We will then move the root partition to the RAID10 array.&lt;/p&gt;
-
-&lt;p&gt;For the reader:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The SSD is at &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/nvme0n1&lt;/code&gt;. Partitions are like this: &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/nvme0n1p1&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;The hard drives are at &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/sd{a,b,c,d}&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;See my &lt;a href=&quot;/2020/04/13/homelab/&quot;&gt;previous post&lt;/a&gt; for more background information.&lt;/p&gt;
-
-&lt;h2 id=&quot;architectural-concerns&quot;&gt;Architectural Concerns&lt;/h2&gt;
-&lt;p&gt;Here, we build a RAID array, then build LVM on top. While LVM itself implements RAID, it seems that there is not as much documentation as compared to mdadm’s, so I went with this approach. For the caching layer, I originally considered &lt;a href=&quot;https://bcache.evilpiepirate.org/&quot;&gt;bcache&lt;/a&gt;. However, it is recommended to put LVM on top of bcache, and since I ended up moving the data to the RAID array first, it was very annoying to have to move data again, so I chose to go with lvmcache.&lt;/p&gt;
-
-&lt;h2 id=&quot;mdadm-first&quot;&gt;MDADM First&lt;/h2&gt;
-&lt;p&gt;Creating a RAID array was straightforward. I followed the instructions over at &lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-create-raid-arrays-with-mdadm-on-ubuntu-16-04#creating-a-raid-0-array&quot;&gt;DigitalOcean&lt;/a&gt;, substituting in &lt;code class=&quot;highlighter-rouge&quot;&gt;10&lt;/code&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;mdadm --create --verbose /dev/md0 --level=10 --raid-devices=4 /dev/sda /dev/sdb /dev/sdc /dev/sdd&lt;/code&gt;. It should be noted that once the RAID array is created, the &lt;em&gt;entire array&lt;/em&gt; is exposed to the operating system as &lt;em&gt;one drive&lt;/em&gt;. Here, we created it as &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/md0&lt;/code&gt;, so we will be using that drive.&lt;/p&gt;
-
-&lt;h2 id=&quot;lvm&quot;&gt;LVM&lt;/h2&gt;
-&lt;p&gt;References: &lt;a href=&quot;https://wiki.archlinux.org/index.php/Install_Arch_Linux_on_LVM&quot;&gt;Install Arch Linux on LVM&lt;/a&gt;, &lt;a href=&quot;https://wiki.archlinux.org/index.php/LVM&quot;&gt;Arch Linux LVM Wiki&lt;/a&gt;. I would recommend reading through “Install Arch Linux on LVM”, as it goes through the steps of setting up a drive on LVM. Read up to the parts where they actually install the OS.&lt;/p&gt;
-
-&lt;p&gt;Now, we set up the array for LVM:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Create the physical volume: &lt;code class=&quot;highlighter-rouge&quot;&gt;pvcreate /dev/md0&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Create the volume group: &lt;code class=&quot;highlighter-rouge&quot;&gt;vgcreate VolGroup00 /dev/md0&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Create logical volume. Here we make a volume that fills up the entire disk, as is my usecase: &lt;code class=&quot;highlighter-rouge&quot;&gt;lvcreate -l 100%FREE VolGroup00 -n lvolroot&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Then, we copy over the data from the SSD:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bs&lt;/code&gt; represents block copy size; 300M is a good number for my usecase. &lt;code class=&quot;highlighter-rouge&quot;&gt;status=progress&lt;/code&gt; shows our copy progress: &lt;code class=&quot;highlighter-rouge&quot;&gt;dd if=/dev/nvme0n1p2 of=/dev/VolGroup00/lvolroot bs=300M status=progress&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;At this point, modify &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/fstab&lt;/code&gt; to mount &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/VolGroup00/lvolroot&lt;/code&gt; as the root partition. You may need to enable extra kernel modules for LVM. Try to boot from this partition to ensure that everything is fine, since we will be deleting the original root partition. When booting with the new partition, use &lt;code class=&quot;highlighter-rouge&quot;&gt;lsblk&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;df -h&lt;/code&gt; to ensure that the root drive is mounted at the new location, and that the old partition is no longer used. After this point, there &lt;em&gt;will&lt;/em&gt; be data loss if the copy failed.&lt;/p&gt;
-
-&lt;p&gt;After we verify that the partition has been correctly copied over, we convert the original SSD to be a cache. There is a very good article &lt;a href=&quot;https://storageapis.wordpress.com/2015/03/20/bcache-and-vs-lvm-cache/&quot;&gt;here&lt;/a&gt; about bcache and lvmcache. The instructions for lvmcache are good, but the final few steps didn’t work for me. A brief read-through is recommended to understand how lvmcache works. Arch wiki also has a &lt;a href=&quot;https://wiki.archlinux.org/index.php/LVM#LVM_cache&quot;&gt;concise article&lt;/a&gt;. (In this step, if there are issues with lvm commands, it is likely that kernel modules need to be loaded. I used &lt;a href=&quot;https://github.com/NixOS/nixpkgs/issues/15516#issuecomment-388575593&quot;&gt;this patch&lt;/a&gt;, double checking existing &lt;code class=&quot;highlighter-rouge&quot;&gt;boot.initrd.availableKernelModulesboot.initrd.availableKernelModules&lt;/code&gt; to make sure they weren’t overriden by using &lt;code class=&quot;highlighter-rouge&quot;&gt;nixos-option boot.initrd.availableKernelModules&lt;/code&gt;)&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Extend our current volume group to take up the space of the old SSD root partition: &lt;code class=&quot;highlighter-rouge&quot;&gt;vgextend VolGroup00 /dev/nvme0n1p2&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Now, we create a cache pool and use it as the caching layer of our new root partition, all in one step. I chose to use a writeback cache since I can sustain small write losses in the case the SSD fails, and given that it’s so new, I don’t expect it to fail anytime soon (knocking on wood): &lt;code class=&quot;highlighter-rouge&quot;&gt;lvcreate --type cache --cachemode writeback -l 100%FREE -n cache /dev/VolGroup00/lvolroot /dev/nvme0n1p2&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Reboot, and we’re done!&lt;/p&gt;
-
-&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
-&lt;p&gt;Look at the space!
-&lt;img src=&quot;/assets/posts/homelab/lsblk.png&quot; alt=&quot;lsblk&quot; /&gt;&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">The hard drives finally came, so in this post, I’ll be documenting RAID (mdadm) and LVM (with lvmcache). I have a Samsung 970 EVO NVMe SSD which already has 3 partitions in this order: boot, root, swap (without LVM). In this post, we will be adding 4x 3TB Seagate Barracuda drives in RAID10 with mdadm, and with LVM top. We will then move the root partition to the RAID10 array.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background I use NixOS as my main OS in everything (from personal laptop to my server), but I was beginning to miss Windows for gaming. (WINE won’t cut it here.) As a result, I went searching for installing Windows alongside an existing NixOS installation, but I couldn’t find one anywhere. I decided to just dive in, and it worked! Here is a high-level list of the steps I took. For reference, I am installing this on an XPS 9550, with EFI.</summary></entry></feed>
