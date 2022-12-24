@@ -78,13 +78,10 @@
         <a class="page-link" href="/notes/">Notes</a>
       
         
-        <a class="page-link" href="/teaching/">Teaching</a>
-      
-        
         <a class="page-link" href="/blog/">Blog</a>
       
         
-        <a class="page-link" href="/projects/">Projects</a>
+        <a class="page-link" href="https://github.com/addcninblue/">GitHub</a>
       
     </nav>
 
@@ -106,11 +103,11 @@
 
   <div class="post-content" itemprop="articleBody">
     <h2 id="todays-fact-linear-discriminant-analysis">Today’s Fact: Linear Discriminant Analysis</h2>
-<p>Linear Discriminant Analysis, or LDA for short, is an ML model used in classification. Specifically, for a model of <code class="highlighter-rouge">d</code> features and <code class="highlighter-rouge">n</code> training points, it assumes that the <code class="highlighter-rouge">d</code> features are all distributed Normally (Gaussian), with the same variance. More formally, taken from my professor’s <a href="https://people.eecs.berkeley.edu/~jrs/189/lec/07.pdf">cs189 notes</a>, we get:</p>
+<p>Linear Discriminant Analysis, or LDA for short, is an ML model used in classification. Specifically, for a model of <code class="language-plaintext highlighter-rouge">d</code> features and <code class="language-plaintext highlighter-rouge">n</code> training points, it assumes that the <code class="language-plaintext highlighter-rouge">d</code> features are all distributed Normally (Gaussian), with the same variance. More formally, taken from my professor’s <a href="https://people.eecs.berkeley.edu/~jrs/189/lec/07.pdf">cs189 notes</a>, we get:</p>
 
 <p><img src="/assets/posts/facts/fact2_1.png" alt="Lecture Note 1" /></p>
 
-<p>This doesn’t help much for those who are unfamiliar with Machine Learning, so he also included helpful diagrams. Below is a two-class classification (imagine your input is either of class <code class="highlighter-rouge">A</code> or class <code class="highlighter-rouge">B</code>, and you’re deciding which class it’s supposed to be in). The decision function (breaking point between choosing <code class="highlighter-rouge">A</code> versus <code class="highlighter-rouge">B</code>) is the black line; less than 0.5 indicates a stronger guess towards the left side, and greater than 0.5 indicates a stronger guess towards the right class. Below that, we have a multi-class problem, where each class’s boundaries are broken up by black line:</p>
+<p>This doesn’t help much for those who are unfamiliar with Machine Learning, so he also included helpful diagrams. Below is a two-class classification (imagine your input is either of class <code class="language-plaintext highlighter-rouge">A</code> or class <code class="language-plaintext highlighter-rouge">B</code>, and you’re deciding which class it’s supposed to be in). The decision function (breaking point between choosing <code class="language-plaintext highlighter-rouge">A</code> versus <code class="language-plaintext highlighter-rouge">B</code>) is the black line; less than 0.5 indicates a stronger guess towards the left side, and greater than 0.5 indicates a stronger guess towards the right class. Below that, we have a multi-class problem, where each class’s boundaries are broken up by black line:</p>
 
 <p><img src="/assets/posts/facts/fact2_2.png" alt="Lecture Note 2" /></p>
 
@@ -137,7 +134,7 @@
 <p><img src="/assets/posts/facts/fact2_2_kmeans.png" alt="Simulation 2, KMeans" />
 <img src="/assets/posts/facts/fact2_2_lda.png" alt="Simulation 2, LDA" /></p>
 
-<p>Notice that in the second case, where there are overlapping data, <em>LDA still learns of a distinction between class <code class="highlighter-rouge">Yellow</code> and class <code class="highlighter-rouge">Purple</code></em>. K-means completely lost it there, since it has no idea <em>what the labels are supposed to be</em>. This is expected, since K-means is intended to group similar data, not learn things like this. We thought that it was quite interesting that K-means performed as well as it did in part 1.</p>
+<p>Notice that in the second case, where there are overlapping data, <em>LDA still learns of a distinction between class <code class="language-plaintext highlighter-rouge">Yellow</code> and class <code class="language-plaintext highlighter-rouge">Purple</code></em>. K-means completely lost it there, since it has no idea <em>what the labels are supposed to be</em>. This is expected, since K-means is intended to group similar data, not learn things like this. We thought that it was quite interesting that K-means performed as well as it did in part 1.</p>
 
 <hr />
 

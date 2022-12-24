@@ -78,13 +78,10 @@
         <a class="page-link" href="/notes/">Notes</a>
       
         
-        <a class="page-link" href="/teaching/">Teaching</a>
-      
-        
         <a class="page-link" href="/blog/">Blog</a>
       
         
-        <a class="page-link" href="/projects/">Projects</a>
+        <a class="page-link" href="https://github.com/addcninblue/">GitHub</a>
       
     </nav>
 
@@ -124,35 +121,35 @@
 
 <h2 id="steps">Steps</h2>
 <ol>
-  <li>Change the boot method from the default systemd-boot bootloader to GRUB. This will allow us to add Windows to the boot menu in the future. <a href="https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows#Grub_2">Here are the steps.</a> For now, leave out the entire <code class="highlighter-rouge">extraEntries</code> line – we’ll add that later.</li>
+  <li>Change the boot method from the default systemd-boot bootloader to GRUB. This will allow us to add Windows to the boot menu in the future. <a href="https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows#Grub_2">Here are the steps.</a> For now, leave out the entire <code class="language-plaintext highlighter-rouge">extraEntries</code> line – we’ll add that later.</li>
   <li>If you need to resize NixOS:
     <ol>
       <li>Boot into the live USB stick.</li>
-      <li>Over-downsize your filesystem: <code class="highlighter-rouge">resize2fs /dev/sdXY $something_smaller_than_new_size</code>, where the size we input is something smaller than the final size of our partition we want.</li>
+      <li>Over-downsize your filesystem: <code class="language-plaintext highlighter-rouge">resize2fs /dev/sdXY $something_smaller_than_new_size</code>, where the size we input is something smaller than the final size of our partition we want.</li>
       <li><a href="https://wiki.archlinux.org/index.php/Parted#Shrinking_partitions">Shrink the actual partition:</a>. Note that we first overshoot our shrink for the filesystem and then fit it back. This is to ensure that our partition doesn’t cut off our filesystem, which can lead to data loss.
         <ol>
-          <li>Start parted: <code class="highlighter-rouge">parted --align optimal /dev/sdX</code></li>
-          <li>List out partitions: <code class="highlighter-rouge">(parted) print</code></li>
-          <li>Shrink the right partition: <code class="highlighter-rouge">(parted) resizepart number end</code></li>
+          <li>Start parted: <code class="language-plaintext highlighter-rouge">parted --align optimal /dev/sdX</code></li>
+          <li>List out partitions: <code class="language-plaintext highlighter-rouge">(parted) print</code></li>
+          <li>Shrink the right partition: <code class="language-plaintext highlighter-rouge">(parted) resizepart number end</code></li>
         </ol>
       </li>
-      <li>Grow the filesystem to fill the entire space of the partition: <code class="highlighter-rouge">resize2fs /dev/sdXY</code></li>
+      <li>Grow the filesystem to fill the entire space of the partition: <code class="language-plaintext highlighter-rouge">resize2fs /dev/sdXY</code></li>
     </ol>
   </li>
   <li>Install Windows. This is actually pretty simple; in the installer, simply click on the unallocated space to install Windows, and it’ll just work. <em>magic!</em></li>
   <li>Now, your computer should be booting directly into Windows. We have to reinstall GRUB as the bootloader to fix that:
     <ol>
       <li>Boot into the live USB stick.</li>
-      <li>Mount your NixOS system onto <code class="highlighter-rouge">/mnt</code>. If you followed the <a href="https://nixos.org/nixos/manual/index.html#sec-installation-installing">instruction manual</a>, then it would look like this:
+      <li>Mount your NixOS system onto <code class="language-plaintext highlighter-rouge">/mnt</code>. If you followed the <a href="https://nixos.org/nixos/manual/index.html#sec-installation-installing">instruction manual</a>, then it would look like this:
         <ol>
-          <li><code class="highlighter-rouge">mount /dev/disk/by-label/nixos /mnt/</code></li>
-          <li><code class="highlighter-rouge">mount /dev/disk/by-label/boot /mnt/boot</code></li>
-          <li><code class="highlighter-rouge">swapon /dev/disk/by-label/swap</code></li>
+          <li><code class="language-plaintext highlighter-rouge">mount /dev/disk/by-label/nixos /mnt/</code></li>
+          <li><code class="language-plaintext highlighter-rouge">mount /dev/disk/by-label/boot /mnt/boot</code></li>
+          <li><code class="language-plaintext highlighter-rouge">swapon /dev/disk/by-label/swap</code></li>
         </ol>
       </li>
-      <li>Add all of your <code class="highlighter-rouge">nix-channel</code>s that you currently use in your OS with <code class="highlighter-rouge">nix-channel --add ...</code>. If you forgot, you can <a href="https://nixos.wiki/wiki/Change_root"><code class="highlighter-rouge">nixos-enter</code></a> into your installation to check via <code class="highlighter-rouge">nix-channel --list</code>.</li>
-      <li>Grab the UUID of boot partition via <code class="highlighter-rouge">blkid</code>, and <a href="https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows#Grub_2">add that in to the GRUB section of your <code class="highlighter-rouge">configuration.nix</code></a>. It should be located at <code class="highlighter-rouge">/mnt/etc/nixos/configuration.nix</code>. This is the part where we add Windows into GRUB.</li>
-      <li>Rederive NixOS: <code class="highlighter-rouge">nixos-install</code>.</li>
+      <li>Add all of your <code class="language-plaintext highlighter-rouge">nix-channel</code>s that you currently use in your OS with <code class="language-plaintext highlighter-rouge">nix-channel --add ...</code>. If you forgot, you can <a href="https://nixos.wiki/wiki/Change_root"><code class="language-plaintext highlighter-rouge">nixos-enter</code></a> into your installation to check via <code class="language-plaintext highlighter-rouge">nix-channel --list</code>.</li>
+      <li>Grab the UUID of boot partition via <code class="language-plaintext highlighter-rouge">blkid</code>, and <a href="https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows#Grub_2">add that in to the GRUB section of your <code class="language-plaintext highlighter-rouge">configuration.nix</code></a>. It should be located at <code class="language-plaintext highlighter-rouge">/mnt/etc/nixos/configuration.nix</code>. This is the part where we add Windows into GRUB.</li>
+      <li>Rederive NixOS: <code class="language-plaintext highlighter-rouge">nixos-install</code>.</li>
     </ol>
   </li>
 </ol>
@@ -161,7 +158,7 @@
 
 <h2 id="things-i-tried-that-failed">Things I Tried That Failed</h2>
 <ul>
-  <li>Live booting the Nixos ISO, and trying to chroot into that environment to <code class="highlighter-rouge">nixos-rebuild switch</code>. This failed due to some strange error about being unable to write to the filesystem.</li>
+  <li>Live booting the Nixos ISO, and trying to chroot into that environment to <code class="language-plaintext highlighter-rouge">nixos-rebuild switch</code>. This failed due to some strange error about being unable to write to the filesystem.</li>
   <li>Live booting from Ubuntu to try to rebuild grub there. This failed because it requires either a chroot or directly specifying the EFI directory, and the chroot fails because Nixos doesn’t have a /bin/bash, and the EFI directory approach failed for some unknown reason.</li>
 </ul>
 

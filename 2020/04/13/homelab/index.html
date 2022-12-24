@@ -78,13 +78,10 @@
         <a class="page-link" href="/notes/">Notes</a>
       
         
-        <a class="page-link" href="/teaching/">Teaching</a>
-      
-        
         <a class="page-link" href="/blog/">Blog</a>
       
         
-        <a class="page-link" href="/projects/">Projects</a>
+        <a class="page-link" href="https://github.com/addcninblue/">GitHub</a>
       
     </nav>
 
@@ -143,30 +140,30 @@
 <h2 id="jupyterhub">JupyterHub</h2>
 <p>Since I would be doing a decent amount of computation, and since my main laptop is a Pixelbook, I wanted to be able to have access to a Python interpreter anywhere, particularly hosted on a website. As a result, I decided to use <a href="https://jupyterhub.readthedocs.io/en/stable/">Jupyterhub</a>, which is pretty stable and has really good documentation. I set up the installation in an LXC container running Ubuntu 18.04, following the instructions <a href="https://jupyterhub.readthedocs.io/en/stable/installation-guide-hard.html">here</a>.</p>
 
-<p>Installing new kernels for JupyterHub was a huge headache, however. There are a lot of package managers for Python, including <code class="highlighter-rouge">virtualenv</code>, <code class="highlighter-rouge">venv</code>, and <code class="highlighter-rouge">conda</code>, and often their usages overlap with one another. Maintaining them is quite the headache! For JupyterHub, <code class="highlighter-rouge">conda</code> is used to make environments, and <em>kernels</em> are used when executing code inside JupyterHub. Below is a detailed rundown of creation of a new conda environment for a particular user:</p>
+<p>Installing new kernels for JupyterHub was a huge headache, however. There are a lot of package managers for Python, including <code class="language-plaintext highlighter-rouge">virtualenv</code>, <code class="language-plaintext highlighter-rouge">venv</code>, and <code class="language-plaintext highlighter-rouge">conda</code>, and often their usages overlap with one another. Maintaining them is quite the headache! For JupyterHub, <code class="language-plaintext highlighter-rouge">conda</code> is used to make environments, and <em>kernels</em> are used when executing code inside JupyterHub. Below is a detailed rundown of creation of a new conda environment for a particular user:</p>
 
 <h3 id="creating-a-new-environment">Creating a New Environment</h3>
 <ul>
-  <li>First, we create the <code class="highlighter-rouge">conda</code> environment. Here, our conda environment is called <code class="highlighter-rouge">conda_env</code> and we install the <code class="highlighter-rouge">ipykernel</code> and <code class="highlighter-rouge">matplotlib</code> packages. You can choose your packages, but note that <code class="highlighter-rouge">ipykernel</code> <em>must</em> be installed: <code class="highlighter-rouge">conda create --name "conda_env" python=3.7 ipykernel matplotlib</code></li>
-  <li>Next, we activate the conda environment: <code class="highlighter-rouge">conda activate conda_env</code></li>
-  <li>Now, since we have our conda environment activated, the <code class="highlighter-rouge">python</code> binary will be bound to the <code class="highlighter-rouge">python</code> package that the <code class="highlighter-rouge">conda</code> environment created. (You can use <code class="highlighter-rouge">which python</code> to see that in action!) Now, we can use <code class="highlighter-rouge">python -m ipykernel install --user --name "kernel_name"</code> to install a new kernel with the name <code class="highlighter-rouge">kernel_name</code>.</li>
+  <li>First, we create the <code class="language-plaintext highlighter-rouge">conda</code> environment. Here, our conda environment is called <code class="language-plaintext highlighter-rouge">conda_env</code> and we install the <code class="language-plaintext highlighter-rouge">ipykernel</code> and <code class="language-plaintext highlighter-rouge">matplotlib</code> packages. You can choose your packages, but note that <code class="language-plaintext highlighter-rouge">ipykernel</code> <em>must</em> be installed: <code class="language-plaintext highlighter-rouge">conda create --name "conda_env" python=3.7 ipykernel matplotlib</code></li>
+  <li>Next, we activate the conda environment: <code class="language-plaintext highlighter-rouge">conda activate conda_env</code></li>
+  <li>Now, since we have our conda environment activated, the <code class="language-plaintext highlighter-rouge">python</code> binary will be bound to the <code class="language-plaintext highlighter-rouge">python</code> package that the <code class="language-plaintext highlighter-rouge">conda</code> environment created. (You can use <code class="language-plaintext highlighter-rouge">which python</code> to see that in action!) Now, we can use <code class="language-plaintext highlighter-rouge">python -m ipykernel install --user --name "kernel_name"</code> to install a new kernel with the name <code class="language-plaintext highlighter-rouge">kernel_name</code>.</li>
 </ul>
 
 <h3 id="listing-environments">Listing Environments</h3>
 <ul>
-  <li>Listing <code class="highlighter-rouge">conda</code> environments: <code class="highlighter-rouge">conda info --envs</code></li>
-  <li>Listing JupyterHub kernels: <code class="highlighter-rouge">jupyter kernelspec list</code></li>
+  <li>Listing <code class="language-plaintext highlighter-rouge">conda</code> environments: <code class="language-plaintext highlighter-rouge">conda info --envs</code></li>
+  <li>Listing JupyterHub kernels: <code class="language-plaintext highlighter-rouge">jupyter kernelspec list</code></li>
 </ul>
 
 <h3 id="deleting-kernels-and-conda-environments">Deleting Kernels and Conda Environments</h3>
 <ul>
-  <li>First, we remove the jupyter kernel: <code class="highlighter-rouge">jupyter kernelspec remove "kernel_name"</code></li>
-  <li>Next, we remove the conda environment that created the kernel: <code class="highlighter-rouge">conda remove --name "conda_env" --all</code></li>
+  <li>First, we remove the jupyter kernel: <code class="language-plaintext highlighter-rouge">jupyter kernelspec remove "kernel_name"</code></li>
+  <li>Next, we remove the conda environment that created the kernel: <code class="language-plaintext highlighter-rouge">conda remove --name "conda_env" --all</code></li>
 </ul>
 
 <h3 id="bonus-installing-packages-from-requirementstxt">Bonus: Installing Packages From requirements.txt</h3>
 <ul>
-  <li>Follow steps from <a href="#creating-a-new-environment"><strong>Creating a New Environment</strong></a>, but before installing the kernel, run <code class="highlighter-rouge">conda install --file requirements.txt</code> to install the packages to the <code class="highlighter-rouge">conda</code> environment. Then, proceed as usual.</li>
+  <li>Follow steps from <a href="#creating-a-new-environment"><strong>Creating a New Environment</strong></a>, but before installing the kernel, run <code class="language-plaintext highlighter-rouge">conda install --file requirements.txt</code> to install the packages to the <code class="language-plaintext highlighter-rouge">conda</code> environment. Then, proceed as usual.</li>
 </ul>
 
 <h2 id="making-lxc-play-nice">Making LXC Play Nice</h2>
@@ -176,7 +173,7 @@
 <p>This was by far the most annoying part of this build. Stéphane Graber’s blog has a very very well written <a href="https://stgraber.org/2017/03/21/cuda-in-lxd/">post</a> about how to get GPU passthrough to work, but since I am using different operating systems, I will highlight some things that might trip others up:</p>
 <ul>
   <li>The Nvidia driver version <em>must be exactly the same</em>. <strong>This includes the minor version!</strong> A driver mismatch will cause you endless pain and suffering. For those who are venturing down this path, I recommend to first install the host Nvidia driver and CUDA driver, and then download matching versions for the LXC client.</li>
-  <li>When you install the <code class="highlighter-rouge">.run</code> Nvidia driver on the LXC client, you might run into something along the lines of “xxx kernel module is already installed”. To fix this, append <code class="highlighter-rouge">--no-kernel-module</code> to the script (so it looks something like <code class="highlighter-rouge">sudo sh NVIDIA-Linux-x86_64-440.36.run --no-kernel-module</code>). I don’t fully understand this, but my understanding is that since LXC containers use the host kernel, the module is getting loaded by the host operating system, so the kernel module doesn’t need to be installed by the guest container. Here, that would mean that we would only need to install the driver for the tools, not for the kernel module).</li>
+  <li>When you install the <code class="language-plaintext highlighter-rouge">.run</code> Nvidia driver on the LXC client, you might run into something along the lines of “xxx kernel module is already installed”. To fix this, append <code class="language-plaintext highlighter-rouge">--no-kernel-module</code> to the script (so it looks something like <code class="language-plaintext highlighter-rouge">sudo sh NVIDIA-Linux-x86_64-440.36.run --no-kernel-module</code>). I don’t fully understand this, but my understanding is that since LXC containers use the host kernel, the module is getting loaded by the host operating system, so the kernel module doesn’t need to be installed by the guest container. Here, that would mean that we would only need to install the driver for the tools, not for the kernel module).</li>
 </ul>
 
 <h3 id="bind-mounting-folders">Bind-Mounting Folders</h3>

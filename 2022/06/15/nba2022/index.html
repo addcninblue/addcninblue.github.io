@@ -78,13 +78,10 @@
         <a class="page-link" href="/notes/">Notes</a>
       
         
-        <a class="page-link" href="/teaching/">Teaching</a>
-      
-        
         <a class="page-link" href="/blog/">Blog</a>
       
         
-        <a class="page-link" href="/projects/">Projects</a>
+        <a class="page-link" href="https://github.com/addcninblue/">GitHub</a>
       
     </nav>
 
@@ -165,8 +162,8 @@ model to update those underlying RVs, we’re still left with the implementation
 problem: how exactly do you create this many intermediate variables?</p>
 
 <p>I tried researching for a while, but eventually gave up. (In retrospect, I
-suspect a <code class="highlighter-rouge">for</code> loop probably would work, but I’m quite unsure.) It was at this
-point that I remembered Julia’s <code class="highlighter-rouge">Turing.jl</code> library allows for arbitrary Julia
+suspect a <code class="language-plaintext highlighter-rouge">for</code> loop probably would work, but I’m quite unsure.) It was at this
+point that I remembered Julia’s <code class="language-plaintext highlighter-rouge">Turing.jl</code> library allows for arbitrary Julia
 expressions, and as I’m moderately familiar with the language, I figured it’d
 be worth it to give it a second shot.</p>
 
@@ -190,11 +187,11 @@ However, when it’s a bipartite graph, as with two teams, it’s hard to tease 
 the reason behind scoring more, whether it’s due to one player having greater
 attack or due to another having lower defense.</p>
 
-<p>While training this model, I dug into the <code class="highlighter-rouge">Turing.ml</code> documentation a bit more.
+<p>While training this model, I dug into the <code class="language-plaintext highlighter-rouge">Turing.ml</code> documentation a bit more.
 There’s an interesting section on <a href="https://turing.ml/dev/docs/using-turing/performancetips">performance
 tuning</a>. I figured
 that since my model probably qualifies as a bigger one that I should try
-<code class="highlighter-rouge">:reversediff</code>. Adding that reduced my model training by about a minute, from
+<code class="language-plaintext highlighter-rouge">:reversediff</code>. Adding that reduced my model training by about a minute, from
 ~6 minutes to 5. Then, looking into <a href="https://turing.ml/dev/docs/using-turing/autodiff">the autodiff
 section</a> more, I verified
 that I could memoize the computation, and did so. The training went down to

@@ -78,13 +78,10 @@
         <a class="page-link" href="/notes/">Notes</a>
       
         
-        <a class="page-link" href="/teaching/">Teaching</a>
-      
-        
         <a class="page-link" href="/blog/">Blog</a>
       
         
-        <a class="page-link" href="/projects/">Projects</a>
+        <a class="page-link" href="https://github.com/addcninblue/">GitHub</a>
       
     </nav>
 
@@ -139,20 +136,20 @@
   <p>A programming language is more than just a means for instructing a computer to perform tasks. The language also serves as a framework within which we organize our ideas about computational processes. Programs serve to communicate those ideas among the members of a programming community. Thus, programs must be written for people to read, and only incidentally for machines to execute.</p>
 </blockquote>
 
-<p>We will introduce <em>expressions</em>, which are statements that Python can execute. Then, we will go over how Python executes them, and how they can be stored in <em>variables</em>. Lastly, we will discuss the <code class="highlighter-rouge">print</code> function.</p>
+<p>We will introduce <em>expressions</em>, which are statements that Python can execute. Then, we will go over how Python executes them, and how they can be stored in <em>variables</em>. Lastly, we will discuss the <code class="language-plaintext highlighter-rouge">print</code> function.</p>
 
 <hr />
 
 <h2 id="a-brief-aside">A brief aside</h2>
-<p>Generally, in 61A your assignments (labs, homework, and projects) will be given in a Python file with the extension <code class="highlighter-rouge">.py</code>. You can edit these files, and the Python interpreter will execute it line by line.</p>
+<p>Generally, in 61A your assignments (labs, homework, and projects) will be given in a Python file with the extension <code class="language-plaintext highlighter-rouge">.py</code>. You can edit these files, and the Python interpreter will execute it line by line.</p>
 
-<p>That being said, Python is a great introductory programming language. There are many features that make it friendly, one of which is the <em>Python interpreter</em>, which can be started with <code class="highlighter-rouge">python3 -i</code> (try it out in your terminal!).</p>
+<p>That being said, Python is a great introductory programming language. There are many features that make it friendly, one of which is the <em>Python interpreter</em>, which can be started with <code class="language-plaintext highlighter-rouge">python3 -i</code> (try it out in your terminal!).</p>
 
 <p>Throughout 61A, you will see expressions such as</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">"hi"</span><span class="p">)</span>
 <span class="n">hi</span>
 </code></pre></div></div>
-<p>The <code class="highlighter-rouge">&gt;&gt;&gt;</code> represents statements executed directly in a Python interpreter (ie. not from a file), and the line after is the output we get from executing the <code class="highlighter-rouge">&gt;&gt;&gt;</code> line.</p>
+<p>The <code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;</code> represents statements executed directly in a Python interpreter (ie. not from a file), and the line after is the output we get from executing the <code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;</code> line.</p>
 
 <hr />
 
@@ -161,7 +158,7 @@
   <p>Primitive expressions represent the simplest building blocks that the language provides</p>
 </blockquote>
 
-<p>Python defines many built in types of primitives, and the most commonly used types are <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">float</code> (floating point number), <code class="highlighter-rouge">bool</code> (boolean, or True/False type), <code class="highlighter-rouge">str</code> (string type), and other container types that we will get into later</p>
+<p>Python defines many built in types of primitives, and the most commonly used types are <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">float</code> (floating point number), <code class="language-plaintext highlighter-rouge">bool</code> (boolean, or True/False type), <code class="language-plaintext highlighter-rouge">str</code> (string type), and other container types that we will get into later</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="mf">3.14</span> <span class="c1"># this is a float
 </span><span class="mf">3.14</span>
@@ -205,7 +202,7 @@
 <span class="mi">10</span>
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">=</code> <em>binds</em> the left <em>name</em> to the right <em>value</em> inside the current <em>frame of execution</em>. In the above case, we are executing these lines in the default <em>global frame</em>, which we can see below.</p>
+<p>The <code class="language-plaintext highlighter-rouge">=</code> <em>binds</em> the left <em>name</em> to the right <em>value</em> inside the current <em>frame of execution</em>. In the above case, we are executing these lines in the default <em>global frame</em>, which we can see below.</p>
 
 <iframe width="800" height="300" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=a%20%3D%2042%0Amy_sum%20%3D%20a%20%2B%2010%0Aten%20%3D%20abs%28-10%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=true&amp;curInstr=3&amp;origin=composingprograms.js&amp;py=3&amp;rawInputLstJSON=%5B%5D"></iframe>
 
@@ -229,14 +226,14 @@
 <ol>
   <li>Evaluate the operator and the operand
     <ul>
-      <li>Here, the operator is <code class="highlighter-rouge">abs</code> and the operand is <code class="highlighter-rouge">-10</code>.</li>
-      <li>Looking up <code class="highlighter-rouge">abs</code>, we get that it’s the built-in function <code class="highlighter-rouge">abs</code>.</li>
-      <li><code class="highlighter-rouge">-10</code> is a primitive, so we are good to go.</li>
+      <li>Here, the operator is <code class="language-plaintext highlighter-rouge">abs</code> and the operand is <code class="language-plaintext highlighter-rouge">-10</code>.</li>
+      <li>Looking up <code class="language-plaintext highlighter-rouge">abs</code>, we get that it’s the built-in function <code class="language-plaintext highlighter-rouge">abs</code>.</li>
+      <li><code class="language-plaintext highlighter-rouge">-10</code> is a primitive, so we are good to go.</li>
     </ul>
   </li>
   <li>Apply the operator to the operand
     <ul>
-      <li>We apply the built-in function <code class="highlighter-rouge">abs</code> to <code class="highlighter-rouge">-10</code>, and we get <code class="highlighter-rouge">10</code> as our answer.</li>
+      <li>We apply the built-in function <code class="language-plaintext highlighter-rouge">abs</code> to <code class="language-plaintext highlighter-rouge">-10</code>, and we get <code class="language-plaintext highlighter-rouge">10</code> as our answer.</li>
     </ul>
   </li>
 </ol>
@@ -255,17 +252,17 @@
 <ol>
   <li>Evaluate the operator and the operand
     <ul>
-      <li>The operator in the outermost statement is <code class="highlighter-rouge">mul</code>. This is a valid name in our current environment. Then, our operands are <code class="highlighter-rouge">add(2, mul(4, 6))</code> and <code class="highlighter-rouge">add(3, 5)</code>. Since these are not primitive expressions, we must evaluate them to get a value.</li>
-      <li>For <code class="highlighter-rouge">add(2, mul(4, 6))</code>:
+      <li>The operator in the outermost statement is <code class="language-plaintext highlighter-rouge">mul</code>. This is a valid name in our current environment. Then, our operands are <code class="language-plaintext highlighter-rouge">add(2, mul(4, 6))</code> and <code class="language-plaintext highlighter-rouge">add(3, 5)</code>. Since these are not primitive expressions, we must evaluate them to get a value.</li>
+      <li>For <code class="language-plaintext highlighter-rouge">add(2, mul(4, 6))</code>:
         <ol>
-          <li>Evaluate the operator and operand of <code class="highlighter-rouge">add(2, mul(4, 6))</code>. The operator is <code class="highlighter-rouge">add</code> and the operands are <code class="highlighter-rouge">2</code> and <code class="highlighter-rouge">mul(4, 6)</code>. <code class="highlighter-rouge">2</code> is a primitive expression, so we can continue here. <code class="highlighter-rouge">mul(4, 6)</code> needs to be evaluated. Using the same process, we get 24.</li>
-          <li>Apply the operator to the operand. Applying <code class="highlighter-rouge">add</code> to <code class="highlighter-rouge">2</code> and <code class="highlighter-rouge">24</code> returns <code class="highlighter-rouge">26</code>.</li>
+          <li>Evaluate the operator and operand of <code class="language-plaintext highlighter-rouge">add(2, mul(4, 6))</code>. The operator is <code class="language-plaintext highlighter-rouge">add</code> and the operands are <code class="language-plaintext highlighter-rouge">2</code> and <code class="language-plaintext highlighter-rouge">mul(4, 6)</code>. <code class="language-plaintext highlighter-rouge">2</code> is a primitive expression, so we can continue here. <code class="language-plaintext highlighter-rouge">mul(4, 6)</code> needs to be evaluated. Using the same process, we get 24.</li>
+          <li>Apply the operator to the operand. Applying <code class="language-plaintext highlighter-rouge">add</code> to <code class="language-plaintext highlighter-rouge">2</code> and <code class="language-plaintext highlighter-rouge">24</code> returns <code class="language-plaintext highlighter-rouge">26</code>.</li>
         </ol>
       </li>
-      <li>For <code class="highlighter-rouge">add(3, 5)</code>: Using the same process above, we get <code class="highlighter-rouge">8</code>.</li>
+      <li>For <code class="language-plaintext highlighter-rouge">add(3, 5)</code>: Using the same process above, we get <code class="language-plaintext highlighter-rouge">8</code>.</li>
     </ul>
   </li>
-  <li>Apply the operator to the operand. Our operator is <code class="highlighter-rouge">mul</code>, and our operands are <code class="highlighter-rouge">26</code> and <code class="highlighter-rouge">8</code>. Our final return value is <code class="highlighter-rouge">208</code>.</li>
+  <li>Apply the operator to the operand. Our operator is <code class="language-plaintext highlighter-rouge">mul</code>, and our operands are <code class="language-plaintext highlighter-rouge">26</code> and <code class="language-plaintext highlighter-rouge">8</code>. Our final return value is <code class="language-plaintext highlighter-rouge">208</code>.</li>
 </ol>
 
 <p><img src="https://composingprograms.com/img/expression_tree.png" alt="Nested Evaluation" /></p>
@@ -275,7 +272,7 @@
 <h2 id="print">Print</h2>
 <p>Print is a function that</p>
 <ol>
-  <li>Returns <code class="highlighter-rouge">None</code> (nothing), and</li>
+  <li>Returns <code class="language-plaintext highlighter-rouge">None</code> (nothing), and</li>
   <li>Prints a value out to the terminal.</li>
 </ol>
 
@@ -293,24 +290,24 @@
 <details>
   <summary>Explanation</summary>
   <ol>
-    <li>Eval operator and operand of <code class="highlighter-rouge">print(print("hi"))</code>
+    <li>Eval operator and operand of <code class="language-plaintext highlighter-rouge">print(print("hi"))</code>
       <ul>
-        <li>Operator is <code class="highlighter-rouge">print</code></li>
-        <li>Operand is <code class="highlighter-rouge">print("hi")</code>
+        <li>Operator is <code class="language-plaintext highlighter-rouge">print</code></li>
+        <li>Operand is <code class="language-plaintext highlighter-rouge">print("hi")</code>
           <ol>
-            <li>Eval operator and operand of <code class="highlighter-rouge">print("hi")</code>
+            <li>Eval operator and operand of <code class="language-plaintext highlighter-rouge">print("hi")</code>
               <ul>
-                <li>Operator is <code class="highlighter-rouge">print</code></li>
-                <li>Operand is <code class="highlighter-rouge">"hi"</code></li>
+                <li>Operator is <code class="language-plaintext highlighter-rouge">print</code></li>
+                <li>Operand is <code class="language-plaintext highlighter-rouge">"hi"</code></li>
               </ul>
             </li>
-            <li>Apply operator to operand. Here, <code class="highlighter-rouge">hi</code> is printed out to the terminal, and <code class="highlighter-rouge">None</code> is returned.</li>
+            <li>Apply operator to operand. Here, <code class="language-plaintext highlighter-rouge">hi</code> is printed out to the terminal, and <code class="language-plaintext highlighter-rouge">None</code> is returned.</li>
           </ol>
         </li>
-        <li>Operand is <code class="highlighter-rouge">None</code></li>
+        <li>Operand is <code class="language-plaintext highlighter-rouge">None</code></li>
       </ul>
     </li>
-    <li>Apply <code class="highlighter-rouge">print</code> to <code class="highlighter-rouge">None</code>. <code class="highlighter-rouge">None</code> is printed out to the terminal, and <code class="highlighter-rouge">None</code> is returned.</li>
+    <li>Apply <code class="language-plaintext highlighter-rouge">print</code> to <code class="language-plaintext highlighter-rouge">None</code>. <code class="language-plaintext highlighter-rouge">None</code> is printed out to the terminal, and <code class="language-plaintext highlighter-rouge">None</code> is returned.</li>
   </ol>
 </details>
 

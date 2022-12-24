@@ -78,13 +78,10 @@
         <a class="page-link" href="/notes/">Notes</a>
       
         
-        <a class="page-link" href="/teaching/">Teaching</a>
-      
-        
         <a class="page-link" href="/blog/">Blog</a>
       
         
-        <a class="page-link" href="/projects/">Projects</a>
+        <a class="page-link" href="https://github.com/addcninblue/">GitHub</a>
       
     </nav>
 
@@ -125,7 +122,7 @@
       <li><a href="#for-loops-while-loops-choosing-one-over-the-other">For loops? While loops? Choosing one over the other.</a></li>
       <li><a href="#example-range-of-temperatures">Example: Range of Temperatures</a>
         <ul>
-          <li><a href="#an-aside-why-does-range-use-begin-end">An aside: Why does <code class="highlighter-rouge">range</code> use <code class="highlighter-rouge">[begin, end)</code>?</a></li>
+          <li><a href="#an-aside-why-does-range-use-begin-end">An aside: Why does <code class="language-plaintext highlighter-rouge">range</code> use <code class="language-plaintext highlighter-rouge">[begin, end)</code>?</a></li>
         </ul>
       </li>
     </ul>
@@ -193,11 +190,11 @@
 
 <p>Let’s try to work through a modified version of the common problem Fizzbuzz:</p>
 <ul>
-  <li>Given some number <code class="highlighter-rouge">n</code>,
+  <li>Given some number <code class="language-plaintext highlighter-rouge">n</code>,
     <ul>
-      <li>If a number is divisible by 3, print <code class="highlighter-rouge">Fizz</code></li>
-      <li>If a number is divisible by 5, print <code class="highlighter-rouge">Buzz</code></li>
-      <li>If a number is divisible by both 3 and 5, print <code class="highlighter-rouge">FizzBuzz</code></li>
+      <li>If a number is divisible by 3, print <code class="language-plaintext highlighter-rouge">Fizz</code></li>
+      <li>If a number is divisible by 5, print <code class="language-plaintext highlighter-rouge">Buzz</code></li>
+      <li>If a number is divisible by both 3 and 5, print <code class="language-plaintext highlighter-rouge">FizzBuzz</code></li>
     </ul>
   </li>
 </ul>
@@ -212,7 +209,7 @@
 <span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">15</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">"FizzBuzz"</span><span class="p">)</span>
 </code></pre></div></div>
-<p>Can you spot the error above? Hint: Think about what happens when <code class="highlighter-rouge">n</code> is 15.</p>
+<p>Can you spot the error above? Hint: Think about what happens when <code class="language-plaintext highlighter-rouge">n</code> is 15.</p>
 
 <details>
   <summary>
@@ -227,7 +224,7 @@
     <span class="k">print</span><span class="p">(</span><span class="s">"Buzz"</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-  <p>We need to check 15 first before checking 3 or 5! To elucidate this, let’s consider the case of <code class="highlighter-rouge">n = 15</code>. In the original solution, we would hit the first case of <code class="highlighter-rouge">n % 3 == 0</code>, since <code class="highlighter-rouge">n</code> is divisible by 3. Because of this, we would never hit the <code class="highlighter-rouge">15</code> case. To fix this, we put <em>the most restrictive</em> case first. This ensures that we will always hit the 15 case before we hit any others.</p>
+  <p>We need to check 15 first before checking 3 or 5! To elucidate this, let’s consider the case of <code class="language-plaintext highlighter-rouge">n = 15</code>. In the original solution, we would hit the first case of <code class="language-plaintext highlighter-rouge">n % 3 == 0</code>, since <code class="language-plaintext highlighter-rouge">n</code> is divisible by 3. Because of this, we would never hit the <code class="language-plaintext highlighter-rouge">15</code> case. To fix this, we put <em>the most restrictive</em> case first. This ensures that we will always hit the 15 case before we hit any others.</p>
 </details>
 
 <hr />
@@ -240,7 +237,7 @@
 
 <p>Suppose we’re now tasked with computing the Celcius equivalents of a range of temperatures in Fahrenheit. Of course, we could just copy our code from earlier for each temperature. However, as CS majors, we’re lazy, so we go hunting for a better way.</p>
 
-<p>In Python, there are two keywords that help us with this: <code class="highlighter-rouge">while</code> and <code class="highlighter-rouge">for</code>. Specifically, these two keywords help with the task of <em>iteration</em>.</p>
+<p>In Python, there are two keywords that help us with this: <code class="language-plaintext highlighter-rouge">while</code> and <code class="language-plaintext highlighter-rouge">for</code>. Specifically, these two keywords help with the task of <em>iteration</em>.</p>
 
 <hr class="hr-subsection" />
 
@@ -261,14 +258,14 @@
     <span class="o">&lt;</span><span class="n">suite</span><span class="o">&gt;</span>
 </code></pre></div></div>
 
-<p>Python will continue executing the suite until the expression is <code class="highlighter-rouge">False</code>.</p>
+<p>Python will continue executing the suite until the expression is <code class="language-plaintext highlighter-rouge">False</code>.</p>
 
 <p>Here is a good way to visualize it:</p>
 <ol>
-  <li>What is the truthiness of <code class="highlighter-rouge">&lt;expression&gt;</code>?
+  <li>What is the truthiness of <code class="language-plaintext highlighter-rouge">&lt;expression&gt;</code>?
     <ul>
-      <li><code class="highlighter-rouge">True</code>: Execute <code class="highlighter-rouge">&lt;suite&gt;</code> and go back to (1.)</li>
-      <li><code class="highlighter-rouge">False</code>: Quit the loop.</li>
+      <li><code class="language-plaintext highlighter-rouge">True</code>: Execute <code class="language-plaintext highlighter-rouge">&lt;suite&gt;</code> and go back to (1.)</li>
+      <li><code class="language-plaintext highlighter-rouge">False</code>: Quit the loop.</li>
     </ul>
   </li>
 </ol>
@@ -276,14 +273,14 @@
 <hr class="hr-subsection" />
 
 <h3 id="for-loops-while-loops-choosing-one-over-the-other">For loops? While loops? Choosing one over the other.</h3>
-<p>You’ll notice that <code class="highlighter-rouge">while</code> and <code class="highlighter-rouge">for</code> loops look very similar. How would we choose one over another, and what benefits do they give?</p>
+<p>You’ll notice that <code class="language-plaintext highlighter-rouge">while</code> and <code class="language-plaintext highlighter-rouge">for</code> loops look very similar. How would we choose one over another, and what benefits do they give?</p>
 
-<p>The general explanation is that there is a very clear answer which is better. Generally speaking, <code class="highlighter-rouge">for</code> loops are used for a fixed-length sequence whose length is already known, whereas <code class="highlighter-rouge">while</code> loops are used for a sequence whose length we don’t know.</p>
+<p>The general explanation is that there is a very clear answer which is better. Generally speaking, <code class="language-plaintext highlighter-rouge">for</code> loops are used for a fixed-length sequence whose length is already known, whereas <code class="language-plaintext highlighter-rouge">while</code> loops are used for a sequence whose length we don’t know.</p>
 
 <p>For example:</p>
 <ul>
-  <li>Square all numbers from 1 to 10 → <code class="highlighter-rouge">for</code> loop, since we know the sequence.</li>
-  <li>Find the seventh prime number → <code class="highlighter-rouge">while</code> loop, since we don’t know how many integers we will need.</li>
+  <li>Square all numbers from 1 to 10 → <code class="language-plaintext highlighter-rouge">for</code> loop, since we know the sequence.</li>
+  <li>Find the seventh prime number → <code class="language-plaintext highlighter-rouge">while</code> loop, since we don’t know how many integers we will need.</li>
 </ul>
 
 <details>
@@ -297,7 +294,7 @@
 
 <p>Let’s go back to the example and print a range of temperatures in Celcius from Fahrenheit.</p>
 
-<p>Hint: <code class="highlighter-rouge">range(begin, end)</code> is a Python built-in that returns an iterable that will give you all integers between <code class="highlighter-rouge">begin</code> and <code class="highlighter-rouge">end</code>, <em>including</em> begin and <em>excluding</em> end. It is the mathematical equivalent of <code class="highlighter-rouge">[begin, end)</code>.</p>
+<p>Hint: <code class="language-plaintext highlighter-rouge">range(begin, end)</code> is a Python built-in that returns an iterable that will give you all integers between <code class="language-plaintext highlighter-rouge">begin</code> and <code class="language-plaintext highlighter-rouge">end</code>, <em>including</em> begin and <em>excluding</em> end. It is the mathematical equivalent of <code class="language-plaintext highlighter-rouge">[begin, end)</code>.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Let's find the celcius representations of fahrenheit 70~74
 </span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">fahrenheit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">):</span>
@@ -310,7 +307,7 @@
 <span class="mf">23.333333333333332</span>
 </code></pre></div></div>
 
-<p>Of course, this can be done with a <code class="highlighter-rouge">while</code> loop as well:</p>
+<p>Of course, this can be done with a <code class="language-plaintext highlighter-rouge">while</code> loop as well:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Let's find the celcius representations of fahrenheit 70~74
 </span><span class="o">&gt;&gt;&gt;</span> <span class="n">fahrenheit</span> <span class="o">=</span> <span class="mi">70</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">fahrenheit</span> <span class="o">&lt;</span> <span class="mi">75</span><span class="p">:</span>
@@ -326,11 +323,11 @@
 
 <details>
   <summary>
-    <h4 id="an-aside-why-does-range-use-begin-end">An aside: Why does <code class="highlighter-rouge">range</code> use <code class="highlighter-rouge">[begin, end)</code>?</h4>
+    <h4 id="an-aside-why-does-range-use-begin-end">An aside: Why does <code class="language-plaintext highlighter-rouge">range</code> use <code class="language-plaintext highlighter-rouge">[begin, end)</code>?</h4>
   </summary>
   <p>Doesn’t this default sound insane? <sup id="fnref:out-of-scope:1" role="doc-noteref"><a href="#fn:out-of-scope" class="footnote" rel="footnote">1</a></sup></p>
 
-  <p>It turns out, it’s not as insane as it sounds. A handy outcome is that you can easily compute the number of elements by simply doing <code class="highlighter-rouge">end - begin</code>. Furthermore, <code class="highlighter-rouge">range</code> provides defaults as a one-argument function, where calling it with one argument would set the end, implicitly setting <code class="highlighter-rouge">begin</code> to 0. For example, <code class="highlighter-rouge">range(10)</code> would give all elements <code class="highlighter-rouge">[0, 10)</code>.</p>
+  <p>It turns out, it’s not as insane as it sounds. A handy outcome is that you can easily compute the number of elements by simply doing <code class="language-plaintext highlighter-rouge">end - begin</code>. Furthermore, <code class="language-plaintext highlighter-rouge">range</code> provides defaults as a one-argument function, where calling it with one argument would set the end, implicitly setting <code class="language-plaintext highlighter-rouge">begin</code> to 0. For example, <code class="language-plaintext highlighter-rouge">range(10)</code> would give all elements <code class="language-plaintext highlighter-rouge">[0, 10)</code>.</p>
 
   <p>For those of you coming in with prior programming experience, this is equivalent to C-like languages’ for loop:</p>
   <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">begin</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -342,19 +339,19 @@
 <hr />
 
 <h2 id="defining-new-functions">Defining New Functions</h2>
-<p>Let’s put everything we’ve learned all together with a more motivating example. In the previous code we wrote for computing Fahrenheit from Celcius. Suppose instead we now want to compute this temperature from anywhere, without needing to copy over all our code again. This motivates the need for a <code class="highlighter-rouge">function</code>.</p>
+<p>Let’s put everything we’ve learned all together with a more motivating example. In the previous code we wrote for computing Fahrenheit from Celcius. Suppose instead we now want to compute this temperature from anywhere, without needing to copy over all our code again. This motivates the need for a <code class="language-plaintext highlighter-rouge">function</code>.</p>
 
-<p>A function can be thought of as a reusable piece of code with a certain number of inputs and an output (return value). We’ve seen examples of functions already (<code class="highlighter-rouge">min</code>, <code class="highlighter-rouge">max</code>, <code class="highlighter-rouge">abs</code>, to name a few). Now, we will be learning to define our own.</p>
+<p>A function can be thought of as a reusable piece of code with a certain number of inputs and an output (return value). We’ve seen examples of functions already (<code class="language-plaintext highlighter-rouge">min</code>, <code class="language-plaintext highlighter-rouge">max</code>, <code class="language-plaintext highlighter-rouge">abs</code>, to name a few). Now, we will be learning to define our own.</p>
 
 <p>The syntax is as follows:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def &lt;name&gt;(&lt;formal parameters&gt;):
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def &lt;name&gt;(&lt;formal parameters&gt;):
     &lt;function body&gt;
     return &lt;return expression&gt;
 </code></pre></div></div>
 
-<p>Note: In Python, the <code class="highlighter-rouge">return</code> statement is optional. If it is omitted, the return value will be set to <code class="highlighter-rouge">None</code> (which is Python’s null type).</p>
+<p>Note: In Python, the <code class="language-plaintext highlighter-rouge">return</code> statement is optional. If it is omitted, the return value will be set to <code class="language-plaintext highlighter-rouge">None</code> (which is Python’s null type).</p>
 
-<p>Here is an example of a custom definition of <code class="highlighter-rouge">min</code>:</p>
+<p>Here is an example of a custom definition of <code class="language-plaintext highlighter-rouge">min</code>:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
@@ -417,12 +414,12 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">lambda</span> <span class="o">&lt;</span><span class="n">formal</span> <span class="n">parameters</span><span class="o">&gt;</span><span class="p">:</span> <span class="o">&lt;</span><span class="k">lambda</span> <span class="n">body</span><span class="o">&gt;</span>
 </code></pre></div></div>
 
-<p>In normal functions, note that we use <code class="highlighter-rouge">return</code> to indicate a value to be returned. Since lambda functions are written in one line, the last value evaluated is implicitly returned. An example is given below.</p>
+<p>In normal functions, note that we use <code class="language-plaintext highlighter-rouge">return</code> to indicate a value to be returned. Since lambda functions are written in one line, the last value evaluated is implicitly returned. An example is given below.</p>
 
 <hr class="hr-subsection" />
 
 <h3 id="revisiting-fahrenheit-to-celcius">Revisiting Fahrenheit to Celcius</h3>
-<p>Let’s make a lambda function called <code class="highlighter-rouge">f_to_c_lambda</code> that returns the Celcius temperature of some temperature in Fahrenheit:</p>
+<p>Let’s make a lambda function called <code class="language-plaintext highlighter-rouge">f_to_c_lambda</code> that returns the Celcius temperature of some temperature in Fahrenheit:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">f_to_c_lambda</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">fahrenheit</span><span class="p">:</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span>
 </code></pre></div></div>
@@ -441,7 +438,7 @@
 <hr class="hr-subsection" />
 
 <h3 id="functions-lambdas-choosing-one-over-the-other">Functions? Lambdas? Choosing one over the other.</h3>
-<p>In general, lambdas are used when a simple calculation is needed (ie. a one-liner). This will arise in places such as <code class="highlighter-rouge">min</code>, which accepts a list and an optional <code class="highlighter-rouge">key</code> value:</p>
+<p>In general, lambdas are used when a simple calculation is needed (ie. a one-liner). This will arise in places such as <code class="language-plaintext highlighter-rouge">min</code>, which accepts a list and an optional <code class="language-plaintext highlighter-rouge">key</code> value:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">"apple"</span><span class="p">,</span> <span class="s">"bear"</span><span class="p">,</span> <span class="s">"carrot"</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span> <span class="c1"># default is alphabetical
@@ -498,7 +495,7 @@
       <li>With lambda functions, the <em>name</em> of the frame is <em>lambda</em>, whereas with defined functions, the name of the frame is the intrinsic name of the function (the name it was defined with).</li>
     </ul>
   </li>
-  <li>The value given by the <code class="highlighter-rouge">return</code> statement is called the <em>return value</em>, and becomes of the value of the entire call expression. In the example below, we see that the first function call opens a frame titled <em>lambda</em>, whereas the second function call opens a frame titled <em>f_to_c</em>. Note that both functions are defined in <code class="highlighter-rouge">global</code>, so both of their parents are the global frame. The return values of both are also bound in the global frame (where the function was called).
+  <li>The value given by the <code class="language-plaintext highlighter-rouge">return</code> statement is called the <em>return value</em>, and becomes of the value of the entire call expression. In the example below, we see that the first function call opens a frame titled <em>lambda</em>, whereas the second function call opens a frame titled <em>f_to_c</em>. Note that both functions are defined in <code class="language-plaintext highlighter-rouge">global</code>, so both of their parents are the global frame. The return values of both are also bound in the global frame (where the function was called).
     <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=fahrenheit%20%3D%2080%0Af_to_c_lambda%20%3D%20lambda%20fahrenheit%3A%20%28fahrenheit%20-%2032%29%20*%205%20/%209%0Adef%20f_to_c%28fahrenheit%29%3A%0A%20%20%20%20celcius%20%3D%20%28fahrenheit%20-%2032%29%20*%205%20/%209%0A%20%20%20%20return%20celcius%0A%0Acelcius_from_lambda%20%3D%20f_to_c_lambda%28fahrenheit%29%0Acelcius%20%3D%20f_to_c%28fahrenheit%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=true&amp;curInstr=12&amp;origin=composingprograms.js&amp;py=3&amp;rawInputLstJSON=%5B%5D"></iframe>
   </li>
 </ol>
@@ -518,11 +515,11 @@
 
 <p>Example of erroring:</p>
 <iframe width="800" height="370" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20a%28%29%3A%0A%20%20%20%20def%20b%28%29%3A%0A%20%20%20%20%20%20%20%20return%20c%0A%20%20%20%20return%20b%28%29%0Aa%28%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=true&amp;curInstr=7&amp;origin=composingprograms.js&amp;py=3&amp;rawInputLstJSON=%5B%5D"></iframe>
-<p>Above, we open up frames <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code>, and we try to look up <code class="highlighter-rouge">c</code>. Since <code class="highlighter-rouge">c</code> doesn’t exist in frame <code class="highlighter-rouge">b</code> or <code class="highlighter-rouge">a</code> or <code class="highlighter-rouge">global</code>, we error out.</p>
+<p>Above, we open up frames <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">b</code>, and we try to look up <code class="language-plaintext highlighter-rouge">c</code>. Since <code class="language-plaintext highlighter-rouge">c</code> doesn’t exist in frame <code class="language-plaintext highlighter-rouge">b</code> or <code class="language-plaintext highlighter-rouge">a</code> or <code class="language-plaintext highlighter-rouge">global</code>, we error out.</p>
 
 <p>Example of valid lookup:</p>
 <iframe width="800" height="390" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=c%20%3D%2010%0Adef%20a%28%29%3A%0A%20%20%20%20c%20%3D%2020%0A%20%20%20%20def%20b%28%29%3A%0A%20%20%20%20%20%20%20%20return%20c%0A%20%20%20%20return%20b%28%29%0Aa%28%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=true&amp;curInstr=9&amp;origin=composingprograms.js&amp;py=3&amp;rawInputLstJSON=%5B%5D"></iframe>
-<p>Above, we open up frames <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code> the same way. This time, when we try to look up <code class="highlighter-rouge">c</code>, it once again does not exist in frame <code class="highlighter-rouge">b</code>. We look in its parent (<code class="highlighter-rouge">a</code>), where it does exist. As a result, we return <code class="highlighter-rouge">20</code>.</p>
+<p>Above, we open up frames <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">b</code> the same way. This time, when we try to look up <code class="language-plaintext highlighter-rouge">c</code>, it once again does not exist in frame <code class="language-plaintext highlighter-rouge">b</code>. We look in its parent (<code class="language-plaintext highlighter-rouge">a</code>), where it does exist. As a result, we return <code class="language-plaintext highlighter-rouge">20</code>.</p>
 
 <hr />
 

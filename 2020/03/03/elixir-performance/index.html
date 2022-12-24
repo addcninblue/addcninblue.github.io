@@ -78,13 +78,10 @@
         <a class="page-link" href="/notes/">Notes</a>
       
         
-        <a class="page-link" href="/teaching/">Teaching</a>
-      
-        
         <a class="page-link" href="/blog/">Blog</a>
       
         
-        <a class="page-link" href="/projects/">Projects</a>
+        <a class="page-link" href="https://github.com/addcninblue/">GitHub</a>
       
     </nav>
 
@@ -119,7 +116,7 @@
 
 <h2 id="my-own-change">My Own Change</h2>
 <p>I decided to make the changes the blog specified by adding these following lines to the BEAM arguments:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+sbwt none
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+sbwt none
 +sbwtdcpu none
 +sbwtdio none
 </code></pre></div></div>
@@ -132,13 +129,13 @@
       <li><a href="https://github.com/addcninblue/links/commit/ddb45106492892c13834aeee20a83f47591bbf24#diff-f59a5941af2fadce5fbf5b04589acd10R12">Change Commit</a></li>
     </ul>
   </li>
-  <li>Add the required VM configuration files: <code class="highlighter-rouge">mix release.init</code>.</li>
+  <li>Add the required VM configuration files: <code class="language-plaintext highlighter-rouge">mix release.init</code>.</li>
   <li>Modify the VM configuration file by adding
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> +sbwt none
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> +sbwt none
  +sbwtdcpu none
  +sbwtdio none
 </code></pre></div>    </div>
-    <p>to <code class="highlighter-rouge">rel/vm.args.eex</code>.</p>
+    <p>to <code class="language-plaintext highlighter-rouge">rel/vm.args.eex</code>.</p>
   </li>
   <li>Recompile and deploy!</li>
 </ol>

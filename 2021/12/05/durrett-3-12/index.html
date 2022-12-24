@@ -103,13 +103,10 @@ loader: {load: ['[tex]/physics']},
         <a class="page-link" href="/notes/">Notes</a>
       
         
-        <a class="page-link" href="/teaching/">Teaching</a>
-      
-        
         <a class="page-link" href="/blog/">Blog</a>
       
         
-        <a class="page-link" href="/projects/">Projects</a>
+        <a class="page-link" href="https://github.com/addcninblue/">GitHub</a>
       
     </nav>
 
@@ -164,7 +161,7 @@ loader: {load: ['[tex]/physics']},
 
 <h2 id="simulation-code">Simulation Code</h2>
 
-<p>To simulate this result, we generate two random vectors of the exponential distributions. Then, we create the times at which the mistakes are made in <code class="highlighter-rouge">mistake_times</code> (remembering that mistakes happen <em>independently</em> of repairs). After that, we accumulate times at which the machine is correctly fixed in <code class="highlighter-rouge">fix_times</code>. Taking the successive differences of <code class="highlighter-rouge">fix_times</code> gives the time between fixes, and plotting these values gives us our result.</p>
+<p>To simulate this result, we generate two random vectors of the exponential distributions. Then, we create the times at which the mistakes are made in <code class="language-plaintext highlighter-rouge">mistake_times</code> (remembering that mistakes happen <em>independently</em> of repairs). After that, we accumulate times at which the machine is correctly fixed in <code class="language-plaintext highlighter-rouge">fix_times</code>. Taking the successive differences of <code class="language-plaintext highlighter-rouge">fix_times</code> gives the time between fixes, and plotting these values gives us our result.</p>
 
 <div class="language-jl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="n">Distributions</span>
 <span class="k">using</span> <span class="n">Plots</span>
@@ -206,7 +203,7 @@ loader: {load: ['[tex]/physics']},
 
 <h2 id="simulation-results">Simulation Results</h2>
 
-<p>The orange line <code class="highlighter-rouge">y2</code> is the simulated mean, and the green line <code class="highlighter-rouge">y3</code> is the expected mean (from our math above).</p>
+<p>The orange line <code class="language-plaintext highlighter-rouge">y2</code> is the simulated mean, and the green line <code class="language-plaintext highlighter-rouge">y3</code> is the expected mean (from our math above).</p>
 
 <p>With \(\mu = 1, \lambda = 3\), we get:</p>
 

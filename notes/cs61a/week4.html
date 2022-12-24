@@ -103,13 +103,10 @@ loader: {load: ['[tex]/physics']},
         <a class="page-link" href="/notes/">Notes</a>
       
         
-        <a class="page-link" href="/teaching/">Teaching</a>
-      
-        
         <a class="page-link" href="/blog/">Blog</a>
       
         
-        <a class="page-link" href="/projects/">Projects</a>
+        <a class="page-link" href="https://github.com/addcninblue/">GitHub</a>
       
     </nav>
 
@@ -165,7 +162,7 @@ loader: {load: ['[tex]/physics']},
 <h3 id="factorial">Factorial</h3>
 <p>Let’s take the example of computing a factorial, the product of all positive integers less than or equal to n. <sup id="fnref:factorial" role="doc-noteref"><a href="#fn:factorial" class="footnote" rel="footnote">1</a></sup></p>
 
-<p>A simple way to think about <code class="highlighter-rouge">factorial(n)</code> is as follows:</p>
+<p>A simple way to think about <code class="language-plaintext highlighter-rouge">factorial(n)</code> is as follows:</p>
 <ul>
   <li>If \( n \leq 1 \), then \( n! \rightarrow 1 \)</li>
   <li>Otherwise, \( n! \rightarrow n * (n-1)! \)</li>
@@ -180,7 +177,7 @@ loader: {load: ['[tex]/physics']},
         <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Let’s write this to be more Pythonic by dropping the <code class="highlighter-rouge">else</code> and deintenting the inner block:</p>
+<p>Let’s write this to be more Pythonic by dropping the <code class="language-plaintext highlighter-rouge">else</code> and deintenting the inner block:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
@@ -188,7 +185,7 @@ loader: {load: ['[tex]/physics']},
     <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>This example is recursive! Our <em>base case</em> is the <em>simplest problem</em>, when <code class="highlighter-rouge">factorial(n)</code> is a known value. In this case, our base case is when <code class="highlighter-rouge">n &lt;= 1</code>. Our recursion is a known reduction of the problem, where <code class="highlighter-rouge">factorial(n)</code> is the same problem as the <em>easier problem</em> <code class="highlighter-rouge">n * factorial(n-1)</code>. This way, we are <em>reducing our problem into smaller and smaller problems until we get to a known state</em>.</p>
+<p>This example is recursive! Our <em>base case</em> is the <em>simplest problem</em>, when <code class="language-plaintext highlighter-rouge">factorial(n)</code> is a known value. In this case, our base case is when <code class="language-plaintext highlighter-rouge">n &lt;= 1</code>. Our recursion is a known reduction of the problem, where <code class="language-plaintext highlighter-rouge">factorial(n)</code> is the same problem as the <em>easier problem</em> <code class="language-plaintext highlighter-rouge">n * factorial(n-1)</code>. This way, we are <em>reducing our problem into smaller and smaller problems until we get to a known state</em>.</p>
 
 <hr class="hr-subsection" />
 
@@ -242,8 +239,8 @@ F_n =
 
 <p>We can transform this definition into code. We have the cases</p>
 <ol>
-  <li>If <code class="highlighter-rouge">n == 0 or n == 1</code>, then <code class="highlighter-rouge">fibonacci(n) -&gt; 1</code></li>
-  <li>Otherwise, we want <code class="highlighter-rouge">fibonacci(n-1) + fibonacci(n-2)</code></li>
+  <li>If <code class="language-plaintext highlighter-rouge">n == 0 or n == 1</code>, then <code class="language-plaintext highlighter-rouge">fibonacci(n) -&gt; 1</code></li>
+  <li>Otherwise, we want <code class="language-plaintext highlighter-rouge">fibonacci(n-1) + fibonacci(n-2)</code></li>
 </ol>
 
 <p>In code:</p>

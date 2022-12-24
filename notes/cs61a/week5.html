@@ -78,13 +78,10 @@
         <a class="page-link" href="/notes/">Notes</a>
       
         
-        <a class="page-link" href="/teaching/">Teaching</a>
-      
-        
         <a class="page-link" href="/blog/">Blog</a>
       
         
-        <a class="page-link" href="/projects/">Projects</a>
+        <a class="page-link" href="https://github.com/addcninblue/">GitHub</a>
       
     </nav>
 
@@ -147,13 +144,13 @@
 </ul>
 
 <h3 id="list-operations">List Operations</h3>
-<p>Here are some of the most commonly-used list operations, assuming <code class="highlighter-rouge">lst</code> is a list:</p>
+<p>Here are some of the most commonly-used list operations, assuming <code class="language-plaintext highlighter-rouge">lst</code> is a list:</p>
 <ul>
-  <li><code class="highlighter-rouge">lst[start:end:count]</code>: Creates <em>a copy</em> of the list from starting position <code class="highlighter-rouge">start</code> to ending position <code class="highlighter-rouge">end</code>, taking every <code class="highlighter-rouge">count</code>th element. <code class="highlighter-rouge">start</code> defaults to <code class="highlighter-rouge">0</code>, <code class="highlighter-rouge">end</code> defaults to <code class="highlighter-rouge">len(lst)</code>, and <code class="highlighter-rouge">count</code> defaults to <code class="highlighter-rouge">1</code> when each is not specified.</li>
-  <li><code class="highlighter-rouge">lst.append(x)</code>: Appends x to the end of the list.</li>
-  <li><code class="highlighter-rouge">lst.extend(x)</code>: Extends x, an iterable, to the end of <code class="highlighter-rouge">lst</code>.
+  <li><code class="language-plaintext highlighter-rouge">lst[start:end:count]</code>: Creates <em>a copy</em> of the list from starting position <code class="language-plaintext highlighter-rouge">start</code> to ending position <code class="language-plaintext highlighter-rouge">end</code>, taking every <code class="language-plaintext highlighter-rouge">count</code>th element. <code class="language-plaintext highlighter-rouge">start</code> defaults to <code class="language-plaintext highlighter-rouge">0</code>, <code class="language-plaintext highlighter-rouge">end</code> defaults to <code class="language-plaintext highlighter-rouge">len(lst)</code>, and <code class="language-plaintext highlighter-rouge">count</code> defaults to <code class="language-plaintext highlighter-rouge">1</code> when each is not specified.</li>
+  <li><code class="language-plaintext highlighter-rouge">lst.append(x)</code>: Appends x to the end of the list.</li>
+  <li><code class="language-plaintext highlighter-rouge">lst.extend(x)</code>: Extends x, an iterable, to the end of <code class="language-plaintext highlighter-rouge">lst</code>.
     <ul>
-      <li>This is equivalent to appending each item from x to <code class="highlighter-rouge">lst</code>.</li>
+      <li>This is equivalent to appending each item from x to <code class="language-plaintext highlighter-rouge">lst</code>.</li>
       <li>Or roughly in code:
         <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
       <span class="n">lst</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
@@ -161,15 +158,15 @@
       </li>
     </ul>
   </li>
-  <li><code class="highlighter-rouge">lst.insert(pos, x)</code>: Inserts <code class="highlighter-rouge">x</code> at <code class="highlighter-rouge">pos</code> position.</li>
-  <li><code class="highlighter-rouge">lst.remove(x)</code>: Removes first item whose value is equal to <code class="highlighter-rouge">x</code></li>
-  <li><code class="highlighter-rouge">lst.pop(index)</code>: Removes item whose index is <code class="highlighter-rouge">index</code> from <code class="highlighter-rouge">lst</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">lst.insert(pos, x)</code>: Inserts <code class="language-plaintext highlighter-rouge">x</code> at <code class="language-plaintext highlighter-rouge">pos</code> position.</li>
+  <li><code class="language-plaintext highlighter-rouge">lst.remove(x)</code>: Removes first item whose value is equal to <code class="language-plaintext highlighter-rouge">x</code></li>
+  <li><code class="language-plaintext highlighter-rouge">lst.pop(index)</code>: Removes item whose index is <code class="language-plaintext highlighter-rouge">index</code> from <code class="language-plaintext highlighter-rouge">lst</code>.</li>
 </ul>
 
 <p>For a full list of list operations, check the <a href="https://docs.python.org/3/tutorial/datastructures.html">Python reference</a>.</p>
 
 <h2 id="an-aside-on-mutability">An Aside on Mutability</h2>
-<p>You may have noticed that there wasn’t a section on tuple methods. This is because tuples are <em>immutable</em>, resulting in them only having two methods: <code class="highlighter-rouge">index</code> and <code class="highlighter-rouge">count</code>. <sup id="fnref:tuples" role="doc-noteref"><a href="#fn:tuples" class="footnote" rel="footnote">2</a></sup></p>
+<p>You may have noticed that there wasn’t a section on tuple methods. This is because tuples are <em>immutable</em>, resulting in them only having two methods: <code class="language-plaintext highlighter-rouge">index</code> and <code class="language-plaintext highlighter-rouge">count</code>. <sup id="fnref:tuples" role="doc-noteref"><a href="#fn:tuples" class="footnote" rel="footnote">2</a></sup></p>
 
 <p>Immutability is a feature of certain objects in Python where the value of the object cannot be changed after being declared. This means that in the case of tuples, no matter what you do, once the tuple is declared, its values are final and unchangeable.</p>
 
@@ -181,13 +178,13 @@
 <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>It’s not. The tuple itself is not changed; instead, the name <code class="highlighter-rouge">a</code> is <em>rebound</em> to a different value.</p>
+<p>It’s not. The tuple itself is not changed; instead, the name <code class="language-plaintext highlighter-rouge">a</code> is <em>rebound</em> to a different value.</p>
 
 <h2 id="abstractions-an-abstract">Abstractions: An Abstract</h2>
 <p>Programmers are, by nature, lazy people. We try to simplify things, to the point where we try to abstract away components. Much like how driving a car doesn’t require knowing how the car works under the hood, <em>abstractions</em> allow programmers to write code that uses parts of other code without knowing how it works.</p>
 
 <h2 id="a-motivation-for-abstractions">A Motivation for Abstractions</h2>
-<p>Let’s take the example of a coordinate pair. This can be represented by a two-element tuple, like this: <code class="highlighter-rouge">(x, y)</code>. Suppose we were given these two points, <code class="highlighter-rouge">home</code> and <code class="highlighter-rouge">school</code>, and were told to create a <code class="highlighter-rouge">distance</code> function to compute the distance between any two points. This might be a valid function:</p>
+<p>Let’s take the example of a coordinate pair. This can be represented by a two-element tuple, like this: <code class="language-plaintext highlighter-rouge">(x, y)</code>. Suppose we were given these two points, <code class="language-plaintext highlighter-rouge">home</code> and <code class="language-plaintext highlighter-rouge">school</code>, and were told to create a <code class="language-plaintext highlighter-rouge">distance</code> function to compute the distance between any two points. This might be a valid function:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">home</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># I'm the center of the world
 </span><span class="o">&gt;&gt;&gt;</span> <span class="n">school</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
@@ -203,18 +200,18 @@
 
 <p>So far, this seems great! It looks like we can perform all sorts of computations to these coordinate objects. However, one problem will quickly arise.</p>
 
-<p>Suppose the container type of these coordinates is changed. Instead of a tuple of <code class="highlighter-rouge">(x, y)</code>, we’re now given a tuple of <code class="highlighter-rouge">(location_name, x, y)</code> (making our locations <code class="highlighter-rouge">("home", 0, 0)</code> and <code class="highlighter-rouge">("school", 3, 4)</code>). Our implementation of distance is now suddenly broken! This gives a motivation for <em>abstractions</em></p>
+<p>Suppose the container type of these coordinates is changed. Instead of a tuple of <code class="language-plaintext highlighter-rouge">(x, y)</code>, we’re now given a tuple of <code class="language-plaintext highlighter-rouge">(location_name, x, y)</code> (making our locations <code class="language-plaintext highlighter-rouge">("home", 0, 0)</code> and <code class="language-plaintext highlighter-rouge">("school", 3, 4)</code>). Our implementation of distance is now suddenly broken! This gives a motivation for <em>abstractions</em></p>
 
 <h2 id="a-functional-introduction-to-abstractions">A Functional Introduction to Abstractions</h2>
 <p>Now, with the power of abstractions, let’s say we’re given this <em>functional interface</em>:</p>
 <ul>
-  <li><code class="highlighter-rouge">make_location(location_name, x, y) -&gt; location</code>: A function that takes in a location name, an x coordinate, and a y coordinate, and returns a <em>location object</em>.</li>
-  <li><code class="highlighter-rouge">x_location(location) -&gt; x</code>: A function that takes in a location object and returns its x location.</li>
-  <li><code class="highlighter-rouge">y_location(location) -&gt; y</code>: A function that takes in a location object and returns its y location.</li>
-  <li><code class="highlighter-rouge">location_name(location) -&gt; name</code>: A function that takes in a location object and returns its name.</li>
+  <li><code class="language-plaintext highlighter-rouge">make_location(location_name, x, y) -&gt; location</code>: A function that takes in a location name, an x coordinate, and a y coordinate, and returns a <em>location object</em>.</li>
+  <li><code class="language-plaintext highlighter-rouge">x_location(location) -&gt; x</code>: A function that takes in a location object and returns its x location.</li>
+  <li><code class="language-plaintext highlighter-rouge">y_location(location) -&gt; y</code>: A function that takes in a location object and returns its y location.</li>
+  <li><code class="language-plaintext highlighter-rouge">location_name(location) -&gt; name</code>: A function that takes in a location object and returns its name.</li>
 </ul>
 
-<p>With this, let’s make the <code class="highlighter-rouge">distance</code> function again:</p>
+<p>With this, let’s make the <code class="language-plaintext highlighter-rouge">distance</code> function again:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="n">x_distance</span> <span class="o">=</span> <span class="n">x_location</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="n">x_location</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
@@ -222,7 +219,7 @@
         <span class="n">pythagorean_distance</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x_distance</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y_distance</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">pythagorean_distance</span>
 </code></pre></div></div>
-<p>And let’s try it on our <code class="highlighter-rouge">home</code> and <code class="highlighter-rouge">school</code>, also defined below:</p>
+<p>And let’s try it on our <code class="language-plaintext highlighter-rouge">home</code> and <code class="language-plaintext highlighter-rouge">school</code>, also defined below:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">home</span> <span class="o">=</span> <span class="n">make_location</span><span class="p">(</span><span class="s">"home"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">school</span> <span class="o">=</span> <span class="n">make_location</span><span class="p">(</span><span class="s">"school"</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">distance</span><span class="p">(</span><span class="n">home</span><span class="p">,</span> <span class="n">school</span><span class="p">)</span>

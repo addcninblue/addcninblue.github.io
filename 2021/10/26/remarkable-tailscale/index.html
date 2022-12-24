@@ -78,13 +78,10 @@
         <a class="page-link" href="/notes/">Notes</a>
       
         
-        <a class="page-link" href="/teaching/">Teaching</a>
-      
-        
         <a class="page-link" href="/blog/">Blog</a>
       
         
-        <a class="page-link" href="/projects/">Projects</a>
+        <a class="page-link" href="https://github.com/addcninblue/">GitHub</a>
       
     </nav>
 
@@ -118,40 +115,40 @@
     
 
     <h2 id="background">Background</h2>
-<p><a href="https://tailscale.com/">Tailscale</a> is a pretty cool technology that allows devices to access each other across any network by automatically punching holes through networks. (Long gone are the days of <code class="highlighter-rouge">ssh -L 8000:localhost:8000 server</code> to do development! Now we can just go to <code class="highlighter-rouge">http://server:8000</code> directly!) Its setup process is fairly simple for both Windows and Linux, but it doesn’t have detailed solutions for embedded devices (such as the Remarkable). This blogpost details the steps I took to get Tailscale working on my Remarkable.</p>
+<p><a href="https://tailscale.com/">Tailscale</a> is a pretty cool technology that allows devices to access each other across any network by automatically punching holes through networks. (Long gone are the days of <code class="language-plaintext highlighter-rouge">ssh -L 8000:localhost:8000 server</code> to do development! Now we can just go to <code class="language-plaintext highlighter-rouge">http://server:8000</code> directly!) Its setup process is fairly simple for both Windows and Linux, but it doesn’t have detailed solutions for embedded devices (such as the Remarkable). This blogpost details the steps I took to get Tailscale working on my Remarkable.</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
 <ol>
-  <li>You will need <a href="https://github.com/Evidlo/remarkable_entware">entware</a> installed. This has the <code class="highlighter-rouge">tailscale</code> package.</li>
+  <li>You will need <a href="https://github.com/Evidlo/remarkable_entware">entware</a> installed. This has the <code class="language-plaintext highlighter-rouge">tailscale</code> package.</li>
 </ol>
 
 <h2 id="steps">Steps</h2>
 
 <ol>
   <li>
-    <p>Install <code class="highlighter-rouge">tailscale</code> from <code class="highlighter-rouge">entware</code>:</p>
+    <p>Install <code class="language-plaintext highlighter-rouge">tailscale</code> from <code class="language-plaintext highlighter-rouge">entware</code>:</p>
 
-    <p><code class="highlighter-rouge">opkg install tailscale</code></p>
+    <p><code class="language-plaintext highlighter-rouge">opkg install tailscale</code></p>
   </li>
-  <li>For the first time we run <code class="highlighter-rouge">tailscale</code>, we need to do it manually to set up authentication. In two separate terminals, run:
+  <li>For the first time we run <code class="language-plaintext highlighter-rouge">tailscale</code>, we need to do it manually to set up authentication. In two separate terminals, run:
     <ol>
       <li>
-        <p>Tailscale daemon. (Note that <code class="highlighter-rouge">--tun=userspace-networking</code> is necessary! The Remarkable kernel <em>does not</em> contain the proper modules to kernel-space networking.)</p>
+        <p>Tailscale daemon. (Note that <code class="language-plaintext highlighter-rouge">--tun=userspace-networking</code> is necessary! The Remarkable kernel <em>does not</em> contain the proper modules to kernel-space networking.)</p>
 
-        <p><code class="highlighter-rouge">tailscaled --tun=userspace-networking</code></p>
+        <p><code class="language-plaintext highlighter-rouge">tailscaled --tun=userspace-networking</code></p>
       </li>
       <li>
         <p>Tailscale client. This will give you a link. Follow the instructions to authenticate</p>
 
-        <p><code class="highlighter-rouge">tailscale up</code></p>
+        <p><code class="language-plaintext highlighter-rouge">tailscale up</code></p>
       </li>
     </ol>
   </li>
   <li>
-    <p>Now, we set up a systemd unit to automatically start and run <code class="highlighter-rouge">tailscaled</code> and <code class="highlighter-rouge">tailscale up</code> on boot. Copy and paste the following into a new file at <code class="highlighter-rouge">/lib/systemd/system/tailscaled.service</code>.</p>
+    <p>Now, we set up a systemd unit to automatically start and run <code class="language-plaintext highlighter-rouge">tailscaled</code> and <code class="language-plaintext highlighter-rouge">tailscale up</code> on boot. Copy and paste the following into a new file at <code class="language-plaintext highlighter-rouge">/lib/systemd/system/tailscaled.service</code>.</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [Unit]
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [Unit]
  After=network.target
  Description=Tailscale client daemon
  StartLimitBurst=0
@@ -172,19 +169,19 @@
   <li>
     <p>Now, install the service:</p>
 
-    <p><code class="highlighter-rouge">systemctl enable tailscaled</code></p>
+    <p><code class="language-plaintext highlighter-rouge">systemctl enable tailscaled</code></p>
   </li>
   <li>
-    <p>Reboot. We reboot here since I ran into some strange issues with <code class="highlighter-rouge">tailscaled</code> not stopping itself, and restarting is the fastest way around this.</p>
+    <p>Reboot. We reboot here since I ran into some strange issues with <code class="language-plaintext highlighter-rouge">tailscaled</code> not stopping itself, and restarting is the fastest way around this.</p>
 
-    <p><code class="highlighter-rouge">shutdown -r now</code></p>
+    <p><code class="language-plaintext highlighter-rouge">shutdown -r now</code></p>
   </li>
   <li>
-    <p>And use <code class="highlighter-rouge">journalctl</code> to monitor the status:</p>
+    <p>And use <code class="language-plaintext highlighter-rouge">journalctl</code> to monitor the status:</p>
 
-    <p><code class="highlighter-rouge">journalctl -f -u tailscaled</code></p>
+    <p><code class="language-plaintext highlighter-rouge">journalctl -f -u tailscaled</code></p>
   </li>
-  <li>Now <code class="highlighter-rouge">tailscale</code> should be working!</li>
+  <li>Now <code class="language-plaintext highlighter-rouge">tailscale</code> should be working!</li>
 </ol>
 
   </div>

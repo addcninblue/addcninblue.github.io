@@ -1,99 +1,221 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-06-16T00:05:58-07:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">NBA 2022 Analysis</title><link href="https://addcnin.blue/2022/06/15/nba2022/" rel="alternate" type="text/html" title="NBA 2022 Analysis" /><published>2022-06-15T00:00:00-07:00</published><updated>2022-06-15T00:00:00-07:00</updated><id>https://addcnin.blue/2022/06/15/nba2022</id><content type="html" xml:base="https://addcnin.blue/2022/06/15/nba2022/">&lt;p&gt;I’ve never really been a big sports guy, but my brother somehow dragged me into
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-12-23T18:59:02-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">On Alternatives</title><link href="https://addcnin.blue/2022/10/30/on-alternatives/" rel="alternate" type="text/html" title="On Alternatives" /><published>2022-10-30T00:00:00-07:00</published><updated>2022-10-30T00:00:00-07:00</updated><id>https://addcnin.blue/2022/10/30/on-alternatives</id><content type="html" xml:base="https://addcnin.blue/2022/10/30/on-alternatives/"><![CDATA[<blockquote>
+  <p>“The only constant in life is change.”</p>
+
+  <p>- Heraclitus</p>
+</blockquote>
+
+<!-- Keep the status quo, or accept change? This is a common problem we face on a -->
+<!-- daily basis. Though taking action or choosing inaction often leads to -->
+<!-- far-reaching ramifications, people often have deep-seated beliefs that aren't as -->
+<!-- thought-out as they should be. Let's consider an example and see how it applies -->
+<!-- to software engineering. -->
+
+<p>There’s a pretty well-known article by Dan McKinley called <a href="https://mcfunley.com/choose-boring-technology">Choose Boring
+Technology</a>. It describes
+innovation tokens as a model of approximating an upper bound on new technologies
+that a company can reasonably use.</p>
+
+<p>I love this article. While it’s great at describing the technical side of
+things, I also find the human side of things quite interesting. In this post,
+I’ll talk about the human side of choosing alternates.</p>
+
+<!-- I propose a framework to evaluate taking change -->
+<!-- versus accepting the status quo, and we take a look at field of software -->
+<!-- engineering. -->
+
+<!-- ## Two Groups of People -->
+
+<!-- There are largely two groups of opinionated people - those who _always_ want -->
+<!-- change (small-l liberals), and those who _never_ want change (small-c -->
+<!-- conservatives). -->
+
+<h2 id="a-thought-experiment">A Thought Experiment</h2>
+
+<p>Let’s consider an example. Suppose we own a boba shop, and we’re considering
+switching from using regular cow milk in our drinks to using oat milk. I imagine
+most readers fall into one of two camps:</p>
+<ol>
+  <li>Of course! That sounds great for X, Y, and Z reasons.</li>
+  <li>Why would you ever do that?</li>
+</ol>
+
+<p>Now, consider the opposite: for our boba shop, we’re considering switching
+<em>from</em> using oat milk <em>to</em> using regular cow milk. I imagine that the
+categorization above still applies.</p>
+
+<p>What’s more, I often observe that those who fall into group 1 in the first
+example aren’t always those who fall into group 2 in the second example, and
+vice versa.<sup id="fnref:small" role="doc-noteref"><a href="#fn:small" class="footnote" rel="footnote">1</a></sup> That is, some people <em>want change for the sake of change</em>,
+and some people <em>hate change for change itself</em>.</p>
+
+<p>Naively, we might believe that if choice A is better than choice B, then we
+should always want choice A, regardless of where we start. It would mean,
+therefore, that the people above are completely irrational. Are they?</p>
+
+<h2 id="adding-friction-to-the-model">Adding Friction to the Model</h2>
+
+<p>In a perfect world (frictionless surface, etc.), they <em>are</em> irrational. However,
+let’s consider the effect of friction on decisionmaking. Suppose we add the
+following constraint to the problem above:</p>
+
+<blockquote class="proof">
+  <p>When switching between milk choices, there is a fixed cost required to retrain
+employees and source ingredients.</p>
+</blockquote>
+
+<p>Now, we can easily see: if we make this fixed cost high enough, it might never
+make sense for a company to switch choices. Conversely, if there is a <em>negative</em>
+cost associated with switching (publicity, subsidy, etc.), then it might
+<em>always</em> make sense to switch.</p>
+
+<p>This extends beyond fixed costs. Friction can result from a number of factors,
+including irrational ones. For example, extending the analogy above, it’s
+possible for the boba shop to never wish to change due to the owners being
+maximally risk-averse.</p>
+
+<h2 id="software-engineering-and-corporate">Software Engineering and Corporate</h2>
+
+<!-- In the corporate workplace, we often see a few tropes that lead to the situation -->
+<!-- above, like: "Let's switch to Rust." Even though suggestions like these might be -->
+<!-- better from the perspective of a single engineer, it might not be the best -->
+<!-- choice for the organization as a whole. -->
+
+<p>Back to <em>Choose Boring Technology</em>. The article assumes that companies are
+perfectly rational and write from the perspective of choosing risk or not. But
+what about the failure modes of companies to choose new technology?</p>
+
+<p>In order for a company to choose a technology and benefit from it, the friction
+incurred must be greater than the benefit of the old technology.</p>
+
+<p>This technical friction comes in a few forms: education (needing to teach
+everyone a new language along with all of its idioms), inexperience
+(understanding the failure scenarios of the new tool), and external popularity
+(does an ecosystem exist?).</p>
+
+<p>Then there are also the pathological, irrational causes for friction:</p>
+<ul>
+  <li><em>Dislike for change, or group 2 from above</em></li>
+  <li><em>Overstatement of risk</em></li>
+  <li><em>Bad experiences from the past</em></li>
+</ul>
+
+<p>When choosing new technology, it’s worth considering them through the lens of
+alternates. If the world in which the alternate was chosen is a better world,
+yet the choice to switch is a poor one, consider the causes of friction. It
+might be the case that there are tons of pathological causes for friction, in
+which case the reasons not to switch are illegitimate, or it might be that the
+benefit gained is far too small to offset the normal causes of friction.</p>
+
+<h2 id="related-ideas">Related Ideas</h2>
+<p>Below are some ideas that helped me form these ideas.</p>
+
+<ul>
+  <li><a href="https://web.stanford.edu/class/archive/cs/cs161/cs161.1138/handouts/120%20Guide%20to%20Greedy%20Algorithms.pdf">Exchange Argument</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Secretary_problem">Secretary Problem</a></li>
+  <li><a href="https://mcfunley.com/choose-boring-technology">Innovation Tokens</a></li>
+</ul>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:small" role="doc-endnote">
+      <p>We might call the group 1s the small-l liberals and the group 2s the small-c conservatives. <a href="#fnref:small" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[“The only constant in life is change.” - Heraclitus]]></summary></entry><entry><title type="html">NBA 2022 Analysis</title><link href="https://addcnin.blue/2022/06/15/nba2022/" rel="alternate" type="text/html" title="NBA 2022 Analysis" /><published>2022-06-15T00:00:00-07:00</published><updated>2022-06-15T00:00:00-07:00</updated><id>https://addcnin.blue/2022/06/15/nba2022</id><content type="html" xml:base="https://addcnin.blue/2022/06/15/nba2022/"><![CDATA[<p>I’ve never really been a big sports guy, but my brother somehow dragged me into
 watching the NBA Playoffs. It’s been pretty fun! The series is intense and
 close, and naturally, I’ve been itching to see if I can wrangle some numbers
 out of the mess called basketball. Here, I talk a bit about what I did to try
 to get information out of these numbers, but it’s also a dive into my
-experience with PyMC3 and Turing.jl.&lt;/p&gt;
+experience with PyMC3 and Turing.jl.</p>
 
-&lt;blockquote&gt;
-  &lt;p&gt;Warning ahead: All models are wrong, but some are more useful than others. I
-don’t know if this is one of the useful ones.&lt;/p&gt;
-&lt;/blockquote&gt;
+<blockquote>
+  <p>Warning ahead: All models are wrong, but some are more useful than others. I
+don’t know if this is one of the useful ones.</p>
+</blockquote>
 
-&lt;p&gt;In the first three games, I noticed that Curry was scoring like a madman.
+<p>In the first three games, I noticed that Curry was scoring like a madman.
 Curious to see whether he was scoring far above his usual, I graphed a
 box-and-whisker plot of the top players’ usual points and eyeballed it. It
 seems that some players are scoring at their 50-75th percentile range (Curry
 included), whereas others are scoring at the bottom of their range (Klay). This
 analysis wasn’t quite that useful, mainly due to one pain point of plotting in
 Julia: it seems like it’s impossible to overlay scatter points on top of a
-box-and-whisker plot!&lt;sup id=&quot;fnref:Julia&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:Julia&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+box-and-whisker plot!<sup id="fnref:Julia" role="doc-noteref"><a href="#fn:Julia" class="footnote" rel="footnote">1</a></sup></p>
 
-&lt;p&gt;&lt;strong&gt;Boston Scores:&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Boston Scores:</strong></p>
 
-&lt;p&gt;&lt;img src=&quot;/assets/posts/2022-06-15-nba2022/bos.png&quot; alt=&quot;Boston Scores&quot; /&gt;&lt;/p&gt;
+<p><img src="/assets/posts/2022-06-15-nba2022/bos.png" alt="Boston Scores" /></p>
 
-&lt;p&gt;&lt;strong&gt;Warrior Scores:&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Warrior Scores:</strong></p>
 
-&lt;p&gt;&lt;img src=&quot;/assets/posts/2022-06-15-nba2022/gsw.png&quot; alt=&quot;Warrior Scores&quot; /&gt;&lt;/p&gt;
+<p><img src="/assets/posts/2022-06-15-nba2022/gsw.png" alt="Warrior Scores" /></p>
 
-&lt;p&gt;Seeing this, I left the data alone, and then we watched Game 5.&lt;/p&gt;
+<p>Seeing this, I left the data alone, and then we watched Game 5.</p>
 
-&lt;p&gt;What an absolutely spectacular game that was! For the first time in forever,
+<p>What an absolutely spectacular game that was! For the first time in forever,
 Curry didn’t score a single 3 in that game. It piqued my curiosity: I remember
-a while ago that I read about how &lt;a href=&quot;https://datasciencejuliahackers.com/football-simulation.html&quot;&gt;hierarchical Bayes models could be used to
+a while ago that I read about how <a href="https://datasciencejuliahackers.com/football-simulation.html">hierarchical Bayes models could be used to
 model game outcomes in
-Julia&lt;/a&gt;, and I was
+Julia</a>, and I was
 curious if I could do something similar to get the scoring abilities of each
 player. It wouldn’t be a direct copy-paste of the football simulation for one
 big reason: instead of modeling a team, I’d be modeling individual players that
 sum up to a team. Since this was right after my bad experience with Julia
 above, where the box-and-whisker plot wasn’t very versatile, I wanted to go
 back to Python. Picking up PyMC, I tried to figure out how to implement such a
-model.&lt;/p&gt;
+model.</p>
 
-&lt;p&gt;I spent the next day or so reading up on PyMC and trying to figure out whether
+<p>I spent the next day or so reading up on PyMC and trying to figure out whether
 I could bend it to my will. The issue with libraries like PyMC is that you have
 to be very careful with the operations you do; since it’s all just an interface
 to a lower-level library, there’s a restricted set of operations allowed. For
 this particular problem, it seems like the two-team problem is solved; the only
-question was to generalize it to teammates that make up a dynamic team.&lt;/p&gt;
+question was to generalize it to teammates that make up a dynamic team.</p>
 
-&lt;p&gt;The first bright idea that popped up was to construct all permutations of a
+<p>The first bright idea that popped up was to construct all permutations of a
 team as subteams, and then to run the model. There were several issues with
 this approach. In the most naive way to do this, we would end up throwing away
 individual players’ contributions. Supposing then we’re a bit smarter, that we
 encode the teams as a fixed sum of individual random variables and allow the
 model to update those underlying RVs, we’re still left with the implementation
-problem: how exactly do you create this many intermediate variables?&lt;/p&gt;
+problem: how exactly do you create this many intermediate variables?</p>
 
-&lt;p&gt;I tried researching for a while, but eventually gave up. (In retrospect, I
-suspect a &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt; loop probably would work, but I’m quite unsure.) It was at this
-point that I remembered Julia’s &lt;code class=&quot;highlighter-rouge&quot;&gt;Turing.jl&lt;/code&gt; library allows for arbitrary Julia
+<p>I tried researching for a while, but eventually gave up. (In retrospect, I
+suspect a <code class="language-plaintext highlighter-rouge">for</code> loop probably would work, but I’m quite unsure.) It was at this
+point that I remembered Julia’s <code class="language-plaintext highlighter-rouge">Turing.jl</code> library allows for arbitrary Julia
 expressions, and as I’m moderately familiar with the language, I figured it’d
-be worth it to give it a second shot.&lt;/p&gt;
+be worth it to give it a second shot.</p>
 
-&lt;p&gt;It turns out that specifying the model wasn’t that difficult! The only point of
+<p>It turns out that specifying the model wasn’t that difficult! The only point of
 creativity was to specify 10 inputs to the function (each player playing at a
 particular time segment) rather than each team. Then, the model boils down to
 the sum of all of the players on one team subtracted by the sum of the players
 on the other. For the curious, the relevant lines are
-&lt;a href=&quot;https://github.com/addcninblue/nba2022/blob/master/model.jl#L56-L64&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+<a href="https://github.com/addcninblue/nba2022/blob/master/model.jl#L56-L64">here</a>.</p>
 
-&lt;p&gt;And the results!&lt;/p&gt;
+<p>And the results!</p>
 
-&lt;p&gt;&lt;strong&gt;Attack Values&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Attack Values</strong></p>
 
-&lt;p&gt;&lt;img src=&quot;/assets/posts/2022-06-15-nba2022/model_results.svg&quot; alt=&quot;Attack Values&quot; /&gt;&lt;/p&gt;
+<p><img src="/assets/posts/2022-06-15-nba2022/model_results.svg" alt="Attack Values" /></p>
 
-&lt;p&gt;Interestingly, all defense values are very close to 0. Thinking about it, it
+<p>Interestingly, all defense values are very close to 0. Thinking about it, it
 makes a lot of sense – when players play round-robin, it’s possible to infer
 attack-defense values, since we can have rock-paper-scissors situations.
 However, when it’s a bipartite graph, as with two teams, it’s hard to tease out
 the reason behind scoring more, whether it’s due to one player having greater
-attack or due to another having lower defense.&lt;/p&gt;
+attack or due to another having lower defense.</p>
 
-&lt;p&gt;While training this model, I dug into the &lt;code class=&quot;highlighter-rouge&quot;&gt;Turing.ml&lt;/code&gt; documentation a bit more.
-There’s an interesting section on &lt;a href=&quot;https://turing.ml/dev/docs/using-turing/performancetips&quot;&gt;performance
-tuning&lt;/a&gt;. I figured
+<p>While training this model, I dug into the <code class="language-plaintext highlighter-rouge">Turing.ml</code> documentation a bit more.
+There’s an interesting section on <a href="https://turing.ml/dev/docs/using-turing/performancetips">performance
+tuning</a>. I figured
 that since my model probably qualifies as a bigger one that I should try
-&lt;code class=&quot;highlighter-rouge&quot;&gt;:reversediff&lt;/code&gt;. Adding that reduced my model training by about a minute, from
-~6 minutes to 5. Then, looking into &lt;a href=&quot;https://turing.ml/dev/docs/using-turing/autodiff&quot;&gt;the autodiff
-section&lt;/a&gt; more, I verified
+<code class="language-plaintext highlighter-rouge">:reversediff</code>. Adding that reduced my model training by about a minute, from
+~6 minutes to 5. Then, looking into <a href="https://turing.ml/dev/docs/using-turing/autodiff">the autodiff
+section</a> more, I verified
 that I could memoize the computation, and did so. The training went down to
-seconds! Wow!&lt;/p&gt;
+seconds! Wow!</p>
 
-&lt;p&gt;Because of this short time, I had a lot more flexibility to mess with my data
+<p>Because of this short time, I had a lot more flexibility to mess with my data
 and try different things. One thing I glossed over earlier was that the data
 was partitioned by player time. This means that each data slice tracks only the
 time 10 players are playing on the court, and stops when any one gets switched
@@ -102,193 +224,193 @@ out. In my initial analysis, I cut out all samples where the time is less than
 should be viewed as less important than 10 points in 10 minutes.) I tried
 variations of cutoff times, but it does indeed seem like the noise issue
 exists. I ended up going back to a 60-second cutoff, and it’s what exists in
-the repo.&lt;/p&gt;
+the repo.</p>
 
-&lt;p&gt;Hopefully this was interesting! If you want to play around with the data and
-the repo, check it out &lt;a href=&quot;https://github.com/addcninblue/nba2022&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+<p>Hopefully this was interesting! If you want to play around with the data and
+the repo, check it out <a href="https://github.com/addcninblue/nba2022">here</a>.</p>
 
-&lt;h1 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h1&gt;
+<h1 id="footnotes">Footnotes</h1>
 
-&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:Julia&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;I’ve been using Julia more and more as my go-to language to do things, but lots of things like this have just been annoying to use, and I’m regretfully back to Python for usecases like plotting and data wrangling. It seems like Julia isn’t quite ready yet. &lt;a href=&quot;#fnref:Julia&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">I’ve never really been a big sports guy, but my brother somehow dragged me into watching the NBA Playoffs. It’s been pretty fun! The series is intense and close, and naturally, I’ve been itching to see if I can wrangle some numbers out of the mess called basketball. Here, I talk a bit about what I did to try to get information out of these numbers, but it’s also a dive into my experience with PyMC3 and Turing.jl.</summary></entry><entry><title type="html">Options Analysis</title><link href="https://addcnin.blue/2022/05/23/options_analysis/" rel="alternate" type="text/html" title="Options Analysis" /><published>2022-05-23T00:00:00-07:00</published><updated>2022-05-23T00:00:00-07:00</updated><id>https://addcnin.blue/2022/05/23/options_analysis</id><content type="html" xml:base="https://addcnin.blue/2022/05/23/options_analysis/">&lt;p&gt;Anyone studying options for long enough begins to wonder about how the Greeks
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:Julia" role="doc-endnote">
+      <p>I’ve been using Julia more and more as my go-to language to do things, but lots of things like this have just been annoying to use, and I’m regretfully back to Python for usecases like plotting and data wrangling. It seems like Julia isn’t quite ready yet. <a href="#fnref:Julia" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[I’ve never really been a big sports guy, but my brother somehow dragged me into watching the NBA Playoffs. It’s been pretty fun! The series is intense and close, and naturally, I’ve been itching to see if I can wrangle some numbers out of the mess called basketball. Here, I talk a bit about what I did to try to get information out of these numbers, but it’s also a dive into my experience with PyMC3 and Turing.jl.]]></summary></entry><entry><title type="html">Options Analysis</title><link href="https://addcnin.blue/2022/05/23/options_analysis/" rel="alternate" type="text/html" title="Options Analysis" /><published>2022-05-23T00:00:00-07:00</published><updated>2022-05-23T00:00:00-07:00</updated><id>https://addcnin.blue/2022/05/23/options_analysis</id><content type="html" xml:base="https://addcnin.blue/2022/05/23/options_analysis/"><![CDATA[<p>Anyone studying options for long enough begins to wonder about how the Greeks
 interact. Like, sure, an option’s delta approaches 0 or 1 (depending on its
 moneyness) as it gets closer to expiration, but what happens to its gamma, as
 it gets closer to expiration? Does that depend on its delta? Natenburg goes a
 bit into this with a plethora of graphs in his textbook. The unfortunate thing
-about books is that they’re all 2D and noninteractive.&lt;/p&gt;
+about books is that they’re all 2D and noninteractive.</p>
 
-&lt;p&gt;I decided to see what I could spin up with Julia and a bit of elbow grease. I
-grabbed the latest option chain with &lt;a href=&quot;https://developer.tdameritrade.com/option-chains/apis&quot;&gt;TD
-Ameritrade&lt;/a&gt; and got to
+<p>I decided to see what I could spin up with Julia and a bit of elbow grease. I
+grabbed the latest option chain with <a href="https://developer.tdameritrade.com/option-chains/apis">TD
+Ameritrade</a> and got to
 work. (At the time of these graphs, SPY was trading near $419.) Behold, some
-graphs:&lt;/p&gt;
+graphs:</p>
 
-&lt;p&gt;&lt;strong&gt;Gamma in response to Time and Delta:&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Gamma in response to Time and Delta:</strong></p>
 
-&lt;p&gt;&lt;img src=&quot;/assets/posts/2022-05-23-options_analysis/date_delta_gamma.png&quot; alt=&quot;Gamma in response to Time and Delta&quot; /&gt;&lt;/p&gt;
+<p><img src="/assets/posts/2022-05-23-options_analysis/date_delta_gamma.png" alt="Gamma in response to Time and Delta" /></p>
 
-&lt;p&gt;&lt;strong&gt;Volatility in response to Time and Price (aka Vol Smile)&lt;/strong&gt;
-&lt;img src=&quot;/assets/posts/2022-05-23-options_analysis/date_price_volatility.png&quot; alt=&quot;Volatility in response to Time and Price (aka Vol Smile)&quot; /&gt;&lt;/p&gt;
+<p><strong>Volatility in response to Time and Price (aka Vol Smile)</strong>
+<img src="/assets/posts/2022-05-23-options_analysis/date_price_volatility.png" alt="Volatility in response to Time and Price (aka Vol Smile)" /></p>
 
-&lt;p&gt;If you’d like to play with this, feel free to play around with the
-&lt;a href=&quot;https://github.com/addcninblue/options-viewer&quot;&gt;repo&lt;/a&gt;.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">Anyone studying options for long enough begins to wonder about how the Greeks interact. Like, sure, an option’s delta approaches 0 or 1 (depending on its moneyness) as it gets closer to expiration, but what happens to its gamma, as it gets closer to expiration? Does that depend on its delta? Natenburg goes a bit into this with a plethora of graphs in his textbook. The unfortunate thing about books is that they’re all 2D and noninteractive.</summary></entry><entry><title type="html">Learning, Learning to Learn, and Teaching</title><link href="https://addcnin.blue/2022/03/12/teaching/" rel="alternate" type="text/html" title="Learning, Learning to Learn, and Teaching" /><published>2022-03-12T00:00:00-08:00</published><updated>2022-03-12T00:00:00-08:00</updated><id>https://addcnin.blue/2022/03/12/teaching</id><content type="html" xml:base="https://addcnin.blue/2022/03/12/teaching/">&lt;p&gt;I’ve taught for several semesters in Berkeley now, and I think it’s high time
+<p>If you’d like to play with this, feel free to play around with the
+<a href="https://github.com/addcninblue/options-viewer">repo</a>.</p>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[Anyone studying options for long enough begins to wonder about how the Greeks interact. Like, sure, an option’s delta approaches 0 or 1 (depending on its moneyness) as it gets closer to expiration, but what happens to its gamma, as it gets closer to expiration? Does that depend on its delta? Natenburg goes a bit into this with a plethora of graphs in his textbook. The unfortunate thing about books is that they’re all 2D and noninteractive.]]></summary></entry><entry><title type="html">Learning, Learning to Learn, and Teaching</title><link href="https://addcnin.blue/2022/03/12/teaching/" rel="alternate" type="text/html" title="Learning, Learning to Learn, and Teaching" /><published>2022-03-12T00:00:00-08:00</published><updated>2022-03-12T00:00:00-08:00</updated><id>https://addcnin.blue/2022/03/12/teaching</id><content type="html" xml:base="https://addcnin.blue/2022/03/12/teaching/"><![CDATA[<p>I’ve taught for several semesters in Berkeley now, and I think it’s high time
 I wrote some thoughts down before my knowledge on teaching fades
-away.&lt;sup id=&quot;fnref:teaching&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:teaching&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; So here’s a collection of thoughts: we begin with a light
+away.<sup id="fnref:teaching" role="doc-noteref"><a href="#fn:teaching" class="footnote" rel="footnote">1</a></sup> So here’s a collection of thoughts: we begin with a light
 theory of how people acquire knowledge through inquiry, followed by a quick
-meta-analysis of learning to learn, ending with teaching.&lt;/p&gt;
+meta-analysis of learning to learn, ending with teaching.</p>
 
-&lt;p&gt;I like to view teaching as a way of approximating the learning processes that
+<p>I like to view teaching as a way of approximating the learning processes that
 people would normally undergo. The key difference is usually convenience and
-speed; learning can be quite arduous, and teaching often eases the process.&lt;/p&gt;
+speed; learning can be quite arduous, and teaching often eases the process.</p>
 
-&lt;p&gt;But many educators forget what it’s like to be a student. They lean on
+<p>But many educators forget what it’s like to be a student. They lean on
 prescriptive methods of teaching, leading students to be walking reflection of
 their image. Through this post, I hope that students and educators alike will
-be able to rethink learning.&lt;/p&gt;
+be able to rethink learning.</p>
 
-&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+<h2 id="learning">Learning</h2>
 
-&lt;p&gt;How do people learn? It all begins when a person asks “why?” and starts seeking
-answers for themselves.&lt;sup id=&quot;fnref:babies-why&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:babies-why&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+<p>How do people learn? It all begins when a person asks “why?” and starts seeking
+answers for themselves.<sup id="fnref:babies-why" role="doc-noteref"><a href="#fn:babies-why" class="footnote" rel="footnote">2</a></sup></p>
 
-&lt;p&gt;It’s important to understand why this is successful. First, there’s the
+<p>It’s important to understand why this is successful. First, there’s the
 question of motivation. When a person begins questioning the world, it’s their
 internal motivation driving them to answer a question. This motivation allows
 the individual to dig deeply into their question of choice, possibly uncovering
 the truth they initially set out to find, possibly stumbling upon another
 question. Regardless of the outcome, however, it’s imperative to note that the
 individual’s motives do not stem from external factors. Rather, they’re internal,
-allowing them to try, retry, and retry again should they run into a wall.&lt;/p&gt;
+allowing them to try, retry, and retry again should they run into a wall.</p>
 
-&lt;p&gt;At the end of the journey to discovery, when all the why’s are answered, all
+<p>At the end of the journey to discovery, when all the why’s are answered, all
 they’re left with is knowledge and satisfaction. It’s incredibly gratifying to be
 able to ask a question, start with only a toolbox of inquisition, and to arrive
-at some tangible knowledge.&lt;/p&gt;
+at some tangible knowledge.</p>
 
-&lt;p&gt;Importantly, this process highlights a key component of learning: through the
+<p>Importantly, this process highlights a key component of learning: through the
 grueling process of hunting down hints and clues that eventually yield the
 answers, we implicitly learn about learning. We learn what to do, what not to
 do, and how to go about answering similar questions in the future. In doing so,
-we add new tools to our toolbox of inquisition.&lt;/p&gt;
+we add new tools to our toolbox of inquisition.</p>
 
-&lt;h2 id=&quot;learning-to-learn&quot;&gt;Learning to Learn&lt;/h2&gt;
+<h2 id="learning-to-learn">Learning to Learn</h2>
 
-&lt;p&gt;Let’s examine this a bit more. If we want to be good teachers, it’s imperative
+<p>Let’s examine this a bit more. If we want to be good teachers, it’s imperative
 to understand the mechanism through which we obtain knowledge. Formalizing
 the previous section on learning, we have a model that looks like the
-following:&lt;/p&gt;
+following:</p>
 
-&lt;ol&gt;
-  &lt;li&gt;Student has initial set of facts, as well as a toolbox of methods they
-understand to experiment on the world.&lt;sup id=&quot;fnref:consistency&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:consistency&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; They ask some motivated
-question about the world around them.&lt;/li&gt;
-  &lt;li&gt;To answer this question, they initially have a broad (correct or incorrect)
-hypothesis of how the world should behave according to their set of facts.&lt;/li&gt;
-  &lt;li&gt;They then conduct experiments to verify or challenge their beliefs.&lt;/li&gt;
-  &lt;li&gt;Eventually, they will obtain a new set of facts that updates their
+<ol>
+  <li>Student has initial set of facts, as well as a toolbox of methods they
+understand to experiment on the world.<sup id="fnref:consistency" role="doc-noteref"><a href="#fn:consistency" class="footnote" rel="footnote">3</a></sup> They ask some motivated
+question about the world around them.</li>
+  <li>To answer this question, they initially have a broad (correct or incorrect)
+hypothesis of how the world should behave according to their set of facts.</li>
+  <li>They then conduct experiments to verify or challenge their beliefs.</li>
+  <li>Eventually, they will obtain a new set of facts that updates their
 understanding of the world. In the process, they might also obtain a new
-method of experimentation to add to their toolbox.&lt;/li&gt;
-  &lt;li&gt;Repeat from step 1, with the extra knowledge and tools from step 4.&lt;/li&gt;
-&lt;/ol&gt;
+method of experimentation to add to their toolbox.</li>
+  <li>Repeat from step 1, with the extra knowledge and tools from step 4.</li>
+</ol>
 
-&lt;h3 id=&quot;example-discovering-probability&quot;&gt;Example: “Discovering Probability”&lt;/h3&gt;
+<h3 id="example-discovering-probability">Example: “Discovering Probability”</h3>
 
-&lt;p&gt;Let’s use this framework to imagine what it might be like to rediscover the
-memoryless property of coin flips.&lt;/p&gt;
+<p>Let’s use this framework to imagine what it might be like to rediscover the
+memoryless property of coin flips.</p>
 
-&lt;p&gt;A reasonable (even if wrong) initial set of beliefs about the world might be
-something like this:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Beliefs:
-    &lt;ul&gt;
-      &lt;li&gt;Coins have some fixed chance of landing Heads or Tails. This chance does
-  not change between flips.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Toolbox:
-    &lt;ul&gt;
-      &lt;li&gt;We can flip coins to test the chance of outcomes. (&lt;em&gt;physical&lt;/em&gt;)&lt;/li&gt;
-      &lt;li&gt;If we believe strongly that the chance of flipping Heads is fixed, we can
-  also simulate this. (&lt;em&gt;computational&lt;/em&gt;)&lt;/li&gt;
-      &lt;li&gt;Similarly, if we believe strongly that the chance of flipping Heads is
-  fixed, we can mathematically prove this. (&lt;em&gt;proof&lt;/em&gt;) [^proof]&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Initial hypothesis (belief that we want to test):
-    &lt;ul&gt;
-      &lt;li&gt;Coins are fair, so if we get many Heads in a row, it should start giving
-  us Tails.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+<p>A reasonable (even if wrong) initial set of beliefs about the world might be
+something like this:</p>
+<ul>
+  <li>Beliefs:
+    <ul>
+      <li>Coins have some fixed chance of landing Heads or Tails. This chance does
+  not change between flips.</li>
+    </ul>
+  </li>
+  <li>Toolbox:
+    <ul>
+      <li>We can flip coins to test the chance of outcomes. (<em>physical</em>)</li>
+      <li>If we believe strongly that the chance of flipping Heads is fixed, we can
+  also simulate this. (<em>computational</em>)</li>
+      <li>Similarly, if we believe strongly that the chance of flipping Heads is
+  fixed, we can mathematically prove this. (<em>proof</em>) [^proof]</li>
+    </ul>
+  </li>
+  <li>Initial hypothesis (belief that we want to test):
+    <ul>
+      <li>Coins are fair, so if we get many Heads in a row, it should start giving
+  us Tails.</li>
+    </ul>
+  </li>
+</ul>
 
-&lt;p&gt;Assuming that we only have the &lt;em&gt;physical&lt;/em&gt; method available, we can easily test
+<p>Assuming that we only have the <em>physical</em> method available, we can easily test
 the memoryless property of coin flips. If our initial hypothesis is true, then
 we should expect to see more Heads than Tails after a Tail. However, recording
-large number of flips will show us that this isn’t true.&lt;/p&gt;
+large number of flips will show us that this isn’t true.</p>
 
-&lt;p&gt;As a result, we can update our internal beliefs about coin flips.&lt;/p&gt;
+<p>As a result, we can update our internal beliefs about coin flips.</p>
 
-&lt;p&gt;A couple of remarks are in order.&lt;/p&gt;
+<p>A couple of remarks are in order.</p>
 
-&lt;ol&gt;
-  &lt;li&gt;It’s interesting to note that if one holds the belief of coins being
+<ol>
+  <li>It’s interesting to note that if one holds the belief of coins being
 consistent through flips, the memoryless property falls out immediately.
-(Formally, conditional independence implies the memoryless property.)&lt;/li&gt;
-  &lt;li&gt;However, students will sometimes hold the simultaneous belief that coins are
+(Formally, conditional independence implies the memoryless property.)</li>
+  <li>However, students will sometimes hold the simultaneous belief that coins are
 (1) unchanging through rolls, and yet (2) believe in some kind of “mean
 reversion,” or “bias toward the mean on subsequent rolls”. When confronted
 with this discrepancy, they’ll often doubt (1) rather than (2), making the
-&lt;em&gt;computational&lt;/em&gt; and &lt;em&gt;proof&lt;/em&gt;-based methods unavailable to them.&lt;/li&gt;
-  &lt;li&gt;Typically, as we go through this process of testing, we also run into
+<em>computational</em> and <em>proof</em>-based methods unavailable to them.</li>
+  <li>Typically, as we go through this process of testing, we also run into
 roadblocks and contradictions. These can be frustrating, but they’re
 actually quite critical to learning! Since part of the process is
 formulating a hypothesis, it’s important to understand the actual space of
 viable hypotheses. Finding counterexamples allow us to understand the
 boundaries of the hypothesis space, which in turn allow us to ask better,
-more-informed questions.&lt;/li&gt;
-  &lt;li&gt;Also, as we go through this process, we often will come up with better ways
+more-informed questions.</li>
+  <li>Also, as we go through this process, we often will come up with better ways
 of doing things. (As the proverb goes, “necessity is the mother of
 invention!”) These discoveries add to our toolbox, adding to step 1 and
-accelerating step 3.&lt;/li&gt;
-&lt;/ol&gt;
+accelerating step 3.</li>
+</ol>
 
-&lt;h2 id=&quot;teaching&quot;&gt;Teaching&lt;/h2&gt;
+<h2 id="teaching">Teaching</h2>
 
-&lt;p&gt;With this model of learning in mind, we turn to teaching. Before we answer the
-question of &lt;em&gt;how&lt;/em&gt; we should teach, there’s a more fundamental question that
+<p>With this model of learning in mind, we turn to teaching. Before we answer the
+question of <em>how</em> we should teach, there’s a more fundamental question that
 needs to be answered. Assuming a student is sufficiently self-motivated and
 capable, why does teaching even exist? Why isn’t it always better for students
 to ask questions, stumble around, and get a solid, fundamental grasp of
-everything?&lt;/p&gt;
+everything?</p>
 
-&lt;p&gt;The answer is largely a question of efficiency. While it’s possible a student
+<p>The answer is largely a question of efficiency. While it’s possible a student
 can answer their own questions and discover new things about the world around
 them, it simultaneously remains true that there are an infinite number of
-“wrong paths” to go down.&lt;/p&gt;
+“wrong paths” to go down.</p>
 
-&lt;h3 id=&quot;the-role-of-teaching&quot;&gt;The Role of Teaching&lt;/h3&gt;
+<h3 id="the-role-of-teaching">The Role of Teaching</h3>
 
-&lt;p&gt;So how should we teach? In its purest form, teaching should approximate the
-process outlined in &lt;a href=&quot;#learning-to-learn&quot;&gt;Learning to Learn&lt;/a&gt;, with one important
+<p>So how should we teach? In its purest form, teaching should approximate the
+process outlined in <a href="#learning-to-learn">Learning to Learn</a>, with one important
 modification: the teacher is given the role of guiding a student through making
-&lt;em&gt;insightful&lt;/em&gt; hypotheses and &lt;em&gt;insightful&lt;/em&gt; wrong decisions.&lt;/p&gt;
+<em>insightful</em> hypotheses and <em>insightful</em> wrong decisions.</p>
 
-&lt;p&gt;In particular, this means teaching should never be prescriptive, where a method
+<p>In particular, this means teaching should never be prescriptive, where a method
 is given without rationale and told to be adhered to. All too common, we see
 this in public education. In calculus, for example, students are told to “just
 differentiate, set to zero, and solve,” and to “check the second derivative
 for validity.” According to our framework above, this method is wrong because
-it &lt;em&gt;does not approximate learning&lt;/em&gt;! Students cannot be given a result first and
+it <em>does not approximate learning</em>! Students cannot be given a result first and
 then a hypothesis after, since it’s mentally unclear where this result is
-supposed to fit into their framework of reality.&lt;/p&gt;
+supposed to fit into their framework of reality.</p>
 
-&lt;p&gt;To fix this, we should rethink teaching by starting from a foundational
+<p>To fix this, we should rethink teaching by starting from a foundational
 motivation. In the Calculus example above, instead of starting from a result,
 form a motivating question first: “Suppose a ball were thrown in the air. How
 do we calculate its highest point off the ground?” (This example can also be
@@ -296,46 +418,46 @@ helped with a graph of the ball at various points describing a parabola.) With
 this motivating question, students can then form their own hypotheses and
 understand where each possible solution falls short. In the end, it’s ideal for
 the instructor to manually describe approaches that break, and then describe
-the “valid solution” that students should come to.&lt;/p&gt;
+the “valid solution” that students should come to.</p>
 
-&lt;h3 id=&quot;shortfalls-of-teaching&quot;&gt;Shortfalls of Teaching&lt;/h3&gt;
+<h3 id="shortfalls-of-teaching">Shortfalls of Teaching</h3>
 
-&lt;p&gt;As with any approximation, there are shortfalls. With teaching, it’s that the
+<p>As with any approximation, there are shortfalls. With teaching, it’s that the
 process of error is sometimes completely removed since the process of
-constructing bad paths has become artificial.&lt;/p&gt;
+constructing bad paths has become artificial.</p>
 
-&lt;p&gt;This is a necessary sacrifice we take in favor of accelerated learning, within
+<p>This is a necessary sacrifice we take in favor of accelerated learning, within
 bounds. Many teachers forget the process of motivated learning and become
 prescriptive (and they wonder why concepts don’t stick in students’ heads). As
 educators, we can do a lot better: put yourself in your students’ shoes, rewind
 your brains to match theirs, and relearn the concepts with them from a clean
-slate.&lt;/p&gt;
+slate.</p>
 
-&lt;h2 id=&quot;credits&quot;&gt;Credits&lt;/h2&gt;
+<h2 id="credits">Credits</h2>
 
-&lt;p&gt;Thanks to Andi Gu and Sean O’Brien for reading a draft of this.&lt;/p&gt;
+<p>Thanks to Andi Gu and Sean O’Brien for reading a draft of this.</p>
 
-&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
-&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:teaching&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;It’s a pipe dream, but someday I’d love to be a teaching
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:teaching" role="doc-endnote">
+      <p>It’s a pipe dream, but someday I’d love to be a teaching
 professor! School seems quite tedious and a PhD seems out of grasp, but who
-knows what a few years in industry will do… &lt;a href=&quot;#fnref:teaching&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:babies-why&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;I mean, have you ever talked to a toddler who just learned the
-word “why”? Perhaps this is why they acquire knowledge so quickly… &lt;a href=&quot;#fnref:babies-why&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:consistency&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;Actually, we also have to make the assumption that the universe
+knows what a few years in industry will do… <a href="#fnref:teaching" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+    <li id="fn:babies-why" role="doc-endnote">
+      <p>I mean, have you ever talked to a toddler who just learned the
+word “why”? Perhaps this is why they acquire knowledge so quickly… <a href="#fnref:babies-why" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+    <li id="fn:consistency" role="doc-endnote">
+      <p>Actually, we also have to make the assumption that the universe
 is consistent and understandable. This seems obvious in our age, but it’s
 not a priori clear that the universe should behave the same tomorrow as it
 does today. Suffice it to say however that we all take this for granted, so
-we don’t have much need to explicitly say this. &lt;a href=&quot;#fnref:consistency&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">I’ve taught for several semesters in Berkeley now, and I think it’s high time I wrote some thoughts down before my knowledge on teaching fades away.1 So here’s a collection of thoughts: we begin with a light theory of how people acquire knowledge through inquiry, followed by a quick meta-analysis of learning to learn, ending with teaching. It’s a pipe dream, but someday I’d love to be a teaching ⤴</summary></entry><entry><title type="html">Winter Break Project Review #1: DIY Mechanical Keyboard</title><link href="https://addcnin.blue/2022/01/11/alice-split/" rel="alternate" type="text/html" title="Winter Break Project Review #1: DIY Mechanical Keyboard" /><published>2022-01-11T00:00:00-08:00</published><updated>2022-01-11T00:00:00-08:00</updated><id>https://addcnin.blue/2022/01/11/alice-split</id><content type="html" xml:base="https://addcnin.blue/2022/01/11/alice-split/">&lt;p&gt;My initial motivation to learn Computer Science came from doing side projects.
+we don’t have much need to explicitly say this. <a href="#fnref:consistency" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[I’ve taught for several semesters in Berkeley now, and I think it’s high time I wrote some thoughts down before my knowledge on teaching fades away.1 So here’s a collection of thoughts: we begin with a light theory of how people acquire knowledge through inquiry, followed by a quick meta-analysis of learning to learn, ending with teaching. It’s a pipe dream, but someday I’d love to be a teaching ⤴]]></summary></entry><entry><title type="html">Winter Break Project Review #1: DIY Mechanical Keyboard</title><link href="https://addcnin.blue/2022/01/11/alice-split/" rel="alternate" type="text/html" title="Winter Break Project Review #1: DIY Mechanical Keyboard" /><published>2022-01-11T00:00:00-08:00</published><updated>2022-01-11T00:00:00-08:00</updated><id>https://addcnin.blue/2022/01/11/alice-split</id><content type="html" xml:base="https://addcnin.blue/2022/01/11/alice-split/"><![CDATA[<p>My initial motivation to learn Computer Science came from doing side projects.
 It was through doing these projects that I realized how little I knew and how
 much there was left to learn (and how much there would always be to learn!).
 Sometime in the past year, I’ve come to realize that the bulk of my time has
@@ -343,418 +465,418 @@ shifted from doing these side projects to laboring away on problem sets. This
 is not intrinsically a bad thing! However, as the classes become more and more
 advanced, the theory I’m learning has become more and more disconnected from
 the practical usefulness I wanted to get out of college. As a result, I’ve been
-losing motivation to learn concepts.&lt;/p&gt;
+losing motivation to learn concepts.</p>
 
-&lt;p&gt;So, one of my goals in senior year is to start doing these side projects again,
+<p>So, one of my goals in senior year is to start doing these side projects again,
 with the aim to apply concepts learned in school and to also motivate learning
-deeper concepts.&lt;/p&gt;
+deeper concepts.</p>
 
-&lt;p&gt;This winter break, I challenged myself to finish a few things:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Design and create a mechanical keyboard from scratch&lt;/li&gt;
-  &lt;li&gt;Create an autotrader for &lt;a href=&quot;https://kalshi.com/&quot;&gt;Kalshi&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Write a &lt;a href=&quot;https://tree-sitter.github.io/tree-sitter/&quot;&gt;Tree-sitter grammar&lt;/a&gt; for &lt;a href=&quot;https://cooklang.org/&quot;&gt;Cooklang&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Develop course content for my &lt;a href=&quot;https://cs198.org/&quot;&gt;new upcoming decal&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
+<p>This winter break, I challenged myself to finish a few things:</p>
+<ul>
+  <li>Design and create a mechanical keyboard from scratch</li>
+  <li>Create an autotrader for <a href="https://kalshi.com/">Kalshi</a></li>
+  <li>Write a <a href="https://tree-sitter.github.io/tree-sitter/">Tree-sitter grammar</a> for <a href="https://cooklang.org/">Cooklang</a>.</li>
+  <li>Develop course content for my <a href="https://cs198.org/">new upcoming decal</a>.</li>
+</ul>
 
-&lt;p&gt;As these projects are all nearing their completion, I decided to start
-documenting things I learned. This post will be about project #1.&lt;/p&gt;
+<p>As these projects are all nearing their completion, I decided to start
+documenting things I learned. This post will be about project #1.</p>
 
-&lt;p&gt;&lt;em&gt;[Pictures to be added later]&lt;/em&gt;&lt;/p&gt;
+<p><em>[Pictures to be added later]</em></p>
 
-&lt;h2 id=&quot;project-review&quot;&gt;Project Review&lt;/h2&gt;
+<h2 id="project-review">Project Review</h2>
 
-&lt;p&gt;I went into this project with the intent of learning the following:&lt;/p&gt;
+<p>I went into this project with the intent of learning the following:</p>
 
-&lt;ul&gt;
-  &lt;li&gt;How to do Computer-Aided Design (CAD)&lt;/li&gt;
-  &lt;li&gt;How 3D printing works, particularly its limits&lt;/li&gt;
-  &lt;li&gt;How to apply EE concepts learned in school to real projects&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+  <li>How to do Computer-Aided Design (CAD)</li>
+  <li>How 3D printing works, particularly its limits</li>
+  <li>How to apply EE concepts learned in school to real projects</li>
+</ul>
 
-&lt;p&gt;and of course, I wanted a new keyboard! Toward these goals, I think the project
+<p>and of course, I wanted a new keyboard! Toward these goals, I think the project
 was a huge success. I’ll detail a intro I wish I had for myself, and then go on
-to talk about the various tools I used.&lt;/p&gt;
+to talk about the various tools I used.</p>
 
-&lt;h2 id=&quot;a-mini-intro-to-myself-a-month-ago&quot;&gt;A Mini Intro to Myself A Month Ago&lt;/h2&gt;
+<h2 id="a-mini-intro-to-myself-a-month-ago">A Mini Intro to Myself A Month Ago</h2>
 
-&lt;p&gt;When I first started on this project, it was unclear to me the “build steps”
+<p>When I first started on this project, it was unclear to me the “build steps”
 that would be necessary to go from design to printed product. Does there exist
 some unified toolchain, as there often does in software, or would I need to
 piece together parts? It turns out the answer for 3D design and printing is the
-latter. The steps are roughly as follows:&lt;/p&gt;
+latter. The steps are roughly as follows:</p>
 
-&lt;ol&gt;
-  &lt;li&gt;Create a design in CAD software.&lt;/li&gt;
-  &lt;li&gt;Then, export these designs as STL files. To note, STL files are “rendered”
+<ol>
+  <li>Create a design in CAD software.</li>
+  <li>Then, export these designs as STL files. To note, STL files are “rendered”
 files that essentially ‘meshify’ everything. This means things like rounded
 corners are rendered into meshes of triangles. The only way to preserve the
 original design’s fidelity is to save the project using your CAD editor’s
-file type (which differs by each CAD).&lt;/li&gt;
-  &lt;li&gt;After you have a STL, use a
-&lt;a href=&quot;https://all3dp.com/1/best-3d-slicer-software-3d-printer/&quot;&gt;slicer&lt;/a&gt; to
+file type (which differs by each CAD).</li>
+  <li>After you have a STL, use a
+<a href="https://all3dp.com/1/best-3d-slicer-software-3d-printer/">slicer</a> to
 convert the 3D model into directions for the printer to follow. These files
-should have the extension &lt;code class=&quot;highlighter-rouge&quot;&gt;.gcode&lt;/code&gt;. For my projects, I chose to use
-PrusaSlicer.&lt;/li&gt;
-  &lt;li&gt;Once the &lt;code class=&quot;highlighter-rouge&quot;&gt;.gcode&lt;/code&gt; is generated, this can be loaded onto the 3D printer and printed!&lt;/li&gt;
-&lt;/ol&gt;
+should have the extension <code class="language-plaintext highlighter-rouge">.gcode</code>. For my projects, I chose to use
+PrusaSlicer.</li>
+  <li>Once the <code class="language-plaintext highlighter-rouge">.gcode</code> is generated, this can be loaded onto the 3D printer and printed!</li>
+</ol>
 
-&lt;p&gt;The intuition behind each step, in English, is as follows:&lt;/p&gt;
+<p>The intuition behind each step, in English, is as follows:</p>
 
-&lt;ol&gt;
-  &lt;li&gt;You tell the CAD software what design you want to create.&lt;/li&gt;
-  &lt;li&gt;You then tell the CAD software to create a render that roughly approximates
-the design you want (&lt;em&gt;approximates&lt;/em&gt; because it’s impossible to draw a fully
-round corner in real life).&lt;/li&gt;
-  &lt;li&gt;You then use another software (the slicer) to take this rendered design and
+<ol>
+  <li>You tell the CAD software what design you want to create.</li>
+  <li>You then tell the CAD software to create a render that roughly approximates
+the design you want (<em>approximates</em> because it’s impossible to draw a fully
+round corner in real life).</li>
+  <li>You then use another software (the slicer) to take this rendered design and
 generate machine commands that tell the 3D printer what steps you want it to
-take (move the nozzle to this coordinate and start spewing plastic).&lt;/li&gt;
-  &lt;li&gt;These commands are then loaded onto the 3D printer itself and printed.&lt;/li&gt;
-&lt;/ol&gt;
+take (move the nozzle to this coordinate and start spewing plastic).</li>
+  <li>These commands are then loaded onto the 3D printer itself and printed.</li>
+</ol>
 
-&lt;h2 id=&quot;openscad-i-wish-i-knew-this-existed&quot;&gt;Openscad: I Wish I Knew This Existed&lt;/h2&gt;
+<h2 id="openscad-i-wish-i-knew-this-existed">Openscad: I Wish I Knew This Existed</h2>
 
-&lt;p&gt;&lt;a href=&quot;https://openscad.org/&quot;&gt;Openscad&lt;/a&gt; was the CAD I used to generate my models. I
+<p><a href="https://openscad.org/">Openscad</a> was the CAD I used to generate my models. I
 chose this since I wanted to try out a programmatic way to generate 3D models,
 and since keyboards are parametric by nature. There is a great flowchart that I
 used to figure out which software I should use included in the footnotes
-&lt;sup id=&quot;fnref:CAD-Choosing&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:CAD-Choosing&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+<sup id="fnref:CAD-Choosing" role="doc-noteref"><a href="#fn:CAD-Choosing" class="footnote" rel="footnote">1</a></sup>.</p>
 
-&lt;p&gt;Openscad is a CAD that lets you fully generate models through their programming
+<p>Openscad is a CAD that lets you fully generate models through their programming
 language. My non-professional opinion is that it straddles the line somewhere
-between “magical” and “cursed”. Let me explain.&lt;/p&gt;
+between “magical” and “cursed”. Let me explain.</p>
 
-&lt;p&gt;First, its standard library is &lt;a href=&quot;https://openscad.org/cheatsheet/&quot;&gt;quite small&lt;/a&gt;.
+<p>First, its standard library is <a href="https://openscad.org/cheatsheet/">quite small</a>.
 This is a two-sided sword: it makes the language quite easy to pick up, but it
 also means that common things don’t exist. Things like sums, etc require the
 individual to write helper functions. As a result, it seems like most people
 actually have their own homebrewed standard libraries that they include in
 every project. As I’m writing this, I realized I’ve never bothered to look for
-a batteries-included general standard library, and it seems like &lt;a href=&quot;https://openscad.org/libraries.html&quot;&gt;there are
-multiple&lt;/a&gt;. (That would’ve been nice to know!)&lt;/p&gt;
+a batteries-included general standard library, and it seems like <a href="https://openscad.org/libraries.html">there are
+multiple</a>. (That would’ve been nice to know!)</p>
 
-&lt;p&gt;But what Openscad does well – it’s a great language to model something if you
-know &lt;em&gt;exactly&lt;/em&gt; what you want. The language is pretty intuitive; you just might
+<p>But what Openscad does well – it’s a great language to model something if you
+know <em>exactly</em> what you want. The language is pretty intuitive; you just might
 need to get creative with the primitives initially to get the hang of it.
 Overall, it’s a fantastic way for people who are really familiar with software
-to get into the CAD world.&lt;/p&gt;
+to get into the CAD world.</p>
 
-&lt;p&gt;There are some rough edges outside of its programmatic side. Debugging the 3D
+<p>There are some rough edges outside of its programmatic side. Debugging the 3D
 design is a large part of designing something in CAD, and I feel that Openscad
 lacks a bit in that regard. Sometimes, trying to figure out why a part doesn’t
 render correctly is an exercise in patience, as there’s no easy way to have
-Openscad describe &lt;em&gt;why&lt;/em&gt; a shape was rendered the way it was. I gradually
+Openscad describe <em>why</em> a shape was rendered the way it was. I gradually
 learned to work around this by rendering each part individually, and it seems
 more generally that this is what people do – they put in a “Debug Mode” flag
 that allows them to see these transformations. I’d love for this to be an
-Openscad feature though.&lt;/p&gt;
+Openscad feature though.</p>
 
-&lt;h2 id=&quot;3d-printing-a-blessing-and-a-curse&quot;&gt;3D Printing: A Blessing and A Curse&lt;/h2&gt;
+<h2 id="3d-printing-a-blessing-and-a-curse">3D Printing: A Blessing and A Curse</h2>
 
-&lt;p&gt;I bought an &lt;a href=&quot;https://www.amazon.com/Integrated-Structure-Motherboard-Carborundum-8-66x8-66x9-84in/dp/B07FFTHMMN/&quot;&gt;Ender 3
-V2&lt;/a&gt;
-to do my 3D printing. Amazon delivery services notwithstanding&lt;sup id=&quot;fnref:Amazon&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:Amazon&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, this
-printer has been a pain to set up and a joy to use.&lt;/p&gt;
+<p>I bought an <a href="https://www.amazon.com/Integrated-Structure-Motherboard-Carborundum-8-66x8-66x9-84in/dp/B07FFTHMMN/">Ender 3
+V2</a>
+to do my 3D printing. Amazon delivery services notwithstanding<sup id="fnref:Amazon" role="doc-noteref"><a href="#fn:Amazon" class="footnote" rel="footnote">2</a></sup>, this
+printer has been a pain to set up and a joy to use.</p>
 
-&lt;p&gt;Assembling the printer was pretty fast. It came with Ikea-like instructions
+<p>Assembling the printer was pretty fast. It came with Ikea-like instructions
 that were fairly easy to follow. I’d estimate the process took roughly an
 afternoon. However, the process to actually get the first print out was
-anything but simple. My lessons boil down to the following:&lt;/p&gt;
+anything but simple. My lessons boil down to the following:</p>
 
-&lt;ul&gt;
-  &lt;li&gt;Bed height matters &lt;em&gt;a lot&lt;/em&gt;. If your prints aren’t sticking, there’s a good
+<ul>
+  <li>Bed height matters <em>a lot</em>. If your prints aren’t sticking, there’s a good
 chance this is the issue. There’s a great infographic I found post-mortem in
-the footnotes&lt;sup id=&quot;fnref:Bed-Leveling&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:Bed-Leveling&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
-  &lt;li&gt;On that note, use 9-point leveling if your printer allows for it.
+the footnotes<sup id="fnref:Bed-Leveling" role="doc-noteref"><a href="#fn:Bed-Leveling" class="footnote" rel="footnote">3</a></sup>.</li>
+  <li>On that note, use 9-point leveling if your printer allows for it.
 Essentially, it allows you to level your bed at 9 points of accuracy. For the
-Ender 3 V2, there’s &lt;a href=&quot;https://github.com/Jyers/Marlin&quot;&gt;Jyers’s Mod&lt;/a&gt; that allows
-for this.&lt;/li&gt;
-  &lt;li&gt;If your prints &lt;em&gt;still&lt;/em&gt; aren’t sticking, and you’re sure that the bed is
+Ender 3 V2, there’s <a href="https://github.com/Jyers/Marlin">Jyers’s Mod</a> that allows
+for this.</li>
+  <li>If your prints <em>still</em> aren’t sticking, and you’re sure that the bed is
 level, check what type of PLA you have and the temperatures the manufacturer
 recommends. For a novice, this is non-obvious. I bought a matte ink, and it
 turns out the prints weren’t sticking since it required hotter tempertures both
-for the extruder and for the bed.&lt;/li&gt;
-  &lt;li&gt;Lastly, if your prints &lt;em&gt;still&lt;/em&gt; aren’t sticking, wash your bed with hot water
-and dishwasher soap. For some reason, I need to do this before &lt;em&gt;every single
-print&lt;/em&gt; for them to stick.&lt;/li&gt;
-&lt;/ul&gt;
+for the extruder and for the bed.</li>
+  <li>Lastly, if your prints <em>still</em> aren’t sticking, wash your bed with hot water
+and dishwasher soap. For some reason, I need to do this before <em>every single
+print</em> for them to stick.</li>
+</ul>
 
-&lt;h2 id=&quot;takeaways&quot;&gt;Takeaways&lt;/h2&gt;
+<h2 id="takeaways">Takeaways</h2>
 
-&lt;h3 id=&quot;3d-printing&quot;&gt;3D Printing&lt;/h3&gt;
+<h3 id="3d-printing">3D Printing</h3>
 
-&lt;p&gt;This process is much slower than I expected. For reference, printing the top
+<p>This process is much slower than I expected. For reference, printing the top
 levels of my keyboard took about ~4 hours each on the “draft” setting
 (second-to-last in terms of quality). The bases took about ~7 hours each. This
 means that 3D printing is good for semi-rapid prototyping, somewhere between
 REPL-speeds and sending a print to China. (It still seems faster than FAANG
-build tools, to be honest /s).&lt;/p&gt;
+build tools, to be honest /s).</p>
 
-&lt;h3 id=&quot;measure-twice-and-cut-once&quot;&gt;Measure Twice and Cut Once&lt;/h3&gt;
+<h3 id="measure-twice-and-cut-once">Measure Twice and Cut Once</h3>
 
-&lt;p&gt;As I was juggling several projects over the break, I started printing the
+<p>As I was juggling several projects over the break, I started printing the
 keyboard when I thought it was “about 95% done”. Boy did I realize that was a
 mistake! I ended up printing keyboard plates that had keys that were too far
 apart, requiring me to print the set again. Furthermore, I failed to properly
 consider the placement of the rotary knob, meaning I had to cut out part of the
 bottom case to accommodate for the knob. These weren’t catastrophic
-project-ending failures, but it definitely caused unnecessary delays.&lt;/p&gt;
+project-ending failures, but it definitely caused unnecessary delays.</p>
 
-&lt;h3 id=&quot;the-right-tools-can-make-all-the-difference&quot;&gt;The Right Tools Can Make All The Difference&lt;/h3&gt;
+<h3 id="the-right-tools-can-make-all-the-difference">The Right Tools Can Make All The Difference</h3>
 
-&lt;p&gt;I initially wired the right hand keyboard with stripped wire I salvaged from my
+<p>I initially wired the right hand keyboard with stripped wire I salvaged from my
 EE labs. To separate the rows and columns, I figured I could just use some kind
 of tape. After all, that’s what the guide I read said to use. Boy was that a
 mistake. The tape I used was too thin and ended up tearing, leaving me with
-random ghost connections. I ended up biting the bullet and buying &lt;a href=&quot;https://www.amazon.com/gp/product/B088KQFHV7/&quot;&gt;wire from
-Amazon&lt;/a&gt;. What a difference that
+random ghost connections. I ended up biting the bullet and buying <a href="https://www.amazon.com/gp/product/B088KQFHV7/">wire from
+Amazon</a>. What a difference that
 made! Not only was the wiring cleaner, it was also multiples faster to wire and
 debug. Sometimes, blaming the tool is just a scapegoat for bad skill (sports
 players, anyone?), but in times like these, having the right tools can make a
-world of difference.&lt;/p&gt;
+world of difference.</p>
 
-&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
-&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:CAD-Choosing&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;&lt;img src=&quot;https://i.redd.it/lvhhiaxuukl41.png&quot; alt=&quot;Model-Making Programs For 3D Printing&quot; /&gt; &lt;a href=&quot;#fnref:CAD-Choosing&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:Amazon&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;They lost this printer in the mail somehow, so I had to cancel my shipment to have them send another one. &lt;a href=&quot;#fnref:Amazon&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:Bed-Leveling&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;&lt;img src=&quot;https://i.imgur.com/tbvOlB9.jpeg&quot; alt=&quot;Bed Leveling&quot; /&gt; &lt;a href=&quot;#fnref:Bed-Leveling&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">My initial motivation to learn Computer Science came from doing side projects. It was through doing these projects that I realized how little I knew and how much there was left to learn (and how much there would always be to learn!). Sometime in the past year, I’ve come to realize that the bulk of my time has shifted from doing these side projects to laboring away on problem sets. This is not intrinsically a bad thing! However, as the classes become more and more advanced, the theory I’m learning has become more and more disconnected from the practical usefulness I wanted to get out of college. As a result, I’ve been losing motivation to learn concepts.</summary></entry><entry><title type="html">A Skip, a Hedge, and a Leap of Faith</title><link href="https://addcnin.blue/2021/12/08/full-time-job/" rel="alternate" type="text/html" title="A Skip, a Hedge, and a Leap of Faith" /><published>2021-12-08T00:00:00-08:00</published><updated>2021-12-08T00:00:00-08:00</updated><id>https://addcnin.blue/2021/12/08/full-time-job</id><content type="html" xml:base="https://addcnin.blue/2021/12/08/full-time-job/">&lt;p&gt;“If I may ask, where are you planning to work at full-time? Is it for evil or for good?”&lt;/p&gt;
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:CAD-Choosing" role="doc-endnote">
+      <p><img src="https://i.redd.it/lvhhiaxuukl41.png" alt="Model-Making Programs For 3D Printing" /> <a href="#fnref:CAD-Choosing" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+    <li id="fn:Amazon" role="doc-endnote">
+      <p>They lost this printer in the mail somehow, so I had to cancel my shipment to have them send another one. <a href="#fnref:Amazon" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+    <li id="fn:Bed-Leveling" role="doc-endnote">
+      <p><img src="https://i.imgur.com/tbvOlB9.jpeg" alt="Bed Leveling" /> <a href="#fnref:Bed-Leveling" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[My initial motivation to learn Computer Science came from doing side projects. It was through doing these projects that I realized how little I knew and how much there was left to learn (and how much there would always be to learn!). Sometime in the past year, I’ve come to realize that the bulk of my time has shifted from doing these side projects to laboring away on problem sets. This is not intrinsically a bad thing! However, as the classes become more and more advanced, the theory I’m learning has become more and more disconnected from the practical usefulness I wanted to get out of college. As a result, I’ve been losing motivation to learn concepts.]]></summary></entry><entry><title type="html">A Skip, a Hedge, and a Leap of Faith</title><link href="https://addcnin.blue/2021/12/08/full-time-job/" rel="alternate" type="text/html" title="A Skip, a Hedge, and a Leap of Faith" /><published>2021-12-08T00:00:00-08:00</published><updated>2021-12-08T00:00:00-08:00</updated><id>https://addcnin.blue/2021/12/08/full-time-job</id><content type="html" xml:base="https://addcnin.blue/2021/12/08/full-time-job/"><![CDATA[<p>“If I may ask, where are you planning to work at full-time? Is it for evil or for good?”</p>
 
-&lt;p&gt;“Well, it’s not strictly Good, but I don’t suppose it’s &lt;em&gt;that Evil&lt;/em&gt;, per se”&lt;/p&gt;
+<p>“Well, it’s not strictly Good, but I don’t suppose it’s <em>that Evil</em>, per se”</p>
 
-&lt;p&gt;Laughing, my physics professor responded with, “I respect your answer very much, I do … I had lots of smart friends from college – the brightest of them – who ended up in finance as well.”&lt;/p&gt;
+<p>Laughing, my physics professor responded with, “I respect your answer very much, I do … I had lots of smart friends from college – the brightest of them – who ended up in finance as well.”</p>
 
-&lt;p&gt;So I suppose I might as well write down some of my thoughts that led to me working in finance, and talk about some meta points while I’m at it.&lt;/p&gt;
+<p>So I suppose I might as well write down some of my thoughts that led to me working in finance, and talk about some meta points while I’m at it.</p>
 
-&lt;h2 id=&quot;inflation-the-economy-and-speculation&quot;&gt;Inflation, the Economy, and Speculation&lt;/h2&gt;
+<h2 id="inflation-the-economy-and-speculation">Inflation, the Economy, and Speculation</h2>
 
-&lt;p&gt;It seems to me the three following things are true of our current economy:&lt;/p&gt;
+<p>It seems to me the three following things are true of our current economy:</p>
 
-&lt;ol&gt;
-  &lt;li&gt;High (runaway?) inflation.&lt;/li&gt;
-  &lt;li&gt;Loose monetary policy.&lt;/li&gt;
-  &lt;li&gt;High speculation across the markets.&lt;/li&gt;
-&lt;/ol&gt;
+<ol>
+  <li>High (runaway?) inflation.</li>
+  <li>Loose monetary policy.</li>
+  <li>High speculation across the markets.</li>
+</ol>
 
-&lt;p&gt;A bit of exposition on each point:&lt;/p&gt;
+<p>A bit of exposition on each point:</p>
 
-&lt;ol&gt;
-  &lt;li&gt;The government has been handwaving this away, saying it’s “transitory” and a short-term result of the pandemic&lt;sup id=&quot;fnref:transitory-inflation&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:transitory-inflation&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. I fear that this is a long-term effect that perhaps is one part underestimated by many and another part down-played to prevent panic. After all, price hikes have been through the roof everywhere! A recent &lt;a href=&quot;https://www.federalreserve.gov/econres/feds/files/2021062pap.pdf&quot;&gt;paper by the Fed&lt;/a&gt; has been an interesting read on this point, and highlights the extent to which economists debate about the causes of inflation.&lt;/li&gt;
-  &lt;li&gt;This one is non-controversial, assumably, so I won’t go into it much. &lt;a href=&quot;https://www.brookings.edu/research/fed-response-to-covid19/&quot;&gt;Here’s a good summary of actions taken by the government, written by Brookings&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Whether &lt;a href=&quot;https://www.bloomberg.com/opinion/articles/2020-06-09/the-bad-stocks-are-the-most-fun&quot;&gt;boredom-driven&lt;/a&gt;, low-borrow-rate-driven, or &lt;a href=&quot;https://www.wsj.com/articles/inflation-surge-whips-up-market-froth-11636817049&quot;&gt;inflation-driven&lt;/a&gt;, I think it’s safe to say that speculation hasn’t run this hot in a while. This isn’t limited to just equities – cousins such as options and cryptocurrencies have seen wild rides ($GME, anyone?), and even the housing market hasn’t been left untouched. On this point, I’ll go as far as to say that the &lt;a href=&quot;https://news.crunchbase.com/news/global-vc-funding-h1-2021-monthly-recap/&quot;&gt;record level of VC funding&lt;/a&gt; is due to the same effect. Even the &lt;a href=&quot;https://www.federalreserve.gov/publications/files/financial-stability-report-20210506.pdf&quot;&gt;FED says as much&lt;/a&gt;:&lt;/li&gt;
-&lt;/ol&gt;
+<ol>
+  <li>The government has been handwaving this away, saying it’s “transitory” and a short-term result of the pandemic<sup id="fnref:transitory-inflation" role="doc-noteref"><a href="#fn:transitory-inflation" class="footnote" rel="footnote">1</a></sup>. I fear that this is a long-term effect that perhaps is one part underestimated by many and another part down-played to prevent panic. After all, price hikes have been through the roof everywhere! A recent <a href="https://www.federalreserve.gov/econres/feds/files/2021062pap.pdf">paper by the Fed</a> has been an interesting read on this point, and highlights the extent to which economists debate about the causes of inflation.</li>
+  <li>This one is non-controversial, assumably, so I won’t go into it much. <a href="https://www.brookings.edu/research/fed-response-to-covid19/">Here’s a good summary of actions taken by the government, written by Brookings</a>.</li>
+  <li>Whether <a href="https://www.bloomberg.com/opinion/articles/2020-06-09/the-bad-stocks-are-the-most-fun">boredom-driven</a>, low-borrow-rate-driven, or <a href="https://www.wsj.com/articles/inflation-surge-whips-up-market-froth-11636817049">inflation-driven</a>, I think it’s safe to say that speculation hasn’t run this hot in a while. This isn’t limited to just equities – cousins such as options and cryptocurrencies have seen wild rides ($GME, anyone?), and even the housing market hasn’t been left untouched. On this point, I’ll go as far as to say that the <a href="https://news.crunchbase.com/news/global-vc-funding-h1-2021-monthly-recap/">record level of VC funding</a> is due to the same effect. Even the <a href="https://www.federalreserve.gov/publications/files/financial-stability-report-20210506.pdf">FED says as much</a>:</li>
+</ol>
 
-&lt;blockquote&gt;
-  &lt;p&gt;Valuations for some assets are elevated relative to historical norms even when using measures that account for Treasury yields. In this setting, asset prices may be vulnerable to significant declines should risk appetite fall.&lt;/p&gt;
-&lt;/blockquote&gt;
+<blockquote>
+  <p>Valuations for some assets are elevated relative to historical norms even when using measures that account for Treasury yields. In this setting, asset prices may be vulnerable to significant declines should risk appetite fall.</p>
+</blockquote>
 
-&lt;p&gt;Where does that lead us? I don’t know, but I expect to see a few things. In the short- and medium-term, I expect increased volatility in the markets. We see that the $VIX is still at a bit higher compared to pre-pandemic levels, and we also see that the $VVIX (volatility of the $VIX) is a bit higher as well. I also wouldn’t be surprised to see some kind of meltdown in the markets completely caused by animal spirits, considering that leverage serves to amplify these random effects.&lt;/p&gt;
+<p>Where does that lead us? I don’t know, but I expect to see a few things. In the short- and medium-term, I expect increased volatility in the markets. We see that the $VIX is still at a bit higher compared to pre-pandemic levels, and we also see that the $VVIX (volatility of the $VIX) is a bit higher as well. I also wouldn’t be surprised to see some kind of meltdown in the markets completely caused by animal spirits, considering that leverage serves to amplify these random effects.</p>
 
-&lt;h1 id=&quot;recruiting&quot;&gt;Recruiting&lt;/h1&gt;
+<h1 id="recruiting">Recruiting</h1>
 
-&lt;p&gt;So this recruiting cycle, I broke down the options I had into these four categories. &lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+<p>So this recruiting cycle, I broke down the options I had into these four categories. <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">2</a></sup></p>
 
-&lt;ol&gt;
-  &lt;li&gt;Large tech companies&lt;/li&gt;
-  &lt;li&gt;Mid-stage / Pre-IPO companies&lt;/li&gt;
-  &lt;li&gt;Early-stage startups&lt;/li&gt;
-  &lt;li&gt;Trading (Market-making)&lt;/li&gt;
-&lt;/ol&gt;
+<ol>
+  <li>Large tech companies</li>
+  <li>Mid-stage / Pre-IPO companies</li>
+  <li>Early-stage startups</li>
+  <li>Trading (Market-making)</li>
+</ol>
 
-&lt;p&gt;With the dual objectives of growing as a software engineer (in writing code, in being able to self-direct projects, and in being able to directly define and validate product requirements) and of having financial security, I pored over my options.&lt;/p&gt;
+<p>With the dual objectives of growing as a software engineer (in writing code, in being able to self-direct projects, and in being able to directly define and validate product requirements) and of having financial security, I pored over my options.</p>
 
-&lt;p&gt;Large tech is quite a strong contender - pay is reliable even in a financial downturn, and companies of that scale can have pretty interesting work. However, from my past experience at a FAANG, it seemed just as possible that I’d easily become &lt;em&gt;just another engineer&lt;/em&gt; lost in the books, and my job would be &lt;em&gt;just another pipeline&lt;/em&gt; to make things work. &lt;!-- TODO: wordy --&gt; Furthermore, a lot of these companies are so big that most tools used are developed in-house, meaning I would develop strong skills in tools that no one else uses. That, coupled with the perception of stagnation at a large tech company, ultimately drove me away.&lt;/p&gt;
+<p>Large tech is quite a strong contender - pay is reliable even in a financial downturn, and companies of that scale can have pretty interesting work. However, from my past experience at a FAANG, it seemed just as possible that I’d easily become <em>just another engineer</em> lost in the books, and my job would be <em>just another pipeline</em> to make things work. <!-- TODO: wordy --> Furthermore, a lot of these companies are so big that most tools used are developed in-house, meaning I would develop strong skills in tools that no one else uses. That, coupled with the perception of stagnation at a large tech company, ultimately drove me away.</p>
 
-&lt;p&gt;Midstage tech companies were all the rage a short while ago (in the age of Uber, Lyft, Snowflake, etc.), and appear to be almost as popular as they were (Anyscale, Verkada, etc.). Having considered this route for a while, I can say that the one thing that eventually turned me away was the seeming financial instability of it all. As mentioned above, there’s a record level of VC funding right now, meaning that companies are raising more money and getting higher valuations, and it seems the effects are twofold. First, it means that in an economic downturn, the startup “runway” model of cash-burning would become unviable quickly, and a star startup can easily go under; it seems that this record level of funding has left them in a precarious state. The second effect is that, supposing an asset crash never happens, these companies’ valuations are already so high that the potential upside of some “IPO pop” (or equivalent increased valuation) is dampened. This makes sense by simple economics – low interest rates means that the present value of money is higher, meaning that we discount less for what we anticipate.&lt;/p&gt;
+<p>Midstage tech companies were all the rage a short while ago (in the age of Uber, Lyft, Snowflake, etc.), and appear to be almost as popular as they were (Anyscale, Verkada, etc.). Having considered this route for a while, I can say that the one thing that eventually turned me away was the seeming financial instability of it all. As mentioned above, there’s a record level of VC funding right now, meaning that companies are raising more money and getting higher valuations, and it seems the effects are twofold. First, it means that in an economic downturn, the startup “runway” model of cash-burning would become unviable quickly, and a star startup can easily go under; it seems that this record level of funding has left them in a precarious state. The second effect is that, supposing an asset crash never happens, these companies’ valuations are already so high that the potential upside of some “IPO pop” (or equivalent increased valuation) is dampened. This makes sense by simple economics – low interest rates means that the present value of money is higher, meaning that we discount less for what we anticipate.</p>
 
-&lt;p&gt;On the early-stage startup front, the analysis is quite similar to midstage startups, with the added bonus of being able to learn a lot in the right setting. &lt;!-- TODO: wordy --&gt; After my past summer’s internship, I’ve come to understand the value of &lt;em&gt;good mentorship&lt;/em&gt;, and I’ve also come to realize that this definitely isn’t a given, especially at a company more focused on its own growth than its employees’ (and rightly so). As a result, I figured early-stage startups would be great later on, but not as a first job.&lt;/p&gt;
+<p>On the early-stage startup front, the analysis is quite similar to midstage startups, with the added bonus of being able to learn a lot in the right setting. <!-- TODO: wordy --> After my past summer’s internship, I’ve come to understand the value of <em>good mentorship</em>, and I’ve also come to realize that this definitely isn’t a given, especially at a company more focused on its own growth than its employees’ (and rightly so). As a result, I figured early-stage startups would be great later on, but not as a first job.</p>
 
-&lt;p&gt;And that leaves me with trading.&lt;/p&gt;
+<p>And that leaves me with trading.</p>
 
-&lt;h2 id=&quot;an-aside-on-market-making&quot;&gt;An Aside: On Market Making&lt;/h2&gt;
+<h2 id="an-aside-on-market-making">An Aside: On Market Making</h2>
 
-&lt;p&gt;Before we go into how it answers these dual objectives, perhaps it’s a good idea to address the most common objection I get: the notion that “Wall Street Finance” is just a bunch of rich people trying to take advantage of the small guy. &lt;!-- TODO: wordy --&gt; With the recent $GME saga culminating in the Robinhood ban on trading $GME and the &lt;a href=&quot;https://www.reddit.com/r/wallstreetbets/comments/l747eg/citadel_reloaded_their_shorts_before_they_told/&quot;&gt;subsequent fallout with conspiracy theories of Robinhood and Citadel colluding&lt;/a&gt;&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;, I can understand why people are wary of the financial industry as a whole. I, too, was in those shoes half a year ago.&lt;/p&gt;
+<p>Before we go into how it answers these dual objectives, perhaps it’s a good idea to address the most common objection I get: the notion that “Wall Street Finance” is just a bunch of rich people trying to take advantage of the small guy. <!-- TODO: wordy --> With the recent $GME saga culminating in the Robinhood ban on trading $GME and the <a href="https://www.reddit.com/r/wallstreetbets/comments/l747eg/citadel_reloaded_their_shorts_before_they_told/">subsequent fallout with conspiracy theories of Robinhood and Citadel colluding</a><sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">3</a></sup>, I can understand why people are wary of the financial industry as a whole. I, too, was in those shoes half a year ago.</p>
 
-&lt;p&gt;Through more reading however, it’s become quite apparent that retail doesn’t quite understand the role of market makers. Matt Levine has this fantastic explanation of &lt;a href=&quot;https://www.bloomberg.com/opinion/articles/2021-02-05/robinhood-gamestop-saga-pressures-payment-for-order-flow&quot;&gt;how market making actually works&lt;/a&gt;, and the SEC did this &lt;a href=&quot;https://www.sec.gov/comments/credit-market-interconnectedness/cll10-2.pdf&quot;&gt;interesting investigation&lt;/a&gt; into the role of market makers on keeping liquidity through the COVID-19 crisis. On the whole, market makers aren’t institutions that facilitate things like the $GME wave, nor are they ones who illegally collude with brokers to take the common person’s money. That’s just not their business … usually. There &lt;em&gt;are&lt;/em&gt; cases of &lt;a href=&quot;https://www.sec.gov/files/Market%20Manipulations%20and%20Case%20Studies.pdf&quot;&gt;market manipulations by market makers&lt;/a&gt;, so it’s very much still true that honesty in the markets requires good faith on the part of market makers.&lt;/p&gt;
+<p>Through more reading however, it’s become quite apparent that retail doesn’t quite understand the role of market makers. Matt Levine has this fantastic explanation of <a href="https://www.bloomberg.com/opinion/articles/2021-02-05/robinhood-gamestop-saga-pressures-payment-for-order-flow">how market making actually works</a>, and the SEC did this <a href="https://www.sec.gov/comments/credit-market-interconnectedness/cll10-2.pdf">interesting investigation</a> into the role of market makers on keeping liquidity through the COVID-19 crisis. On the whole, market makers aren’t institutions that facilitate things like the $GME wave, nor are they ones who illegally collude with brokers to take the common person’s money. That’s just not their business … usually. There <em>are</em> cases of <a href="https://www.sec.gov/files/Market%20Manipulations%20and%20Case%20Studies.pdf">market manipulations by market makers</a>, so it’s very much still true that honesty in the markets requires good faith on the part of market makers.</p>
 
-&lt;p&gt;The question then becomes: Is Optiver a market maker that operates in good faith? After my summer there, I’d say yes, with a caveat. They’ve done quite a bit and more in terms of keeping market structures fair, from &lt;a href=&quot;https://www.optiver.com/2021/08/11/the-us-equity-options-market-is-overdue-for-an-update/&quot;&gt;writing many blog posts on things like PFOF&lt;/a&gt; to working with exchanges themselves to ensure that the exchange/trader boundary is fair (ie. that no algorithmic trader gets an advantage due to poor code).&lt;/p&gt;
+<p>The question then becomes: Is Optiver a market maker that operates in good faith? After my summer there, I’d say yes, with a caveat. They’ve done quite a bit and more in terms of keeping market structures fair, from <a href="https://www.optiver.com/2021/08/11/the-us-equity-options-market-is-overdue-for-an-update/">writing many blog posts on things like PFOF</a> to working with exchanges themselves to ensure that the exchange/trader boundary is fair (ie. that no algorithmic trader gets an advantage due to poor code).</p>
 
-&lt;h2 id=&quot;a-skip-a-hedge-and-a-leap-of-faith&quot;&gt;A Skip, a Hedge, and a Leap of Faith&lt;/h2&gt;
+<h2 id="a-skip-a-hedge-and-a-leap-of-faith">A Skip, a Hedge, and a Leap of Faith</h2>
 
-&lt;p&gt;So back to how working in finance addresses the two goals above.&lt;/p&gt;
+<p>So back to how working in finance addresses the two goals above.</p>
 
-&lt;p&gt;On learning: At Optiver, the tech side functioned similarly to a mid-stage startup. There were no PMs; teams were groups that formed around work that needed to be done (and groups changed as the needs of the company changed.) Individual contributors collaborated with their teams to identify things that needed to be done, but often worked directly with traders and relevant parties to scope out their own work and create the projects. This was quite liberating – it was nice to be able to learn to drive my own projects! Furthermore, Optiver places a large emphasis on writing good code (all new employees have to go through bootcamp and read the “Bible” – “Clean Code” by Robert Martin). On the code I wrote, I received lots of helpful pointers that greatly strengthened the maintainability of my code. Of course, this is all local to the particular company and team – I can’t say this is true of the industry, and based on what I’ve heard, it doesn’t seem to be!&lt;/p&gt;
+<p>On learning: At Optiver, the tech side functioned similarly to a mid-stage startup. There were no PMs; teams were groups that formed around work that needed to be done (and groups changed as the needs of the company changed.) Individual contributors collaborated with their teams to identify things that needed to be done, but often worked directly with traders and relevant parties to scope out their own work and create the projects. This was quite liberating – it was nice to be able to learn to drive my own projects! Furthermore, Optiver places a large emphasis on writing good code (all new employees have to go through bootcamp and read the “Bible” – “Clean Code” by Robert Martin). On the code I wrote, I received lots of helpful pointers that greatly strengthened the maintainability of my code. Of course, this is all local to the particular company and team – I can’t say this is true of the industry, and based on what I’ve heard, it doesn’t seem to be!</p>
 
-&lt;p&gt;On financial security: It’s no secret that the trading industry pays well. My hypothesis, however, is that the Efficient Market Hypothesis probably comes into play here – given some skill set, a person probably makes the same regardless of where they go in the long run. For example, I might be sacrificing learning to create at Google-scale by going into finance, and compensated in some other form. Or, perhaps I lose the ability to work from home in exchange for a more fast-paced working environment. Or, perhaps I lose out on golden lottery tickets in startups in exchange for a set bonus structure. Whatever the case, it’s not obvious to me that the trading industry wins outright in this category just based on the compensation numbers.&lt;/p&gt;
+<p>On financial security: It’s no secret that the trading industry pays well. My hypothesis, however, is that the Efficient Market Hypothesis probably comes into play here – given some skill set, a person probably makes the same regardless of where they go in the long run. For example, I might be sacrificing learning to create at Google-scale by going into finance, and compensated in some other form. Or, perhaps I lose the ability to work from home in exchange for a more fast-paced working environment. Or, perhaps I lose out on golden lottery tickets in startups in exchange for a set bonus structure. Whatever the case, it’s not obvious to me that the trading industry wins outright in this category just based on the compensation numbers.</p>
 
-&lt;p&gt;The reason the finance industry does win out, though, is due to where I think our economy is headed. To preface this, it should be known that market makers profit most when lots of trading happens&lt;sup id=&quot;fnref:3&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Then, taking the logical conclusion of the above section on our economy, it’s safe to say that this unstable economical position will lead to a large rebalance in the economy, causing large amounts of trades in the asset market.&lt;/p&gt;
+<p>The reason the finance industry does win out, though, is due to where I think our economy is headed. To preface this, it should be known that market makers profit most when lots of trading happens<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">4</a></sup>. Then, taking the logical conclusion of the above section on our economy, it’s safe to say that this unstable economical position will lead to a large rebalance in the economy, causing large amounts of trades in the asset market.</p>
 
-&lt;h2 id=&quot;its-not-all-golden-though&quot;&gt;It’s Not All Golden, Though&lt;/h2&gt;
+<h2 id="its-not-all-golden-though">It’s Not All Golden, Though</h2>
 
-&lt;p&gt;In the finance industry, one thing is true: Money talks. It’s a double-edged sword: your performance can always be traced back to your delta on the bottom line, and your performance can always be traced back to your delta on the bottom line. It lends itself well to a meritocracy, while losing some of the human aspects. After having worked at some slowly-moving, politics-laden work cultures, I can safely say that this is a tradeoff I’m willing to take, at least for a while.&lt;/p&gt;
+<p>In the finance industry, one thing is true: Money talks. It’s a double-edged sword: your performance can always be traced back to your delta on the bottom line, and your performance can always be traced back to your delta on the bottom line. It lends itself well to a meritocracy, while losing some of the human aspects. After having worked at some slowly-moving, politics-laden work cultures, I can safely say that this is a tradeoff I’m willing to take, at least for a while.</p>
 
-&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
+<h2 id="footnotes">Footnotes</h2>
 
-&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:transitory-inflation&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;I started writing this blog post in November, before the FED changed their tune. We see with the benefit of hindsight that our prediction was in fact correct, as the FED is accelerating their tapering. &lt;a href=&quot;#fnref:transitory-inflation&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;I know, it’s probably controversial! If you have thoughts, please email me! &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;To view the tweet, visit &lt;a href=&quot;https://web.archive.org/web/20210128181446/https://twitter.com/justinkan/status/1354853920762253315?s=21&quot;&gt;The Wayback Machine&lt;/a&gt;. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:3&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;This is because in making markets, you place quotes where you believe you have an upper hand in the price. To make the more, you’d like more people to trade against you on your quoted price. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">“If I may ask, where are you planning to work at full-time? Is it for evil or for good?”</summary></entry><entry><title type="html">Unintuitive Probability: Machine Repairs</title><link href="https://addcnin.blue/2021/12/05/durrett-3-12/" rel="alternate" type="text/html" title="Unintuitive Probability: Machine Repairs" /><published>2021-12-05T00:00:00-08:00</published><updated>2021-12-05T00:00:00-08:00</updated><id>https://addcnin.blue/2021/12/05/durrett-3-12</id><content type="html" xml:base="https://addcnin.blue/2021/12/05/durrett-3-12/">&lt;p&gt;The more classes I take in probability, the more I realize how often my intuition breaks for these problems, &lt;em&gt;especially&lt;/em&gt; when the Exponential distribution is involved. Today I’ll be explaining a homework problem for Stat150 (Stochastic Processes) showcasing unintuitive behavior regarding exponential distributions. Furthermore, I’ll also show a simulation that backs up these results, along with the code used to generate the simulation.&lt;/p&gt;
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:transitory-inflation" role="doc-endnote">
+      <p>I started writing this blog post in November, before the FED changed their tune. We see with the benefit of hindsight that our prediction was in fact correct, as the FED is accelerating their tapering. <a href="#fnref:transitory-inflation" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+    <li id="fn:1" role="doc-endnote">
+      <p>I know, it’s probably controversial! If you have thoughts, please email me! <a href="#fnref:1" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>To view the tweet, visit <a href="https://web.archive.org/web/20210128181446/https://twitter.com/justinkan/status/1354853920762253315?s=21">The Wayback Machine</a>. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p>This is because in making markets, you place quotes where you believe you have an upper hand in the price. To make the more, you’d like more people to trade against you on your quoted price. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[“If I may ask, where are you planning to work at full-time? Is it for evil or for good?”]]></summary></entry><entry><title type="html">Unintuitive Probability: Machine Repairs</title><link href="https://addcnin.blue/2021/12/05/durrett-3-12/" rel="alternate" type="text/html" title="Unintuitive Probability: Machine Repairs" /><published>2021-12-05T00:00:00-08:00</published><updated>2021-12-05T00:00:00-08:00</updated><id>https://addcnin.blue/2021/12/05/durrett-3-12</id><content type="html" xml:base="https://addcnin.blue/2021/12/05/durrett-3-12/"><![CDATA[<p>The more classes I take in probability, the more I realize how often my intuition breaks for these problems, <em>especially</em> when the Exponential distribution is involved. Today I’ll be explaining a homework problem for Stat150 (Stochastic Processes) showcasing unintuitive behavior regarding exponential distributions. Furthermore, I’ll also show a simulation that backs up these results, along with the code used to generate the simulation.</p>
 
-&lt;h2 id=&quot;problem-statement&quot;&gt;Problem Statement&lt;/h2&gt;
+<h2 id="problem-statement">Problem Statement</h2>
 
-&lt;p&gt;&lt;img src=&quot;/assets/posts/2021-12-05-durrett-3-12/problem.png&quot; alt=&quot;Problem Statement&quot; /&gt;&lt;/p&gt;
+<p><img src="/assets/posts/2021-12-05-durrett-3-12/problem.png" alt="Problem Statement" /></p>
 
-&lt;h2 id=&quot;formal-solution&quot;&gt;Formal Solution&lt;/h2&gt;
+<h2 id="formal-solution">Formal Solution</h2>
 
-&lt;p&gt;To solve this, we take advantage of the Rewards Theorem (Theorem 3.3 in Durrett; also &lt;a href=&quot;http://www.columbia.edu/~ks20/4106-18-Fall/Notes-RRT.pdf&quot;&gt;here&lt;/a&gt; for a great explanation). Noting that each characteristic period is the first arrival of either a repair completing (\(\textrm{~ Exp}(\mu)\))or a mistake happening (\(\textrm{~ Exp}(\lambda)\)), the period is then the minimum of the two exponentials, (\(\textrm{~ Exp}(\mu + \lambda)\)). The “reward” here is correctly completing a fix, which can be viewed as an indicator RV that takes \(1\) only on success: \(\mathbb{1}_{t_i = \textrm{repair}}\). Applying the rewards theorem then yields&lt;/p&gt;
+<p>To solve this, we take advantage of the Rewards Theorem (Theorem 3.3 in Durrett; also <a href="http://www.columbia.edu/~ks20/4106-18-Fall/Notes-RRT.pdf">here</a> for a great explanation). Noting that each characteristic period is the first arrival of either a repair completing (\(\textrm{~ Exp}(\mu)\))or a mistake happening (\(\textrm{~ Exp}(\lambda)\)), the period is then the minimum of the two exponentials, (\(\textrm{~ Exp}(\mu + \lambda)\)). The “reward” here is correctly completing a fix, which can be viewed as an indicator RV that takes \(1\) only on success: \(\mathbb{1}_{t_i = \textrm{repair}}\). Applying the rewards theorem then yields</p>
 
 \[\frac{\textrm{E}[r_i]}{\textrm{E}[t_i]} = \frac{\textrm{E}[\mathbb{1}_{t_i = \textrm{repair}}]}{\textrm{E}[\textrm{Exp}(\mu + \lambda)]} = \mu\]
 
-&lt;p&gt;This is somewhat unintuitive! It’s saying that the rate at which machines are repaired is &lt;em&gt;independent of the rate at which the worker is making mistakes&lt;/em&gt;!&lt;/p&gt;
+<p>This is somewhat unintuitive! It’s saying that the rate at which machines are repaired is <em>independent of the rate at which the worker is making mistakes</em>!</p>
 
-&lt;h2 id=&quot;intuitive-solution&quot;&gt;Intuitive Solution&lt;/h2&gt;
+<h2 id="intuitive-solution">Intuitive Solution</h2>
 
-&lt;p&gt;Now that we have a mathematical result, let’s try to intuit the cause. Conditioning on a mistake happening at some time \(t^*\), two things happen: the repair and mistake processes begin anew. However, we note that &lt;em&gt;even if the mistake didn’t happen at this time, both processes would have begun anew regardless due to the memoryless property of the exponential distribution&lt;/em&gt;! This result is a bit astounding; to rephrase, due to the memoryless property of the exponential distribution, the worker’s “time until completion” would have restarted at any time \(t^*\) regardless of whether or not a mistake occurred. This directly means that the expected time until completion cannot depend on anything other than \(\mu\), which leads to our solution.&lt;/p&gt;
+<p>Now that we have a mathematical result, let’s try to intuit the cause. Conditioning on a mistake happening at some time \(t^*\), two things happen: the repair and mistake processes begin anew. However, we note that <em>even if the mistake didn’t happen at this time, both processes would have begun anew regardless due to the memoryless property of the exponential distribution</em>! This result is a bit astounding; to rephrase, due to the memoryless property of the exponential distribution, the worker’s “time until completion” would have restarted at any time \(t^*\) regardless of whether or not a mistake occurred. This directly means that the expected time until completion cannot depend on anything other than \(\mu\), which leads to our solution.</p>
 
-&lt;h2 id=&quot;simulation-code&quot;&gt;Simulation Code&lt;/h2&gt;
+<h2 id="simulation-code">Simulation Code</h2>
 
-&lt;p&gt;To simulate this result, we generate two random vectors of the exponential distributions. Then, we create the times at which the mistakes are made in &lt;code class=&quot;highlighter-rouge&quot;&gt;mistake_times&lt;/code&gt; (remembering that mistakes happen &lt;em&gt;independently&lt;/em&gt; of repairs). After that, we accumulate times at which the machine is correctly fixed in &lt;code class=&quot;highlighter-rouge&quot;&gt;fix_times&lt;/code&gt;. Taking the successive differences of &lt;code class=&quot;highlighter-rouge&quot;&gt;fix_times&lt;/code&gt; gives the time between fixes, and plotting these values gives us our result.&lt;/p&gt;
+<p>To simulate this result, we generate two random vectors of the exponential distributions. Then, we create the times at which the mistakes are made in <code class="language-plaintext highlighter-rouge">mistake_times</code> (remembering that mistakes happen <em>independently</em> of repairs). After that, we accumulate times at which the machine is correctly fixed in <code class="language-plaintext highlighter-rouge">fix_times</code>. Taking the successive differences of <code class="language-plaintext highlighter-rouge">fix_times</code> gives the time between fixes, and plotting these values gives us our result.</p>
 
-&lt;div class=&quot;language-jl highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Distributions&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Plots&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;μ&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;λ&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;
+<div class="language-jl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="n">Distributions</span>
+<span class="k">using</span> <span class="n">Plots</span>
+<span class="n">μ</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">λ</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10000</span>
 
-&lt;span class=&quot;c&quot;&gt;# Generate random vectors as simulated times&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;μs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Exponential&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;μ&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;λs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Exponential&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;λ&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt;
+<span class="c"># Generate random vectors as simulated times</span>
+<span class="n">μs</span> <span class="o">=</span> <span class="n">rand</span><span class="x">(</span><span class="n">Exponential</span><span class="x">(</span><span class="n">μ</span><span class="x">),</span> <span class="n">n</span><span class="x">)</span>
+<span class="n">λs</span> <span class="o">=</span> <span class="n">rand</span><span class="x">(</span><span class="n">Exponential</span><span class="x">(</span><span class="n">λ</span><span class="x">),</span> <span class="n">n</span><span class="o">*</span><span class="mi">10</span><span class="x">)</span>
 
-&lt;span class=&quot;n&quot;&gt;mistake_times&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cumsum&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;λs&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt;
+<span class="n">mistake_times</span> <span class="o">=</span> <span class="n">cumsum</span><span class="x">(</span><span class="n">λs</span><span class="x">)</span>
 
-&lt;span class=&quot;c&quot;&gt;# Times that the machine is actually correctly fixed (ie. before interruption)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;fix_times&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;x&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;λ_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+<span class="c"># Times that the machine is actually correctly fixed (ie. before interruption)</span>
+<span class="n">fix_times</span> <span class="o">=</span> <span class="x">[</span><span class="mf">0.0</span><span class="x">]</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">λ_index</span> <span class="o">=</span> <span class="mi">1</span>
 
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repairtime&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;μs&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;λ_index&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repairtime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mistake_times&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;λ_index&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# no fix&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mistake_times&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;λ_index&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;]&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;λ_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# increment fail index&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# fix&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repairtime&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;push!&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fix_times&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+<span class="k">for</span> <span class="n">repairtime</span> <span class="k">in</span> <span class="n">μs</span>
+  <span class="kd">global</span> <span class="n">time</span><span class="x">,</span> <span class="n">λ_index</span>
+    <span class="k">if</span> <span class="n">repairtime</span> <span class="o">+</span> <span class="n">time</span> <span class="o">&gt;</span> <span class="n">mistake_times</span><span class="x">[</span><span class="n">λ_index</span><span class="x">]</span> <span class="c"># no fix</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">mistake_times</span><span class="x">[</span><span class="n">λ_index</span><span class="x">]</span>
+        <span class="n">λ_index</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c"># increment fail index</span>
+    <span class="k">else</span> <span class="c"># fix</span>
+        <span class="n">time</span> <span class="o">+=</span> <span class="n">repairtime</span>
+        <span class="n">push!</span><span class="x">(</span><span class="n">fix_times</span><span class="x">,</span> <span class="n">time</span><span class="x">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
 
-&lt;span class=&quot;c&quot;&gt;# Construct animation; animate every 5 timesteps&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;diffs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fix_times&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;anim&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@gif&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;diffs&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;÷&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;vals&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diffs&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;histogram&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vals&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normalize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;probability&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# y1&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;vline!&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vals&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;)])&lt;/span&gt;                    &lt;span class=&quot;c&quot;&gt;# y2&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;vline!&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;μ&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;])&lt;/span&gt;                             &lt;span class=&quot;c&quot;&gt;# y3&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<span class="c"># Construct animation; animate every 5 timesteps</span>
+<span class="n">diffs</span> <span class="o">=</span> <span class="n">diff</span><span class="x">(</span><span class="n">fix_times</span><span class="x">)</span>
+<span class="n">anim</span> <span class="o">=</span> <span class="nd">@gif</span> <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="x">(</span><span class="n">length</span><span class="x">(</span><span class="n">diffs</span><span class="x">)</span> <span class="o">÷</span> <span class="mi">5</span><span class="x">)</span>
+  <span class="n">vals</span> <span class="o">=</span> <span class="n">diffs</span><span class="x">[</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="x">]</span>
+  <span class="n">histogram</span><span class="x">(</span><span class="n">vals</span><span class="x">,</span> <span class="n">normalize</span><span class="o">=:</span><span class="n">probability</span><span class="x">)</span> <span class="c"># y1</span>
+  <span class="n">vline!</span><span class="x">([</span><span class="n">mean</span><span class="x">(</span><span class="n">vals</span><span class="x">)])</span>                    <span class="c"># y2</span>
+  <span class="n">vline!</span><span class="x">([</span><span class="n">μ</span><span class="x">])</span>                             <span class="c"># y3</span>
+<span class="k">end</span>
+</code></pre></div></div>
 
-&lt;h2 id=&quot;simulation-results&quot;&gt;Simulation Results&lt;/h2&gt;
+<h2 id="simulation-results">Simulation Results</h2>
 
-&lt;p&gt;The orange line &lt;code class=&quot;highlighter-rouge&quot;&gt;y2&lt;/code&gt; is the simulated mean, and the green line &lt;code class=&quot;highlighter-rouge&quot;&gt;y3&lt;/code&gt; is the expected mean (from our math above).&lt;/p&gt;
+<p>The orange line <code class="language-plaintext highlighter-rouge">y2</code> is the simulated mean, and the green line <code class="language-plaintext highlighter-rouge">y3</code> is the expected mean (from our math above).</p>
 
-&lt;p&gt;With \(\mu = 1, \lambda = 3\), we get:&lt;/p&gt;
+<p>With \(\mu = 1, \lambda = 3\), we get:</p>
 
-&lt;p&gt;&lt;img src=&quot;/assets/posts/2021-12-05-durrett-3-12/sim.gif&quot; alt=&quot;Simulation&quot; /&gt;&lt;/p&gt;
+<p><img src="/assets/posts/2021-12-05-durrett-3-12/sim.gif" alt="Simulation" /></p>
 
-&lt;p&gt;and see that our simulated results do indeed match the math.&lt;/p&gt;</content><author><name>@addcninblue</name></author><summary type="html">The more classes I take in probability, the more I realize how often my intuition breaks for these problems, especially when the Exponential distribution is involved. Today I’ll be explaining a homework problem for Stat150 (Stochastic Processes) showcasing unintuitive behavior regarding exponential distributions. Furthermore, I’ll also show a simulation that backs up these results, along with the code used to generate the simulation.</summary></entry><entry><title type="html">I’ll Take My Quarterback, Thanks</title><link href="https://addcnin.blue/2021/11/26/a-quarter-of-efficiency/" rel="alternate" type="text/html" title="I’ll Take My Quarterback, Thanks" /><published>2021-11-26T00:00:00-08:00</published><updated>2021-11-26T00:00:00-08:00</updated><id>https://addcnin.blue/2021/11/26/a-quarter-of-efficiency</id><content type="html" xml:base="https://addcnin.blue/2021/11/26/a-quarter-of-efficiency/">&lt;p&gt;Many things in life don’t have a clear estimate at a first glance – many times, 10% will seem like an underestimate, and 100% will seem like an overestimate. In these situations, I’ve learned that it’s actually pretty good to take the geometric mean of the two as a ballpark estimate: ~30%, or roughly something like 1/4 ~ 1/3.&lt;/p&gt;
+<p>and see that our simulated results do indeed match the math.</p>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[The more classes I take in probability, the more I realize how often my intuition breaks for these problems, especially when the Exponential distribution is involved. Today I’ll be explaining a homework problem for Stat150 (Stochastic Processes) showcasing unintuitive behavior regarding exponential distributions. Furthermore, I’ll also show a simulation that backs up these results, along with the code used to generate the simulation.]]></summary></entry><entry><title type="html">I’ll Take My Quarterback, Thanks</title><link href="https://addcnin.blue/2021/11/26/a-quarter-of-efficiency/" rel="alternate" type="text/html" title="I’ll Take My Quarterback, Thanks" /><published>2021-11-26T00:00:00-08:00</published><updated>2021-11-26T00:00:00-08:00</updated><id>https://addcnin.blue/2021/11/26/a-quarter-of-efficiency</id><content type="html" xml:base="https://addcnin.blue/2021/11/26/a-quarter-of-efficiency/"><![CDATA[<p>Many things in life don’t have a clear estimate at a first glance – many times, 10% will seem like an underestimate, and 100% will seem like an overestimate. In these situations, I’ve learned that it’s actually pretty good to take the geometric mean of the two as a ballpark estimate: ~30%, or roughly something like 1/4 ~ 1/3.</p>
 
-&lt;p&gt;Let’s take a few examples:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Energy efficiency of humans. Empirically, it doesn’t seem like we convert all our energy from calories into work. (Think about how hot we get after a run!) That must mean that our energy production is less than 100%. However, it doesn’t seem that our energy efficiency is as low as 10% either – that would mean that most of our energy is by far wasted. With these two conditions met, we then ballpark human efficiency as 30%. It turns out that this is empirically true – &lt;a href=&quot;https://dothemath.ucsd.edu/2011/11/mpg-of-a-human/&quot;&gt;humans are about 25% efficient at producing mechanical work&lt;/a&gt;!&lt;/li&gt;
-  &lt;li&gt;Energy efficiency of (gasoline) cars. By the same logic above – with all the heat, etc., we can say that roughly the same setup holds for cars for the same reasons it holds for humans. Therefore, we can once again make the claim that cars are ~30% efficient. Once again, this is &lt;a href=&quot;https://www.fueleconomy.gov/feg/atv.shtml&quot;&gt;empirically roughly true&lt;/a&gt;!&lt;/li&gt;
-  &lt;li&gt;Food at restaurants. Thinking about the amount of money that actually goes into the ingredients of food at restaurants (as opposed to other factors like labor, rent, etc.), we realize the same setup holds. Due to overhead, restaurant efficiency cannot be 100%; due to food prices, it seems extremely unlikely that restaurant efficiency is only 10%. We once again take 30% as a ballpark estimate. It turns out that this is &lt;a href=&quot;https://www.caminofinancial.com/restaurant-costs/&quot;&gt;fairly accurate&lt;/a&gt; (and as a side note, it seems like employee costs are about the same as well)! I’ve also seen this number noted as low as 20%.&lt;/li&gt;
-  &lt;li&gt;As a last example, we know that last week, Stanford lost to Cal in our yearly Big Game (and I know that Cal’s football isn’t great)&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Well, obviously Stanford can’t be winning all their games, and they are hopefully winning more than 10% of their games (being a private school and whatnot), so we take their winning proportion to be 30%. It turns out their actual standing in PAC-12 North is dead last at 3-8 (overall), which is pretty close to our estimate.&lt;/li&gt;
-&lt;/ul&gt;
+<p>Let’s take a few examples:</p>
+<ul>
+  <li>Energy efficiency of humans. Empirically, it doesn’t seem like we convert all our energy from calories into work. (Think about how hot we get after a run!) That must mean that our energy production is less than 100%. However, it doesn’t seem that our energy efficiency is as low as 10% either – that would mean that most of our energy is by far wasted. With these two conditions met, we then ballpark human efficiency as 30%. It turns out that this is empirically true – <a href="https://dothemath.ucsd.edu/2011/11/mpg-of-a-human/">humans are about 25% efficient at producing mechanical work</a>!</li>
+  <li>Energy efficiency of (gasoline) cars. By the same logic above – with all the heat, etc., we can say that roughly the same setup holds for cars for the same reasons it holds for humans. Therefore, we can once again make the claim that cars are ~30% efficient. Once again, this is <a href="https://www.fueleconomy.gov/feg/atv.shtml">empirically roughly true</a>!</li>
+  <li>Food at restaurants. Thinking about the amount of money that actually goes into the ingredients of food at restaurants (as opposed to other factors like labor, rent, etc.), we realize the same setup holds. Due to overhead, restaurant efficiency cannot be 100%; due to food prices, it seems extremely unlikely that restaurant efficiency is only 10%. We once again take 30% as a ballpark estimate. It turns out that this is <a href="https://www.caminofinancial.com/restaurant-costs/">fairly accurate</a> (and as a side note, it seems like employee costs are about the same as well)! I’ve also seen this number noted as low as 20%.</li>
+  <li>As a last example, we know that last week, Stanford lost to Cal in our yearly Big Game (and I know that Cal’s football isn’t great)<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. Well, obviously Stanford can’t be winning all their games, and they are hopefully winning more than 10% of their games (being a private school and whatnot), so we take their winning proportion to be 30%. It turns out their actual standing in PAC-12 North is dead last at 3-8 (overall), which is pretty close to our estimate.</li>
+</ul>
 
-&lt;p&gt;The last tongue-in-cheek example aside, hopefully you’re convinced of the use of this ballpark estimate. Now that we’re armed with this weapon, as we know too well&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, it’s a lot more interesting to find places where wielding it gives us invalid results:&lt;/p&gt;
+<p>The last tongue-in-cheek example aside, hopefully you’re convinced of the use of this ballpark estimate. Now that we’re armed with this weapon, as we know too well<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>, it’s a lot more interesting to find places where wielding it gives us invalid results:</p>
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Berkeley tuition: Sourced through internal means, we’ve gathered that around ~$100 is spent on classes per student-unit on teaching staff. This translates to ~$400 for a 4-unit class, or $1600 for the standard 16 unit schedule. Accounting for $150 for instructor salary ($150k for 1k students, as per 61A standards), we get ~$2200 per semester in money spent towards teaching staff. In-state tuition is $9k / semester, as I checked on CalCentral, so we do end up getting a value of $2.2k / $9k = ~25% efficiency. Fantastic!&lt;/p&gt;
+<ul>
+  <li>
+    <p>Berkeley tuition: Sourced through internal means, we’ve gathered that around ~$100 is spent on classes per student-unit on teaching staff. This translates to ~$400 for a 4-unit class, or $1600 for the standard 16 unit schedule. Accounting for $150 for instructor salary ($150k for 1k students, as per 61A standards), we get ~$2200 per semester in money spent towards teaching staff. In-state tuition is $9k / semester, as I checked on CalCentral, so we do end up getting a value of $2.2k / $9k = ~25% efficiency. Fantastic!</p>
 
-    &lt;p&gt;Now we consider out-of-state students, who pay ~25k per semester. This is $2.2k / $25k ~= 10% efficient. Where is all the money going? I unfortunately don’t have an answer. What I do have, though, is a dire situation on hand: Somehow, the EECS department doesn’t have enough money to staff their classes next semester, even running at a subpar efficiency. I’m &lt;em&gt;very curious&lt;/em&gt; as to what’s up!&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Writing code: In Clean Code, Martin asserts that &lt;a href=&quot;https://www.goodreads.com/quotes/835238-indeed-the-ratio-of-time-spent-reading-versus-writing-is&quot;&gt;the ratio of time spent reading versus writing is well over 10 to 1. We are constantly reading old code as part of the effort to write new code&lt;/a&gt;. Taking this at face value, it definitely doesn’t satisfy the 1/3 ~ 1/4 rule. Based on my limited experience in industry (as a senior at the time of writing), this doesn’t seem empirically true? I’ve spent perhaps a third of my time reviewing other code and getting a hold of my bearings, and the other two thirds producing. It’s perhaps the case that these ratios switch as software engineers become mentors, but I’m curious here as well to understand what’s up!&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+    <p>Now we consider out-of-state students, who pay ~25k per semester. This is $2.2k / $25k ~= 10% efficient. Where is all the money going? I unfortunately don’t have an answer. What I do have, though, is a dire situation on hand: Somehow, the EECS department doesn’t have enough money to staff their classes next semester, even running at a subpar efficiency. I’m <em>very curious</em> as to what’s up!</p>
+  </li>
+  <li>
+    <p>Writing code: In Clean Code, Martin asserts that <a href="https://www.goodreads.com/quotes/835238-indeed-the-ratio-of-time-spent-reading-versus-writing-is">the ratio of time spent reading versus writing is well over 10 to 1. We are constantly reading old code as part of the effort to write new code</a>. Taking this at face value, it definitely doesn’t satisfy the 1/3 ~ 1/4 rule. Based on my limited experience in industry (as a senior at the time of writing), this doesn’t seem empirically true? I’ve spent perhaps a third of my time reviewing other code and getting a hold of my bearings, and the other two thirds producing. It’s perhaps the case that these ratios switch as software engineers become mentors, but I’m curious here as well to understand what’s up!</p>
+  </li>
+</ul>
 
-&lt;p&gt;In closing, this rule of thumb is quite similar to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Pareto_principle&quot;&gt;Pareto Principle&lt;/a&gt;. Perhaps it’s getting at the same underlying cause! I find, however, that the 1/3 ~ 1/4 rule of thumb has been more helpful to me thus far, and I hope you took something out of this as well.&lt;/p&gt;
+<p>In closing, this rule of thumb is quite similar to the <a href="https://en.wikipedia.org/wiki/Pareto_principle">Pareto Principle</a>. Perhaps it’s getting at the same underlying cause! I find, however, that the 1/3 ~ 1/4 rule of thumb has been more helpful to me thus far, and I hope you took something out of this as well.</p>
 
-&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;I had actually begun writing this blogpost &lt;em&gt;before&lt;/em&gt; the big game, and the title of the post came full circle to fit the post! &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:2&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;Oak’s words echoed… “There’s a time and place for everything but not now!” &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;⤴&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>@addcninblue</name></author><summary type="html">Many things in life don’t have a clear estimate at a first glance – many times, 10% will seem like an underestimate, and 100% will seem like an overestimate. In these situations, I’ve learned that it’s actually pretty good to take the geometric mean of the two as a ballpark estimate: ~30%, or roughly something like 1/4 ~ 1/3.</summary></entry><entry><title type="html">Remarkable + Tailscale</title><link href="https://addcnin.blue/2021/10/26/remarkable-tailscale/" rel="alternate" type="text/html" title="Remarkable + Tailscale" /><published>2021-10-26T00:00:00-07:00</published><updated>2021-10-26T00:00:00-07:00</updated><id>https://addcnin.blue/2021/10/26/remarkable-tailscale</id><content type="html" xml:base="https://addcnin.blue/2021/10/26/remarkable-tailscale/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://tailscale.com/&quot;&gt;Tailscale&lt;/a&gt; is a pretty cool technology that allows devices to access each other across any network by automatically punching holes through networks. (Long gone are the days of &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh -L 8000:localhost:8000 server&lt;/code&gt; to do development! Now we can just go to &lt;code class=&quot;highlighter-rouge&quot;&gt;http://server:8000&lt;/code&gt; directly!) Its setup process is fairly simple for both Windows and Linux, but it doesn’t have detailed solutions for embedded devices (such as the Remarkable). This blogpost details the steps I took to get Tailscale working on my Remarkable.&lt;/p&gt;
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>I had actually begun writing this blogpost <em>before</em> the big game, and the title of the post came full circle to fit the post! <a href="#fnref:1" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>Oak’s words echoed… “There’s a time and place for everything but not now!” <a href="#fnref:2" class="reversefootnote" role="doc-backlink">⤴</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[Many things in life don’t have a clear estimate at a first glance – many times, 10% will seem like an underestimate, and 100% will seem like an overestimate. In these situations, I’ve learned that it’s actually pretty good to take the geometric mean of the two as a ballpark estimate: ~30%, or roughly something like 1/4 ~ 1/3.]]></summary></entry><entry><title type="html">Remarkable + Tailscale</title><link href="https://addcnin.blue/2021/10/26/remarkable-tailscale/" rel="alternate" type="text/html" title="Remarkable + Tailscale" /><published>2021-10-26T00:00:00-07:00</published><updated>2021-10-26T00:00:00-07:00</updated><id>https://addcnin.blue/2021/10/26/remarkable-tailscale</id><content type="html" xml:base="https://addcnin.blue/2021/10/26/remarkable-tailscale/"><![CDATA[<h2 id="background">Background</h2>
+<p><a href="https://tailscale.com/">Tailscale</a> is a pretty cool technology that allows devices to access each other across any network by automatically punching holes through networks. (Long gone are the days of <code class="language-plaintext highlighter-rouge">ssh -L 8000:localhost:8000 server</code> to do development! Now we can just go to <code class="language-plaintext highlighter-rouge">http://server:8000</code> directly!) Its setup process is fairly simple for both Windows and Linux, but it doesn’t have detailed solutions for embedded devices (such as the Remarkable). This blogpost details the steps I took to get Tailscale working on my Remarkable.</p>
 
-&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+<h2 id="prerequisites">Prerequisites</h2>
 
-&lt;ol&gt;
-  &lt;li&gt;You will need &lt;a href=&quot;https://github.com/Evidlo/remarkable_entware&quot;&gt;entware&lt;/a&gt; installed. This has the &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscale&lt;/code&gt; package.&lt;/li&gt;
-&lt;/ol&gt;
+<ol>
+  <li>You will need <a href="https://github.com/Evidlo/remarkable_entware">entware</a> installed. This has the <code class="language-plaintext highlighter-rouge">tailscale</code> package.</li>
+</ol>
 
-&lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
+<h2 id="steps">Steps</h2>
 
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Install &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscale&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;entware&lt;/code&gt;:&lt;/p&gt;
+<ol>
+  <li>
+    <p>Install <code class="language-plaintext highlighter-rouge">tailscale</code> from <code class="language-plaintext highlighter-rouge">entware</code>:</p>
 
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;opkg install tailscale&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;For the first time we run &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscale&lt;/code&gt;, we need to do it manually to set up authentication. In two separate terminals, run:
-    &lt;ol&gt;
-      &lt;li&gt;
-        &lt;p&gt;Tailscale daemon. (Note that &lt;code class=&quot;highlighter-rouge&quot;&gt;--tun=userspace-networking&lt;/code&gt; is necessary! The Remarkable kernel &lt;em&gt;does not&lt;/em&gt; contain the proper modules to kernel-space networking.)&lt;/p&gt;
+    <p><code class="language-plaintext highlighter-rouge">opkg install tailscale</code></p>
+  </li>
+  <li>For the first time we run <code class="language-plaintext highlighter-rouge">tailscale</code>, we need to do it manually to set up authentication. In two separate terminals, run:
+    <ol>
+      <li>
+        <p>Tailscale daemon. (Note that <code class="language-plaintext highlighter-rouge">--tun=userspace-networking</code> is necessary! The Remarkable kernel <em>does not</em> contain the proper modules to kernel-space networking.)</p>
 
-        &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tailscaled --tun=userspace-networking&lt;/code&gt;&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;Tailscale client. This will give you a link. Follow the instructions to authenticate&lt;/p&gt;
+        <p><code class="language-plaintext highlighter-rouge">tailscaled --tun=userspace-networking</code></p>
+      </li>
+      <li>
+        <p>Tailscale client. This will give you a link. Follow the instructions to authenticate</p>
 
-        &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tailscale up&lt;/code&gt;&lt;/p&gt;
-      &lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Now, we set up a systemd unit to automatically start and run &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscaled&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscale up&lt;/code&gt; on boot. Copy and paste the following into a new file at &lt;code class=&quot;highlighter-rouge&quot;&gt;/lib/systemd/system/tailscaled.service&lt;/code&gt;.&lt;/p&gt;
+        <p><code class="language-plaintext highlighter-rouge">tailscale up</code></p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Now, we set up a systemd unit to automatically start and run <code class="language-plaintext highlighter-rouge">tailscaled</code> and <code class="language-plaintext highlighter-rouge">tailscale up</code> on boot. Copy and paste the following into a new file at <code class="language-plaintext highlighter-rouge">/lib/systemd/system/tailscaled.service</code>.</p>
 
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; [Unit]
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [Unit]
  After=network.target
  Description=Tailscale client daemon
  StartLimitBurst=0
@@ -762,7 +884,7 @@ world of difference.&lt;/p&gt;
  Wants=network.target
 
  [Service]
- Environment=&quot;HOME=/home/root&quot;
+ Environment="HOME=/home/root"
  ExecStart=/opt/bin/tailscaled --tun=userspace-networking
  ExecStartPost=/opt/bin/tailscale up
  Restart=on-failure
@@ -770,92 +892,46 @@ world of difference.&lt;/p&gt;
 
  [Install]
  WantedBy=multi-user.target
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Now, install the service:&lt;/p&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Now, install the service:</p>
 
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;systemctl enable tailscaled&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Reboot. We reboot here since I ran into some strange issues with &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscaled&lt;/code&gt; not stopping itself, and restarting is the fastest way around this.&lt;/p&gt;
+    <p><code class="language-plaintext highlighter-rouge">systemctl enable tailscaled</code></p>
+  </li>
+  <li>
+    <p>Reboot. We reboot here since I ran into some strange issues with <code class="language-plaintext highlighter-rouge">tailscaled</code> not stopping itself, and restarting is the fastest way around this.</p>
 
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;shutdown -r now&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;And use &lt;code class=&quot;highlighter-rouge&quot;&gt;journalctl&lt;/code&gt; to monitor the status:&lt;/p&gt;
+    <p><code class="language-plaintext highlighter-rouge">shutdown -r now</code></p>
+  </li>
+  <li>
+    <p>And use <code class="language-plaintext highlighter-rouge">journalctl</code> to monitor the status:</p>
 
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;journalctl -f -u tailscaled&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Now &lt;code class=&quot;highlighter-rouge&quot;&gt;tailscale&lt;/code&gt; should be working!&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background Tailscale is a pretty cool technology that allows devices to access each other across any network by automatically punching holes through networks. (Long gone are the days of ssh -L 8000:localhost:8000 server to do development! Now we can just go to http://server:8000 directly!) Its setup process is fairly simple for both Windows and Linux, but it doesn’t have detailed solutions for embedded devices (such as the Remarkable). This blogpost details the steps I took to get Tailscale working on my Remarkable.</summary></entry><entry><title type="html">Blogs I Read</title><link href="https://addcnin.blue/2021/10/20/blogs/" rel="alternate" type="text/html" title="Blogs I Read" /><published>2021-10-20T00:00:00-07:00</published><updated>2021-10-20T00:00:00-07:00</updated><id>https://addcnin.blue/2021/10/20/blogs</id><content type="html" xml:base="https://addcnin.blue/2021/10/20/blogs/">&lt;p&gt;(and podcasts I listen to)&lt;/p&gt;
+    <p><code class="language-plaintext highlighter-rouge">journalctl -f -u tailscaled</code></p>
+  </li>
+  <li>Now <code class="language-plaintext highlighter-rouge">tailscale</code> should be working!</li>
+</ol>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[Background Tailscale is a pretty cool technology that allows devices to access each other across any network by automatically punching holes through networks. (Long gone are the days of ssh -L 8000:localhost:8000 server to do development! Now we can just go to http://server:8000 directly!) Its setup process is fairly simple for both Windows and Linux, but it doesn’t have detailed solutions for embedded devices (such as the Remarkable). This blogpost details the steps I took to get Tailscale working on my Remarkable.]]></summary></entry><entry><title type="html">Blogs I Read</title><link href="https://addcnin.blue/2021/10/20/blogs/" rel="alternate" type="text/html" title="Blogs I Read" /><published>2021-10-20T00:00:00-07:00</published><updated>2021-10-20T00:00:00-07:00</updated><id>https://addcnin.blue/2021/10/20/blogs</id><content type="html" xml:base="https://addcnin.blue/2021/10/20/blogs/"><![CDATA[<p>(and podcasts I listen to)</p>
 
-&lt;p&gt;I often find myself sharing this (very) short list of media I love, so here’s a compiled list. It’s ranked in rough order of how valuable I’ve found the content. Hopefully it helps someone!&lt;/p&gt;
+<p>I often find myself sharing this (very) short list of media I love, so here’s a compiled list. It’s ranked in rough order of how valuable I’ve found the content. Hopefully it helps someone!</p>
 
-&lt;h2 id=&quot;on-software-and-adjacent-industries&quot;&gt;On Software And Adjacent Industries&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.paulgraham.com/articles.html&quot;&gt;Paul Graham&lt;/a&gt;: From the founder of YCombinator, a solid collection of essays on startups and life.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://danluu.com/&quot;&gt;Dan Luu&lt;/a&gt;: A very-well written set of essays on startups, curious explorations into the world of computers, and learning.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://thinkingelixir.com/the-podcast/&quot;&gt;Thinking Elixir&lt;/a&gt;: An Elixir podcast that talks about Elixir’s most recent developments.&lt;/li&gt;
-&lt;/ul&gt;
+<h2 id="on-software-and-adjacent-industries">On Software And Adjacent Industries</h2>
+<ul>
+  <li><a href="http://www.paulgraham.com/articles.html">Paul Graham</a>: From the founder of YCombinator, a solid collection of essays on startups and life.</li>
+  <li><a href="https://danluu.com/">Dan Luu</a>: A very-well written set of essays on startups, curious explorations into the world of computers, and learning.</li>
+  <li><a href="https://thinkingelixir.com/the-podcast/">Thinking Elixir</a>: An Elixir podcast that talks about Elixir’s most recent developments.</li>
+</ul>
 
-&lt;h2 id=&quot;on-finance&quot;&gt;On Finance&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine&quot;&gt;Money Stuff&lt;/a&gt;: Written by a former financial engineer at Goldman, a daily blog on the latest in how “everything is securities fraud.”&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.wsj.com/podcasts/bad-bets&quot;&gt;Bad Bets&lt;/a&gt;: A new podcast by WSJ on “big-business dramas that have had a big impact on our world.” It seems particularly relevant especially considering the recent frothiness of the markets.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.ft.com/ft-news-briefing&quot;&gt;FT News Briefing&lt;/a&gt;: A daily (~10 min) podcast by FT highlighting daily news.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.wsj.com/podcasts/the-journal&quot;&gt;The Journal&lt;/a&gt;: A daily podcast by WSJ diving into relevant recent news, mainly focused on “money, business and power.”&lt;/li&gt;
-&lt;/ul&gt;
+<h2 id="on-finance">On Finance</h2>
+<ul>
+  <li><a href="https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine">Money Stuff</a>: Written by a former financial engineer at Goldman, a daily blog on the latest in how “everything is securities fraud.”</li>
+  <li><a href="https://www.wsj.com/podcasts/bad-bets">Bad Bets</a>: A new podcast by WSJ on “big-business dramas that have had a big impact on our world.” It seems particularly relevant especially considering the recent frothiness of the markets.</li>
+  <li><a href="https://www.ft.com/ft-news-briefing">FT News Briefing</a>: A daily (~10 min) podcast by FT highlighting daily news.</li>
+  <li><a href="https://www.wsj.com/podcasts/the-journal">The Journal</a>: A daily podcast by WSJ diving into relevant recent news, mainly focused on “money, business and power.”</li>
+</ul>
 
-&lt;h2 id=&quot;one-off-blogs&quot;&gt;One-off Blogs&lt;/h2&gt;
-&lt;p&gt;(These are ordered arbitrarily.)&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://waitbutwhy.com/2018/04/picking-career.html&quot;&gt;How to Pick a Career (That Actually Fits You)&lt;/a&gt;: Very long article that gets to who we are as people.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html&quot;&gt;Ten Lessons I wish I had been Taught&lt;/a&gt;: Short but hilarious blog, especially relevant for those pursuing an advanced degree.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>@addcninblue</name></author><summary type="html">(and podcasts I listen to)</summary></entry><entry><title type="html">Installing Windows Alongside Existing NixOS</title><link href="https://addcnin.blue/2020/07/11/dual-boot/" rel="alternate" type="text/html" title="Installing Windows Alongside Existing NixOS" /><published>2020-07-11T00:00:00-07:00</published><updated>2020-07-11T00:00:00-07:00</updated><id>https://addcnin.blue/2020/07/11/dual-boot</id><content type="html" xml:base="https://addcnin.blue/2020/07/11/dual-boot/">&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;p&gt;I use NixOS as my main OS in everything (from personal laptop to my server), but I was beginning to miss Windows for gaming. (WINE won’t cut it here.) As a result, I went searching for installing Windows alongside an existing NixOS installation, but I couldn’t find one anywhere. I decided to just dive in, and it worked! Here is a high-level list of the steps I took. For reference, I am installing this on an XPS 9550, with EFI.&lt;/p&gt;
-
-&lt;p&gt;Before continuing on, you will need a live USB stick that has the NixOS installation media.&lt;/p&gt;
-
-&lt;h2 id=&quot;steps&quot;&gt;Steps&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;Change the boot method from the default systemd-boot bootloader to GRUB. This will allow us to add Windows to the boot menu in the future. &lt;a href=&quot;https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows#Grub_2&quot;&gt;Here are the steps.&lt;/a&gt; For now, leave out the entire &lt;code class=&quot;highlighter-rouge&quot;&gt;extraEntries&lt;/code&gt; line – we’ll add that later.&lt;/li&gt;
-  &lt;li&gt;If you need to resize NixOS:
-    &lt;ol&gt;
-      &lt;li&gt;Boot into the live USB stick.&lt;/li&gt;
-      &lt;li&gt;Over-downsize your filesystem: &lt;code class=&quot;highlighter-rouge&quot;&gt;resize2fs /dev/sdXY $something_smaller_than_new_size&lt;/code&gt;, where the size we input is something smaller than the final size of our partition we want.&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/Parted#Shrinking_partitions&quot;&gt;Shrink the actual partition:&lt;/a&gt;. Note that we first overshoot our shrink for the filesystem and then fit it back. This is to ensure that our partition doesn’t cut off our filesystem, which can lead to data loss.
-        &lt;ol&gt;
-          &lt;li&gt;Start parted: &lt;code class=&quot;highlighter-rouge&quot;&gt;parted --align optimal /dev/sdX&lt;/code&gt;&lt;/li&gt;
-          &lt;li&gt;List out partitions: &lt;code class=&quot;highlighter-rouge&quot;&gt;(parted) print&lt;/code&gt;&lt;/li&gt;
-          &lt;li&gt;Shrink the right partition: &lt;code class=&quot;highlighter-rouge&quot;&gt;(parted) resizepart number end&lt;/code&gt;&lt;/li&gt;
-        &lt;/ol&gt;
-      &lt;/li&gt;
-      &lt;li&gt;Grow the filesystem to fill the entire space of the partition: &lt;code class=&quot;highlighter-rouge&quot;&gt;resize2fs /dev/sdXY&lt;/code&gt;&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Install Windows. This is actually pretty simple; in the installer, simply click on the unallocated space to install Windows, and it’ll just work. &lt;em&gt;magic!&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Now, your computer should be booting directly into Windows. We have to reinstall GRUB as the bootloader to fix that:
-    &lt;ol&gt;
-      &lt;li&gt;Boot into the live USB stick.&lt;/li&gt;
-      &lt;li&gt;Mount your NixOS system onto &lt;code class=&quot;highlighter-rouge&quot;&gt;/mnt&lt;/code&gt;. If you followed the &lt;a href=&quot;https://nixos.org/nixos/manual/index.html#sec-installation-installing&quot;&gt;instruction manual&lt;/a&gt;, then it would look like this:
-        &lt;ol&gt;
-          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mount /dev/disk/by-label/nixos /mnt/&lt;/code&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mount /dev/disk/by-label/boot /mnt/boot&lt;/code&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;swapon /dev/disk/by-label/swap&lt;/code&gt;&lt;/li&gt;
-        &lt;/ol&gt;
-      &lt;/li&gt;
-      &lt;li&gt;Add all of your &lt;code class=&quot;highlighter-rouge&quot;&gt;nix-channel&lt;/code&gt;s that you currently use in your OS with &lt;code class=&quot;highlighter-rouge&quot;&gt;nix-channel --add ...&lt;/code&gt;. If you forgot, you can &lt;a href=&quot;https://nixos.wiki/wiki/Change_root&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;nixos-enter&lt;/code&gt;&lt;/a&gt; into your installation to check via &lt;code class=&quot;highlighter-rouge&quot;&gt;nix-channel --list&lt;/code&gt;.&lt;/li&gt;
-      &lt;li&gt;Grab the UUID of boot partition via &lt;code class=&quot;highlighter-rouge&quot;&gt;blkid&lt;/code&gt;, and &lt;a href=&quot;https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows#Grub_2&quot;&gt;add that in to the GRUB section of your &lt;code class=&quot;highlighter-rouge&quot;&gt;configuration.nix&lt;/code&gt;&lt;/a&gt;. It should be located at &lt;code class=&quot;highlighter-rouge&quot;&gt;/mnt/etc/nixos/configuration.nix&lt;/code&gt;. This is the part where we add Windows into GRUB.&lt;/li&gt;
-      &lt;li&gt;Rederive NixOS: &lt;code class=&quot;highlighter-rouge&quot;&gt;nixos-install&lt;/code&gt;.&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;And then you should be done!&lt;/p&gt;
-
-&lt;h2 id=&quot;things-i-tried-that-failed&quot;&gt;Things I Tried That Failed&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Live booting the Nixos ISO, and trying to chroot into that environment to &lt;code class=&quot;highlighter-rouge&quot;&gt;nixos-rebuild switch&lt;/code&gt;. This failed due to some strange error about being unable to write to the filesystem.&lt;/li&gt;
-  &lt;li&gt;Live booting from Ubuntu to try to rebuild grub there. This failed because it requires either a chroot or directly specifying the EFI directory, and the chroot fails because Nixos doesn’t have a /bin/bash, and the EFI directory approach failed for some unknown reason.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>@addcninblue</name></author><summary type="html">Background I use NixOS as my main OS in everything (from personal laptop to my server), but I was beginning to miss Windows for gaming. (WINE won’t cut it here.) As a result, I went searching for installing Windows alongside an existing NixOS installation, but I couldn’t find one anywhere. I decided to just dive in, and it worked! Here is a high-level list of the steps I took. For reference, I am installing this on an XPS 9550, with EFI.</summary></entry></feed>
+<h2 id="one-off-blogs">One-off Blogs</h2>
+<p>(These are ordered arbitrarily.)</p>
+<ul>
+  <li><a href="https://waitbutwhy.com/2018/04/picking-career.html">How to Pick a Career (That Actually Fits You)</a>: Very long article that gets to who we are as people.</li>
+  <li><a href="https://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html">Ten Lessons I wish I had been Taught</a>: Short but hilarious blog, especially relevant for those pursuing an advanced degree.</li>
+</ul>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[(and podcasts I listen to)]]></summary></entry></feed>
