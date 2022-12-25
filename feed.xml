@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-12-23T19:04:05-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">On Alternatives</title><link href="https://addcnin.blue/2022/12/23/on-alternatives/" rel="alternate" type="text/html" title="On Alternatives" /><published>2022-12-23T00:00:00-08:00</published><updated>2022-12-23T00:00:00-08:00</updated><id>https://addcnin.blue/2022/12/23/on-alternatives</id><content type="html" xml:base="https://addcnin.blue/2022/12/23/on-alternatives/"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-12-24T16:53:37-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">On Alternatives</title><link href="https://addcnin.blue/2022/12/23/on-alternatives/" rel="alternate" type="text/html" title="On Alternatives" /><published>2022-12-23T00:00:00-08:00</published><updated>2022-12-23T00:00:00-08:00</updated><id>https://addcnin.blue/2022/12/23/on-alternatives</id><content type="html" xml:base="https://addcnin.blue/2022/12/23/on-alternatives/"><![CDATA[<blockquote>
   <p>“The only constant in life is change.”</p>
 
   <p>- Heraclitus</p>
@@ -120,7 +120,7 @@ benefit gained is far too small to offset the normal causes of friction.</p>
       <p>We might call the group 1s the small-l liberals and the group 2s the small-c conservatives. <a href="#fnref:small" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
   </ol>
-</div>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[“The only constant in life is change.” - Heraclitus]]></summary></entry><entry><title type="html">On Alternatives</title><link href="https://addcnin.blue/2022/12/23/optiver-0.40/" rel="alternate" type="text/html" title="On Alternatives" /><published>2022-12-23T00:00:00-08:00</published><updated>2022-12-23T00:00:00-08:00</updated><id>https://addcnin.blue/2022/12/23/optiver-0.40</id><content type="html" xml:base="https://addcnin.blue/2022/12/23/optiver-0.40/"><![CDATA[]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">NBA 2022 Analysis</title><link href="https://addcnin.blue/2022/06/15/nba2022/" rel="alternate" type="text/html" title="NBA 2022 Analysis" /><published>2022-06-15T00:00:00-07:00</published><updated>2022-06-15T00:00:00-07:00</updated><id>https://addcnin.blue/2022/06/15/nba2022</id><content type="html" xml:base="https://addcnin.blue/2022/06/15/nba2022/"><![CDATA[<p>I’ve never really been a big sports guy, but my brother somehow dragged me into
+</div>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[“The only constant in life is change.” - Heraclitus]]></summary></entry><entry><title type="html">NBA 2022 Analysis</title><link href="https://addcnin.blue/2022/06/15/nba2022/" rel="alternate" type="text/html" title="NBA 2022 Analysis" /><published>2022-06-15T00:00:00-07:00</published><updated>2022-06-15T00:00:00-07:00</updated><id>https://addcnin.blue/2022/06/15/nba2022</id><content type="html" xml:base="https://addcnin.blue/2022/06/15/nba2022/"><![CDATA[<p>I’ve never really been a big sports guy, but my brother somehow dragged me into
 watching the NBA Playoffs. It’s been pretty fun! The series is intense and
 close, and naturally, I’ve been itching to see if I can wrangle some numbers
 out of the mess called basketball. Here, I talk a bit about what I did to try
@@ -910,4 +910,28 @@ world of difference.</p>
     <p><code class="language-plaintext highlighter-rouge">journalctl -f -u tailscaled</code></p>
   </li>
   <li>Now <code class="language-plaintext highlighter-rouge">tailscale</code> should be working!</li>
-</ol>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[Background Tailscale is a pretty cool technology that allows devices to access each other across any network by automatically punching holes through networks. (Long gone are the days of ssh -L 8000:localhost:8000 server to do development! Now we can just go to http://server:8000 directly!) Its setup process is fairly simple for both Windows and Linux, but it doesn’t have detailed solutions for embedded devices (such as the Remarkable). This blogpost details the steps I took to get Tailscale working on my Remarkable.]]></summary></entry></feed>
+</ol>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[Background Tailscale is a pretty cool technology that allows devices to access each other across any network by automatically punching holes through networks. (Long gone are the days of ssh -L 8000:localhost:8000 server to do development! Now we can just go to http://server:8000 directly!) Its setup process is fairly simple for both Windows and Linux, but it doesn’t have detailed solutions for embedded devices (such as the Remarkable). This blogpost details the steps I took to get Tailscale working on my Remarkable.]]></summary></entry><entry><title type="html">Blogs I Read</title><link href="https://addcnin.blue/2021/10/20/blogs/" rel="alternate" type="text/html" title="Blogs I Read" /><published>2021-10-20T00:00:00-07:00</published><updated>2021-10-20T00:00:00-07:00</updated><id>https://addcnin.blue/2021/10/20/blogs</id><content type="html" xml:base="https://addcnin.blue/2021/10/20/blogs/"><![CDATA[<p>(and podcasts I listen to)</p>
+
+<p>I often find myself sharing this (very) short list of media I love, so here’s a compiled list. It’s ranked in rough order of how valuable I’ve found the content. Hopefully it helps someone!</p>
+
+<h2 id="on-software-and-adjacent-industries">On Software And Adjacent Industries</h2>
+<ul>
+  <li><a href="http://www.paulgraham.com/articles.html">Paul Graham</a>: From the founder of YCombinator, a solid collection of essays on startups and life.</li>
+  <li><a href="https://danluu.com/">Dan Luu</a>: A very-well written set of essays on startups, curious explorations into the world of computers, and learning.</li>
+  <li><a href="https://thinkingelixir.com/the-podcast/">Thinking Elixir</a>: An Elixir podcast that talks about Elixir’s most recent developments.</li>
+</ul>
+
+<h2 id="on-finance">On Finance</h2>
+<ul>
+  <li><a href="https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine">Money Stuff</a>: Written by a former financial engineer at Goldman, a daily blog on the latest in how “everything is securities fraud.”</li>
+  <li><a href="https://www.wsj.com/podcasts/bad-bets">Bad Bets</a>: A new podcast by WSJ on “big-business dramas that have had a big impact on our world.” It seems particularly relevant especially considering the recent frothiness of the markets.</li>
+  <li><a href="https://www.ft.com/ft-news-briefing">FT News Briefing</a>: A daily (~10 min) podcast by FT highlighting daily news.</li>
+  <li><a href="https://www.wsj.com/podcasts/the-journal">The Journal</a>: A daily podcast by WSJ diving into relevant recent news, mainly focused on “money, business and power.”</li>
+</ul>
+
+<h2 id="one-off-blogs">One-off Blogs</h2>
+<p>(These are ordered arbitrarily.)</p>
+<ul>
+  <li><a href="https://waitbutwhy.com/2018/04/picking-career.html">How to Pick a Career (That Actually Fits You)</a>: Very long article that gets to who we are as people.</li>
+  <li><a href="https://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html">Ten Lessons I wish I had been Taught</a>: Short but hilarious blog, especially relevant for those pursuing an advanced degree.</li>
+</ul>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[(and podcasts I listen to)]]></summary></entry></feed>
