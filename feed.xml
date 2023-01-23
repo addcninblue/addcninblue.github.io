@@ -1,4 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2022-12-25T21:11:38-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">The Horror That is Airport Delays</title><link href="https://addcnin.blue/2022/12/25/plane-delays/" rel="alternate" type="text/html" title="The Horror That is Airport Delays" /><published>2022-12-25T00:00:00-08:00</published><updated>2022-12-25T00:00:00-08:00</updated><id>https://addcnin.blue/2022/12/25/plane-delays</id><content type="html" xml:base="https://addcnin.blue/2022/12/25/plane-delays/"><![CDATA[<p>As a matter of existence, airport delays have always been relegated to the
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://addcnin.blue/feed.xml" rel="self" type="application/atom+xml" /><link href="https://addcnin.blue/" rel="alternate" type="text/html" /><updated>2023-01-22T20:25:50-08:00</updated><id>https://addcnin.blue/feed.xml</id><title type="html">Addison Chan</title><subtitle>Addison Chan | CS &amp; Stats @ UC Berkeley.</subtitle><author><name>@addcninblue</name></author><entry><title type="html">Incremental Gain, Monumental Pain</title><link href="https://addcnin.blue/2023/01/22/incremental-progress/" rel="alternate" type="text/html" title="Incremental Gain, Monumental Pain" /><published>2023-01-22T00:00:00-08:00</published><updated>2023-01-22T00:00:00-08:00</updated><id>https://addcnin.blue/2023/01/22/incremental-progress</id><content type="html" xml:base="https://addcnin.blue/2023/01/22/incremental-progress/"><![CDATA[<p>A common paradigm of software engineering is making progress continuously rather
+than discretely. By this, I mean that given an ideal, most would prefer to make
+small edits that get them closer to the ideal rather than a large change all at
+once. This means that the workflow for change looks like the following:</p>
+<ol>
+  <li>There is a realization that something is locally wrong.</li>
+  <li>The root of the problem is identified.</li>
+  <li>A change is implemented that fixes the problem.</li>
+</ol>
+
+<p>This belief has its merits. After all, for most systems, it’s often unclear what
+the eventual state of the system should look like. It’s easy to cut down on
+known ugly parts of the system, since knowing what it <em>shouldn’t</em> look like
+amounts somewhat to knowing what it <em>should</em> look like.</p>
+
+<p>But in reflection, we often find pieces of software in utter disarray.
+Reasonable questions such as “How did we get here” end with answers like “We
+made the best call at every turn, but somehow we ended in a suboptimal state.”
+To be clear, it’s not always as if corners were cut to ship a feature.
+Sometimes, it’s a partial refactor; other times, it’s a feature slapped on top
+of infrastructure not designed to support it. At the time the shots were called,
+these were always the right business decisions, but they somehow converged to a
+less-than-suboptimal state.</p>
+
+<p>So what happened?</p>
+
+<h2 id="a-machine-learning-analogy">A Machine Learning Analogy</h2>
+
+<p>To take an analogy from machine learning, if we think of a program as something
+solving a problem, we can also think of it as minimizing some objective
+function. For example, an objective function might be minimizing the manual
+labor required.</p>
+
+<p>In this analogy, making small changes at a time to a system amounts to doing
+gradient descent on a somewhat unknown objective function. Concretely, the three
+steps above would look like the following:</p>
+<ol>
+  <li>There is a realization that the program is not producing output in a way that
+minimizes the objective function. In following the example above, it might be
+that manual intervention is higher than it needs to be.</li>
+  <li>The immediate cause is identified. In the example above, that might be
+something as simple as realizing that previous automation has since been
+broken.</li>
+  <li>A software engineer implements a fix. In the example above, that might be
+fixing the previous automation.</li>
+</ol>
+
+<p>Before we continue, let’s address some things. First, why was this described as
+a “somewhat” unknown objective function? This is largely a criticism of step 2.
+When problems are discovered, it’s often the case that everyone is acutely aware
+of the immediate problem, but that the broader or deeper problem is less
+obvious. In this case, we can say that the objective function is locally
+obvious, but globally unknown.</p>
+
+<p>We know how this ends with machine learning. If a learning algorithm is only
+allowed to explore a local space, it will always converge only within the
+confines of that space. In our example here, it means that we will only solve
+problems that we identify. In such a case, the foregone conclusion would be to
+consider a wider range of problems than the one at hand. That’s perhaps an
+obvious statement, but a deeper example is more interesting.</p>
+
+<p>There is a more insidious variation that I think is more prevalent. Consider the
+case where the global objective function is identified in step #2 rather than
+only the local objective function. Furthermore, assume that there exists a
+global minimum that is not close to the existing state; that is, there exists a
+local minimum that is closer than the global minimum to the existing state, and
+that moving from the existing state to the global one requires performing worse
+on the objective function before performing better.</p>
+
+<p>In such a case, we are faced with two possibilities: go for the local optimum,
+in which case a smaller amount of work is required; or go for the global
+optimum, in which case much planning is required and much risk is taken on, but
+perhaps it gets us closer to the global minimum.</p>
+
+<p>Most would choose the first option: go for the local optimum. We call this
+“incremental improvement.” But most also never make the connection that they can
+never “incrementally improve” towards the global optimum under such
+circumstances; they will always be in a <em>better</em> state than they were before,
+but there will exist pain points which cannot be fixed.</p>
+
+<h2 id="so-what-to-do">So What To Do</h2>
+
+<p>It’s a curious balance of optima and work that we have to balance. We have on
+one hand the comfort of our own optimum “well,” where we know which problems we
+have yet to solve and those which are unsolvable. We have on the other hand the
+ideal “global minimum well” where there are undoubtedly some dragons lurking
+accompanied with the hope of a brighter future. I don’t have a silver bullet as
+to which to choose, but I do have some thoughts, followed by recommendations:</p>
+
+<p>Thoughts:</p>
+<ul>
+  <li>I think if software ever hits the point of “How did we get here?”, some
+  horrible mistake was made. It means that someone either forgot the
+  difference between a local and global optimum, or that they thought the
+  optimum they were optimizing for was the global one.</li>
+  <li>This means that it’s quite important to understand the landscape before making
+  changes. As they say, a month in the laboratory can often save an hour in
+  the library!</li>
+  <li>Expanding on the above, sometimes the correct choice <em>is</em> to optimize locally
+  even if the eventual plan is to make a discrete jump to better optimize
+  globally – it just so happens that accumulating more pain points informs
+  you about the global objective function.</li>
+</ul>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[A common paradigm of software engineering is making progress continuously rather than discretely. By this, I mean that given an ideal, most would prefer to make small edits that get them closer to the ideal rather than a large change all at once. This means that the workflow for change looks like the following: There is a realization that something is locally wrong. The root of the problem is identified. A change is implemented that fixes the problem.]]></summary></entry><entry><title type="html">The Horror That is Airport Delays</title><link href="https://addcnin.blue/2022/12/25/plane-delays/" rel="alternate" type="text/html" title="The Horror That is Airport Delays" /><published>2022-12-25T00:00:00-08:00</published><updated>2022-12-25T00:00:00-08:00</updated><id>https://addcnin.blue/2022/12/25/plane-delays</id><content type="html" xml:base="https://addcnin.blue/2022/12/25/plane-delays/"><![CDATA[<p>As a matter of existence, airport delays have always been relegated to the
 domain of news. They were always in the camp of things that <em>existed</em> but
 <em>happened to other people</em>. That is, I suppose, until it happened to me. After
 spending a night at the airport, I’m now an Expert on Airports and thus more
@@ -184,74 +286,7 @@ time, but it seems like they improved on it for the second cancelled flight.)</p
       <p>I recognize that this is pretty bad in aggregate – one can imagine that, in the limit, if <em>everyone</em> in the same position as me did this, the airlines’ problems would be compounded <em>and then some</em>. I don’t have much to defend myself with except that I think there were much more elegant ways they could’ve solved this problem, and that this behavior is largely a function of last resort and fear rather than irrationality. <a href="#fnref:negative-externality" class="reversefootnote" role="doc-backlink">⤴</a></p>
     </li>
   </ol>
-</div>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[As a matter of existence, airport delays have always been relegated to the domain of news. They were always in the camp of things that existed but happened to other people. That is, I suppose, until it happened to me. After spending a night at the airport, I’m now an Expert on Airports and thus more than qualified to write my full thoughts on the Horror that is Airport Delays.]]></summary></entry><entry><title type="html">Done and Done Done</title><link href="https://addcnin.blue/2022/12/23/done-and-done-done/" rel="alternate" type="text/html" title="Done and Done Done" /><published>2022-12-23T00:00:00-08:00</published><updated>2022-12-23T00:00:00-08:00</updated><id>https://addcnin.blue/2022/12/23/done-and-done-done</id><content type="html" xml:base="https://addcnin.blue/2022/12/23/done-and-done-done/"><![CDATA[<p>At Optiver, our Automated Trading Systems team lead has a phrase that he likes
-to say: “There’s ‘done’, and then there’s <em>‘done done’</em>.” What he means by that
-is that projects often get to the point where <em>most</em> things are done in that it
-works, but that last bit to push it over the edge into something self-sustaining
-is recognizably an extra level of done. Through my first few months at Optiver,
-I’ve found myself consistently struggling the most in this area - scoping out a
-project and banging out some code isn’t difficult, but delivering it to the
-point of a finished project takes forever. Now that I’m on a 3 week break from
-work <sup id="fnref:vacation" role="doc-noteref"><a href="#fn:vacation" class="footnote" rel="footnote">1</a></sup>, I figured it’s a good time to reflect.</p>
-
-<h2 id="exploring-the-gap-between-done-and-done-done">Exploring the gap between Done and Done Done</h2>
-
-<p>In school, the concept of Done Done doesn’t really exist. A project is either
-Done or Not Done, and your professor is either Proud or Disappointed (something
-like that, anyways). Why does this differ at a job?</p>
-
-<p>I think a partial answer is due to relative value. In education, the relative
-value of something pre-completion is close to zero, whereas at a job, the value
-of something Done is quite high. I would estimate that the curve of usefulness
-is somewhat logistic curve-shaped, with a strong bias towards the end of a
-project. As you work on a project at a job, the usefulness of something grows
-exponentially as you get near the Done line, and once you cross that line, the
-growth of usefulness suddenly drops off - you’re not rewarded the same amount
-per next unit of time you put into the project. Hence, something of a logistic
-curve.</p>
-
-<p>With this in mind, it’s perhaps not so hard to see why things don’t move from
-Done to Done Done as quickly as they do from Not Existing to Done:</p>
-<ol>
-  <li>It feels like there’s much less marginal reward for moving things across the
-finish line compared to making the thing exist in the first place.</li>
-  <li>The thing is already somewhat usable.</li>
-</ol>
-
-<p>But perhaps there’s a bit more than this. In much of my experience, the gap
-between Done and Done Done is the difference between hacking something up and
-doing things the right way. For example, to show that a proof of concept works,
-various things can be hard-coded to values that are expected. This obviously
-doesn’t scale. It’s these shortcuts that have to be unwound and rewritten, which
-often makes the gap between Done and Done Done that much wider.</p>
-
-<p>I do think this example of “ironing out the hacks” is representative of the more
-general problem, which is that the path to Done is often much clearer than the
-path to Done Done. Perhaps this breakdown is fair:</p>
-<ul>
-  <li>“Done” is the state where your core problem is solved.</li>
-  <li>“Done Done” is the state where your ancillary problems are investigated and
-  your core problem is hardened against the inconveniences of the real world.</li>
-</ul>
-
-<p>Thinking back to the question of real life differing from college, the
-“Done”ness of college projects doesn’t cut it at a company - the core business
-problem is solved, sure, but the corners cut in a project don’t lend themselves
-to maintainability.</p>
-
-<h2 id="so-what-to-make-of-it">So what to make of it?</h2>
-
-<p>There are</p>
-
-<h2 id="footnotes">Footnotes</h2>
-
-<div class="footnotes" role="doc-endnotes">
-  <ol>
-    <li id="fn:vacation" role="doc-endnote">
-      <p>25 vacation days is quite nice :^) <a href="#fnref:vacation" class="reversefootnote" role="doc-backlink">⤴</a></p>
-    </li>
-  </ol>
-</div>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[At Optiver, our Automated Trading Systems team lead has a phrase that he likes to say: “There’s ‘done’, and then there’s ‘done done’.” What he means by that is that projects often get to the point where most things are done in that it works, but that last bit to push it over the edge into something self-sustaining is recognizably an extra level of done. Through my first few months at Optiver, I’ve found myself consistently struggling the most in this area - scoping out a project and banging out some code isn’t difficult, but delivering it to the point of a finished project takes forever. Now that I’m on a 3 week break from work 1, I figured it’s a good time to reflect. 25 vacation days is quite nice :^) ⤴]]></summary></entry><entry><title type="html">On Alternatives</title><link href="https://addcnin.blue/2022/12/23/on-alternatives/" rel="alternate" type="text/html" title="On Alternatives" /><published>2022-12-23T00:00:00-08:00</published><updated>2022-12-23T00:00:00-08:00</updated><id>https://addcnin.blue/2022/12/23/on-alternatives</id><content type="html" xml:base="https://addcnin.blue/2022/12/23/on-alternatives/"><![CDATA[<blockquote>
+</div>]]></content><author><name>@addcninblue</name></author><summary type="html"><![CDATA[As a matter of existence, airport delays have always been relegated to the domain of news. They were always in the camp of things that existed but happened to other people. That is, I suppose, until it happened to me. After spending a night at the airport, I’m now an Expert on Airports and thus more than qualified to write my full thoughts on the Horror that is Airport Delays.]]></summary></entry><entry><title type="html">On Alternatives</title><link href="https://addcnin.blue/2022/12/23/on-alternatives/" rel="alternate" type="text/html" title="On Alternatives" /><published>2022-12-23T00:00:00-08:00</published><updated>2022-12-23T00:00:00-08:00</updated><id>https://addcnin.blue/2022/12/23/on-alternatives</id><content type="html" xml:base="https://addcnin.blue/2022/12/23/on-alternatives/"><![CDATA[<blockquote>
   <p>“The only constant in life is change.”</p>
 
   <p>- Heraclitus</p>
